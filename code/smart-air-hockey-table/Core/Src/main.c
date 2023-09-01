@@ -106,9 +106,9 @@ int main(void)
 	while (1)
 	{
 		/* USER CODE END WHILE */
+		/* USER CODE BEGIN 3 */
 		HAL_Delay(500);
 		printf("Time: %.3f s\r\n", HAL_GetTick() / 1000.0f);
-		/* USER CODE BEGIN 3 */
 	}
 	/* USER CODE END 3 */
 }
