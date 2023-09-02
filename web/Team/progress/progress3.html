@@ -52,21 +52,63 @@ contact course staff.
 			and include things such as a file lister (for listing out homework assignments or tutorials)
 		-->
 		<div id="content">
-            <h2>Progress Report for -insert student name here-</h2>
+            <h2>Progress Report for Trevor Moorman</h2>
             
             <h4>Weeks 1-2:</h4>
-            <b>Date:</b> -Enter today's date here (the date you posted)-<br>
-            <b>Total hours:</b> -Enter the number of hours you worked this week here-<br>
+            <b>Date:</b> 09/01/2023<br>
+            <b>Project Hours Since Last Report:</b> 17<br>
+            <b>Cumulative Semester Project Hours:</b> 17<br>
             <b>Description of project design efforts:</b><br>
-            -Discuss your project design efforts here. Remember to follow the guidelines presented in the Progress Report Policy that is posted on Brightspace.</br>
+            Initial Project Proposal
+            <ul>
+                <li>Before meeting with the team, I emailed Dr. Walter for clarification on some of his comments that were concerned with the section that I had written. Using this clarification, I found alternate commercial products to use in our initial project proposal.</li>
+                <li>During the meeting, I helped keep the team focused on the task at hand and gave suggestions on how we should prioritize our time. This was vital to our success given our limited time to meet.</li>
+            </ul>
 
+            Final Project Proposal
+            <ul>
+                <li>During the meeting, I noticed that some of our conversations repeated past discussions. To help keep the team on the same page, I took notes for the meeting. Alan later helped format the notes that I took, and the team agreed to take meeting notes going forward.</li>
+            </ul>
+
+            A2 - Technical Specification
+            <ul>
+                <li>I took notes during the draft meeting and reminded the other team members to add to the meeting notes as well.</li>
+                <li>Towards the end of the meeting, Alan had to leave so I suggested that we divide the sections between team members.</li>
+            </ul>
+
+            Team Organization
+            <ul>
+                <li>Scheduling the meeting turned out to be a challenging task given the team members' busy and rigid schedules. It often took team members a long time to respond to questions about their schedule and this led us to rescheduling our meeting a few times. I worried that this could be a recurring issue throughout the semester, so I first suggested that the team should schedule one or two regular meeting times outside of the mandatory lab. Unfortunately, the other team members did not like this approach as none of them felt they would be able to consistently keep a block of time free. As an alternative solution, I suggested that we should use <a href="https://www.when2meet.com">When2Meet</a> to schedule our meetings. When2Meet made scheduling the final project proposal meeting much easier, and the team has agreed to use this tool in the future.</li>
+                <figure>
+                    <img src="Team/img/Trevor_Week1_Figure1.PNG">
+                    <figcaption>Figure 1: Example When2Meet from week 1</figcaption>
+                </figure>
+            </ul>
+
+            Team Website
+            <ul>
+                <li>I suggested that we should add a folder to our project repository on <a href="https://github.com/alanssitis/smart-air-hockey-table">GitHub</a> that mirrors our uploaded website. This would protect us from potentially losing data, allow for version control, and prevent several members from attempting to make changes concurrently. The team decided to adopt my suggestion.</li>
+            </ul>
+
+            Hardware
+            <ul>
+                <li>EE Shop: At the beginning of the week, I visited the EE shop on behalf of the team to look for hall sensors that the team could use for feasibility testing. I was able to get two Hall effect sensors which were the exact model the team had been looking at previously. I also looked for any other components that may be useful for prototyping, but did not find anything else.</li>
+                <li>Design Discussion: During the mandatory lab on 8/30/2023, Alan, Ben, and I discussed the design of the daughter PCBs. Our discussion primarily focused on how the Hall effect sensors and LEDs should be laid out and how data will flow between the microcontrollers. My main contribution to the discussion was suggesting one level of the microcontrollers should convert the hall effect sensor readings to a digital signal based on a threshold. The location of the magnet could then be determined by averaging the position of all Hall effect sensors that have been "triggered", rather than more complex computations based on the Hall effect sensor's magnitude readings. This would decrease the amount of data that would need to be transferred between the microcontrollers. Alan and Ben are both interested in exploring this method further, with Ben proposing that we include multiple thresholds to increase the resolution while still compressing the data. Feasibility testing with the Hall effect sensors will give us a better idea on whether this method of data compression will work.</li>
+                <figure>
+                    <img src="Team/img/Trevor_Week1_Figure2a.PNG">
+                    <img src="Team/img/Trevor_Week1_Figure2b.PNG">
+                    <img src="Team/img/Trevor_Week1_Figure2c.PNG">
+                    <img src="Team/img/Trevor_Week1_Figure2d.PNG">
+                    <figcaption>Figure 2: Puck detection examples using the threshold method</figcaption>
+                </figure>
+            </ul>
+
+            Software
+            <ul>
+                <li>Given that we will be using STM32 microcontrollers, the team decided that we will use <a href="https://www.st.com/en/development-tools/stm32cubeide.html">STM32CubeIDE</a> for primary development. I have experience with this IDE from my internship last semester, so I gave Will a quick overview of the features STM32CubeIDE provides. I especially focused on highlighting the code generation and providing a high-level explanation of the LL drivers, HAL drivers, and middle-ware available.</li>
+            </ul>
+                
             <br>
-
-            <h4>Week 3:</h4>
-            <b>Date:</b> -Enter today's date here (the date you posted)-<br>
-            <b>Total hours:</b> -Enter the number of hours you worked this week here-<br>
-            <b>Description of project design efforts:</b><br>
-            -Discuss your project design efforts here. Remember to follow the guidelines presented in the Progress Report Policy that is posted on Brightspace.  This is a template entry; simply copy/paste this entry when doing progress reports each week.</br>
                       
         </div>
 	
