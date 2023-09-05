@@ -1,7 +1,24 @@
 ---
 import Layout from "../layouts/Layout.astro";
+
+const references = [
+  {
+    name: "TODO",
+    link: "/references/TODO",
+  },
+];
 ---
 
 <Layout title="ECE 477 Team 5 References">
   <h1 class="text-4xl font-extrabold">References</h1>
+
+  <ul class="md:mt-8">
+    {
+      references.map((o) => (
+        <li class="m-2 text-xl font-medium hover:text-neutral-600">
+          <a href={o.link}>{o.name}</a>
+        </li>
+      ))
+    }
+  </ul>
 </Layout>

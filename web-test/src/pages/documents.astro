@@ -1,11 +1,142 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
-const docs = [];
+const reports = [
+  {
+    name: "A0 - Initial Project Proposal",
+    link: "/documents/A0 - Initial Project Proposal.docx",
+  },
+  {
+    name: "A1 - Final Project Proposal",
+    link: "/documents/A1 - Final Project Proposal.docx",
+  },
+  {
+    name: "A2 - Functional Specification",
+    link: "/documents/A2 - Functional Specification.docx",
+  },
+  {
+    name: "A3 - Software Overview",
+    link: "/documents/A3 - Software Overview.docx",
+  },
+  {
+    name: "A4 - Electrical Overview",
+    link: "/documents/A4 - Electrical Overview.docx",
+  },
+  {
+    name: "A5 - Component Analysis",
+    link: "/documents/A5 - Component Analysis.docx",
+  },
+  {
+    name: "A6 - Mechanical Overviewr",
+    link: "/documents/A6 - Mechanical Overviewr.docx",
+  },
+  {
+    name: "A7 - Bill of Materials",
+    link: "/documents/A7 - Bill of Materials.docx",
+  },
+  {
+    name: "A8 - Software Formalization",
+    link: "/documents/A8 - Software Formalization.docx",
+  },
+  {
+    name: "A9 - Legal and Regulatory Analysis",
+    link: "/documents/A9 - Legal and Regulatory Analysis.docx",
+  },
+  {
+    name: "A10 - Reliability and Safety Analysis",
+    link: "/documents/A10 - Reliability and Safety Analysis.docx",
+  },
+  {
+    name: "A11 - Ethical and Environmental Analysis",
+    link: "/documents/A11 - Ethical and Environmental Analysis.docx",
+  },
+  {
+    name: "A12 - User Manual",
+    link: "/documents/A12 - User Manual.docx",
+  },
+  {
+    name: "A13 - ABET Senior Design Report",
+    link: "/documents/A13 - ABET Senior Design Report.docx",
+  },
+  {
+    name: "A14 - Final Project Archive",
+    link: "/documents/A14 - Final Project Archive.docx",
+  },
+];
+const presentations = [
+  {
+    name: "Team 05 - Midterm Design Review Presentation",
+    link: "/documents/Team 05 - Midterm Design Review Presentation.pptx",
+  },
+  {
+    name: "Team 05 - Final Presentation",
+    link: "/documents/Team 05 - Final Presentation.pptx",
+  },
+  {
+    name: "Team 05 - Final Presentation Video",
+    link: "/documents/TODO",
+  },
+];
+const schematics_pcb_layout = [
+  {
+    name: "Team 05 - Schematic and PCB Layout",
+    link: "/documents/TODO",
+  },
+];
+const cad_design_files = [
+  {
+    name: "Team 05 - Project CAD Design Files",
+    link: "/documents/TODO",
+  },
+];
 ---
 
 <Layout title="ECE 477 Team 5 Documents">
-  <h1 class="text-4xl font-extrabold">Documents</h1>
+  <h1 class="text-4xl font-extrabold">Project Documents</h1>
 
-  {docs.map((doc) => <p>{doc}</p>)}
+  <h1 class="mt-2 text-3xl font-bold md:mt-8">Reports</h1>
+  <ul>
+    {
+      reports.map((o) => (
+        <li class="m-2 text-xl font-medium hover:text-neutral-600">
+          <a href={o.link}>{o.name}</a>
+        </li>
+      ))
+    }
+  </ul>
+
+  <h1 class="mt-2 text-3xl font-bold md:mt-8">Presentations</h1>
+  <ul>
+    {
+      presentations.map((o) => (
+        <li class="m-2 text-xl font-medium hover:text-neutral-600">
+          <a href={o.link}>{o.name}</a>
+        </li>
+      ))
+    }
+  </ul>
+
+  <h1 class="mt-2 text-3xl font-bold md:mt-8">
+    Schematics & PCB Layout Designs
+  </h1>
+  <ul>
+    {
+      schematics_pcb_layout.map((o) => (
+        <li class="m-2 text-xl font-medium hover:text-neutral-600">
+          <a href={o.link}>{o.name}</a>
+        </li>
+      ))
+    }
+  </ul>
+
+  <h1 class="mt-2 text-3xl font-bold md:mt-8">CAD Design Files</h1>
+  <ul>
+    {
+      cad_design_files.map((o) => (
+        <li class="m-2 text-xl font-medium hover:text-neutral-600">
+          <a href={o.link}>{o.name}</a>
+        </li>
+      ))
+    }
+  </ul>
 </Layout>
