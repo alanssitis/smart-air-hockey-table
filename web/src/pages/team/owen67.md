@@ -34,4 +34,4 @@ The first two weeks had both the revised initial project proposal, final project
 
 #### Brainstorming PDF
 
-Notes from my brainstorming and diagrams about my communication brainstorming can be found at this link: [Brainstorming PDF](/public/team/ben/ben-brainstorming-20230901.pdf).
+Notes from my brainstorming and diagrams about my communication brainstorming can be found at this link: [Brainstorming PDF](/team/ben/ben-brainstorming-20230901.pdf).

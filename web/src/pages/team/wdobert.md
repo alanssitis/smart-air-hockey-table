@@ -22,7 +22,7 @@ I felt these steps were important to complete as soon as possible, so we can foc
 
 Within the first week, I collaborated with my team on our Final Project Proposal. Beyond filling in my info and delegated roles, I contributed by revising the drafted PSDRs to fit the proper phrasing ("An ability to..."), as well as reorganizing them for clarity and conciseness. During our meeting to collaborate on the Functional Specification document, I authored a Peripheral Hierarchy flowchart to visualize and clarify our intended design approach. It is my intention that this diagram be revised and expanded over time as our project has more details finalized.
 
-![Peripheral Hierarchy](/public/team/will/PeripheralHierarchy.png)
+![Peripheral Hierarchy](/team/will/PeripheralHierarchy.png)
 _Figure 1: Provisional draft of project's Peripheral Hierarchy_
 
 In regards to the aforementioned Functional Specification, I am currently documenting our project's known computational and thermal/power constraints.
