@@ -1,7 +1,11 @@
 ---
 import Layout from "../layouts/Layout.astro";
+
+const docs = [];
 ---
 
 <Layout title="ECE 477 Team 5 Documents">
   <h1 class="text-4xl font-extrabold">Documents</h1>
+
+  {docs.map((doc) => <p>{doc}</p>)}
 </Layout>
