@@ -8,7 +8,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "prettify": "prettier -w ./src --plugin=./node_modules/prettier-plugin-astro/dist/index.js"
+    "prettify": "prettier -w ./src --plugin=prettier-plugin-astro --plugin=prettier-plugin-tailwindcss"
   },
   "dependencies": {
     "@astrojs/tailwind": "^5.0.0",
@@ -16,5 +16,9 @@
     "prettier": "^3.0.3",
     "prettier-plugin-astro": "^0.12.0",
     "tailwindcss": "^3.3.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.9",
+    "prettier-plugin-tailwindcss": "^0.5.4"
   }
 }

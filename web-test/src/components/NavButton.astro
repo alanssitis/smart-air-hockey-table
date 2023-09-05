@@ -1,0 +1,22 @@
+---
+export interface Props extends astroHTML.JSX.AnchorHTMLAttributes {}
+
+const { href, class: classValues, ...props } = Astro.props;
+
+const { pathname } = Astro.url;
+const isCurrent = href === pathname || href === pathname.replace(/\/$/, "");
+---
+
+<li class="mr-2 flex-1">
+  <a
+    class:list={[
+      "block rounded border px-4 py-2 text-center",
+      "border-white text-blue-500 hover:border-gray-200 hover:bg-gray-200",
+      {
+        "border-blue-500 bg-blue-500 text-white hover:bg-blue-700":
+          isCurrent,
+      },
+    ]}
+    {href}><slot /></a
+  >
+</li>
