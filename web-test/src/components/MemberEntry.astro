@@ -1,11 +1,39 @@
 ---
+import { Image } from "astro:assets";
+
 interface Props {
   picture: string;
   name: string;
   role: string;
   uname: string;
-  about: string;
 }
 
-const { picture, name, role, uname, about } = Astro.props;
+const { picture, name, role, uname } = Astro.props;
+
+const href = "/team/" + uname;
+const email = uname + "@purdue.edu";
 ---
+
+<a
+  {href}
+  class="hover:bg-neutral-50sm:px-16 grid grid-cols-1 rounded-lg border-2 px-8 py-4 hover:border-neutral-300 hover:bg-neutral-100 sm:gap-4 sm:py-6 lg:grid-cols-3"
+>
+  <div class="text-center align-middle">
+    <Image
+      src={picture}
+      alt="A bird."
+      width="210"
+      height="300"
+      class="m-auto"
+    />
+  </div>
+  <div class="col-span-2">
+    <p class="text-md pt-2"><b>Name:</b>&nbsp {name}</p>
+    <p class="text-md pt-2"><b>Role:</b>&nbsp {role}</p>
+    <p class="text-md pt-2"><b>Email:</b>&nbsp {email}</p>
+    <p class="text-md pt-2">
+      <b>Progress Report:</b>&nbsp <i>Click on this box</i>
+    </p>
+    <p class="text-md pt-2"><b>About:</b>&nbsp <slot /></p>
+  </div>
+</a>

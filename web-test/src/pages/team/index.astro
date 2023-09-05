@@ -1,7 +1,77 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import MemberEntry from "../../components/MemberEntry.astro";
 ---
 
 <Layout title="ECE 477 Team 5 Members">
   <h1 class="text-4xl font-extrabold">Members</h1>
+  <ul class="mx-20 my-12 grid gap-6">
+    <MemberEntry
+      picture="/team/alan.jpg"
+      name="Alan Chung Ma"
+      role="Team Leader"
+      uname="achungma"
+    >
+      Alan is a self-driven student researcher that is curious and passionate
+      about building secure systems. He is a thoughtful leader, known for being
+      detail-oriented and for understanding the big picture. His resourcefulness
+      and attention to detail empowers those around him to achieve results.
+    </MemberEntry>
+    <MemberEntry
+      picture="/team/will.jpg"
+      name="William Dobert"
+      role="Software Engineer"
+      uname="wdobert"
+    >
+      Will is a motivated, teamwork-oriented student with a passion for embedded
+      systems design. He has previously completed coursework in embedded
+      systems, compilers, operating systems, and integrated circuit design. In
+      his recent internship experience, he was responsible for developing
+      firmware in close collaboration with a team of skilled engineers. This
+      experience provided Will with new perspectives on system design for
+      consumer products and the vital role that firmware plays when designing a
+      device.
+    </MemberEntry>
+    <MemberEntry
+      picture="/team/trevor.jpg"
+      name="Trevor Moorman"
+      role="Systems Engineer"
+      uname="tmoorma"
+    >
+      Trevor is a computer engineer with an interest in utilizing his degree to
+      further automation through embedded systems. At Purdue University, he has
+      served as an undergraduate teaching assistant for ECE 264 for two
+      semesters and for ECE 368 for one semester. As an undergraduate teaching
+      assistant, he was primarily responsible for holding office hours although
+      he also hosted recitations for ECE 368. From May to August of 2023, Trevor
+      got the opportunity to work as a Firmware Engineer Intern at Indesign,
+      LLC. Indesign is a computer and electrical engineering consultancy firm
+      located in Lawrence, Indiana. During his internship, Trevor got the
+      opportunity to work on several projects. These projects primarily involved
+      developing firmware in C, although one included a companion PC application
+      developed using JavaScript with the Electron framework. Projects involved
+      microcontrollers from both Microchip Technology and STMicroelectronics.
+      This internship served as a great opportunity to both utilize what he had
+      learned and gain practical work experience. Outside of school and work,
+      his main hobbies are biking, lacrosse, and video games. In high school,
+      Trevor began playing lacrosse as a midfielder, but later transitioned into
+      defense. He primarily plays strategy games, with his favorites being
+      Civilization V and Factorio. However, he now mostly plays multiplayer
+      games with friends.
+    </MemberEntry>
+    <MemberEntry
+      picture="/team/ben.jpg"
+      name="Ben Owen"
+      role="Hardware Engineer"
+      uname="owen67"
+    >
+      Ben has lots of experience with embedded electronics and PCB design. As
+      Electrical Lead for Autonomous Motorsports Purdue, he spearheaded the PCB
+      redesign from the ground up, including shifting to a brand new
+      microcontroller platform and integrating many different analog and digital
+      components into the final design. Furthermore, his experience in
+      classwork, including microcontroller and FPGA-focused courses, provides
+      him with lots of experience with low-level embedded microcontrollers.
+    </MemberEntry>
+  </ul>
 </Layout>
