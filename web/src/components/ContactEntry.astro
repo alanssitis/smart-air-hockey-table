@@ -1,0 +1,14 @@
+---
+interface Props {
+  name: string;
+  email: string;
+}
+
+const { name, email } = Astro.props;
+
+const href = "mailto:" + email + "?subject=[ECE477]";
+---
+
+<li class="my-8 text-xl hover:text-neutral-600">
+  <a {href}>{name} @ {email}</a>
+</li>
