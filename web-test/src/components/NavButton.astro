@@ -13,8 +13,7 @@ const isCurrent = href === pathname || href === pathname.replace(/\/$/, "");
       "block rounded border px-4 py-2 text-center",
       "border-white text-blue-500 hover:border-gray-200 hover:bg-gray-200",
       {
-        "border-blue-500 bg-blue-500 text-white hover:bg-blue-700":
-          isCurrent,
+        "border-blue-500 bg-blue-500 text-white hover:bg-blue-700": isCurrent,
       },
     ]}
     {href}><slot /></a
