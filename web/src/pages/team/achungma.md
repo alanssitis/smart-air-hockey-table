@@ -5,9 +5,31 @@ title: Alan Chung Ma Progress Report
 
 # Progress Report for Alan
 
+## Week 3
+**Date:** 2023-09-05 \
+**Total Hours:** 12
+
+### Description of Project Design Efforts
+
+Over the past week, I was in charge of designing and building a
+[new website](https://engineering.purdue.edu/477grp5/) for the team, the
+[A3 - Software Overview](</477grp5/documents/A3 - Software Overview.docx>)
+report for the team, and continued prototyping with neopixel lights. I also
+contributed to some hardware prototyping and design discussions with the team.
+
+#### Website ~ 11 hours
+
+
+
+#### Software Overview Project Report ~ 0.5
+
+#### Neopixel Prototyping ~ ?
+
+#### Hardware Prototyping and Design Decisions ~ 1
+
 ## Week 1 & 2
 
-**Date:** Sep 1, 2023 \
+**Date:** 2023-09-01 \
 **Total Hours:** 16
 
 ### Description of Project Design Efforts
