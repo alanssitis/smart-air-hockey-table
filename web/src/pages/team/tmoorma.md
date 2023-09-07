@@ -31,7 +31,7 @@ Team Organization
 
 - Scheduling the meeting turned out to be a challenging task given the team members' busy and rigid schedules. It often took team members a long time to respond to questions about their schedule and this led us to rescheduling our meeting a few times. I worried that this could be a recurring issue throughout the semester, so I first suggested that the team should schedule one or two regular meeting times outside of the mandatory lab. Unfortunately, the other team members did not like this approach as none of them felt they would be able to consistently keep a block of time free. As an alternative solution, I suggested that we should use [When2Meet](https://www.when2meet.com/) to schedule our meetings. When2Meet made scheduling the final project proposal meeting much easier, and the team has agreed to use this tool in the future.
 
-![W2m pic](/477grp5/team/trevor/Trevor_Week1_Figure1.PNG)
+<img src="/477grp5/team/trevor/Trevor_Week1_Figure1.PNG" width="25%">
 
 _Figure 1: Example When2Meet from week 1_
 
@@ -44,7 +44,10 @@ Hardware
 - EE Shop: At the beginning of the week, I visited the EE shop on behalf of the team to look for hall sensors that the team could use for feasibility testing. I was able to get two Hall effect sensors which were the exact model the team had been looking at previously. I also looked for any other components that may be useful for prototyping, but did not find anything else.
 - Design Discussion: During the mandatory lab on 8/30/2023, Alan, Ben, and I discussed the design of the daughter PCBs. Our discussion primarily focused on how the Hall effect sensors and LEDs should be laid out and how data will flow between the microcontrollers. My main contribution to the discussion was suggesting one level of the microcontrollers should convert the hall effect sensor readings to a digital signal based on a threshold. The location of the magnet could then be determined by averaging the position of all Hall effect sensors that have been "triggered", rather than more complex computations based on the Hall effect sensor's magnitude readings. This would decrease the amount of data that would need to be transferred between the microcontrollers. Alan and Ben are both interested in exploring this method further, with Ben proposing that we include multiple thresholds to increase the resolution while still compressing the data. Feasibility testing with the Hall effect sensors will give us a better idea on whether this method of data compression will work.
 
-![W2m pic](/477grp5/team/trevor/Trevor_Week1_Figure2c.PNG)
+<img src="/477grp5/team/trevor/Trevor_Week1_Figure2a.PNG" width="40%">
+<img src="/477grp5/team/trevor/Trevor_Week1_Figure2b.PNG" width="40%">
+<img src="/477grp5/team/trevor/Trevor_Week1_Figure2c.PNG" width="40%">
+<img src="/477grp5/team/trevor/Trevor_Week1_Figure2d.PNG" width="40%">
 
 _Figure 2: Puck detection examples using the threshold method_
 
