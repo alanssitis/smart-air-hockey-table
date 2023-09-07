@@ -23,14 +23,13 @@ The design and development of the smart air hockey table will adhere to the
 following focused design requirements to ensure a successful and captivating
 gameplay experience:
 
-1. PSDR #1 (Hardware): An ability to control a grid of lights beneath the
-   playing surface to create complex visuals.
-2. PSDR #2 (Hardware & Software): An ability to accurately track the puck’s
-   position on the playing field in real time.
-3. PSDR #3 (Hardware): An ability to reliably detect goals scored by monitoring
-   the passage of the puck through the goal.
-4. PSDR #4 (Hardware): An ability to internally track the score of ongoing
-   games, which is then displayed with a display.
-5. PSDR #5 (Software): An ability to display dynamic light effects on the
-   playing surface based on game state by implementing software that synchronizes
-   isual effects with ongoing gameplay.
+1. PSDR #1 (Hardware): 
+An ability to control a grid of RGB LEDs beneath the playing surface with a refresh rate of [TODO].
+2. PSDR #2 (Hardware & Software):
+An ability to track the puck’s position on the playing field with a maximum average latency of [TODO].
+3. PSDR #3 (Hardware):
+An ability to reliably detect goals scored by monitoring the passage of the puck through the goal using a photoresistor and LED pair.
+4. PSDR #4 (Hardware):
+An ability to internally track the score of ongoing games, which is then displayed with an LCD display.
+5. PSDR #5 (Software):
+An ability to display dynamic light effects on the playing surface based on game state by implementing software that synchronizes visual effects with ongoing gameplay.
