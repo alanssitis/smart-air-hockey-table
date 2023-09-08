@@ -1,0 +1,56 @@
+#include <stdio.h>
+
+#include "app_main.h"
+#include "stm32f4xx_ll_utils.h"
+#include "stm32f4xx_ll_rcc.h"
+#include "stm32f4xx_ll_tim.h"
+
+volatile uint32_t current_led = 0;
+volatile uint32_t current_bit = 0;
+
+#define LED_COUNT 16
+#define LED_RESET_COUNT 4
+#define LED_COMPARE_RESET 0
+#define LED_COMPARE_OFF 1
+#define LED_COMPARE_ON 2
+#define LED_BITS 24
+
+void app_main()
+{
+	// Configure SysTick to have 1ms time base
+	LL_RCC_ClocksTypeDef* rcc_clocks = {0};
+	LL_RCC_GetSystemClocksFreq(rcc_clocks);
+	LL_Init1msTick(rcc_clocks->HCLK_Frequency);
+
+	LL_TIM_CC_EnableChannel(TIM3, LL_TIM_CHANNEL_CH1);
+	LL_TIM_EnableAllOutputs(TIM3);
+	LL_TIM_EnableCounter(TIM3);
+	LL_TIM_EnableIT_UPDATE(TIM3);
+
+	//uint32_t time = 0;
+	while (1)
+	{
+		//LL_mDelay(500);
+		//time += 500;
+		//printf("Time: %.3f s\r\n", time / 1000.0f);
+		asm("wfi");
+	}
+}
+
+void TIM3_Handler()
+{
+	if (!LL_TIM_IsActiveFlag_UPDATE(TIM3)) return;
+
+	LL_TIM_ClearFlag_UPDATE(TIM3);
+
+	uint32_t compare;
+	if (current_led < LED_RESET_COUNT) compare = LED_COMPARE_RESET;
+	else compare = (current_led % 2) ? LED_COMPARE_ON : LED_COMPARE_OFF;
+
+	printf("Bit: %lu, LED: %lu, Cmp: %lu\r\n", current_bit, current_led, compare);
+
+	LL_TIM_OC_SetCompareCH1(TIM3, compare);
+
+	current_bit = (current_bit + 1) % LED_BITS;
+	if (current_bit == 0) current_led = (current_led + 1) % (LED_RESET_COUNT + LED_COUNT);
+}

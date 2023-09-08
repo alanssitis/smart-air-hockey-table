@@ -30,12 +30,11 @@ void app_main()
 		dma_buffer[i + LED_RESET_COUNT * LED_BITS] = LED_COMPARE_ON;
 	}
 
-	//uint32_t time = 0;
+	uint32_t time = 0;
 	while (1)
 	{
-		//LL_mDelay(500);
-		//time += 500;
-		//printf("Time: %.3f s\r\n", time / 1000.0f);
-		asm("wfi");
+		LL_mDelay(500);
+		time += 500;
+		printf("Time: %.3f s\r\n", time / 1000.0f);
 	}
 }
