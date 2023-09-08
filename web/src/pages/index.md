@@ -30,12 +30,12 @@ following focused design requirements to ensure a successful and captivating
 gameplay experience:
 
 1. PSDR #1 (Hardware): 
-An ability to control a grid of RGB LEDs beneath the playing surface with a refresh rate of [TODO].
+An ability to convert analog hall effect sensor data into digital signals with custom threshold values using comparators.
 2. PSDR #2 (Hardware & Software):
-An ability to track the puck’s position on the playing field with a maximum average latency of [TODO].
+An ability to implement custom digital logic to convert digital hall effect sensor data into precise puck row/column position data.
 3. PSDR #3 (Hardware):
 An ability to reliably detect goals scored by monitoring the passage of the puck through the goal using a photoresistor and LED pair.
 4. PSDR #4 (Hardware):
-An ability to internally track the score of ongoing games, which is then displayed with an LCD display.
+An ability to display game and debug information on an OLED display connected via the I2C communication protocol.
 5. PSDR #5 (Software):
-An ability to display dynamic light effects on the playing surface based on game state by implementing software that synchronizes visual effects with ongoing gameplay.
+An ability to control a grid of individually-addressable RGB LEDs beneath the playing surface using a serialized PWM communication protocol.
