@@ -59,6 +59,44 @@ A schematic representation of the circuit can be seen in Figure 4:
 
 _Figure 5: "Battleship" hall effect position demonstration_
 
+### Next steps
+
+**Puck tracking**
+
+- I will build a 2x2 (or larger) hall effect grid on a breadboard and connect using the digital logic mentioned earlier
+- Trevor and I will test the new magnets when they arrive to try to determine the desired air gap for our table
+	- Once this is completed, we will likely need to construct a miniature version of the table to continue testing the hall sensor system
+
+**Magnet research and part selection**
+
+- If testing goes well with the parts that are on order, nothing more needs to be done
+	- Current testing includes center magnet positioning and a ring of magnets on the puck closer to the edge
+- If testing does not go well, we may reconsider the magnet layout on the puck and/or the magnet type
+
+**LDR goal detection**
+
+- I will work with Trevor and his comparator-focused design to finalize this circuit, including redundancy and potentially testing the digital interrupt with our STM32
+
+**LED interfacing**
+
+- Most of my time will likely be spent here; I will be helping Will with LED communication
+- He currently has implemented a basic timer serial interface, but we will need to implement DMA for optimization at higher refresh rates
+
+**PCB design**
+
+- I will be working with Trevor to put together the first round of PCBs to order
+- PCBs will contain:
+	- LED footprints and wiring
+	- Hall effect sensor footprints and wiring
+	- Analog/digital logic IC footprints and wiring
+	- Connectors/pads to connect PCBs to each other for larger testing
+	- (Potentially) an STM32 footprint to test with embedded STM32 soldering and programming without a Nucleo development board
+
+**Project description and PSDRs**
+
+- As I get more testing and feedback from other group members, I will be helping revise these to get them finalized as soon as possible and update the website
+
+
 ---
 
 ## Week 1 & 2
