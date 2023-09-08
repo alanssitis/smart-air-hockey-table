@@ -44,7 +44,7 @@ following sections in addition to a navigation bar I got
 ```
 
     I will omit taking screenshots of the website, as you can view and interact
-    with the product itself from where the report is being read from.
+    with the website here! A picture cannot show the neat hover effects.
 
 The source code of the website itself is available in the [project repo](https://github.com/alanssitis/smart-air-hockey-table/tree/main/web).
 
