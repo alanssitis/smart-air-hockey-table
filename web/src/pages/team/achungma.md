@@ -7,7 +7,7 @@ title: Alan Chung Ma Progress Report
 
 ## Week 3
 **Date:** 2023-09-05 \
-**Total Hours:** 12
+**Total Hours:** 18
 
 ### Description of Project Design Efforts
 
@@ -17,15 +17,133 @@ Over the past week, I was in charge of designing and building a
 report for the team, and continued prototyping with neopixel lights. I also
 contributed to some hardware prototyping and design discussions with the team.
 
-#### Website ~ 11 hours
+#### Website ~ *11 hours*
 
+Most of my work was done creating the new website for the team. Early on, me and
+Ben realized that it would be very tedious and inefficient for each member to
+write in `HTML` for the progress reports. Therefore, I spent about 11 hours
+(probably a bit more) on building a website from scratch that has all of the
+same functionality as the previous website but with better user/write experience.
 
+It was written from scratch using [Astro](https://astro.build/) for the web
+framework and [tailwindcss](https://tailwindcss.com/) for the styling. This was
+a combination I have used previously for my personal website
+[www.alanchungma.com](https://www.alanchungma.com/).
 
-#### Software Overview Project Report ~ 0.5
+In order to maintain most of the features, I knew that I needed to provide the
+following sections in addition to a navigation bar I got
+[here](https://v1.tailwindcss.com/components/navigation) with various changes:
+```bash
+/ -> A Home page
+/team/ -> Team page with profiles of all the members
+/team/{MEMBERS} -> A subpage for each member which will house the progress report
+/documents/ -> A page with all of the reports and other documents and files for the project
+/references/ -> A page that holds all datasheets and references for the team
+/media/ -> A page that will show pictures and videos for the team
+/contact/ -> A page to reach out to the members
+```
 
-#### Neopixel Prototyping ~ ?
+    I will omit taking screenshots of the website, as you can view and interact
+    with the product itself from where the report is being read from.
 
-#### Hardware Prototyping and Design Decisions ~ 1
+The source code of the website itself is available in the [project repo](https://github.com/alanssitis/smart-air-hockey-table/tree/main/web).
+
+#### Software Overview Project Report ~ *6 hours*
+
+I was tasked with writing the software overview for the team. This document can
+be accessed in the [Documents](/477grp5/documents/) page. Since the team has
+mostly been working on chosing and deciding on the hardware we will be working
+on, a lot of work was done in designing solutions and create a good software
+overview that covered as much ground as possible. Only a few things in the
+report have been discussed in passing, therefore, it took a good amount
+of time to get the whole document working. The main concern was the state
+diagram for the project, which can be viewed below.
+
+![overall system state diagram](/477grp5/team/alan/week03/figure1.png)
+_Caption: State diagram of the main microcontroller_
+
+I also created a flowchart that represents the game flow.
+
+![game flow chart](/477grp5/team/alan/week03/figure2.png)
+_Caption: Flow chart for a typical game_
+
+#### Hardware Prototyping and Design Decisions ~ *1 hour*
+
+All that I did for Hardware Prototyping was getting the neopixel lights to work
+with a basic arduino script I made:
+```cpp
+#include <Adafruit_NeoPixel.h>
+#ifdef __AVR__
+  #include <avr/power.h>
+#endif
+#define PIN        6
+#define NUMPIXELS 30
+
+Adafruit_NeoPixel pixels(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
+#define DELAYVAL 500
+
+void setup() {
+#if defined(__AVR_ATtiny85__) && (F_CPU == 16000000)
+  clock_prescale_set(clock_div_1);
+#endif
+
+  pixels.begin();
+}
+
+void loop() {
+  pixels.clear();
+
+  for(int i=0; i<NUMPIXELS; i++) {
+
+    pixels.setPixelColor(i, pixels.Color(255, 255, 255));
+    pixels.show();
+    delay(DELAYVAL);
+  }
+}
+```
+
+Will picked up most of the prototyping work for the neopixels since I was
+working on the software overview.
+
+Throughout the week, numerous discussions were had about the hardware. We ended
+up deciding to removing row master microcontrollers, and changing the number of
+LEDs on a daughter board to 4 instead of 9. The later decision was made because
+having the LEDs staggered in a 3x3 was very costly and would not not have netted
+the team better graphics since that relies on a less dense array of 2x2 hall
+effect sensors. Below is some ASCII art that displays this gap.
+
+```
+________________________
+|                      |
+|  L       L        L  |
+|     H          H     |
+|                      |
+|                      |
+|  L       L        L  |
+|                      |
+|     H          H     |
+|  L       L        L  |
+|                      |
+________________________
+```
+
+As can be viewed from above, if you were to place two PCBs next to each other,
+there will be varying densities of lights between each hall effect sensor, where
+some gaps have only one light between each sensor while other gaps have two
+sensors between each gap.
+
+We were also discussing the usage of a high-speed mux to multiplex all of the
+hall effect sensors from a single master microcontroller. However, Ben and Trevor
+came up with a much smarter solution of `OR`ing each column and row and look at
+the problem as a [break-beam problem](https://www.digikey.com/en/maker/blogs/2022/add-an-ir-break-beam-sensor-to-an-arduino-project-for-object-detection).
+This idea was originally scratched since pushers would have blocked the beams,
+but since this is done by the hall effect sensors and the puck should be the only
+magnetic object on the table, it now works.
+
+Below is an image Ben drew up showing this method of detecting the puck.
+
+![Ben's brainstorm of solution](/477grp5/team/alan/week03/figure3.jpg)
+_Caption: "Battleship" puck detection system_
 
 ## Week 1 & 2
 
