@@ -5,6 +5,64 @@ title: Trevor Moorman Progress Report
 
 # Progress Report for Trevor
 
+## Week 3
+
+**Date:** 09/08/2023 \
+**Project Hours Since Last Report:** 14 \
+**Cumulative Semester Project Hours:** 31
+
+### Description of Project Design Efforts
+
+**Puck Tracking**
+
+The development of puck tracking has continued in two ways.
+
+- Firstly, the team has discussed which magnet would be best to use in the puck. While all team members have contributed to this conversation, Ben and I have discussed the topic the most and jointly took charge in making the final decision. Ben and I's discussions centered around whether the puck's magnet should try to maximize "pull force" or "surface magnetic field." After some research and informal testing, we determined that "pull force" was a better rough indicator, but we would also need to note the shape of the magnet's magnetic field. The shape of the magnet's magnetic field is almost entirely dependent on the shape of the magnet itself, as can be seen in the figure below. Ben and I looked at the field of several different shapes of magnets, and disk (with an "axial" magnetic direction) had the best shaped magnetic field for our application. However, we were unable to determine if we could create a configuration of multiple magnets which would be better. Hence, we ordered some smaller disk magnets and small cylinder magnets along with the large disk magnet we currently plan to use.
+
+|<img src="/477grp5/team/trevor/Trevor_Week3_CylinderField.PNG" width="80%">|<img src="/477grp5/team/trevor/Trevor_Week3_DiskField.PNG" width="80%">|
+|:---:|:---:|
+
+_Figure 1: Example magnetic fields of a cylinder magnet (left) and disk magnet (right) provided by K&J Magnetics, Inc._
+
+- Secondly, the team has had several discussions about ways to reduce the time it takes to read the hall effect sensors. A discussion between Ben and I have dramatically changed our planned approach to reading the hall effect sensors. Previously, we had planned to use "row master" microcontrollers which would be responsible for reading, processing, and reporting the hall effect sensor data to the main microcontroller. However, if we convert the hall effect sensor to a digital signal, then we can use logic gates to compress the hall effect sensors into a digital signal on if the puck is in that row or column. This method is similar to a suggestion made during our Initial Project Proposal, where it was suggested to create a lattice of IR sensors across the play field. The IR sensor method wouldn't work as anything on the play field could trip the sensors, but only the puck's magnet will trigger the hall effect sensors.
+
+<img src="/477grp5/team/trevor/Trevor_Week3_HallGridDraft.PNG" width="40%">
+
+_Figure 2: Partial diagram showing the proposed OR gate solution_
+
+**Goal Detection**
+
+- A quick, proof-of-concept circuit was constructed during this week's mandatory lab to showcase how a photoresistor could be used for goal detection. However, this circuit used an op-amp when a comparator would work better. Thus, the next day I went to the ECE shop, grabbed some comparators, and built a similar circuit, a picture and diagram of which can be seen below.
+
+|<img src="/477grp5/team/trevor/Trevor_Week3_LDRCircuitSchematic.PNG" width="80%">|<img src="/477grp5/team/trevor/Trevor_Week3_LDRCircuitPic.PNG" width="80%">|
+|:---:|:---:|
+
+_Figure 3: Schematic of photoresistor circuit (left) and picture of built photoresistor circuit (right)_
+
+**Project Description and PSDRs**
+
+- I have drafted a new project description and adjusted the PSDRs based on feedback from instructional team given during the last mandatory lab session. I am waiting to receive feedback from the other team members on my changes before updating the team's website.
+
+### Next Steps
+
+**Puck Tracking**
+
+- Once the new magnets arrive, Ben and I plan on testing how the hall effect sensor's output changes as the puck moves laterally above the sensor at different heights. This will give the team an idea of how far the playing field can be above the sensors.
+
+- While preliminary testing showed that putting insulating materials between the magnet and the Hall effect sensor has no discernible effect, we will verify this with the new magnets as well.
+
+- After this testing, further work on puck tracking will likely require using a model of a portion of the table's playing field.
+
+**Goal Detection**
+
+- I will connect the output of the circuit to one of the microcontroller's GPIO pins, then develop firmware for detecting when a goal is scored. This will likely be done with an external interrupt, although I will need to discuss with the team how exactly this subsystem should interact with the overall system.
+
+- Later, this will need to be integrated with the overall system. Namely the game state.
+
+**Project Description and PSDRs**
+
+- As mentioned previously, I am currently waiting for feedback from all the other team members. Once I receive this feedback, I will amend the description and PSDRs further then update the team's website.
+
 ## Week 1 & 2
 
 **Date:** 09/01/2023 \
