@@ -26,7 +26,7 @@ _Figure 1: Example magnetic fields of a cylinder magnet (left) and disk magnet (
 
 - Secondly, the team has had several discussions about ways to reduce the time it takes to read the hall effect sensors. A discussion between Ben and I have dramatically changed our planned approach to reading the hall effect sensors. Previously, we had planned to use "row master" microcontrollers which would be responsible for reading, processing, and reporting the hall effect sensor data to the main microcontroller. However, if we convert the hall effect sensor to a digital signal, then we can use logic gates to compress the hall effect sensors into a digital signal on if the puck is in that row or column. This method is similar to a suggestion made during our Initial Project Proposal, where it was suggested to create a lattice of IR sensors across the play field. The IR sensor method wouldn't work as anything on the play field could trip the sensors, but only the puck's magnet will trigger the hall effect sensors.
 
-<img src="/477grp5/team/trevor/Trevor_Week3_HallGridDraft.PNG" width="40%">
+<img src="/477grp5/team/trevor/Trevor_Week3_HallGridDraft.png" width="40%">
 
 _Figure 2: Partial diagram showing the proposed OR gate solution_
 
@@ -34,7 +34,7 @@ _Figure 2: Partial diagram showing the proposed OR gate solution_
 
 - A quick, proof-of-concept circuit was constructed during this week's mandatory lab to showcase how a photoresistor could be used for goal detection. However, this circuit used an op-amp when a comparator would work better. Thus, the next day I went to the ECE shop, grabbed some comparators, and built a similar circuit, a picture and diagram of which can be seen below.
 
-|<img src="/477grp5/team/trevor/Trevor_Week3_LDRCircuitSchematic.PNG" width="80%">|<img src="/477grp5/team/trevor/Trevor_Week3_LDRCircuitPic.PNG" width="80%">|
+|<img src="/477grp5/team/trevor/Trevor_Week3_LDRCircuitSchematic.png" width="80%">|<img src="/477grp5/team/trevor/Trevor_Week3_LDRCircuitPic.jpg" width="80%">|
 |:---:|:---:|
 
 _Figure 3: Schematic of photoresistor circuit (left) and picture of built photoresistor circuit (right)_
