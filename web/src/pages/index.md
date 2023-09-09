@@ -36,6 +36,6 @@ An ability to implement custom digital logic to convert digital hall effect sens
 3. PSDR #3 (Hardware):
 An ability to reliably detect goals scored by monitoring the passage of the puck through the goal using a photoresistor and LED pair.
 4. PSDR #4 (Hardware):
-An ability to display game and debug information on an OLED display connected via the I2C communication protocol.
+An ability to display game and debug information on an OLED display connected via the SPI communication protocol.
 5. PSDR #5 (Software):
 An ability to control a grid of individually-addressable RGB LEDs beneath the playing surface using a serialized PWM communication protocol.
