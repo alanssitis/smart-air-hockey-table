@@ -196,3 +196,24 @@ Command-line arguments:  -os win32 -ws win32 -arch x86_64
 
 !ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2023-09-08 19:06:57.299
 !MESSAGE Started RMI Server, listening on port 41337
+!SESSION 2023-09-08 19:41:13.239 -----------------------------------------------
+eclipse.buildId=Version 1.13.1
+java.version=17.0.6
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -data C:\Users\owen67\Desktop\smart-air-hockey-table\code
+
+!ENTRY org.eclipse.core.resources 2 10035 2023-09-08 19:41:14.604
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2023-09-08 19:41:17.932
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2023-09-08 19:41:17.932
+!MESSAGE Log4j2 initialized with config file C:\Users\owen67\Desktop\smart-air-hockey-table\code\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2023-09-08 19:41:23.392
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2023-09-08 19:54:11.019
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.gdb.internal.ui.actions.DsfTerminateCommand$3$1@3a45ea84): Status OK: unknown code=0 OK' resulted in a rejected execution exception.

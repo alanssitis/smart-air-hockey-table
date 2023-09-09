@@ -61,8 +61,8 @@ all: main-build
 main-build: smart-air-hockey-table.elf secondary-outputs
 
 # Tool invocations
-smart-air-hockey-table.elf smart-air-hockey-table.map: $(OBJS) $(USER_OBJS) C:\Users\willd\Documents\smart-air-hockey-table\code\smart-air-hockey-table\STM32F446RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "smart-air-hockey-table.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\willd\Documents\smart-air-hockey-table\code\smart-air-hockey-table\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="smart-air-hockey-table.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+smart-air-hockey-table.elf smart-air-hockey-table.map: $(OBJS) $(USER_OBJS) C:\Users\owen67\Desktop\smart-air-hockey-table\code\smart-air-hockey-table\STM32F446RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "smart-air-hockey-table.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\owen67\Desktop\smart-air-hockey-table\code\smart-air-hockey-table\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="smart-air-hockey-table.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
