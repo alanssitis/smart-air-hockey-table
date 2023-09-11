@@ -6,6 +6,7 @@ title: Alan Chung Ma Progress Report
 # Progress Report for Alan
 
 ## Week 3
+
 **Date:** 2023-09-05 \
 **Total Hours:** 18
 
@@ -17,7 +18,7 @@ Over the past week, I was in charge of designing and building a
 report for the team, and continued prototyping with neopixel lights. I also
 contributed to some hardware prototyping and design discussions with the team.
 
-#### Website ~ *11 hours*
+#### Website ~ _11 hours_
 
 Most of my work was done creating the new website for the team. Early on, me and
 Ben realized that it would be very tedious and inefficient for each member to
@@ -33,6 +34,7 @@ a combination I have used previously for my personal website
 In order to maintain most of the features, I knew that I needed to provide the
 following sections in addition to a navigation bar I got
 [here](https://v1.tailwindcss.com/components/navigation) with various changes:
+
 ```bash
 / -> A Home page
 /team/ -> Team page with profiles of all the members
@@ -48,7 +50,7 @@ following sections in addition to a navigation bar I got
 
 The source code of the website itself is available in the [project repo](https://github.com/alanssitis/smart-air-hockey-table/tree/main/web).
 
-#### Software Overview Project Report ~ *6 hours*
+#### Software Overview Project Report ~ _6 hours_
 
 I was tasked with writing the software overview for the team. This document can
 be accessed in the [Documents](/477grp5/documents/) page. Since the team has
@@ -67,10 +69,11 @@ I also created a flowchart that represents the game flow.
 ![game flow chart](/477grp5/team/alan/week03/figure2.png)
 _Caption: Flow chart for a typical game_
 
-#### Hardware Prototyping and Design Decisions ~ *1 hour*
+#### Hardware Prototyping and Design Decisions ~ _1 hour_
 
 All that I did for Hardware Prototyping was getting the neopixel lights to work
 with a basic arduino script I made:
+
 ```cpp
 #include <Adafruit_NeoPixel.h>
 #ifdef __AVR__
