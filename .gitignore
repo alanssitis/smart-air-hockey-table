@@ -1,3 +1,4 @@
 code/**/Debug/
 *.log
+*.snap
 code/.metadata/.plugins/org.eclipse.core.resources/.history/
