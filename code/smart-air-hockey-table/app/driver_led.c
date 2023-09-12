@@ -26,9 +26,9 @@ void Driver_LED_Init()
 
 	// Start TIM3 Channel 4
 	LL_TIM_CC_EnableChannel(TIM3, LL_TIM_CHANNEL_CH4);
-	LL_TIM_EnableCounter(TIM3);
 	LL_TIM_EnableDMAReq_UPDATE(TIM3);
 	LL_TIM_SetUpdateSource(TIM3, LL_TIM_UPDATESOURCE_COUNTER);
+	LL_TIM_EnableCounter(TIM3);
 }
 
 void Driver_LED_SetColor(uint8_t x, uint8_t y, uint32_t color)
