@@ -8,6 +8,8 @@ static volatile uint32_t time_ms;
 
 void Debug_Init()
 {
+	LL_TIM_EnableIT_UPDATE(TIM4);
+	LL_TIM_SetUpdateSource(TIM4, LL_TIM_UPDATESOURCE_COUNTER);
 	LL_TIM_EnableCounter(TIM4);
 
 	// Clear the terminal

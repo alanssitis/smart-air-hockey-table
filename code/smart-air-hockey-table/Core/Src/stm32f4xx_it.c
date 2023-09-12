@@ -219,10 +219,11 @@ void DMA1_Stream2_IRQHandler(void)
 void TIM4_IRQHandler(void)
 {
   /* USER CODE BEGIN TIM4_IRQn 0 */
-  TIM4_Handler();
+  if (LL_TIM_IsActiveFlag_UPDATE(TIM4)) LL_TIM_ClearFlag_UPDATE(TIM4);
+  else return;
   /* USER CODE END TIM4_IRQn 0 */
   /* USER CODE BEGIN TIM4_IRQn 1 */
-
+  TIM4_Handler();
   /* USER CODE END TIM4_IRQn 1 */
 }
 
