@@ -18,18 +18,17 @@ volatile uint16_t dma_buffer[(LED_MATRIX_WIDTH * LED_MATRIX_HEIGHT + LED_RESET_C
 
 void Driver_LED_Init()
 {
-	// Start TIM3 Channel 4
-	LL_TIM_CC_EnableChannel(TIM3, LL_TIM_CHANNEL_CH4);
-	LL_TIM_EnableAllOutputs(TIM3);
-	LL_TIM_EnableCounter(TIM3);
-	LL_TIM_EnableDMAReq_UPDATE(TIM3);
-	LL_TIM_SetUpdateSource(TIM3, LL_TIM_UPDATESOURCE_COUNTER);
-
 	// Attach DMA1 Stream 2 to TIM3
 	LL_AHB1_GRP1_EnableClock(LL_AHB1_GRP1_PERIPH_DMA1);
 	LL_DMA_SetDataLength(DMA1, LL_DMA_STREAM_2, sizeof(dma_buffer) / sizeof(uint16_t));
 	LL_DMA_ConfigAddresses(DMA1, LL_DMA_STREAM_2, (uint32_t) dma_buffer, (uint32_t) &(TIM3->CCR4), LL_DMA_DIRECTION_MEMORY_TO_PERIPH);
 	LL_DMA_EnableStream(DMA1, LL_DMA_STREAM_2);
+
+	// Start TIM3 Channel 4
+	LL_TIM_CC_EnableChannel(TIM3, LL_TIM_CHANNEL_CH4);
+	LL_TIM_EnableCounter(TIM3);
+	LL_TIM_EnableDMAReq_UPDATE(TIM3);
+	LL_TIM_SetUpdateSource(TIM3, LL_TIM_UPDATESOURCE_COUNTER);
 }
 
 void Driver_LED_SetColor(uint8_t x, uint8_t y, uint32_t color)
