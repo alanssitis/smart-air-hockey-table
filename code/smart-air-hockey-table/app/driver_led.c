@@ -14,7 +14,9 @@
 #define LED_COMPARE_OFF 34
 #define LED_COMPARE_ON 69
 
-volatile uint16_t dma_buffer[(LED_MATRIX_WIDTH * LED_MATRIX_HEIGHT + LED_RESET_COUNT) * LED_BITS];
+static uint16_t dma_buffer[(LED_MATRIX_WIDTH * LED_MATRIX_HEIGHT + LED_RESET_COUNT) * LED_BITS];
+
+// TODO: Remove LED_RESET_COUNT, make DMA non-circular, have DMA completion clear TIM3 CCR4, trigger DMA on demand instead
 
 void Driver_LED_Init()
 {
