@@ -7,7 +7,6 @@
 
 #define LED_MATRIX_WIDTH 30
 #define LED_MATRIX_HEIGHT 1
-#define LED_COUNT (LED_MATRIX_WIDTH * LED_MATRIX_HEIGHT)
 #define LED_RESET_COUNT 4
 #define LED_BITS 24
 #define LED_COMPARE_RESET 0
@@ -22,7 +21,7 @@ void Driver_LED_Init()
 {
 	// Attach DMA1 Stream 2 to TIM3
 	LL_AHB1_GRP1_EnableClock(LL_AHB1_GRP1_PERIPH_DMA1);
-	LL_DMA_SetDataLength(DMA1, LL_DMA_STREAM_2, sizeof(dma_buffer) / sizeof(uint16_t));
+	LL_DMA_SetDataLength(DMA1, LL_DMA_STREAM_2, sizeof(dma_buffer) / sizeof(dma_buffer[0]));
 	LL_DMA_ConfigAddresses(DMA1, LL_DMA_STREAM_2, (uint32_t) dma_buffer, (uint32_t) &(TIM3->CCR4), LL_DMA_DIRECTION_MEMORY_TO_PERIPH);
 	LL_DMA_EnableStream(DMA1, LL_DMA_STREAM_2);
 
@@ -35,6 +34,8 @@ void Driver_LED_Init()
 
 void Driver_LED_SetColor(uint8_t x, uint8_t y, uint32_t color)
 {
+	if (x >= LED_MATRIX_WIDTH || y >= LED_MATRIX_HEIGHT) return;
+
 	const size_t led_index = (x + y * LED_MATRIX_WIDTH) * LED_BITS;
 
 	// Yeah there are "more clever" ways to do this, but this is nice and simple
