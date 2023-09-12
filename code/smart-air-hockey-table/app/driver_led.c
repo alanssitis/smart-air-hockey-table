@@ -7,15 +7,13 @@
 
 #define LED_MATRIX_WIDTH 30
 #define LED_MATRIX_HEIGHT 1
-#define LED_RESET_COUNT 4
+#define LED_RESET_COUNT 3
 #define LED_BITS 24
 #define LED_COMPARE_RESET 0
 #define LED_COMPARE_OFF 34
 #define LED_COMPARE_ON 69
 
 static uint16_t dma_buffer[(LED_MATRIX_WIDTH * LED_MATRIX_HEIGHT + LED_RESET_COUNT) * LED_BITS];
-
-// TODO: Remove LED_RESET_COUNT, make DMA non-circular, have DMA completion clear TIM3 CCR4, trigger DMA on demand instead
 
 void Driver_LED_Init()
 {

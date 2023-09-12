@@ -24,6 +24,9 @@ void App_Init()
 
 static void loop_test()
 {
+	// NOTE: End goal is to remove any "while true" loops,
+	// and solely rely on timer interrupts
+
 	uint8_t offset = 0;
 	while (1)
 	{
@@ -43,7 +46,7 @@ static void loop_test()
 		if (++offset == 8)
 		{
 			offset = 0;
-			Debug_Log("LEDs Looped");
+			Debug_Log("LEDs looped");
 		}
 	}
 }
