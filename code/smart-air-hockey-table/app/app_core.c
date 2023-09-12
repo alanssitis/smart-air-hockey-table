@@ -1,18 +1,22 @@
-#include <stdio.h>
-
 #include "app_core.h"
+#include "app_debug.h"
 #include "driver_led.h"
 #include "stm32f4xx_ll_rcc.h"
 #include "stm32f4xx_ll_utils.h"
 
 void App_Init()
 {
-	// Configure SysTick to have 1ms time base
+	Debug_Init();
+	Debug_Log("Init started...");
+
+	// Configure SysTick to have 1ms time base, for LL_mDelay
 	LL_RCC_ClocksTypeDef* rcc_clocks = {0};
 	LL_RCC_GetSystemClocksFreq(rcc_clocks);
 	LL_Init1msTick(rcc_clocks->HCLK_Frequency);
 
 	Driver_LED_Init();
+
+	Debug_Log("Init done!");
 
 	uint8_t offset = 0;
 	while (1)
@@ -30,6 +34,10 @@ void App_Init()
 				Driver_LED_SetColor(i, 0, ((i + offset) & 2) ? 0x000011 : 0x111100);
 			}
 		}
-		if (++offset == 8) offset = 0;
+		if (++offset == 8)
+		{
+			offset = 0;
+			Debug_Log("LEDs Looped");
+		}
 	}
 }
