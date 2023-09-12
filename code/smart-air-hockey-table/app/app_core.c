@@ -4,6 +4,8 @@
 #include "stm32f4xx_ll_rcc.h"
 #include "stm32f4xx_ll_utils.h"
 
+static void loop_test();
+
 void App_Init()
 {
 	Debug_Init();
@@ -17,7 +19,11 @@ void App_Init()
 	Driver_LED_Init();
 
 	Debug_Log("Init done!");
+	loop_test();
+}
 
+static void loop_test()
+{
 	uint8_t offset = 0;
 	while (1)
 	{
