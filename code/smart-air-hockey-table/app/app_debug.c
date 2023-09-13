@@ -4,7 +4,6 @@
 #include "app_debug.h"
 #include "stm32f4xx_ll_tim.h"
 
-static volatile uint32_t time_s;
 static volatile uint32_t time_ms;
 
 void Debug_Init()
@@ -22,7 +21,7 @@ void Debug_Init()
 void Debug_Log(const char* format, ...)
 {
 	va_list args;
-	printf("[%4"PRIu32".%03"PRIu32"] ", time_s, time_ms);
+	printf("[%4"PRIu32".%03"PRIu32"] ", time_ms / 1000, time_ms % 1000);
 	va_start(args, format);
 	vprintf(format, args);
 	va_end(args);
@@ -31,9 +30,5 @@ void Debug_Log(const char* format, ...)
 
 void TIM4_Handler()
 {
-	if (++time_ms == 1000)
-	{
-		time_ms = 0;
-		time_s++;
-	}
+	time_ms++;
 }
