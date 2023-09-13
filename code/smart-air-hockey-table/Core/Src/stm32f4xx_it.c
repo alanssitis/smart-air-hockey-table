@@ -23,6 +23,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "app_debug.h"
+#include "driver_led.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -205,7 +206,16 @@ void SysTick_Handler(void)
 void DMA1_Stream2_IRQHandler(void)
 {
   /* USER CODE BEGIN DMA1_Stream2_IRQn 0 */
-
+  if (LL_DMA_IsActiveFlag_HT2(DMA1))
+  {
+    LL_DMA_ClearFlag_HT2(DMA1);
+    DMA1_Handler(0);
+  }
+  else if (LL_DMA_IsActiveFlag_TC2(DMA1))
+  {
+    LL_DMA_ClearFlag_TC2(DMA1);
+    DMA1_Handler(1);
+  }
   /* USER CODE END DMA1_Stream2_IRQn 0 */
 
   /* USER CODE BEGIN DMA1_Stream2_IRQn 1 */
@@ -219,11 +229,14 @@ void DMA1_Stream2_IRQHandler(void)
 void TIM4_IRQHandler(void)
 {
   /* USER CODE BEGIN TIM4_IRQn 0 */
-  if (LL_TIM_IsActiveFlag_UPDATE(TIM4)) LL_TIM_ClearFlag_UPDATE(TIM4);
-  else return;
+  if (LL_TIM_IsActiveFlag_UPDATE(TIM4))
+  {
+	  LL_TIM_ClearFlag_UPDATE(TIM4);
+	  TIM4_Handler();
+  }
   /* USER CODE END TIM4_IRQn 0 */
   /* USER CODE BEGIN TIM4_IRQn 1 */
-  TIM4_Handler();
+
   /* USER CODE END TIM4_IRQn 1 */
 }
 
