@@ -1,3 +1,4 @@
+#include <stdint.h>
 #include "app_core.h"
 #include "app_debug.h"
 #include "driver_led.h"
