@@ -3,7 +3,6 @@
 #include "stm32f4xx_ll_tim.h"
 #include "stm32f4xx_ll_dma.h"
 #include "stm32f4xx_ll_bus.h"
-#include "stm32f4xx_ll_utils.h"
 
 #define LED_MATRIX_WIDTH 30
 #define LED_MATRIX_HEIGHT 1
