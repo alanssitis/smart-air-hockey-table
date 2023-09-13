@@ -19,8 +19,8 @@ The development of puck tracking has continued in two ways.
 
 - Firstly, the team has discussed which magnet would be best to use in the puck. While all team members have contributed to this conversation, Ben and I have discussed the topic the most and jointly took charge in making the final decision. Ben and I's discussions centered around whether the puck's magnet should try to maximize "pull force" or "surface magnetic field." After some research and informal testing, we determined that "pull force" was a better rough indicator, but we would also need to note the shape of the magnet's magnetic field. The shape of the magnet's magnetic field is almost entirely dependent on the shape of the magnet itself, as can be seen in the figure below. Ben and I looked at the field of several different shapes of magnets, and disk (with an "axial" magnetic direction) had the best shaped magnetic field for our application. However, we were unable to determine if we could create a configuration of multiple magnets which would be better. Hence, we ordered some smaller disk magnets and small cylinder magnets along with the large disk magnet we currently plan to use.
 
-|<img src="/477grp5/team/trevor/Trevor_Week3_CylinderField.PNG" width="80%">|<img src="/477grp5/team/trevor/Trevor_Week3_DiskField.PNG" width="80%">|
-|:---:|:---:|
+| <img src="/477grp5/team/trevor/Trevor_Week3_CylinderField.PNG" width="80%"> | <img src="/477grp5/team/trevor/Trevor_Week3_DiskField.PNG" width="80%"> |
+| :-------------------------------------------------------------------------: | :---------------------------------------------------------------------: |
 
 _Figure 1: Example magnetic fields of a cylinder magnet (left) and disk magnet (right) provided by K&J Magnetics, Inc._
 
@@ -34,8 +34,8 @@ _Figure 2: Partial diagram showing the proposed OR gate solution_
 
 - A quick, proof-of-concept circuit was constructed during this week's mandatory lab to showcase how a photoresistor could be used for goal detection. However, this circuit used an op-amp when a comparator would work better. Thus, the next day I went to the ECE shop, grabbed some comparators, and built a similar circuit, a picture and diagram of which can be seen below.
 
-|<img src="/477grp5/team/trevor/Trevor_Week3_LDRCircuitSchematic.png" width="80%">|<img src="/477grp5/team/trevor/Trevor_Week3_LDRCircuitPic.jpg" width="80%">|
-|:---:|:---:|
+| <img src="/477grp5/team/trevor/Trevor_Week3_LDRCircuitSchematic.png" width="80%"> | <img src="/477grp5/team/trevor/Trevor_Week3_LDRCircuitPic.jpg" width="80%"> |
+| :-------------------------------------------------------------------------------: | :-------------------------------------------------------------------------: |
 
 _Figure 3: Schematic of photoresistor circuit (left) and picture of built photoresistor circuit (right)_
 
@@ -102,9 +102,9 @@ Hardware
 - EE Shop: At the beginning of the week, I visited the EE shop on behalf of the team to look for hall sensors that the team could use for feasibility testing. I was able to get two Hall effect sensors which were the exact model the team had been looking at previously. I also looked for any other components that may be useful for prototyping, but did not find anything else.
 - Design Discussion: During the mandatory lab on 8/30/2023, Alan, Ben, and I discussed the design of the daughter PCBs. Our discussion primarily focused on how the Hall effect sensors and LEDs should be laid out and how data will flow between the microcontrollers. My main contribution to the discussion was suggesting one level of the microcontrollers should convert the hall effect sensor readings to a digital signal based on a threshold. The location of the magnet could then be determined by averaging the position of all Hall effect sensors that have been "triggered", rather than more complex computations based on the Hall effect sensor's magnitude readings. This would decrease the amount of data that would need to be transferred between the microcontrollers. Alan and Ben are both interested in exploring this method further, with Ben proposing that we include multiple thresholds to increase the resolution while still compressing the data. Feasibility testing with the Hall effect sensors will give us a better idea on whether this method of data compression will work.
 
-|<img src="/477grp5/team/trevor/Trevor_Week1_Figure2a.PNG" width="40%">|<img src="/477grp5/team/trevor/Trevor_Week1_Figure2b.PNG" width="40%">|
-|:---:|:---:|
-|<img src="/477grp5/team/trevor/Trevor_Week1_Figure2c.PNG" width="40%">|<img src="/477grp5/team/trevor/Trevor_Week1_Figure2d.PNG" width="40%">|
+| <img src="/477grp5/team/trevor/Trevor_Week1_Figure2a.PNG" width="40%"> | <img src="/477grp5/team/trevor/Trevor_Week1_Figure2b.PNG" width="40%"> |
+| :--------------------------------------------------------------------: | :--------------------------------------------------------------------: |
+| <img src="/477grp5/team/trevor/Trevor_Week1_Figure2c.PNG" width="40%"> | <img src="/477grp5/team/trevor/Trevor_Week1_Figure2d.PNG" width="40%"> |
 
 _Figure 2: Puck detection examples using the threshold method_
 

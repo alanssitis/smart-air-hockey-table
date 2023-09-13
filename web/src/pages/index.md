@@ -29,13 +29,13 @@ The design and development of the smart air hockey table will adhere to the
 following focused design requirements to ensure a successful and captivating
 gameplay experience:
 
-1. PSDR #1 (Hardware): 
-An ability to convert analog hall effect sensor readings into digital signals with custom threshold values using comparators.
+1. PSDR #1 (Hardware):
+   An ability to convert analog hall effect sensor readings into digital signals with custom threshold values using comparators.
 2. PSDR #2 (Hardware):
-An ability to compress digital readings from a grid of hall effect sensors to simplified row and column position data using logic gates.
+   An ability to compress digital readings from a grid of hall effect sensors to simplified row and column position data using logic gates.
 3. PSDR #3 (Hardware):
-An ability to reliably detect goals scored by monitoring the passage of the puck through the goal using a photoresistor and LED pair.
+   An ability to reliably detect goals scored by monitoring the passage of the puck through the goal using a photoresistor and LED pair.
 4. PSDR #4 (Hardware):
-An ability to display game score on an OLED display using the SPI protocol.
+   An ability to display game score on an OLED display using the SPI protocol.
 5. PSDR #5 (Software):
-An ability to control a grid of individually-addressable RGB LEDs beneath the playing surface using a serialized PWM communication protocol.
+   An ability to control a grid of individually-addressable RGB LEDs beneath the playing surface using a serialized PWM communication protocol.
