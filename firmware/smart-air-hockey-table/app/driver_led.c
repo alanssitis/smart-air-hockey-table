@@ -14,7 +14,7 @@
 #define LED_COMPARE_ON 69
 #define DMA_BUFFER_LENGTH (2 * LED_BITS)
 
-static volatile uint32_t led_state[LED_MATRIX_WIDTH * LED_MATRIX_HEIGHT];
+static volatile uint32_t led_state[LED_COUNT];
 static volatile uint16_t dma_buffer[DMA_BUFFER_LENGTH];
 static volatile size_t led_index = 0;
 
