@@ -33,6 +33,8 @@ While developing the LED driver, I was simultaneously organzing the structure of
 ![Debug Logging](/477grp5/team/will/todo.png)
 _Figure 2: Demonstration of debug logging output from the microcontroller_
 
+In this week's Component Analysis assignment, I was primarily responsible for analyzing our component choice for the LED matrix and the score tracking display.
+
 #### Next Steps
 
 Within the next week, I plan to fully design a CAD model of our table. This will be important as we prepare to construct the table, so that no guesses or assumptions are made throughout the process. Designing the table will also require me to research common dimensions for parts that it will be comprised of, such as plywood sheets, acrylic panels, and common sizes of wooden plank. Knowing these allows me to make the best decisions for designing the table right now, even if they may be adjusted in the future as we move into construction. I have already installed *Autodesk Fusion 360* (on Ben's recommendation) for this purpose.
