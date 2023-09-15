@@ -11,9 +11,10 @@ The Smart Air Hockey Table (SAHT) redefines the classic arcade game, offering
 an immersive experience like no other. Central to its advanced gameplay is a
 vibrant grid of RGB LEDs, dynamically illustrating the puck's position and game
 events. This real-time interactivity is made possible by a carefully arrayed set
-of hall effect sensors, which pinpoint the puck's every move. Additionally,
-photoresistors are integrated for impeccable goal detection, ensuring each score
-is accurately registered.
+of hall effect sensors, which pinpoint the puck's every move. Additionally, the
+SAHT incorporates photoresistor and LED pairs at each goal slot, ensuring
+precise goal detection and accurate score registration. An integrated OLED
+display then showcases the game score.
 
 The hall effect sensors are strategically embedded beneath the translucent
 playing field in a grid pattern. These sensors detect changes in magnetic
@@ -44,18 +45,17 @@ The design and development of the smart air hockey table will adhere to the
 following focused design requirements to ensure a successful and captivating
 gameplay experience:
 
-1. PSDR #1 (Hardware): An ability to efficiently and quickly compress the
-   signals from a large grid of hall effect switches under the playing surface
-   using digital gates to just row and column bit vectors. These are connected
-   to the microcontroller and used to determine the puck position.
-2. PSDR #2 (Hardware): An ability to reliably detect goals scored by monitoring
-   the passage of the puck through the goal slots using a photoresistor and LED
-   pair. The sensors will be connected to the microcontroller and will trigger
-   an update in game state.
-3. PSDR #3 (Hardware): An ability to display game score stored in a
-   microcontroller on an OLED display using the SPI protocol.
-4. PSDR #4 (Hardware): An ability to control a large grid of
-   individually-addressable RGB LEDs (WS2812B) beneath the playing surface using
-   the microcontroller via a serialized PWM communication protocol.
-5. PSDR #5 (Hardware): An ability to step down a voltage of 5V down to 3.3V
-   using a buck converter to power the microcontroller.
+1. PSDR #1 (Hardware): An ability for the microcontroller to determine the
+   puck's position on the playing surface by interpreting signals from a grid of
+   hall effect switches beneath it, using digital gates to consolidate
+   individual signals into row and column bit vectors.
+2. PSDR #2 (Hardware): An ability for the microcontroller to automatically
+   detect goals scored using an LED and photoresistor pair installed at each
+   goal.
+3. PSDR #3 (Hardware): An ability for the microcontroller to display game score
+   on an OLED display using the SPI protocol.
+4. PSDR #4 (Hardware): An ability for the microcontroller to to control a large
+   grid of individually-addressable WS2812B RGB LEDs beneath the playing surface
+   using the LED's custom communication protocol.
+5. PSDR #5 (Hardware): An ability to provide power to the microcontroller at
+   3.3V using a buck converter from a 5V source.
