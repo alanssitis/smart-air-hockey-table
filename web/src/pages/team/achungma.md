@@ -5,9 +5,106 @@ title: Alan Chung Ma Progress Report
 
 # Progress Report for Alan
 
+## Week 4
+
+**Date:** 2023-09-15 \
+**Total Hours:** 10
+
+### Description of Project Design Efforts
+
+I did not have as much time to work on the project since I attended IR and
+other adjacent career fairs. However, I was able to work on a wide variety of
+things for the team.
+
+#### Setting up Githup Projects for Task Management
+
+The team faced challenges in monitoring all the tasks effectively. To
+streamline this, I suggested the use of a
+[kanban board](https://en.wikipedia.org/wiki/Kanban_board), enabling us to view
+and manage the team’s tasks in a consolidated space. I utilized GitHub's
+built-in [Projects](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)
+feature and linked our [repository](https://github.com/alanssitis/smart-air-hockey-table)
+to a new project. You can access the GitHub project [here](https://github.com/users/alanssitis/projects/2).
+Additionally, I've provided a screenshot of the board below for a quick overview.
+
+![Screenshot of the kanban board](/477grp5/team/alan/week04/figure1.png)
+_Caption: Screenshot of the GitHub project page_
+
+#### Finalizing the System Flowchart
+
+I worked with the rest of the team to make the project's flowchart. Below is a
+cleaned up diagram of it. It was adapted from the diagram drawn from the
+[Software Overview](</477grp5/documents/A3 - Software Overview.docx>). One of
+the major changes that whoever got scored on will have the puck, instead of
+needing to place the puck in the middle of the playing field.
+
+![Flow chart of the system](/477grp5/team/alan/week04/figure2.png)
+_Caption: Flowchart of the system_
+
+#### Work on A5 - Component Analysis
+
+I worked on the overview of the Component Analysis and the analysis of Puck
+Tracking Sensors. The document can be found [here](</477grp5/documents/A5 - Component Analysis.docx>).
+Below is a table I made for my section.
+
+| Method                      | Advantages                                                                                                           | Disadvantages                                                                                                                |
+| --------------------------- | -------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| IMU embedded inside puck    | Direct tracking from the puck                                                                                        | Complexity, IMU errors, requires embedding a computer in the puck that can send position information to an external computer |
+| Using a camera              | Can potentially track multiple objects, common method for object tracking, simple to install                         | Requires more powerful external computing in order for it to be performant, weird edge cases                                 |
+| Grid of Hall effect sensors | Could integrate with the daughter boards that will hold the RGB LEDs, could use a basic algorithm that is performant | Requires meticulous placement of all sensors, potential interference from other components                                   |
+
+#### Update Project Description & PSDR
+
+I also worked on finalizing the team's PSDRs and updating the Project
+Description in the home of the team webpage.
+[Here](https://github.com/alanssitis/smart-air-hockey-table/pull/38) is a link
+to the pull request for the change. I made sure to make changes based on course
+staff feedback.
+
+#### STM32 Tooling
+
+Ben mentioned once in a meeting that VSCode had an STM32 extension. Me and Ben
+both run our machines on Linux, and in order to make sure that we are able to
+work efficiently, I did some exploratory work with the plugin. The extension
+info can be found below
+
+```
+Name: STM32 VS Code Extension
+Id: STMicroelectronics.stm32-vscode-extension
+Description: STM32 embedded development support added to Visual Studio Code.
+Version: 1.0.0
+Publisher: STMicroelectronics
+VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=stmicroelectronics.stm32-vscode-extension
+```
+
+I was able to install and run all of the required tooling and the extension
+itself. Below are screenshots of STM32CubeMX running and our current project under
+firmware opened on the side.
+
+![STM32CubeMX Running on PopOS!](/477grp5/team/alan/week04/figure3.png) 
+_Caption: STM32CubeMX Running on PopOS!_
+
+![STM32 VS Code Extension running Team 5's Project](/477grp5/team/alan/week04/figure4.png)
+_Caption: `/firmware` opened as an STM32 project in VSCode_
+
+However, there were some issues with building projects and the such.
+
+#### Next Steps
+
+The next two weeks will be focused on designing and building the table. Me and
+Will will be working together to get a proper design ready and start working
+with the [Bechtel Innovation Design Center](https://www.purdue.edu/bidc/), where
+we will build the table. Will has begun building it on Fusion 360. I will be
+looking for ways of making table development easier since my laptop is not
+running Windows.
+
+I will also be working on figuring out the tooling for VSCode and getting it
+working with our project and my teammates' machines. This way, everyone will be
+able to take advantage of the newer programmer tooling available out there.
+
 ## Week 3
 
-**Date:** 2023-09-05 \
+**Date:** 2023-09-08 \
 **Total Hours:** 18
 
 ### Description of Project Design Efforts
@@ -18,7 +115,7 @@ Over the past week, I was in charge of designing and building a
 report for the team, and continued prototyping with neopixel lights. I also
 contributed to some hardware prototyping and design discussions with the team.
 
-#### Website ~ _11 hours_
+#### Website
 
 Most of my work was done creating the new website for the team. Early on, me and
 Ben realized that it would be very tedious and inefficient for each member to
@@ -50,7 +147,7 @@ following sections in addition to a navigation bar I got
 
 The source code of the website itself is available in the [project repo](https://github.com/alanssitis/smart-air-hockey-table/tree/main/web).
 
-#### Software Overview Project Report ~ _6 hours_
+#### Software Overview Project Report
 
 I was tasked with writing the software overview for the team. This document can
 be accessed in the [Documents](/477grp5/documents/) page. Since the team has
@@ -69,7 +166,7 @@ I also created a flowchart that represents the game flow.
 ![game flow chart](/477grp5/team/alan/week03/figure2.png)
 _Caption: Flow chart for a typical game_
 
-#### Hardware Prototyping and Design Decisions ~ _1 hour_
+#### Hardware Prototyping and Design Decisions
 
 All that I did for Hardware Prototyping was getting the neopixel lights to work
 with a basic arduino script I made:
