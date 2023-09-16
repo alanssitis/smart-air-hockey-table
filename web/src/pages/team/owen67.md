@@ -5,6 +5,67 @@ title: Ben Owen Progress Report
 
 # Progress Report for Ben
 
+## Week 4
+
+**Date:** 2023-09-15 \
+**Project Hours Since Last Report:** 12 \
+**Total Hours:** 39
+
+### Description of Project Design Efforts
+
+**Puck tracking/hall effect sensors**
+
+The new magnets arrived and we found them to be much higher quality (and much stronger) than the ones we were using previously.  However, with our new design for battleship-style puck position tracking, we no longer need to use analog hall effect sensors, and can instead use simpler digital hall effect sensors.  Unfortunately, however, the ECE shop doesn't stock these models of sensors, so we will be ordering some this week along with our first round of PCBs.
+
+**Individually-addressable LED driver**
+
+The majority of my time was spent working with Will on a driver to control the individually-addressable LEDs we will be placing under the table.  This is because we are not using a library from another source, but wanted to take advantage of the peripherals on our STM32 to maximize performance.  The driver we came up with uses a timer in PWM mode with the DMA to adjust the pulse width in order to create an 800KHz signal for the LEDs.
+
+My work on the driver included the initial setup of the timer at the correct baud rate.  After trying to adjust the PWM duration using the CPU, we found that we were unable to change the timer's CCR register fast enough for reliable data transmission.  Therefore, we pivoted to a DMA-based design, where we store the CCR register values in memory and allow the DMA to cycle through them automatically.  This DMA event is triggered by the timer interrupt, so there is virtually no CPU overhead and no processing needs to occur to display the frame data on the LEDs.  We were able to achieve refresh rates well above 60Hz, likely into the hundreds (too fast to see with the naked eye).  This will obviously lessen with more LEDs in the chain, but it is very promising for our table's design.
+
+An example of the work I put into the driver can be seen in Figures 1 and 2.
+
+<img src="/477grp5/team/ben/week4-led-dma-brainstorming.jpg" width="40%">
+
+_Figure 1: LED driver with DMA brainstorming_
+
+<img src="/477grp5/team/ben/week4-led-driver-demo.jpg" width="40%">
+
+_Figure 2: LED driver demonstration (cycles between RGB spectrum)_
+
+**Microcontroller research and part selection**
+
+Our team met for around 3-4 hours on Thursday to try to finalize which microcontroller we wanted to order and implement for our first round of PCBs.  After a long discussion, we decided on the [STM32U585](https://www.st.com/en/microcontrollers-microprocessors/stm32u575-585.html) series, which falls in their "ultra-low power" family of microcontrollers.  Although power isn't the biggest concern on this project, this particular microcontroller offers a relatively fast clock speed of 160MHz, as well as a large ROM size of 2MB.
+
+This microcontroller comes in a LQFP100 package, which will be relatively easy to solder and has just enough I/O for our application.  We determined in our meeting that we need 68 I/O pins, and this microcontroller offers 82.  We also consider other families of STM32, such as the F7 and H5 series, but we found that they were either too expensive, too large, or otherwise unnecessary for the scale of our project.  The U5 family is a good balance of the performance characteristics we need for our project.
+
+**Microcontroller pin determination**
+
+After deciding on a microcontroller, I spent some time creating a document where we can start to assign pins on the microcontroller to peripherals in our project.  This is going to be a time-consuming process, and this is after the hours we already spend transposing the information from the datasheet to a spreadsheet for our own use.  So far, I spent time going through each pins' alternate functions and additional functionality and marked anything of interest, such as timer channels, SPI channels, oscillator inputs/outputs, etc.  I also marked pins that we will leave open, such as the BOOT0 pins to force bootloader booting, the SWD debugging pins, and the reset button pin.  An image from this document can be seen in Figure 3.
+
+<img src="/477grp5/team/ben/uc-pin-descriptions-week4.png" width="40%">
+
+_Figure 3: Some of the microcontroller pin descriptions_
+
+### Next steps
+
+**PCB Design**
+
+PCB design is the primary thing I will be working on this week, as we want to get these in hand as soon as possible.  Furthermore, we aren't able to test our final components since they are all SMD, so we need a board to mount them to for further testing.
+
+- Trevor and I will continue determining pin selections for our microcontroller and laying this design out on our first round of PCBs
+- Current master PCB parts to be implemented:
+	- STM32U585 footprint with SWD programming header
+	- Buck converter to power STM32 from a 5VDC source
+	- Connections to OLED displays, hall effect sensors, and LEDs
+- Current sensor PCB parts to be implemented:
+	- SMD hall effect sensor (likely TI TMAG series) footprints in 2x2 grid per PCB
+	- LED footprints next to hall effect sensors, also in a 2x2 grid
+	- Footprints for digital logic gates to convert to row/column position data for the microcontroller
+	- Connection to the master/other sensor PCBs to daisy chain the signals along the boards
+
+---
+
 ## Week 3
 
 **Date:** 2023-09-08 \
