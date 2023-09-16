@@ -5,6 +5,50 @@ title: Trevor Moorman Progress Report
 
 # Progress Report for Trevor
 
+## Week 4
+
+**Date:** 09/15/2023 \
+**Project Hours Since Last Report:** 12 \
+**Cumulative Semester Project Hours:** 43
+
+### Description of Individual Project Work Efforts:
+
+**Team Meetings**
+
+- Coordinated when the team would work on the component analysis.
+
+**Hardware**
+
+- The magnets ordered last week arrived, which Ben and I promptly began to test. However, during the ad-hoc testing before the formal testing began, I suggested that we should consider switching to a digital hall effect sensor. The team's original intent with the analog hall effect sensor was that the threshold could be dynamically adjusted by the microcontrollers performing the ADC conversions. However, now that the team planned to condense the signals using digital logic, the analog hall effect sensors' signals would need to be converted to a digital signal using an op amp or comparator. Thus, my suggestion to use a digital hall effect sensor would remove this intermediate step. A digital hall effect sensor within the lab was used as a proof of concept, and a sample of digital hall effect sensors have been ordered. Unfortunately, this delays testing an additional week.
+
+- Preceding the work done on the component analysis, the team met virtually Wednesday afternoon to finalize component selection. As part of this, the team performed a required I/O count, which was then used to ensure that the microcontroller selected by the team had enough GPIO pins of the correct type.
+
+**Firmware**
+
+- Before working to add features to the project's firmware, I reviewed and familiarized myself with the work that had been done so far. Most of the previous work has been the LED driver developed by Ben and Will.
+
+- The Smart Air Hockey Table's firmware uses a super-loop architecture where the super-loop is invoked according to a timer. I have begun implementing the timer-based super-loop but will need to continue development next week.
+
+- The game state machine determines what actions are performed during each iteration of the super-loop. A basic implementation was started; however, development was paused until the team had time during the mandatory lab to discuss the form of the state machine. The finalized flowchart can be found on Alan's week four progress report.
+
+**A5 - Component Analysis**
+
+- While the entire team worked on the document together, I led the initial draft of the "1.1 Analysis of Microcontroller" and "1.5 Analysis of Goal Detection Sensors". After I received feedback from the team on my draft, I then revised both sections. I also provided feedback on the rest of the document for my team members to review.
+
+### Next Steps:
+
+**Puck Tracking**
+
+- As mentioned in the hardware section above, Ben and I will test the new, digital hall effect sensors once they have been received. We will gather measurements from "slide-by" experiments performed at various heights above the hall effect sensor. (https://www.ti.com/lit/ds/symlink/tmag5231.pdf)
+
+**Goal Detection**
+
+- As mentioned in the week three progress report, I will raise an external interrupt when the photoresistor-based circuit detects that a goal has been scored. Unfortunately, I was unable to begin work on this feature as I contracted an illness this week. The team was made aware of this setback, and we decided that this feature could be delayed until I recover.
+
+**Game State Machine**
+
+- I will implement the game state machine as shown in Alan's week 4 progress report. Some state transitions are not able to be implemented yet, so the firmware will include placeholders for where the transitions will later be implemented.
+
 ## Week 3
 
 **Date:** 09/08/2023 \
