@@ -5,6 +5,40 @@ title: Will Dobert Progress Report
 
 # Progress Report for Will
 
+## Week 4
+
+**Date:** 9/15/2023 \
+**Total Hours:** 10
+
+### Description of Project Design Efforts
+
+#### LED Driver Implementation
+
+The visual aspect of our project will heavily rely on a matrix of individually-controlled RGB LEDs placed underneath a translucent play surface. On a technical level, we chose to achieve this by making use of WS2812-compatible LED hardware. It requires an 800 kbit/s data transmission rate from the hardware that drives it, so simple bit-banging will not suffice in our case. As I covered in last week's report, I chose to drive the LEDs with our microcontroller's timer and PWM generation peripherals.
+
+My initial approach to this problem was to store a large array containing every PWM timing configuration required to transmit the current state of the LED matrix. From there, I used DMA to continuously stream the PWM timing configuration into the control register. Although this approach functioned correctly and was able to drive the LEDs as desired, the RAM usage was very inefficent. The design for our LED matrix contains **512 LEDs** in series. For each LED, **24 bits** are required to describe its set color. For each transmitted bit, a **16 bit** control register must be populated via DMA. The combination of these factors means that the RAM usage requirement would rise to **24 kilobytes** in a full implementation. In cases where we would like to store multiple "animation frames" of LED matrix data, the memory usage is prohibitively great.
+
+Upon further [research](https://ralimtek.com/posts/2021/ws2812/), I decided that storing a significantly smaller buffer would suffice, when given the proper design consideration. In its current iteration, the LED driver transfers PWM timing configuration from a buffer containing just two 16 bit values. In order to correctly set the values in this buffer, I make use of the *DMA half transfer* and *DMA transfer complete* interrupts to update the half of the buffer that is not actively being copied to the configuration register. Although this approach introduced new CPU overhead (in the form of the DMA interrupts), it reduced CPU overhead in a different area. In the prior implementation, calling the LED driver to update a color value required immediately translating it into the proper sequence of PWM configuration values. Now this process is taken care of by the introduction of the aforementioned DMA interrupts. An additional benefit to the new driver implementation is that the LED matrix state can easily be queried by the application, as it is now stored in raw RGB values instead of PWM timing data. The RAM savings for this approach are significant, now taking only **1.5 kilobytes (a 93.75% reduction)**. If a further reduction is needed in the future, this approach allows us to easily reduce the bit depth of the RGB color data without significant code modifications. The full driver code can be viewed in our open source [repository](https://github.com/alanssitis/smart-air-hockey-table/).
+
+<video controls muted>
+  <source src="/477grp5/team/will/20230915_204133.mp4" type="video/mp4">
+</video>
+
+_Figure 1: Test pattern applied to our LED prototyping hardware by the latest driver implementation_
+
+#### Formalizing Main Application Architecture
+
+While developing the LED driver, I was simultaneously organzing the structure of our firmware application. Although I made important steps toward this goal last week, there was still some smoothing of rough edges to do. The entrypoint for our main application is now in *app_core.c*, and my intention is that any additional files that support our application in a central manner be named with *app_* prefix. A primary example of this is the debugging module I created (*app_debug.c*). At the moment, this module contains a function to print timestamped log messages to the integrated serial interface, but it will be expanded in the future to contain firmware debugging functions as needed. Obtaining an accurate timestamp for log messages necessitated enabling a hardware timer and writing a basic interrupt handler for it. As with *driver_led.c*, my goal is for all driver source files to be prefixed with *driver_* as they are created for new hardware (such as small panel displays).
+
+![Debug Logging](/477grp5/team/will/Screenshot-2023-09-15-210306.png)
+_Figure 2: Demonstration of debug logging output from the microcontroller_
+
+In this week's Component Analysis assignment, I was primarily responsible for analyzing our component choice for the LED matrix and the score tracking display.
+
+#### Next Steps
+
+Within the next week, I plan to fully design a CAD model of our table. This will be important as we prepare to construct the table, so that no guesses or assumptions are made throughout the process. Designing the table will also require me to research common dimensions for parts that it will be comprised of, such as plywood sheets, acrylic panels, and common sizes of wooden plank. Knowing these allows me to make the best decisions for designing the table right now, even if they may be adjusted in the future as we move into construction. I have already installed *Autodesk Fusion 360* (on Ben's recommendation) for this purpose.
+
 ## Week 3
 
 **Date:** 9/8/2023 \
@@ -19,7 +53,7 @@ As the week began, I was eager to start working with our LED hardware. The most 
 The first of these designs is the simplest, as it only requires a 5V supply and features very straightforward connections. [Source](https://www.penguintutor.com/electronics/mosfet-levelshift)
 
 ![Schematic 1](/477grp5/team/will/mosfet-voltageshift.png)
-_Figure 1: Circuit schematic of 1st MOSFET-based level shifter._
+_Figure 1: Circuit schematic of 1st MOSFET-based level shifter_
 ![Scope Output](/477grp5/team/will/pwm_800mhz_pen.png)
 _Figure 2: Oscilloscope output of the above schematic_
 
@@ -28,7 +62,7 @@ From Figure 2 above, it can be observed that the rise time of the square wave is
 The second design I constructed is also quite simple, but it requires a 3.3V supply as well as 5V. The design shown below was constructed once again with a 2N7000 MOSFET, as well as two 1 kΩ resistors.
 
 ![Schematic 2](/477grp5/team/will/logic-level-shifting-basics-img2.jpg)
-_Figure 3: Circuit schematic of 2nd MOSFET-based level shifter._
+_Figure 3: Circuit schematic of 2nd MOSFET-based level shifter_
 ![Scope Output](/477grp5/team/will/pwm_800mhz_1000ohm_digi.png)
 _Figure 4: Oscilloscope output of the above schematic_
 
