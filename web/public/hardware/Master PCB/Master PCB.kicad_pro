@@ -342,6 +342,10 @@
     [
       "41b61d17-0f73-40ac-8928-223428bb5236",
       "Menu Encoder"
+    ],
+    [
+      "8e455560-fe02-4a1f-aeeb-dbc2a430fc5a",
+      "LED"
     ]
   ],
   "text_variables": {}

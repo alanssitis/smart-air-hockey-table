@@ -469,7 +469,7 @@
   (symbol (lib_id "Device:R_Small_US") (at 152.4 91.44 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 0bdfa0a0-edae-4626-b9ad-61559b3c740b)
-    (property "Reference" "R11" (at 152.4 88.9 90)
+    (property "Reference" "R9" (at 152.4 88.9 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "10K" (at 152.4 93.98 90)
@@ -486,7 +486,7 @@
     (instances
       (project "Master PCB"
         (path "/61606422-4f73-4717-9ce6-6ac5e634e7ae/41b61d17-0f73-40ac-8928-223428bb5236"
-          (reference "R11") (unit 1)
+          (reference "R9") (unit 1)
         )
       )
     )
@@ -495,7 +495,7 @@
   (symbol (lib_id "Device:R_Small_US") (at 116.84 109.22 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 101a04ce-b1b5-4712-a3d9-64788529a8ed)
-    (property "Reference" "R9" (at 116.84 104.14 90)
+    (property "Reference" "R8" (at 116.84 104.14 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "10K" (at 116.84 106.68 90)
@@ -512,7 +512,7 @@
     (instances
       (project "Master PCB"
         (path "/61606422-4f73-4717-9ce6-6ac5e634e7ae/41b61d17-0f73-40ac-8928-223428bb5236"
-          (reference "R9") (unit 1)
+          (reference "R8") (unit 1)
         )
       )
     )
