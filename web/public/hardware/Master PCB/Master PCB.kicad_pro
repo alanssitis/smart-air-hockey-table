@@ -346,6 +346,10 @@
     [
       "8e455560-fe02-4a1f-aeeb-dbc2a430fc5a",
       "LED"
+    ],
+    [
+      "9876d17e-eaad-4a0b-a2c8-e5b20ec43f59",
+      "Goal Detector"
     ]
   ],
   "text_variables": {}
