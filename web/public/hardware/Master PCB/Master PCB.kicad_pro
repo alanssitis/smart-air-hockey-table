@@ -338,6 +338,10 @@
     [
       "4dc4c3a4-08e5-49b8-a1c0-17257c3756c4",
       "EEPROM"
+    ],
+    [
+      "41b61d17-0f73-40ac-8928-223428bb5236",
+      "Menu Encoder"
     ]
   ],
   "text_variables": {}

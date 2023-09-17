@@ -1186,7 +1186,7 @@
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 142e50f7-dd65-419a-a32c-878be13bb8a4)
   )
-  (text "TODO:\n- Add encoder\n- Add LEDs and level shifter\n- Add goal detection"
+  (text "TODO:\n- Add LEDs and level shifter\n- Add goal detection"
     (at 143.51 132.08 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 4aa17320-38ea-48e7-9595-a2ab66a51c11)
@@ -2410,6 +2410,35 @@
     (instances
       (project "Master PCB"
         (path "/61606422-4f73-4717-9ce6-6ac5e634e7ae" (page "3"))
+      )
+    )
+  )
+
+  (sheet (at 157.48 149.86) (size 12.7 10.16) (fields_autoplaced)
+    (stroke (width 0.1524) (type solid))
+    (fill (color 0 0 0 0.0000))
+    (uuid 41b61d17-0f73-40ac-8928-223428bb5236)
+    (property "Sheetname" "Menu Encoder" (at 157.48 149.1484 0)
+      (effects (font (size 1.27 1.27)) (justify left bottom))
+    )
+    (property "Sheetfile" "Menu Encoder.kicad_sch" (at 157.48 160.6046 0)
+      (effects (font (size 1.27 1.27)) (justify left top))
+    )
+    (pin "A" input (at 157.48 152.4 180)
+      (effects (font (size 1.27 1.27)) (justify left))
+      (uuid 2e726d2f-9680-4cce-b555-dc4acc3d71f2)
+    )
+    (pin "B" input (at 157.48 154.94 180)
+      (effects (font (size 1.27 1.27)) (justify left))
+      (uuid 1d455c52-c40b-4e90-a272-0bebd381b8a7)
+    )
+    (pin "SW" input (at 157.48 157.48 180)
+      (effects (font (size 1.27 1.27)) (justify left))
+      (uuid c41e2ca4-9ffb-456c-94d2-68af57cdce2f)
+    )
+    (instances
+      (project "Master PCB"
+        (path "/61606422-4f73-4717-9ce6-6ac5e634e7ae" (page "5"))
       )
     )
   )
