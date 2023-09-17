@@ -334,6 +334,10 @@
     [
       "2815fd31-5e1b-4fa4-a85a-f7b9c06d7730",
       "STM32"
+    ],
+    [
+      "4dc4c3a4-08e5-49b8-a1c0-17257c3756c4",
+      "EEPROM"
     ]
   ],
   "text_variables": {}
