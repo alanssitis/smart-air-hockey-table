@@ -727,7 +727,7 @@
   (symbol (lib_id "Device:R_Small_US") (at 125.73 132.08 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 4ad013cd-10b9-4a85-80fc-f1f6857dd8f0)
-    (property "Reference" "R15" (at 127 130.81 0)
+    (property "Reference" "R16" (at 127 130.81 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "1K" (at 127 133.35 0)
@@ -744,7 +744,7 @@
     (instances
       (project "Master PCB"
         (path "/61606422-4f73-4717-9ce6-6ac5e634e7ae/8e455560-fe02-4a1f-aeeb-dbc2a430fc5a"
-          (reference "R15") (unit 1)
+          (reference "R16") (unit 1)
         )
       )
     )
@@ -856,7 +856,7 @@
   (symbol (lib_id "Device:R_Small_US") (at 147.32 106.68 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid aa287c7a-0628-457b-aac2-b3ac49550faf)
-    (property "Reference" "R16" (at 148.59 105.41 0)
+    (property "Reference" "R15" (at 148.59 105.41 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "1K" (at 148.59 107.95 0)
@@ -873,7 +873,7 @@
     (instances
       (project "Master PCB"
         (path "/61606422-4f73-4717-9ce6-6ac5e634e7ae/8e455560-fe02-4a1f-aeeb-dbc2a430fc5a"
-          (reference "R16") (unit 1)
+          (reference "R15") (unit 1)
         )
       )
     )
