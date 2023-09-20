@@ -5,6 +5,23 @@ title: Alan Chung Ma Progress Report
 
 # Progress Report for Alan
 
+## Week 5
+
+**Date:** 2023-09-22 \
+**Total Hours:** ?
+
+### Description of Project Design Efforts
+
+#### Designing Table in BIDC
+
+#### Updating the Project Homepage
+
+#### Project Bill of Materials
+
+#### Getting STM32 VSCode Extension Working
+
+### Next Steps
+
 ## Week 4
 
 **Date:** 2023-09-15 \
