@@ -39,23 +39,39 @@ experience. It seamlessly merges traditional gameplay with modern tech
 enhancements, ensuring that both newcomers and seasoned players are treated to
 an unmatched recreational encounter.
 
+The SAHT taps into a standard 120 VAC wall outlet and employs an off the shelf
+AC/DC regulator to produce a steady 5VDC. A buck converter provides the
+microcontroller and other components on the main PCB with 3.3VDC by stepping
+down from the regulator's 5VDC output. The boards hosting the RGB LEDs and Hall
+effect sensors are powered directly by the 5VDC from the regulator.
+
 ## Project Specific Design Requirements (PSDRs)
 
 The design and development of the smart air hockey table will adhere to the
 following focused design requirements to ensure a successful and captivating
 gameplay experience:
 
-1. PSDR #1 (Hardware): An ability for the microcontroller to determine the
+1. PSDR #1 (_Hardware_): An ability for the microcontroller to determine the
    puck's position on the playing surface by interpreting signals from a grid of
    hall effect switches beneath it, using digital gates to consolidate
    individual signals into row and column bit vectors.
-2. PSDR #2 (Hardware): An ability for the microcontroller to automatically
-   detect goals scored using an LED and photoresistor pair installed at each
-   goal.
-3. PSDR #3 (Hardware): An ability for the microcontroller to display game score
-   on an OLED display using the SPI protocol.
-4. PSDR #4 (Hardware): An ability for the microcontroller to to control a large
-   grid of individually-addressable WS2812B RGB LEDs beneath the playing surface
-   using the LED's custom communication protocol.
-5. PSDR #5 (Hardware): An ability to provide power to the microcontroller at
+2. PSDR #2 (_Hardware_): An ability for the microcontroller to automatically
+   detect goals scored using an LED and analog photoresistor pair digitized
+   using a comparator installed at each goal.
+3. PSDR #3 (_Hardware_): An ability for the microcontroller to display game
+   score on an OLED display using the SPI protocol.
+4. PSDR #4 (_Hardware_): An ability for the microcontroller to to control a
+   large grid of individually-addressable WS2812B RGB LEDs beneath the playing
+   surface using the LED's custom communication protocol.
+5. PSDR #5 (_Hardware_): An ability to provide power to the microcontroller at
    3.3V using a buck converter from a 5V source.
+
+## Stretch Goal PSDRs (EPSDRs)
+
+The following are the two stretch goals determined by the team:
+
+1. EPSDR #1 (_Hardware_): An ability for the microcontroller to store graphical
+   animations and save game score on an EEPROM.
+2. EPSDR #2 (_Software_): An ability for the players to control the brightness
+   of the RGB LED grid and winning game score number by interfacing with a
+   rotary encoder and a menu on the OLED display.
