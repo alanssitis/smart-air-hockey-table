@@ -45,6 +45,16 @@ microcontroller and other components on the main PCB with 3.3VDC by stepping
 down from the regulator's 5VDC output. The boards hosting the RGB LEDs and Hall
 effect sensors are powered directly by the 5VDC from the regulator.
 
+## Stretch Goal PSDRs (EPSDRs)
+
+The following are the two stretch goals determined by the team:
+
+1. EPSDR #1 (_Hardware_): An ability for the microcontroller to store graphical
+   animations and save game score on an EEPROM.
+2. EPSDR #2 (_Software_): An ability for the players to control the brightness
+   of the RGB LED grid and winning game score number by interfacing with a
+   rotary encoder and a menu on the OLED display.
+
 ## Project Specific Design Requirements (PSDRs)
 
 The design and development of the smart air hockey table will adhere to the
@@ -65,13 +75,3 @@ gameplay experience:
    surface using the LED's custom communication protocol.
 5. PSDR #5 (_Hardware_): An ability to provide power to the microcontroller at
    3.3V using a buck converter from a 5V source.
-
-## Stretch Goal PSDRs (EPSDRs)
-
-The following are the two stretch goals determined by the team:
-
-1. EPSDR #1 (_Hardware_): An ability for the microcontroller to store graphical
-   animations and save game score on an EEPROM.
-2. EPSDR #2 (_Software_): An ability for the players to control the brightness
-   of the RGB LED grid and winning game score number by interfacing with a
-   rotary encoder and a menu on the OLED display.
