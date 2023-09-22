@@ -8,7 +8,8 @@ title: Will Dobert Progress Report
 ## Week 5
 
 **Date:** 9/22/2023 \
-**Total Hours:** 9
+**Project Hours Since Last Report:** 9 \
+**Cumulative Semester Project Hours:** 39
 
 ### Description of Project Design Efforts
 
@@ -42,7 +43,8 @@ Although this week consisted of a couple false starts on my behalf, I am hopeful
 ## Week 4
 
 **Date:** 9/15/2023 \
-**Total Hours:** 10
+**Project Hours Since Last Report:** 10 \
+**Cumulative Semester Project Hours:** 30
 
 ### Description of Project Design Efforts
 
@@ -76,7 +78,8 @@ Within the next week, I plan to fully design a CAD model of our table. This will
 ## Week 3
 
 **Date:** 9/8/2023 \
-**Total Hours:** 12
+**Project Hours Since Last Report:** 12 \
+**Cumulative Semester Project Hours:** 20
 
 ### Description of Project Design Efforts
 
@@ -126,7 +129,8 @@ In the near future, I plan to implement and seek feedback from my teammates on a
 ## Week 1 & 2
 
 **Date:** 9/1/2023 \
-**Total Hours:** 8
+**Project Hours Since Last Report:** 8 \
+**Cumulative Semester Project Hours:** 8
 
 ### Description of Project Design Efforts
 
