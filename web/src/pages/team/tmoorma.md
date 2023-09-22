@@ -5,6 +5,100 @@ title: Trevor Moorman Progress Report
 
 # Progress Report for Trevor
 
+## Week 5
+
+**Date:** 09/22/2023 \
+**Project Hours Since Last Report:** 18.5 \
+**Cumulative Semester Project Hours:** 61.5
+
+### Description of Individual Project Work Efforts:
+
+**Microcontroller Pin Assignment**
+
+- Alongside Ben, I utilized the STM32CubeIDE's visual pin assignment tool to determine the pin assignments for our project.
+
+**PCB Design**
+
+- Once we decided on pin assignments, we wired the microcontroller accordingly in the Master PCB schematic Ben had previously created.
+
+<img src="/477grp5/team/trevor/Trevor_Week4_MasterSchematic.PNG" width="80%">
+
+_Figure 1: Current Master PCB Schematic_
+
+- I learned about assigning component footprints, laying out components, and routing in KiCad from Ben.
+
+- I assisted Ben in routing a portion of the Master PCB.
+
+|<img src="/477grp5/team/trevor/Trevor_Week4_MasterPcbDesign.PNG" width="70%">|<img src="/477grp5/team/trevor/Trevor_Week4_MasterPcbRender.PNG" width="100%">|
+|:---:|:---:|
+
+_Figure 2: Current Master PCB_
+
+- I lead designing the Sensor PCB schematic.
+
+<img src="/477grp5/team/trevor/Trevor_Week4_SensorSchematic.PNG" width="80%">
+
+_Figure 3: Current Sensor PCB Schematic_
+
+- I lead assigning component footprints, laying out components, and routing in KiCad.
+
+|<img src="/477grp5/team/trevor/Trevor_Week4_SensorPcbDesign.PNG" width="70%">|<img src="/477grp5/team/trevor/Trevor_Week4_SensorPcbRender.PNG" height="100%">|
+|:---:|:---:|
+
+_Figure 4: Current Sensor PCB_
+
+- I revised the Master PCB and Sensor PCB alongside Ben using Dr. Walter's initial comments.
+
+**Puck Tracking**
+
+- Ben pointed out to the team that the sampling rate of the [TMAG5231](https://www.ti.com/product/TMAG5231), the digital hall effect sensor we planned to use, was too low for our requirements. This prompted Ben, Will, and I to research and discuss alternatives.
+
+<img src="/477grp5/team/trevor/Trevor_Week4_HallEffectSamplingRate.PNG" width="40%">
+
+_Figure 5: TMAG5231 Sampling Rate Table_
+
+- We eventually decided to switch to the [DRV5033](https://www.ti.com/product/DRV5033). Luckily the DRV5033 has the same pinout and footprint as the TMAG5231, which reduced the amount of work required by the team to amend the PCB designs. Unfortunately, switching hall effect sensors increased the bill of materials by approximately $120. However, the team feels confident that none of the viable alternatives would be cheaper.
+
+**Mechanical Discussions**
+
+- I participated in team discussions about the mechanical design of the table during the mandatory lab.
+
+**A6 - Mechanical Overview**
+
+- I researched commercial products' packaging to analyze for the document.
+
+- I wrote the first two sections analyzing two commercial products' packaging.
+
+### Next Steps:
+
+**PCB Design**
+
+- If Dr. Walter or Joe provide critiques of our PCB designs, then revising and correcting the Master PCB and Sensor PCB will be the team's top priority.
+
+**Puck Tracking**
+
+- If we can get some DRV5033's, then the team will need to perform tests to ensure that the sampling rate will not be an issue and that the component still works as we expect.
+
+- Otherwise, if the team is unable to get access to some DRV5033's from the lab, then we will need to order some to test alongside the PCBs.
+
+**Firmware**
+
+- Week 4's progress report stated that I would work on developing firmware for goal detection and the game state machine. However, the team has since switched to a new microcontroller that the team does not have access to yet. We plan to order a Nucleo board for testing. In the meantime, the team decided that finishing the design for the PCBs was of utmost importance. Therefore, I have shifted to that.
+
+- If we are unable to do any hardware testing and the PCBs do not need more work, then I will return to working on the firmware.
+
+**A6 - Mechanical Overview**
+
+- I need to write section 2.0, project packaging description.
+
+- I need to add the appendices to the document. Although most of the work towards these appendices has already been completed.
+
+- Finally, I will need to revise the document to create my final draft for submission. At this point, I will ask my team for comments on the document.
+
+**A7 - Bill of Materials**
+
+- I will assist the team in creating the bill of materials.
+
 ## Week 4
 
 **Date:** 09/15/2023 \
