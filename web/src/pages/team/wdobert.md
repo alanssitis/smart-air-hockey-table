@@ -5,6 +5,8 @@ title: Will Dobert Progress Report
 
 # Progress Report for Will
 
+---
+
 ## Week 5
 
 **Date:** 9/22/2023 \
@@ -40,6 +42,8 @@ _Figure 3: Current list of components to be ordered from Digikey, with part numb
 
 Although this week consisted of a couple false starts on my behalf, I am hopeful that having nailed down several component choices at the end of this week will make future attempts at project design more fruitful. Early next week, I'd like to place orders for all the hardware we've decided upon, and possibly start assembling the parts that arrive before the week is out. I am especially excited to see our first batch of PCBs arrive and begin testing with them. In the near future, I will be participating in training at the [Bechtel Innovation Design Center](https://www.purdue.edu/bidc/) to obtain authorization for constructing our table at their facilities.
 
+---
+
 ## Week 4
 
 **Date:** 9/15/2023 \
@@ -74,6 +78,8 @@ In this week's Component Analysis assignment, I was primarily responsible for an
 #### Next Steps
 
 Within the next week, I plan to fully design a CAD model of our table. This will be important as we prepare to construct the table, so that no guesses or assumptions are made throughout the process. Designing the table will also require me to research common dimensions for parts that it will be comprised of, such as plywood sheets, acrylic panels, and common sizes of wooden plank. Knowing these allows me to make the best decisions for designing the table right now, even if they may be adjusted in the future as we move into construction. I have already installed *Autodesk Fusion 360* (on Ben's recommendation) for this purpose.
+
+---
 
 ## Week 3
 
@@ -125,6 +131,8 @@ In the following handheld video recording, I showcase my current progress on int
 #### Next Steps
 
 In the near future, I plan to implement and seek feedback from my teammates on a full-fledged LED driver. The driver will consist of a single source and header file, and I plan to make use of DMA (direct memory access) to feed the precise timing data to the PWM timer with minimal processing overhead. This will allow us to focus on more computationally expensive tasks in the future, such as ingesting and processing sensor data.
+
+---
 
 ## Week 1 & 2
 
