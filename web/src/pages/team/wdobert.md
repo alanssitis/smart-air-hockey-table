@@ -5,11 +5,13 @@ title: Will Dobert Progress Report
 
 # Progress Report for Will
 
+---
+
 ## Week 5
 
 **Date:** 9/22/2023 \
-**Project Hours Since Last Report:** 9 \
-**Cumulative Semester Project Hours:** 39
+**Project Hours Since Last Report:** 10 \
+**Cumulative Semester Project Hours:** 44
 
 ### Description of Project Design Efforts
 
@@ -31,7 +33,7 @@ As the week moved on and I concluded that the time had not yet arrived to put my
 
 #### Parts Procurement and Bill of Materials
 
-Now that we've arrived at the end of week 5, the push to start purchasing hardware is stronger than ever. With Ben and Trevor making incredible progress on designing our two PCBs, we're nearly at the point where ordering components is the next logical step. Over the course of the past few days, I've collaborated with the team on putting together our official procurement documents for submission as soon as possible. At this stage, we will be making orders from three separate vendors: Digikey, Amazon, and JLCPCB. Our process for appending components to the procurement form has largely consisted of sharing URLs back and forth and giving our thoughts on each option. I also held primary responsibity for transforming each decision into a properly formatted entry in the procurement spreadsheet. An exciting result of this process was the inclusion of an *STM32U575* Nucleo evaluation board on our order form, which will allow us to prototype features for our microcontroller simultaneously while assembling our master PCB. Fortunately for us, we decided to work on the procurement document during the same week that the Bill of Materials assignment is due for submission. This overlap should make it trivial to fill in the required information for each of our components.
+Now that we've arrived at the end of week 5, the push to start purchasing hardware is stronger than ever. With Ben and Trevor making incredible progress on designing our two PCBs, we're nearly at the point where ordering components is the next logical step. Over the course of the past few days, I've collaborated with the team on putting together our official procurement documents for submission as soon as possible. At this stage, we will be making orders from three separate vendors: Digikey, Amazon, and JLCPCB. Our process for appending components to the procurement form has largely consisted of sharing URLs back and forth and giving our thoughts on each option. I also held primary responsibity for transforming each decision into a properly formatted entry in the procurement spreadsheet. An exciting result of this process was the inclusion of an *STM32U575* Nucleo evaluation board on our order form, which will allow us to prototype features for our microcontroller simultaneously while assembling our master PCB. Late in the week, I made an attempt submit our documentation for purchasing PCBs, but the recommended office (BHEE 140) is unreachable or no longer exists due to ongoing renovations. Instead, I will deliver this documentation to an alternate location in the very near future. Fortunately for us, we decided to work on the procurement document during the same week that the Bill of Materials assignment is due for submission. This overlap should make it trivial to fill in the required information for each of our components.
 
 ![Procurement Spreadsheet](/477grp5/team/will/Screenshot-2023-09-21-225322.png)
 _Figure 3: Current list of components to be ordered from Digikey, with part number and pricing info_
@@ -40,11 +42,13 @@ _Figure 3: Current list of components to be ordered from Digikey, with part numb
 
 Although this week consisted of a couple false starts on my behalf, I am hopeful that having nailed down several component choices at the end of this week will make future attempts at project design more fruitful. Early next week, I'd like to place orders for all the hardware we've decided upon, and possibly start assembling the parts that arrive before the week is out. I am especially excited to see our first batch of PCBs arrive and begin testing with them. In the near future, I will be participating in training at the [Bechtel Innovation Design Center](https://www.purdue.edu/bidc/) to obtain authorization for constructing our table at their facilities.
 
+---
+
 ## Week 4
 
 **Date:** 9/15/2023 \
-**Project Hours Since Last Report:** 10 \
-**Cumulative Semester Project Hours:** 30
+**Project Hours Since Last Report:** 13 \
+**Cumulative Semester Project Hours:** 34
 
 ### Description of Project Design Efforts
 
@@ -75,11 +79,13 @@ In this week's Component Analysis assignment, I was primarily responsible for an
 
 Within the next week, I plan to fully design a CAD model of our table. This will be important as we prepare to construct the table, so that no guesses or assumptions are made throughout the process. Designing the table will also require me to research common dimensions for parts that it will be comprised of, such as plywood sheets, acrylic panels, and common sizes of wooden plank. Knowing these allows me to make the best decisions for designing the table right now, even if they may be adjusted in the future as we move into construction. I have already installed *Autodesk Fusion 360* (on Ben's recommendation) for this purpose.
 
+---
+
 ## Week 3
 
 **Date:** 9/8/2023 \
 **Project Hours Since Last Report:** 12 \
-**Cumulative Semester Project Hours:** 20
+**Cumulative Semester Project Hours:** 21
 
 ### Description of Project Design Efforts
 
@@ -126,11 +132,13 @@ In the following handheld video recording, I showcase my current progress on int
 
 In the near future, I plan to implement and seek feedback from my teammates on a full-fledged LED driver. The driver will consist of a single source and header file, and I plan to make use of DMA (direct memory access) to feed the precise timing data to the PWM timer with minimal processing overhead. This will allow us to focus on more computationally expensive tasks in the future, such as ingesting and processing sensor data.
 
+---
+
 ## Week 1 & 2
 
 **Date:** 9/1/2023 \
-**Project Hours Since Last Report:** 8 \
-**Cumulative Semester Project Hours:** 8
+**Project Hours Since Last Report:** 9 \
+**Cumulative Semester Project Hours:** 9
 
 ### Description of Project Design Efforts
 
