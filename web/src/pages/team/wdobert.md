@@ -5,6 +5,40 @@ title: Will Dobert Progress Report
 
 # Progress Report for Will
 
+## Week 5
+
+**Date:** 9/22/2023 \
+**Total Hours:** 9
+
+### Description of Project Design Efforts
+
+#### Initial Efforts on Table CAD Model
+
+Despite high hopes for this week, I have not yet completed a designed model of our table. As I began drawing out even the simplest parts of the design, I began to realize just how many unknowns I was encountering. How much clearance do the PCBs need, what kind of spacers will we use, how thick will the acrylic be, on and on. Even still, I managed to create a mockup of the very top portion of the table. This was possible since it required no knowledge of the wooden component dimensions we'll be using.
+
+![CAD Model](/477grp5/team/will/Screenshot-2023-09-21-214008.png)
+_Figure 1: Current state of CAD model in Fusion 360_
+
+No matter how minimal or stripped down this design is from what it will eventually become, I still appreciated seeing it for the first time. I had the realization of just how many PCBs we'll be assembling and connecting together, and it has further fueled my excitement for this project's goals to come to fruition in the future. Due to the number of unknowns that I had to decide at my own discretion for this part of the design, I elected to parameterize nearly every dimensioned value I possibly could, so they can be adjusted as we nail down real values. This had the added benefit of removing any *magic numbers* from the CAD model, which appeased my "programmer" tendencies.
+
+![User Parameters](/477grp5/team/will/Screenshot-2023-09-21-214440.png)
+_Figure 2: Configurable parameters that describe various dimensions of the design_
+
+#### Initial Efforts on OLED Display Driver
+
+As the week moved on and I concluded that the time had not yet arrived to put my entire focus on designing the CAD model, I transitioned to a different task. Writing the LED matrix driver had been a fairly straightforward and rewarding endeavor, so surely writing a driver for the OLED display would be just as fun. The first major snag I stumbled upon was reacquiring the datasheet for the display we had previously used in ECE 362. Pasting the product code into Google yieled some results, but nothing that described the SPI control protocol in much detail. I eventually decided to search for the ECE 362 lab website and located their hosted copy of the datasheet. Once I had begun poring over the document and configuring our microcontroller's peripherals accordingly, I arrived at another snag. Our prototyping device, the *STM32F446* has a less sophisticated implementation of STM's SPI peripherals, and can only be configured for transmitting 8- or 16-bit words. However, the SPI protocol for the OLED display requires us to send 9-bit words, which our microcontroller in ECE 362 was capable of. Although it meant that I was unable to test the driver at the time, the microcontroller we'll use in our final design (*STM32U585*) does posess the needed capability. All of this became a moot point when we recently switched our choice of hardware for the score tracking display. We made the decision to utilize a full-pixel OLED instead of character-based, which had been under heavy consideration beforehand. With our choice of display hardware now finalized, I began distilling some vital details from the datasheet into a formatted document on our [GitHub issues page](https://github.com/alanssitis/smart-air-hockey-table/issues/46). This was done with the intent to jumpstart driver development once the new hardware arrives.
+
+#### Parts Procurement and Bill of Materials
+
+Now that we've arrived at the end of week 5, the push to start purchasing hardware is stronger than ever. With Ben and Trevor making incredible progress on designing our two PCBs, we're nearly at the point where ordering components is the next logical step. Over the course of the past few days, I've collaborated with the team on putting together our official procurement documents for submission as soon as possible. At this stage, we will be making orders from three separate vendors: Digikey, Amazon, and JLCPCB. Our process for appending components to the procurement form has largely consisted of sharing URLs back and forth and giving our thoughts on each option. I also held primary responsibity for transforming our decision into a properly formatted entry in the procurement spreadsheet. An exciting result of this process was the inclusion of an *STM32U575* Nucleo evaluation board on our order form, which will allow us to prototype features for our microcontroller simultaneously while assembling our master PCB. Fortunately for us, we decided to work on the procurement document during the same week that the Bill of Materials assignment is due for submission. This overlap should make it trivial to fill in the required information for each of our components.
+
+![Procurement Spreadsheet](/477grp5/team/will/Screenshot-2023-09-21-225322.png)
+_Figure 3: Current list of components to be ordered from Digikey, with part number and pricing info_
+
+#### Next Steps
+
+Although this week consisted of a couple false starts on my behalf, I am hopeful that having nailed down several component choices at the end of this week will make future attempts at project design more fruitful. Early next week, I'd like to place orders for all the hardware we've decided upon, and possibly start assembling the parts that arrive soon enough. I am especially excited to see our first batch of PCBs arrive and begin testing with them. In the near future, I will need to participate in training at the [Bechtel Innovation Design Center](https://www.purdue.edu/bidc/) to gain authorization to construct our table at their facilities.
+
 ## Week 4
 
 **Date:** 9/15/2023 \
