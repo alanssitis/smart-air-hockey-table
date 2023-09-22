@@ -21,7 +21,7 @@ title: Trevor Moorman Progress Report
 
 - Once we decided on pin assignments, we wired the microcontroller accordingly in the Master PCB schematic Ben had previously created.
 
-<img src="/477grp5/team/trevor/Trevor_Week4_MasterSchematic.PNG" width="40%">
+<img src="/477grp5/team/trevor/Trevor_Week4_MasterSchematic.PNG" width="80%">
 
 _Figure 1: Current Master PCB Schematic_
 
@@ -29,20 +29,22 @@ _Figure 1: Current Master PCB Schematic_
 
 - I assisted Ben in routing a portion of the Master PCB.
 
-|<img src="/477grp5/team/trevor/Trevor_Week4_MasterPcbDesign.PNG" width="80%">|<img src="/477grp5/team/trevor/Trevor_Week4_MasterPcbRender.PNG" width="80%">|
+|<img src="/477grp5/team/trevor/Trevor_Week4_MasterPcbDesign.PNG" width="70%">|<img src="/477grp5/team/trevor/Trevor_Week4_MasterPcbRender.PNG" width="100%">|
 |:---:|:---:|
+
 _Figure 2: Current Master PCB_
 
 - I lead designing the Sensor PCB schematic.
 
-<img src="/477grp5/team/trevor/Trevor_Week4_SensorSchematic.PNG" width="40%">
+<img src="/477grp5/team/trevor/Trevor_Week4_SensorSchematic.PNG" width="80%">
 
 _Figure 3: Current Sensor PCB Schematic_
 
 - I lead assigning component footprints, laying out components, and routing in KiCad.
 
-|<img src="/477grp5/team/trevor/Trevor_Week4_SensorPcbDesign.PNG" width="80%">|<img src="/477grp5/team/trevor/Trevor_Week4_SensorPcbRender.PNG" width="80%">|
+|<img src="/477grp5/team/trevor/Trevor_Week4_SensorPcbDesign.PNG" width="70%">|<img src="/477grp5/team/trevor/Trevor_Week4_SensorPcbRender.PNG" height="100%">|
 |:---:|:---:|
+
 _Figure 4: Current Sensor PCB_
 
 - I revised the Master PCB and Sensor PCB alongside Ben using Dr. Walter's initial comments.
