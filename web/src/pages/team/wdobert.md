@@ -8,8 +8,8 @@ title: Will Dobert Progress Report
 ## Week 5
 
 **Date:** 9/22/2023 \
-**Project Hours Since Last Report:** 11 \
-**Cumulative Semester Project Hours:** 46
+**Project Hours Since Last Report:** 10 \
+**Cumulative Semester Project Hours:** 44
 
 ### Description of Project Design Efforts
 
@@ -43,8 +43,8 @@ Although this week consisted of a couple false starts on my behalf, I am hopeful
 ## Week 4
 
 **Date:** 9/15/2023 \
-**Project Hours Since Last Report:** 14 \
-**Cumulative Semester Project Hours:** 35
+**Project Hours Since Last Report:** 13 \
+**Cumulative Semester Project Hours:** 34
 
 ### Description of Project Design Efforts
 
