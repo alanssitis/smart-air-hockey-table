@@ -5,6 +5,99 @@ title: Ben Owen Progress Report
 
 # Progress Report for Ben
 
+## Week 5
+
+**Date:** 2023-09-22 \
+**Project Hours Since Last Report:** 25 \
+**Total Hours:** 64
+
+### Description of Project Design Efforts
+
+**Schematic/PCB design**
+
+All of my efforts this week went into creating/finalizing the schematics for our master PCB and sensor PCB designs with Trevor.
+
+*Master PCB*
+
+The primary schematic contains all external connectors and signals that are going off-board.  We used KiCad's hierarchical schematic function to keep everything clean.  You can see the main STM32 block in the center, connected to our EEPROM, OLED connectors, LEDs, LDR inputs, and row/column hall effect sensors.
+
+<img src="/477grp5/team/ben/week5-schematic-toplevel.png" width="80%">
+
+_Figure 1: Top level schematic_
+
+The STM32U585 is the microcontroller we decided on, and the schematic with the STM32 on it simply defines all of the pin connections, reset button, decoupling capacitors, and BOOT0 jumper.  We verified the pins' position and function using the STM32CubeIDE IOC program to make sure we were using correct pins (peripheral assignment, 5V tolerance, etc.)
+
+<img src="/477grp5/team/ben/week5-schematic-stm32.png" width="80%">
+
+_Figure 2: STM32 schematic_
+
+To satisfy one of our PSDRs, we are implementing a buck converter to power our STM32.  We chose the TLV62568 due to its simplicity, small size, low price, and high enough output current at 1 amp.  The schematic for this regulator can be seen in Figure 3.
+
+<img src="/477grp5/team/ben/week5-schematic-buck.png" width="80%">
+
+_Figure 3: Buck converter schematic_
+
+Goal detection is achieved by using an LED/LDR pair.  This analog value is then compared against a reference voltage (created with a voltage divider) in a comparator circuit to convert this analog value to a digital value.  This digital signal is then connected to the STM32 to determine if a goal has been scored.  The schematic for our goal detection comparator circuit can be seen in Figure 4.
+
+<img src="/477grp5/team/ben/week5-schematic-goal-detection.png" width="80%">
+
+_Figure 4: Goal detection schematic_
+
+One of our stretch goals is to have a menu system displayed on an OLED to allow users to change brightness, goals required to win, and other settings.  To allow the user to interact with the microcontroller, we are attempting to implement a rotary encoder with an integrated button.  The schematic representing this circuit can be seen in Figure 5.
+
+<img src="/477grp5/team/ben/week5-schematic-encoder.png" width="80%">
+
+_Figure 5: Encoder schematic_
+
+The LEDs are interfaced from the STM32 through level shifters.  The WS2812B LEDs we are using run at 5V logic, and our STM32 can only provide 3.3V.  We implement the level shifter that Will had been testing with to support up to four independent channels for the LED control.  The schematic for these level shifters can be seen in Figure 6.
+
+<img src="/477grp5/team/ben/week5-schematic-level-shifter.png" width="80%">
+
+_Figure 6: LED level shifter schematic_
+
+One of our other stretch goals is using an EEPROM to store table configuration and animation frames.  This is interfaced with our microcontroller over SPI.  The schematic representing this chip and its supporting hardware can be seen in Figure 7.
+
+<img src="/477grp5/team/ben/week5-schematic-eeprom.png" width="80%">
+
+_Figure 7: EEPROM schematic_
+
+After the schematic was put together, we routed the first revision of our PCB.  We want to get these ordered as soon as possible to allow for debugging and ordering of a second round before week 8.  Many considerations, such as power requirements, decoupling capacitors, and communication protocols were considered when laying out components.  A side-by-side view of the layout and 3D renders can be seen in Figures 9 and 10.
+
+|            <img src="/477grp5/team/ben/week5-master-layout.png" width="80%">            |            <img src="/477grp5/team/ben/week5-master-render.png" width="80%">            |
+| :---------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------: |
+| _Figure 9: Master PCB layout_ | _Figure 10: Master PCB 3D render_ |
+
+*Sensor PCB*
+
+In addition to the master PCB, I worked a lot with Trevor doing the same process for our hall effect sensor PCB.  This was a simpler design.  We have 4 hall effect sensors per PCB, using AND logic gates to convert these values to rows/columns.  The data can be daisy-chained between PCBs, allowing the microcontroller to only need 48 GPIO inputs to determine the position of the puck.  In addition to the sensors, the schematic contains the LEDs and LED data signals, power passthrough for components on the boards, and solder jumpers to ensure non-floating inputs on our logic gates for PCBs with only two inputs (the first PCB in each row/column only has 2 inputs since there is no data being passed into it from another board).  The current schematic for this design can be seen in Figure 11.
+
+<img src="/477grp5/team/ben/week5-schematic-sensor.png" width="80%">
+
+_Figure 11: Sensor PCB schematic_
+
+Figures 12 and 13 show the routing and 3D render for this PCB.  The main considerations were the edge connectors allowing for PCB-to-PCB connections, as well as a fixed 50mm distance between the hall effect sensors.  The large hole in the center is to assist in airflow for the PCBs mounted directly over the blower on the table.
+
+|            <img src="/477grp5/team/ben/week5-sensor-layout.png" width="80%">            |            <img src="/477grp5/team/ben/week5-sensor-render.png" width="80%">            |
+| :---------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------: |
+| _Figure 12: Sensor PCB layout_ | _Figure 13: Sensor PCB 3D render_ |
+
+### Next steps
+
+**PCB review/ordering**
+
+I will probably look over these boards for a bit longer to try and find any mistakes in the schematic/routing before we order the boards.  Hopefully everything looks good, but I expect to spend a few hours checking again.
+
+**Table state machine**
+
+Once the PCBs are ordered, we will need to wait to do anything hardware related until they arrive.  I will be helping the other team members, primarily on the firmware for the game state machine.  The current tasks include:
+
+- Creating the game superloop triggered off of a timer
+- Defining all of the states for the game
+- Defining all of the criteria to change states
+- Determining where/when to use interrupts and when to use polling from the superloop
+
+---
+
 ## Week 4
 
 **Date:** 2023-09-15 \
