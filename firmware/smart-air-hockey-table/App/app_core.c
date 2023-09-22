@@ -1,9 +1,11 @@
-#include <inttypes.h>
 #include "app_core.h"
-#include "app_debug.h"
-#include "driver_led.h"
+
+#include <inttypes.h>
 #include "stm32f4xx_ll_rcc.h"
 #include "stm32f4xx_ll_utils.h"
+
+#include "app_debug.h"
+#include "driver_led.h"
 
 void App_Init()
 {

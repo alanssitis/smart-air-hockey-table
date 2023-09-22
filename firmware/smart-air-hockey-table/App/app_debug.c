@@ -1,7 +1,8 @@
+#include "app_debug.h"
+
 #include <stdio.h>
 #include <stdarg.h>
 #include <inttypes.h>
-#include "app_debug.h"
 #include "stm32f4xx_ll_tim.h"
 
 static volatile uint32_t time_ms;
