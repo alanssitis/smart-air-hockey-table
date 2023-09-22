@@ -8,19 +8,90 @@ title: Alan Chung Ma Progress Report
 ## Week 5
 
 **Date:** 2023-09-22 \
-**Total Hours:** ?
+**Total Hours:** 11
 
 ### Description of Project Design Efforts
 
+This week's focus was mainly on designing the table and getting inforation from
+BIDC, updataing the team's webpage, the BOM, and the tools used to develop on
+the STM.
+
 #### Designing Table in BIDC
+
+This was the bulk of my responsibility this week. I began the process of
+creating a project in the [Bechtel Innovation Design Center (BIDC)](https://www.purdue.edu/bidc/).
+I consulted with Teaching Assistants (TAs) from the Woodworking station on most
+of the materials we will be using, as well as the overall design of the project.
+
+Below are the notes I had from my initial meeting.
+
+![Notes from first BIDC meeting](/477grp5/team/alan/week05/figure4.jpg)
+_Caption: Notes from the first BIDC Meeting._
+
+Below are the sketches I created after the initial meeting and a second
+consultation with the TAs.
+
+![Table sketch top view](/477grp5/team/alan/week05/figure1.jpg)
+_Caption: Sketch of the top view of the table._
+
+![Table sketch side view](/477grp5/team/alan/week05/figure2.jpg)
+_Caption: Sketch of the sid view of the table._
+
+![Table sketch front view](/477grp5/team/alan/week05/figure3.jpg)
+_Caption: Sketch of the front view of the table._
+
+A few of the considerations have been made:
+
+- The middle layer should be made of MDF since it would be easy to machine and
+  which will allow us to machine out insets for the PCBs to go into and we could
+  cleanly machne out the holes.
+- An intermediary air chamber will be used to spread out the "air" of the pump.
+  - Since we would ideally not have any of the center PCBs removed, we will
+    attempt to replicate the same effects by having the air chamber spread out
+    the air over smaller holes in the MDF layer
+- The acrylic top will be thin, therefore there will be stands between the MDF
+  layer and the acrylic to keep it solid.
+- The puck goal feeder will channel the puck to a narrow entry, replicating the
+  method from [this](https://www.youtube.com/watch?v=PJr1rLq0IrE) video.
+
+The goal is to obtain the materials over the weekend and start booking equipment
+time and build the table over the span of Week 6 and 7.
 
 #### Updating the Project Homepage
 
+I updated the project description and PSDRs provided the feedback from the
+teaching staff during ManLab. A link to the corresponding PR is [here](https://github.com/alanssitis/smart-air-hockey-table/pull/43).
+
 #### Project Bill of Materials
+
+I helped update some of the items in the Bill of Materials as the team was
+working on filling out the purchase request. It is still rudamentary but it
+should be up in [Documents](/477grp5/documents/) by end of Saturday.
 
 #### Getting STM32 VSCode Extension Working
 
+I spend a significant amount attempting to get the STM32 VSCode extension
+working. However, major functionality such as flashing the STM and debugging
+would have required a significant amount of setup with CMake and gdb. Therefore,
+I decided to stop working on it after about ~5 hours of trying to get it working.
+The CMake set up needed manual changes and there was a lot of features that
+were missing.
+
+After getting Cube IDE working on my machine, I opened a PR to have the
+directory naming be consistent across the project, PR linked [here](https://github.com/alanssitis/smart-air-hockey-table/pull/52).
+I figure this was because Windows is not case sensitive.
+
 ### Next Steps
+
+The next steps I have planned are to source the materials for the table and
+build it in BIDC. I will probably consult a TA again to figure out the best way
+to go about building it, but I am confident I can get it done by end of week 7.
+
+Another thing I will be focusing on is work on the components of the firmware
+that are not worked on at the moment. This will be determined at a later time
+asynchronously. I will probably try to build on a breadboard a simulated
+daughterboard that way the rest of the guys can work on a prototype of
+what the board will act like.
 
 ## Week 4
 
@@ -98,7 +169,7 @@ I was able to install and run all of the required tooling and the extension
 itself. Below are screenshots of STM32CubeMX running and our current project under
 firmware opened on the side.
 
-![STM32CubeMX Running on PopOS!](/477grp5/team/alan/week04/figure3.png) 
+![STM32CubeMX Running on PopOS!](/477grp5/team/alan/week04/figure3.png)
 _Caption: STM32CubeMX Running on PopOS!_
 
 ![STM32 VS Code Extension running Team 5's Project](/477grp5/team/alan/week04/figure4.png)
