@@ -22,6 +22,7 @@ title: Trevor Moorman Progress Report
 - Once we decided on pin assignments, we wired the microcontroller accordingly in the Master PCB schematic Ben had previously created.
 
 <img src="/477grp5/team/trevor/Trevor_Week4_MasterSchematic.PNG" width="40%">
+
 _Figure 1: Current Master PCB Schematic_
 
 - I learned about assigning component footprints, laying out components, and routing in KiCad from Ben.
@@ -35,6 +36,7 @@ _Figure 2: Current Master PCB_
 - I lead designing the Sensor PCB schematic.
 
 <img src="/477grp5/team/trevor/Trevor_Week4_SensorSchematic.PNG" width="40%">
+
 _Figure 3: Current Sensor PCB Schematic_
 
 - I lead assigning component footprints, laying out components, and routing in KiCad.
@@ -50,6 +52,7 @@ _Figure 4: Current Sensor PCB_
 - Ben pointed out to the team that the sampling rate of the [TMAG5231](https://www.ti.com/product/TMAG5231), the digital hall effect sensor we planned to use, was too low for our requirements. This prompted Ben, Will, and I to research and discuss alternatives.
 
 <img src="/477grp5/team/trevor/Trevor_Week4_HallEffectSamplingRate.PNG" width="40%">
+
 _Figure 5: TMAG5231 Sampling Rate Table_
 
 - We eventually decided to switch to the [DRV5033](https://www.ti.com/product/DRV5033). Luckily the DRV5033 has the same pinout and footprint as the TMAG5231, which reduced the amount of work required by the team to amend the PCB designs. Unfortunately, switching hall effect sensors increased the bill of materials by approximately $120. However, the team feels confident that none of the viable alternatives would be cheaper.
