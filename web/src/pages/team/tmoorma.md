@@ -31,11 +31,11 @@ title: Trevor Moorman Progress Report
 
 - Updated the sensor board's schematic to improve readability, while being electrically equivalent.
 
-<img src="/477grp5/team/trevor/Trevor_Week6_SensorSchematicOld.PNG" width="100%">
+<img src="/477grp5/team/trevor/Trevor_Week6_SensorSchematicOld.PNG" width="80%">
 
 _Figure 1: Previous Sensor Schematic_
 
-<img src="/477grp5/team/trevor/Trevor_Week6_SensorSchematicNew.PNG" width="100%">
+<img src="/477grp5/team/trevor/Trevor_Week6_SensorSchematicNew.PNG" width="80%">
 
 _Figure 2: New Sensor Schematic_
 
@@ -51,13 +51,13 @@ Super-loop & State Machine:
 
 - Created an enumeration with all states of state machine.
 
-<img src="/477grp5/team/trevor/Trevor_Week6_StateMachineCode.PNG" width="100%">
+<img src="/477grp5/team/trevor/Trevor_Week6_StateMachineCode.PNG" width="50%">
 
 _Figure 3: State Machine Enumeration Code_
 
 - Created the framework for the super-loop that is invoked every SysTick (1 ms) and coordinates function calls based on the current state.
 
-<img src="/477grp5/team/trevor/Trevor_Week6_SuperLoopCode.PNG" width="100%">
+<img src="/477grp5/team/trevor/Trevor_Week6_SuperLoopCode.PNG" width="80%">
 
 _Figure 4: Super-Loop Framework Code_
 
@@ -69,7 +69,7 @@ Goal Detection:
 
 - Added variables to store the data required by these functions, such as each players' score and the number of points to win. As well as "getter" and "setter" functions to access these variables.
 
-<img src="/477grp5/team/trevor/Trevor_Week6_GoalDetectionCode.PNG" width="100%">
+<img src="/477grp5/team/trevor/Trevor_Week6_GoalDetectionCode.PNG" width="60%">
 
 _Figure 5: Goal Detection Enabling/Disabling & Handling Functions_
 
