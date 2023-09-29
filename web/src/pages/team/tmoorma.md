@@ -5,6 +5,88 @@ title: Trevor Moorman Progress Report
 
 # Progress Report for Trevor
 
+## Week 6
+
+**Date:** 09/29/2023 \
+**Project Hours Since Last Report:** 15.5 \
+**Cumulative Semester Project Hours:** 77
+
+### Description of Individual Project Work Efforts:
+
+**A6 - Mechanical Overview**
+
+- Added appendices to the document.
+
+- Wrote section 2.0 "Project Packaging Description.
+
+**A7 - Bill of Materials**
+
+- Worked alongside the team to complete the document, primarily adding supplier part numbers and fixing formatting.
+
+**A8 - Software Formalization**
+
+- At Will's request, I read his drafted document and added a few comments for recommended changes.
+
+**Sensor Schematic**
+
+- Updated the sensor board's schematic to improve readability, while being electrically equivalent.
+
+<img src="/477grp5/team/trevor/Trevor_Week6_SensorSchematicOld.PNG" width="100%">
+
+_Figure 1: Previous Sensor Schematic_
+
+<img src="/477grp5/team/trevor/Trevor_Week6_SensorSchematicNew.PNG" width="100%">
+
+_Figure 2: New Sensor Schematic_
+
+**Hardware Testing**
+
+- During this week's ManLab, alongside the rest of team, performed ad-hoc testing of two DRV5033 to ensure that they work as we expected.
+
+- Alongside Alan and Ben, tested the blower.
+
+**Software Development**
+
+Super-loop & State Machine:
+
+- Created an enumeration with all states of state machine.
+
+<img src="/477grp5/team/trevor/Trevor_Week6_StateMachineCode.PNG" width="100%">
+
+_Figure 3: State Machine Enumeration Code_
+
+- Created the framework for the super-loop that is invoked every SysTick (1 ms) and coordinates function calls based on the current state.
+
+<img src="/477grp5/team/trevor/Trevor_Week6_SuperLoopCode.PNG" width="100%">
+
+_Figure 4: Super-Loop Framework Code_
+
+Goal Detection:
+
+- Created rising edge external interrupts attached to the pins that receive the goal detection circuit's output signal.
+
+- Created a handling function to be called by the external interrupts which handles the state transition and increments the appropriate player's score assuming the correct conditions are met.
+
+- Added variables to store the data required by these functions, such as each players' score and the number of points to win. As well as "getter" and "setter" functions to access these variables.
+
+<img src="/477grp5/team/trevor/Trevor_Week6_GoalDetectionCode.PNG" width="100%">
+
+_Figure 5: Goal Detection Enabling/Disabling & Handling Functions_
+
+### Next Steps:
+
+**Software Development**
+
+- While the firmware builds with my changes, I will need to test the work done on the super-loop, state machine, and goal detection using the NUCLEO-F411RE.
+
+- Once the NUCLEO-U575ZI-Q is received from the team's DigiKey order, then the firmware will need to updated from NUCLEO-F411RE to NUCLEO-U575ZI-Q. After which, I will need to retest and ensure that all functionality has been retained.
+
+**Schematic & PCB Layout**
+
+- Once the electrical components has been received from the team's DigiKey, then the team will need to begin assembling a master PCB and the sensor PCBs. After which, the team can begin testing.
+
+- After the PCBs have been tested, then the team will begin working on revision B of the schematics and PCB layouts based on our findings. Ben will lead development on revision B of the master schematic, and I will be available to help him. I will lead development on revision B of the sensor schematic.
+
 ## Week 5
 
 **Date:** 09/22/2023 \
