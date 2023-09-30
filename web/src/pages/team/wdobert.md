@@ -7,6 +7,52 @@ title: Will Dobert Progress Report
 
 ---
 
+## Week 6
+
+**Date:** 9/29/2023 \
+**Project Hours Since Last Report:** 14 \
+**Cumulative Semester Project Hours:** 58
+
+### Description of Project Design Efforts
+
+#### Provisional CAD Model of the Table
+
+In last week's report, I showed off an incomplete CAD model of our project. This week, I restarted the design from scratch, armed with new knowledge about our plans for the design. As I moved through filling in each component, I encountered a few important details that the team had not yet discussed in depth. Relaying these questions to the team proved to be very valuable, as we discussed our approach and weighed the best options for each issue. Although constructing this design was primarily a solo venture, I appreciated having the ongoing discussion with the team as I made progress. I call this design *provisional* because we are not actually using it as a point-by-point reference for physical construction. I created this design at the beginning of the week, and as the start to construction neared, Alan put together a design more closely based on the materials he had ascertained would be available. 
+
+![Final Revision](/477grp5/team/will/Table_v13.png)
+_Figure 1: Final revision of provisional design for table construction_
+
+Pictured above is the state of the final revision I made to the provisional design. It includes all of our intended features, except for the goal assembly and score tracking displays. In total, I saved 13 unique revisions to this model over the past week. As I understand it, this design is still a useful point of reference for many unique details, but it no longer matches completely with our construction plans. I may bring the model up-to-date at some point prior to the conclusion of the project, but for now I will be leaving it as it is.
+
+![Animated Construction GIF](/477grp5/team/will/table_construction.gif)
+_Figure 2: Intended order of assembly for provisional design_
+
+As I neared the final revisions to the design, I created the animation shown above to illustrate the intended order of assembly to the team. Walking through this step-by-step process also gave me the confidence that the design could be physically constructed if we had the materials available. I enjoyed the opportunity to apply my prior experience with CAD software to learning Fusion 360, and I may find more uses for it in the future as well.
+
+#### Software Formalization
+
+This week, it was my turn to complete an individual assignment on behalf of the team. Just before I started working on the Software Formalization, I drafted several tasks on the team's [Kanban board](https://github.com/users/alanssitis/projects/2/). Each task I created was related to a specific firmware driver we will need to develop for our microcontroller. Within each task, I wrote a short list of physical requirements, such as hardware spec sheets, purchasing options, or details on connectivity. I also included definitions of the public interface for each driver. I then used these task specifications to write out the bulk of the Software Formalization, as many of our software components are just firmware drivers. Drafting the interface for the drivers provided an opportunity to expand my understanding of each component. This understanding will be useful in the future to better inform my decisions when developing the driver code. The state machine may serve as the central part of our software architechture, but I chose to focus more on drivers because the state machine can be depicted much better in a graphical form (provided in the document's appendix).
+
+#### Revising LED Matrix Data Pathway
+
+Near the beginning of the week, I was looking over our proposed design for the sensor PCB and I noticed an issue with the peripheral connector layout. The connectors responsible for carrying LED matrix data across the system will be daisy-chained one by one, but there are a couple ways to achieve this. Shown in Figure 3 below are two alternatives; the upper section shows the revised plan whereas the lower section shows the connection pathway we originally had. Each PCB has two "in" connectors for LEDs, and two "out". Arranging these in a snaking pattern saves us a lot of extra wire routing over the length of the entire matrix. We hadn't ordered our first round of PCBs yet, so this issue was fixed before we sent off our design.
+
+![Pathway Diagram](/477grp5/team/will/pcb_route.png)
+_Figure 3: Diagram of alternatives for LED data pathway_
+
+#### Construction Progress
+
+Later in the week, Alan and I reserved time at the Bechtel Center to make progress with constructing the table. By using the combination of a jointer, planer, and table saw, we gradually trimmed three poplar boards down to identical thickness and width. The wood we are using has a good-looking natural finish to it, which we were not anticipating. There is still plenty of work to be done until we have a full table, but this is an encouraging start.
+
+![Nearly Finished Boards](/477grp5/team/will/20230929_111641.jpg)
+_Figure 4: Nearly finished poplar boards to be used as sides of the table_
+
+#### Next Steps
+
+Within the next week, I will continue to assist with constructing the table. As new hardware arrives, I would like to start working on prototyping and developing drivers for some of the simpler components. Our first round of PCBs are likely to arrive, and I will help test their functionality once they are fully assembled.
+
+---
+
 ## Week 5
 
 **Date:** 9/22/2023 \
@@ -22,7 +68,7 @@ Despite high hopes for this week, I have not yet completed a designed model of o
 ![CAD Model](/477grp5/team/will/Screenshot-2023-09-21-214008.png)
 _Figure 1: Current state of CAD model in Fusion 360_
 
-No matter how minimal or stripped down this design is from what it will eventually become, I still appreciated seeing it for the first time. I had the realization of just how many PCBs we'll be assembling and connecting together, and it has further fueled my excitement for this project's goals to come to fruition. Due to the number of unknowns that I was estimating rough values for, I elected to parameterize nearly every dimensioned value I possibly could, so they can be adjusted as we nail down real values. This had the added benefit of removing any *magic numbers* from the CAD model, which appeased my "programmer" tendencies.
+No matter how minimal or stripped down this design is from what it will eventually become, I still appreciated seeing it for the first time. I had the realization of just how many PCBs we'll be assembling and connecting together, and it has further fueled my excitement for this project's goals to come to fruition. Due to the number of unknowns that I was estimating rough values for, I elected to parameterize nearly every dimensioned value I possibly could, so they can be adjusted as we nail down real values. This had the added benefit of removing any *magic numbers* from the CAD model, which fits well with the programming mindset I'm used to.
 
 ![User Parameters](/477grp5/team/will/Screenshot-2023-09-21-214440.png)
 _Figure 2: Configurable parameters that describe various dimensions of the design_
