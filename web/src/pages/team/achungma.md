@@ -5,6 +5,81 @@ title: Alan Chung Ma Progress Report
 
 # Progress Report for Alan
 
+## Week 6
+
+**Date:** 2023-09-29 \
+**Total Hours:** 12
+
+### Description of Project Design Efforts
+
+#### Building the Table
+
+This week, a significant portion of my effort was dedicated to the construction
+of the air hockey table at the Bechtel Innovation Design Center (BIDC). Here are
+the key activities and developments related to this:
+
+- __Material Sourcing__: I successfully sourced the materials needed for the
+table from different locations: 
+  - From Home Depot, I acquired a sheet of
+  [plywood](https://www.homedepot.com/p/23-32-in-x-4-ft-x-8-ft-RTD-Sheathing-Syp-129323/303564747),
+  [MDF (Medium-Density Fiberboard)](https://www.homedepot.com/p/3-4-in-x-4-ft-x-8-ft-MDF-Panel-D11612490970000/304325742),
+  and [frosted acrylic](https://www.homedepot.com/p/Falken-Design-36-in-x-72-in-x-0-125-in-Thick-Acrylic-Non-Glare-Matte-P95-Sheet-Falken-Design-ACRYLIC-P95-1-8-3672/308669657),
+  which will be integral to the construction.
+  - Additionally, I obtained materials from the BIDC stock room, specifically
+  poplar hardwood, which was chosen for its
+  cost-effectiveness and availability of flat 1" planks suitable for the project.
+
+- __Table Construction at BIDC__: I initiated the construction of the air hockey
+table at BIDC, working diligently to transform these materials into the desired
+structure. Some of the key activities include:
+  - Conducting consultations with BIDC Teaching Assistants (TAs) to gather
+  insights and recommendations, which informed several design changes.
+  - Opting for poplar hardwood as the primary material for the project,
+  considering the availability of suitable planks and their cheaper cost. The
+  TAs would not have liked it if my team were to use up a lot of expensive wood
+  for the project.
+  - Utilizing woodworking tools such as the jointer, planar, bandsaw, and
+  tablesaw to shape the sides and create planks for the table structure.
+
+Below are some images from the progress:
+
+|![Glued sides](/477grp5/team/alan/week06/figure1.jpg)|![MDF board](/477grp5/team/alan/week06/figure2.jpg)|
+| -- | -- |
+|![Plywood](/477grp5/team/alan/week06/figure3.jpg)|![Week 5 progress from sides](/477grp5/team/alan/week06/figure4.jpg)|
+
+#### Testing of Large Electrical Components
+
+Another significant aspect of this week's progress was the testing of large
+electrical components essential to the project's functionality. Key highlights
+of this testing phase include:
+
+- __Air Blower Testing__: We received various electrical components this week,
+including an air blower. I actively participated in the testing of the air
+blower to ensure its proper functionality within our setup.
+
+- __Power Switch and Supply Testing__: Additionally, I was involved in testing a
+controllable power switch and the power supply units required for our
+microcontrollers. Ensuring these components work as intended is critical to the
+overall project.
+
+<video controls muted>
+  <source src="/477grp5/team/alan/week06/video1.mp4" type="video/mp4">
+</video>
+
+### Next Steps
+
+As we move forward, the following are the key tasks and priorities that lie ahead:
+
+- __Continued Table Construction__: My immediate focus will be on progressing
+with the construction of the air hockey table at BIDC. I will continue to follow
+the guidance and recommendations of BIDC TAs to ensure the table's successful
+completion. Some changes would also need to be made as some dimensions have
+changed.
+
+- __Soldering PCBs__: I will actively contribute to the soldering process of PCBs,
+a crucial step in the project's hardware development. This collaborative effort
+will play a significant role in bringing our project closer to realization.
+
 ## Week 5
 
 **Date:** 2023-09-22 \
