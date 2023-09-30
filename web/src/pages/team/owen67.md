@@ -5,6 +5,70 @@ title: Ben Owen Progress Report
 
 # Progress Report for Ben
 
+## Week 6
+
+**Date:** 2023-09-29 \
+**Project Hours Since Last Report:** 10 \
+**Total Hours:** 74
+
+### Description of Project Design Effors
+
+This was exam week, but luckily we were in a position to order components, mainly our PCBs.
+
+**PCB Review**
+
+*Buck converter*
+
+Before ordering PCBs last week, we made some final changes.  The biggest change involved the buck converter.  We ended up using copper pours to more closely match the datasheet.  A screenshot showing our newer copper pour layout can be seen in Figure 1.
+
+<img src="/477grp5/team/ben/week6-buck-converter.png" width="80%">
+
+_Figure 1: Buck converter PCB layout_
+
+*5V power trace*
+
+We also added a thicker 5V power trace to power our LEDs, LDRs, comparators, and other miscellaneous 5V components on the board.  We already had a 3V3 and GND pour, but the 5V line was a thin trace spanning multiple components.  To give ourselves more room for higher current draw, we expanded our board and added a thick 1mm trace to carry the 5V power line to many components.  This new power trace can be seen in Figure 2.
+
+<img src="/477grp5/team/ben/week6-power-trace.png" width="80%">
+
+_Figure 2: 5V power trace_
+
+Some images of our PCBs can be seen in Figures 3 and 4.
+
+|            <img src="/477grp5/team/ben/week6-master-pcb.jpg" width="80%">            |            <img src="/477grp5/team/ben/week6-sensor-pcb.jpg" width="80%">            |
+| :---------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------: |
+| _Figure 3: Master PCB_ | _Figure 4: Sensor PCB_ |
+
+**Testing of new components**
+
+Many components came in, including our air blower, OLED displays, connectors, power supply, and outlet relay.  Although there wasn't much time to test due to our team's exam schedule, we were able to test our power supply and outlet relay.  To do this, we cut a PC power cable and connected the hot, neutral, and ground wires to the correct screw terminals on our power supply.  We then connected this power supply to the outlet relay, which can be controlled with a low-voltage DC signal.  We connected this to our power supply, and tested the functionality with both 3V3 and 5V.  A video showing this testing can be seen in Figure 5.
+
+<video controls muted>
+  <source src="/477grp5/team/ben/week6-outlet-relay-test.mp4" type="video/mp4">
+</video>
+
+_Figure 5: Outlet relay testing and proof of operation_
+
+### Next steps
+
+**PCB revisions**
+
+Getting closer to fall break, we want to make PCB changes to improve our design.  Our first revision was to be in a position where we could prototype, but we already have a list of changes we want to make:
+
+- Better placement of decoupling capacitors (under chip)
+- Expand PCB size (100 x 100 mm)
+- Larger mounting holes
+- Better pin header placement (along edge of board)
+- ESD protection for some GPIO
+- Reverse polarity protection (if possible)
+- Slight GPIO remapping to allow for easier rotary encoder implementation
+
+**OLED driver**
+
+I am going to help test the new OLED displays and create a driver for easier usage.  I am planning to define an alphabet for character displays, since this display is designed to display graphics, not just text.  This means that we will have to define each letters' pixel arrangement.
+
+---
+
 ## Week 5
 
 **Date:** 2023-09-22 \
