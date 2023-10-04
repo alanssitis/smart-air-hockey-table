@@ -1,11 +1,14 @@
 #include "driver_display.h"
 
 #include <stddef.h>
+#include <stdio.h>
+#include <stdarg.h>
 #include "stm32f4xx_ll_gpio.h"
 #include "stm32f4xx_ll_utils.h"
 #include "stm32f4xx_ll_spi.h"
 
-#include "app_debug.h"
+#include "font_6x8.h"
+#include "font_score.h"
 
 #define DISPLAY_COUNT 2
 #define DISPLAY_COLUMNS 128
@@ -102,4 +105,83 @@ void Driver_Display_Clear(uint8_t display)
 	transmit_start(display, 1);
 	for (size_t i = 0; i < DISPLAY_WIDTH * DISPLAY_HEIGHT / 8; i++) transmit_word(0x00);
 	transmit_end();
+}
+
+void Driver_Display_Print(uint8_t display, uint8_t line, uint8_t offset, const char* format, ...)
+{
+	if (display >= DISPLAY_COUNT) return;
+	if (line >= DISPLAY_PAGES) return;
+	if (offset * FONT_6X8_WIDTH >= DISPLAY_COLUMNS) return;
+
+	// Write format string to buffer
+	char buffer[2 * DISPLAY_COLUMNS / FONT_6X8_WIDTH]; // Extra space for escape codes
+	va_list args;
+	va_start(args, format);
+	vsnprintf(buffer, sizeof(buffer), format, args);
+	va_end(args);
+
+	char* string = &buffer[0];
+
+	// Send string to the display
+	uint8_t inverted = 0, column = 0;
+	set_region(display, offset * FONT_6X8_WIDTH, DISPLAY_COLUMNS - 1, line, line);
+	transmit_start(display, 1);
+	while (*string != '\0')
+	{
+		uint8_t character = *(string++);
+		if (character == '\t') {
+			inverted = !inverted;
+			continue;
+		}
+		if (character < FONT_6X8_MIN || character > FONT_6X8_MAX){
+			continue;
+		}
+
+		const uint8_t* character_data = font_6x8[character - FONT_6X8_MIN];
+		for (uint8_t col = 0; col < FONT_6X8_WIDTH; col++)
+		{
+			uint8_t column_data = character_data[col];
+			if (inverted) column_data = ~column_data;
+			transmit_word(column_data);
+
+			// Stop if we run out of room
+			if (++column == DISPLAY_COLUMNS) break;
+		}
+	}
+	transmit_end();
+}
+
+void Driver_Display_ShowScore(uint8_t display, uint8_t score_a, uint8_t score_b)
+{
+	if (display >= DISPLAY_COUNT) return;
+	if (score_a > 99 || score_b > 99) return;
+
+	uint8_t tens_a = (score_a / 10) % 10;
+	uint8_t ones_a = score_a % 10;
+	uint8_t tens_b = (score_b / 10) % 10;
+	uint8_t ones_b = score_b % 10;
+
+	set_region(display, (DISPLAY_COLUMNS - FONT_SCORE_WIDTH * 5) / 2, DISPLAY_COLUMNS - 1, 3, 6);
+
+	transmit_start(display, 1);
+	for (size_t i = 0; i < sizeof(font_score[tens_a]); i++) transmit_word(font_score[tens_a][i]);
+	for (size_t i = 0; i < sizeof(font_score[ones_a]); i++) transmit_word(font_score[ones_a][i]);
+	for (size_t i = 0; i < sizeof(font_score[10]); i++) transmit_word(font_score[10][i]);
+	for (size_t i = 0; i < sizeof(font_score[tens_b]); i++) transmit_word(font_score[tens_b][i]);
+	for (size_t i = 0; i < sizeof(font_score[ones_b]); i++) transmit_word(font_score[ones_b][i]);
+	transmit_end();
+
+	Driver_Display_Print(display, 0, 0, "\t     Goals Scored     ");
+}
+
+void Driver_Display_FontTest(uint8_t display)
+{
+	if (display >= DISPLAY_COUNT) return;
+	Driver_Display_Clear(display);
+	Driver_Display_Print(0, 0, 0, " !\"#$%%&'()*+,-./");
+	Driver_Display_Print(0, 1, 0, "0123456789:;<=>?");
+	Driver_Display_Print(0, 2, 0, "@ABCDEFGHIJKLMNO");
+	Driver_Display_Print(0, 3, 0, "PQRSTUVWXYZ[\\]^_");
+	Driver_Display_Print(0, 4, 0, "`abcdefghijklmno");
+	Driver_Display_Print(0, 5, 0, "pqrstuvwxyz{|}~ ");
 }
