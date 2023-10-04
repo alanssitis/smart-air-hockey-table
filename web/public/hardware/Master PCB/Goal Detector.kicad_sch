@@ -779,7 +779,7 @@
   )
 
   (symbol (lib_id "Comparator:LM339") (at 116.84 77.47 0) (unit 2)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (in_bom yes) (on_board yes) (dnp no)
     (uuid 046980c1-31f2-4c50-97a6-85d9d672f056)
     (property "Reference" "U4" (at 116.84 67.31 0)
       (effects (font (size 1.27 1.27)))
@@ -793,20 +793,20 @@
     (property "Datasheet" "https://www.st.com/resource/en/datasheet/lm139.pdf" (at 118.11 72.39 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "2" (uuid 1a77cf86-f805-471c-a374-9127bf9965e9))
-    (pin "4" (uuid 19ad4b6d-764e-439e-b4a9-b6215fed82ab))
-    (pin "5" (uuid 103c57d5-f6fa-4ecf-84a7-c64203ac3842))
-    (pin "1" (uuid 51b3de83-972a-446c-abb5-0c4e79cd6bd1))
-    (pin "6" (uuid 3e9b7934-bd62-4eae-bdf1-7bbf2845604b))
-    (pin "7" (uuid 73a50c99-3dd3-4b71-969f-95144570df88))
-    (pin "10" (uuid ca005276-7f33-4862-812e-f1a53e26a668))
-    (pin "11" (uuid 8a4d0a36-80d6-4d57-9bf2-a3dcd5eecbcc))
-    (pin "13" (uuid 3ae2c829-24f7-4e28-becf-7ead9e78df08))
-    (pin "14" (uuid 9d159ee9-9cd9-4644-b4f0-df39fe3d6ca0))
-    (pin "8" (uuid 7cc0017f-a344-4366-b7eb-59e31dfdef2b))
-    (pin "9" (uuid 299ecb36-6618-44c3-aeb5-f721399c6a0d))
-    (pin "12" (uuid 155a3a58-b29e-48c5-be05-b1589fdb2961))
-    (pin "3" (uuid 9ff101ed-93a6-4821-95dd-f8ebfefc3214))
+    (pin "2" (uuid 182782b5-13c9-445f-a7e6-eb7d5f573390))
+    (pin "4" (uuid 38219d85-f89d-4b1c-90a1-f86fdea43d88))
+    (pin "5" (uuid 3cda2965-02fa-4bf5-a0e8-6ca8d8d58697))
+    (pin "1" (uuid cdfef8f2-3d08-4410-892b-25ef2f269491))
+    (pin "6" (uuid 206d56ff-cc5a-4e62-b689-a81c73cdb714))
+    (pin "7" (uuid 14b055eb-e9fe-4480-a710-ee8555541f6c))
+    (pin "10" (uuid 98368151-6231-46bc-b11c-fe18f216fdb6))
+    (pin "11" (uuid b15239b5-26b1-42bb-abea-a6d5242d3c87))
+    (pin "13" (uuid a1230fcc-ec33-4801-8b55-796c27c1521f))
+    (pin "14" (uuid 300a2a48-24fc-479f-aac1-593b534b3961))
+    (pin "8" (uuid e920f286-38d7-49d3-8163-7d9386733aca))
+    (pin "9" (uuid fcf6e728-1487-47c8-8171-2be73a079298))
+    (pin "12" (uuid 1af79989-2705-48d2-a7c2-dc7dee6868ee))
+    (pin "3" (uuid 64fe33f3-7376-4ea0-99df-c793a55f245d))
     (instances
       (project "Master PCB"
         (path "/61606422-4f73-4717-9ce6-6ac5e634e7ae/9876d17e-eaad-4a0b-a2c8-e5b20ec43f59"
@@ -881,7 +881,7 @@
     (property "Datasheet" "" (at 39.37 63.5 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 2ec7594b-9c14-48e7-8492-29c0806e6010))
+    (pin "1" (uuid 2aa7fb6b-2af5-4e14-a9d7-b7dea21d44af))
     (instances
       (project "Master PCB"
         (path "/61606422-4f73-4717-9ce6-6ac5e634e7ae/9876d17e-eaad-4a0b-a2c8-e5b20ec43f59"
@@ -906,8 +906,8 @@
     (property "Datasheet" "~" (at 43.18 81.28 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 87e627e6-291b-44ef-9f65-92e0774c4323))
-    (pin "2" (uuid 06a5a47a-e384-4cde-aad0-18727fddc365))
+    (pin "1" (uuid fa7b6f77-5f54-481a-b222-32520de15e80))
+    (pin "2" (uuid e179a156-de47-4816-8a86-58c97f63475f))
     (instances
       (project "Master PCB"
         (path "/61606422-4f73-4717-9ce6-6ac5e634e7ae/9876d17e-eaad-4a0b-a2c8-e5b20ec43f59"
@@ -957,7 +957,7 @@
     (property "Datasheet" "" (at 38.1 73.66 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 80bf042d-09f6-4c2b-98aa-45d140df2682))
+    (pin "1" (uuid 3d226976-7ff2-42f3-b6e5-54d894f2b0d6))
     (instances
       (project "Master PCB"
         (path "/61606422-4f73-4717-9ce6-6ac5e634e7ae/9876d17e-eaad-4a0b-a2c8-e5b20ec43f59"
@@ -1058,7 +1058,7 @@
   )
 
   (symbol (lib_id "Comparator:LM339") (at 175.26 76.2 0) (unit 3)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (in_bom yes) (on_board yes) (dnp no)
     (uuid 533ca259-219e-411b-b8a1-d19fbd8ad3ab)
     (property "Reference" "U4" (at 175.26 66.04 0)
       (effects (font (size 1.27 1.27)))
@@ -1072,20 +1072,20 @@
     (property "Datasheet" "https://www.st.com/resource/en/datasheet/lm139.pdf" (at 176.53 71.12 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "2" (uuid 1bf847b6-125f-4ba9-9917-02048d297d16))
-    (pin "4" (uuid 53d0049e-6f63-407a-a6f6-2fc6fa1ecc18))
-    (pin "5" (uuid 9d10782d-1f5d-4180-aa24-20565e9d8f84))
-    (pin "1" (uuid 896810b6-d4b5-4390-8de5-ae1e848cc6ca))
-    (pin "6" (uuid 51be1ba6-99b6-4b21-87a0-5f8292be43d9))
-    (pin "7" (uuid 3da0fd6d-ab9a-4918-85af-11ae59eeda4a))
-    (pin "10" (uuid d5f92d59-9180-471f-a23f-cbae76f3f32f))
-    (pin "11" (uuid d5b59b83-f511-44df-a6a3-c2e7f4e35d57))
-    (pin "13" (uuid e88c053a-6520-499f-8e9d-3f725e5b42a2))
-    (pin "14" (uuid 55a2d186-3aa6-4482-8afc-83ee17503bfc))
-    (pin "8" (uuid 2dd5bbf6-9b2c-4ffc-bb95-4c2cdc561258))
-    (pin "9" (uuid 4464ae20-f1a3-4b19-9f4a-e8a80fcbe7b5))
-    (pin "12" (uuid 24591036-ec65-4c40-bbc7-0d1b1d4f6ffb))
-    (pin "3" (uuid d99926e9-1aca-4a00-a2d0-a5461fcce577))
+    (pin "2" (uuid 0ad6c129-9c88-49b5-a2a4-9e377ea694ce))
+    (pin "4" (uuid ee09700c-67a6-4cb9-9fa4-acecf09452f1))
+    (pin "5" (uuid 62918b7e-f18e-42a0-8758-d169444cff73))
+    (pin "1" (uuid d6cb5665-64fe-4a12-9adf-1691ce05a8e3))
+    (pin "6" (uuid 005aa455-2c8d-46ee-a7b6-f2a99784877d))
+    (pin "7" (uuid 7da97b40-4caf-4638-b1a6-5c11507bbeae))
+    (pin "10" (uuid 16b9abbc-1ce3-494a-9119-6bf7b98389ac))
+    (pin "11" (uuid 25373836-d1b9-4494-883d-513ad695adee))
+    (pin "13" (uuid 3585d57b-2308-4e72-924d-da194aea5bc5))
+    (pin "14" (uuid f0f1f993-4cbc-4f19-b369-67de6c5f8b05))
+    (pin "8" (uuid 0518812a-cf53-4457-b9a9-045531d45b38))
+    (pin "9" (uuid e33e7812-3a81-4700-aa66-d38b4db0cc35))
+    (pin "12" (uuid cf141556-c1c8-4aaf-8582-68c8d6f4e299))
+    (pin "3" (uuid 286c303a-f784-4277-b384-00ed64a659b8))
     (instances
       (project "Master PCB"
         (path "/61606422-4f73-4717-9ce6-6ac5e634e7ae/9876d17e-eaad-4a0b-a2c8-e5b20ec43f59"
@@ -1302,7 +1302,7 @@
   )
 
   (symbol (lib_id "Comparator:LM339") (at 58.42 78.74 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (in_bom yes) (on_board yes) (dnp no)
     (uuid a724bbd8-5f75-4399-acec-09c0774f2db8)
     (property "Reference" "U4" (at 58.42 68.58 0)
       (effects (font (size 1.27 1.27)))
@@ -1316,20 +1316,20 @@
     (property "Datasheet" "https://www.st.com/resource/en/datasheet/lm139.pdf" (at 59.69 73.66 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "2" (uuid 320cf2dc-31c4-4939-9283-3d7872db6847))
-    (pin "4" (uuid 6f061f32-d8f1-492f-b2e5-c2bb192e9b2d))
-    (pin "5" (uuid ea81f29b-2a05-4d42-a81e-60ea751c4143))
-    (pin "1" (uuid de12d57b-d9f3-4719-812e-9a780ff17790))
-    (pin "6" (uuid 0031f116-becd-4076-90ac-a08b46a61d8b))
-    (pin "7" (uuid 68f4a123-225f-4a75-8ab4-6c20a996be47))
-    (pin "10" (uuid f7eba536-4518-4145-818e-60179e37f930))
-    (pin "11" (uuid 81d2adcc-fda0-4cc5-8760-0170fb91e264))
-    (pin "13" (uuid b01e55c4-7bf0-4ba4-8416-a229d7d0bbe2))
-    (pin "14" (uuid ca2ce5ed-6f76-4a11-9290-4d30e9e20c32))
-    (pin "8" (uuid 693e8595-2788-4a63-88f3-bb451a4b1c79))
-    (pin "9" (uuid 540ef9ed-045c-4d1c-b9bc-4862e5164443))
-    (pin "12" (uuid f6287386-d378-4883-a33c-e3a2f90ed5f6))
-    (pin "3" (uuid 9244bde0-69a2-475a-b9f3-a2cfbdfe7bd6))
+    (pin "2" (uuid 848690ec-a9a2-401e-bf87-4297c159b40b))
+    (pin "4" (uuid 5182116f-cbeb-4d67-a98e-95b181fd981e))
+    (pin "5" (uuid 7bd0aa54-25ba-4af9-b855-73803c3eaf4b))
+    (pin "1" (uuid 27c25f2a-50fd-4ed8-99d2-b650ab95faad))
+    (pin "6" (uuid 808fc908-e9d3-4071-aaa7-1091a5f1a8d2))
+    (pin "7" (uuid 5890e9cf-3c8b-41a2-ac80-6e0be67219a9))
+    (pin "10" (uuid 2f3192a5-3568-4228-a5e9-04d6dc9c9f83))
+    (pin "11" (uuid 26e11a66-f02e-4832-9067-91fddbc6240f))
+    (pin "13" (uuid 90eb7f5b-3f2c-4377-b8d7-8a33458cd343))
+    (pin "14" (uuid 250a4e40-ce7f-4d9b-bdd6-9b9d10ce66ed))
+    (pin "8" (uuid d3135582-665c-41ab-9e27-b0c16813e0bf))
+    (pin "9" (uuid cde590ab-9a23-45f0-9cfc-3d15dc40f6cf))
+    (pin "12" (uuid 1c7994fc-770a-46bb-b57b-e8a3eac797c8))
+    (pin "3" (uuid 2b1799c6-d464-428b-bbfe-768ae5b8c2d8))
     (instances
       (project "Master PCB"
         (path "/61606422-4f73-4717-9ce6-6ac5e634e7ae/9876d17e-eaad-4a0b-a2c8-e5b20ec43f59"
@@ -1391,7 +1391,7 @@
   )
 
   (symbol (lib_id "Comparator:LM339") (at 232.41 74.93 0) (unit 4)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (in_bom yes) (on_board yes) (dnp no)
     (uuid b2e0f3a3-1ba9-4aef-b2e1-91e96adf65ff)
     (property "Reference" "U4" (at 232.41 64.77 0)
       (effects (font (size 1.27 1.27)))
@@ -1405,20 +1405,20 @@
     (property "Datasheet" "https://www.st.com/resource/en/datasheet/lm139.pdf" (at 233.68 69.85 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "2" (uuid cd9947b1-9918-4a06-8e15-97bf838f7540))
-    (pin "4" (uuid d34ee050-df9f-430c-9fbb-b0a673381745))
-    (pin "5" (uuid e85cbe6a-9ec3-4604-84ef-6e4f695b18f5))
-    (pin "1" (uuid 2d32772a-05a0-4d57-8db5-fe1d5055ac80))
-    (pin "6" (uuid 1d9aea2e-2242-48ce-941f-951f23128276))
-    (pin "7" (uuid b63d59fa-71d5-4317-91a4-d5de66e56667))
-    (pin "10" (uuid c22d123e-849e-4ad5-9550-0637cf3db3c9))
-    (pin "11" (uuid 3e034aa9-5904-4919-a1ff-1b23efdc4878))
-    (pin "13" (uuid 54ab21e2-39f9-408e-a644-8b2872155a35))
-    (pin "14" (uuid 32c15694-a5c5-4777-810e-bf54fe3d5e05))
-    (pin "8" (uuid cdd13323-3127-4c81-bf87-4bb0a35be53b))
-    (pin "9" (uuid 3c26a262-23cb-45c2-ae58-19dfdae263da))
-    (pin "12" (uuid f74dee29-2903-4c7f-a318-43f6fe5d61de))
-    (pin "3" (uuid 6a446c39-b521-433d-8499-9e5ad47ff4b3))
+    (pin "2" (uuid 96f7abf6-2b69-4751-9d4b-96ec6c9fca08))
+    (pin "4" (uuid 26a8d761-c0da-4b40-a2c8-b7b6fe201418))
+    (pin "5" (uuid 983d4f6c-18f3-4b54-a9b0-a45a4e31e3b2))
+    (pin "1" (uuid f2086a77-d75b-423e-ad34-ff4e9645b8cd))
+    (pin "6" (uuid 5b69d1b0-794d-4bcb-888b-fef7b47952ec))
+    (pin "7" (uuid 8ca5ebd2-ad9f-4513-8a86-a48ac74e616f))
+    (pin "10" (uuid 610b54d5-24a8-4878-93f5-1a3d8338b645))
+    (pin "11" (uuid 9bc0d512-d138-4a77-9fdb-b6b0ce5109a9))
+    (pin "13" (uuid 86b9c6d0-4598-4a43-b146-a102762ff3a8))
+    (pin "14" (uuid 8db8e2e7-85cc-4e5b-9b90-39a162be823b))
+    (pin "8" (uuid 7d052d96-f0d1-418d-ae93-9ddd5569e21e))
+    (pin "9" (uuid 0c0d3f5e-b7f5-458f-a090-622cdf41055a))
+    (pin "12" (uuid b3f56cbf-d927-4807-b21d-81fa952a49d5))
+    (pin "3" (uuid 3fa71f25-f4a3-459b-bb00-3898d70e8c73))
     (instances
       (project "Master PCB"
         (path "/61606422-4f73-4717-9ce6-6ac5e634e7ae/9876d17e-eaad-4a0b-a2c8-e5b20ec43f59"
@@ -1443,9 +1443,9 @@
     (property "Datasheet" "~" (at 45.72 66.04 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 482c9e39-0472-4892-9da6-9f4a0a46df3a))
-    (pin "2" (uuid 4251d562-eb66-4a71-9aca-a5db34862364))
-    (pin "3" (uuid 3907d6c9-c76c-4143-95f7-3eb64109cbef))
+    (pin "1" (uuid 07305af2-b2d1-48f3-a420-42755916b6e5))
+    (pin "2" (uuid 6264ab63-6499-43f1-858c-4b2dde27f868))
+    (pin "3" (uuid d58e3e22-168c-447a-b741-aa758c6f26cc))
     (instances
       (project "Master PCB"
         (path "/61606422-4f73-4717-9ce6-6ac5e634e7ae/9876d17e-eaad-4a0b-a2c8-e5b20ec43f59"
@@ -1470,7 +1470,7 @@
     (property "Datasheet" "" (at 212.09 69.85 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 5f614a7b-e6e1-4ebb-a5f6-b29b5de58acf))
+    (pin "1" (uuid 18b0ebff-aecf-4f3c-a279-146ebd36c5a1))
     (instances
       (project "Master PCB"
         (path "/61606422-4f73-4717-9ce6-6ac5e634e7ae/9876d17e-eaad-4a0b-a2c8-e5b20ec43f59"
@@ -1495,7 +1495,7 @@
     (property "Datasheet" "" (at 52.07 68.58 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 599af527-89a9-4fe2-a5b6-2e4760b3b2f9))
+    (pin "1" (uuid 727e5e3f-6a2d-4e71-a69d-58dacf599a23))
     (instances
       (project "Master PCB"
         (path "/61606422-4f73-4717-9ce6-6ac5e634e7ae/9876d17e-eaad-4a0b-a2c8-e5b20ec43f59"
