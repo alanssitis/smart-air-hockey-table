@@ -22,13 +22,8 @@ static void transmit_start(uint8_t display, uint8_t isData)
 	else LL_GPIO_ResetOutputPin(GPIOC, LL_GPIO_PIN_2);
 
 	// CS#
-	if (display & 0x01)
-	{
-		LL_GPIO_ResetOutputPin(GPIOC, LL_GPIO_PIN_3);
-	} else if (display & 0x02)
-	{
-		//LL_GPIO_ResetOutputPin(GPIOC, LL_GPIO_PIN_X);
-	}
+	if (display & 0x01) LL_GPIO_ResetOutputPin(GPIOC, LL_GPIO_PIN_3);
+	//if (display & 0x02) LL_GPIO_ResetOutputPin(GPIOC, LL_GPIO_PIN_X);
 	LL_mDelay(1);
 }
 
