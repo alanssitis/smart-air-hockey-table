@@ -30,8 +30,7 @@ static void transmit_start(uint8_t display, uint8_t isData)
 static void transmit_end()
 {
 	// CS#
-	LL_GPIO_SetOutputPin(GPIOC, LL_GPIO_PIN_3);
-	//LL_GPIO_SetOutputPin(GPIOC, LL_GPIO_PIN_X);
+	LL_GPIO_SetOutputPin(GPIOC, LL_GPIO_PIN_3 /*| LL_GPIO_PIN_X*/);
 }
 
 static void transmit_word(uint8_t word)
