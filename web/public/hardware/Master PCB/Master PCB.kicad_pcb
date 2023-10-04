@@ -6951,7 +6951,7 @@
   (gr_text "COL6" (at 148.54 57.33 270) (layer "F.SilkS") (tstamp 14f46ef2-bd06-497b-941f-56a63f2329e9)
     (effects (font (size 1 1) (thickness 0.2) bold) (justify left))
   )
-  (gr_text "Alan Chung Ma\nWilliam Dobert\nTrevor Moorman\nBen Owen" (at 160.5 129.8) (layer "F.SilkS") (tstamp 15f10a76-843d-45e1-9aff-452ec163a9d9)
+  (gr_text "Alan Chung Ma\nWilliam Dobert\nTrevor Moorman\nBen Owen" (at 157.6 129.8) (layer "F.SilkS") (tstamp 15f10a76-843d-45e1-9aff-452ec163a9d9)
     (effects (font (size 1.5 1.5) (thickness 0.3) bold) (justify left bottom))
   )
   (gr_text "RELAY" (at 197.55 96 90) (layer "F.SilkS") (tstamp 165ea043-805f-4add-aa63-a25f63ade1dc)
