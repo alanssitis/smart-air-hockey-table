@@ -2521,7 +2521,7 @@
   (gr_text "Alan Chung Ma\nWill Dobert\nTrevor Moorman\nBen Owen" (at 140.9 118.4) (layer "B.SilkS") (tstamp cf081d29-6d9f-4a79-91e4-6485cf055382)
     (effects (font (size 1 1) (thickness 0.2) bold) (justify left bottom mirror))
   )
-  (gr_text "ECE 477 Group 5\nSensor PCB\nRev. A\n2023-10-10" (at 155 118.4) (layer "B.SilkS") (tstamp e5d23943-a735-4c5f-8417-de2c66144c6f)
+  (gr_text "ECE 477 Group 5\nSensor PCB\nRev. A\n2023-10-04" (at 155 118.4) (layer "B.SilkS") (tstamp e5d23943-a735-4c5f-8417-de2c66144c6f)
     (effects (font (size 1 1) (thickness 0.2) bold) (justify left bottom mirror))
   )
   (gr_text "GND" (at 121.9 96.3) (layer "F.SilkS") (tstamp 0134e7b6-bfa7-4edc-90ad-f3b53228cc7b)
