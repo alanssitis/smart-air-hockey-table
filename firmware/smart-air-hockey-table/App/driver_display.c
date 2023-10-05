@@ -117,13 +117,12 @@ void Driver_Display_Print(uint8_t display, uint8_t line, uint8_t offset, const c
 	while (*string != '\0')
 	{
 		uint8_t character = *(string++);
-		if (character == '\t') {
+		if (character == '\t')
+		{
 			inverted = !inverted;
 			continue;
 		}
-		if (character < FONT_6X8_MIN || character > FONT_6X8_MAX) {
-			continue;
-		}
+		if (character < FONT_6X8_MIN || character > FONT_6X8_MAX) continue;
 
 		const uint8_t* character_data = font_6x8[character - FONT_6X8_MIN];
 		for (uint8_t col = 0; col < FONT_6X8_WIDTH; col++)
