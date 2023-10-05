@@ -79,7 +79,7 @@ void Driver_Display_Init()
 	transmit_end();
 
 	// Clear GDDRAM
-	Driver_Display_Clear(i);
+	Driver_Display_Clear(0xFF);
 
 	// Display on
 	transmit_start(0xFF, 0);
@@ -156,8 +156,6 @@ void Driver_Display_ShowScore(uint8_t display, uint8_t score_a, uint8_t score_b)
 	for (size_t i = 0; i < sizeof(font_score[tens_b]); i++) transmit_word(font_score[tens_b][i]);
 	for (size_t i = 0; i < sizeof(font_score[ones_b]); i++) transmit_word(font_score[ones_b][i]);
 	transmit_end();
-
-	Driver_Display_Print(display, 0, 0, "\t     Goals Scored     ");
 }
 
 void Driver_Display_FontTest(uint8_t display)
