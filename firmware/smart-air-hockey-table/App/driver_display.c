@@ -121,7 +121,7 @@ void Driver_Display_Print(uint8_t display, uint8_t line, uint8_t offset, const c
 			inverted = !inverted;
 			continue;
 		}
-		if (character < FONT_6X8_MIN || character > FONT_6X8_MAX){
+		if (character < FONT_6X8_MIN || character > FONT_6X8_MAX) {
 			continue;
 		}
 
