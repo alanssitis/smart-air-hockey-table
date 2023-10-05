@@ -6,6 +6,7 @@
 
 #include "app_debug.h"
 #include "driver_led.h"
+#include "driver_display.h"
 
 void App_Init()
 {
@@ -18,6 +19,7 @@ void App_Init()
 	LL_Init1msTick(rcc_clocks->HCLK_Frequency);
 
 	Driver_LED_Init();
+	Driver_Display_Init();
 
 	Debug_Log("Init done!");
 

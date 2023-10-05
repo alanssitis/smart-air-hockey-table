@@ -35,6 +35,7 @@ extern "C" {
 #include "stm32f4xx_ll_cortex.h"
 #include "stm32f4xx_ll_utils.h"
 #include "stm32f4xx_ll_pwr.h"
+#include "stm32f4xx_ll_spi.h"
 #include "stm32f4xx_ll_tim.h"
 #include "stm32f4xx_ll_usart.h"
 #include "stm32f4xx_ll_gpio.h"
@@ -73,6 +74,12 @@ void Error_Handler(void);
 /* Private defines -----------------------------------------------------------*/
 #define B1_Pin LL_GPIO_PIN_13
 #define B1_GPIO_Port GPIOC
+#define Display_RES_Pin LL_GPIO_PIN_0
+#define Display_RES_GPIO_Port GPIOC
+#define Display_DC_Pin LL_GPIO_PIN_2
+#define Display_DC_GPIO_Port GPIOC
+#define Display0_CS_Pin LL_GPIO_PIN_3
+#define Display0_CS_GPIO_Port GPIOC
 #define USART_TX_Pin LL_GPIO_PIN_2
 #define USART_TX_GPIO_Port GPIOA
 #define USART_RX_Pin LL_GPIO_PIN_3
