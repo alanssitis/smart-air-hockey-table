@@ -15,7 +15,7 @@ title: Trevor Moorman Progress Report
 
 **Hardware**
 
-- After receiving the team's KiCad order, I confirmed all components were included in the package. After which, I sent pictures of the shipping confirmation information to Ben to be sent to procurement.
+- After receiving the team's Digikey order, I confirmed all components were included in the package. After which, I sent pictures of the shipping confirmation information to Ben to be sent to procurement.
 
 - Visited the ECE shop several times to gather electrical components needed by the team for testing or soldering PCBs. \
   Components included, but were not limited to: resistors (100 Ohm, 1 kOhm, 10 kOhm), capacitors (10 nF, 1 uF, 4.7 uF, 10 uF), various potentiometers, LDRs, LEDs (red, yellow, and blue), LM339, dupont wires (male to female), and 2n7000 THT mosfets. \
@@ -45,9 +45,9 @@ _Figure 3: A soldered Sensor PCB._
 
 _Figure 4: A 2x2 group of connected Sensor PCBs._
 
-- Assisted Ben in soldering and testing the buck converted on the Master PCB. We consulted the buck convertor's [datasheet](https://www.ti.com/lit/ds/symlink/tlv62568.pdf) to make sure our design matches. After confirming that our design matched the datasheets suggested design exactly, we performed several tests using the lab's digital multimeter. During our tests, we noticed that performing a test with the digital multimeter induced a transient response. We were unable to determine the issue before I had to leave, but Ben soon after discovered a faulty resistor connection. The digital multimeter's impedance when probing the circuit is what induced the transient response. Fixing the faulty resistor connection fixed the buck convertor.
+- Assisted Ben in soldering and testing the buck converter on the Master PCB. We consulted the buck converter's [datasheet](https://www.ti.com/lit/ds/symlink/tlv62568.pdf) to make sure our design matches. After confirming that our design matched the datasheet's suggested design exactly, we performed several tests using the lab's digital multimeter. During our tests, we noticed that performing a test with the digital multimeter induced a transient response. We were unable to determine the issue before I had to leave, but Ben soon after discovered a faulty resistor connection. The digital multimeter's impedance when probing the circuit is what induced the transient response. Fixing the faulty resistor connection fixed the buck converter.
 
-- Worked alongside Ben to test the encoder by building the PCB layout on a breadboard then measuring the rotary encoder's response on a oscilloscope. The rotary encoder's button worked as expected, but we were unsure whether the rotary encoder's rotations were creating the expected output or not. Further testing was performed by Will.
+- Worked alongside Ben to test the encoder by building the PCB layout on a breadboard then measuring the rotary encoder's response on an oscilloscope. The rotary encoder's button worked as expected, but we were unsure whether the rotary encoder's rotations were creating the expected output or not. Further testing was performed by Will.
 
 **Firmware**
 
