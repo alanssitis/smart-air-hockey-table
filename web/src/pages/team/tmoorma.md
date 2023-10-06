@@ -8,8 +8,8 @@ title: Trevor Moorman Progress Report
 ## Week 7
 
 **Date:** 10/06/2023 \
-**Project Hours Since Last Report:** TODO \
-**Cumulative Semester Project Hours:** TODO
+**Project Hours Since Last Report:** 12 \
+**Cumulative Semester Project Hours:** 89
 
 ### Description of Individual Project Work Efforts:
 
@@ -19,17 +19,15 @@ title: Trevor Moorman Progress Report
 
 - Visited the ECE shop several times to gather electrical components needed by the team for testing or soldering PCBs. \
   Components included, but were not limited to: resistors (100 Ohm, 1 kOhm, 10 kOhm), capacitors (10 nF, 1 uF, 4.7 uF, 10 uF), various potentiometers, LDRs, LEDs (red, yellow, and blue), LM339, dupont wires (male to female), and 2n7000 THT mosfets. \
-  Some components, such as white LEDs and 0.1 uF capacitors, were requested by the team but were unavailable from the ECE shop. 
-
-_Table 1: TODO_
+  Some components, such as white LEDs and 0.1 uF capacitors, were requested by the team but were unavailable from the ECE shop.
 
 - Tested the new LDR circuit designed by Ben which iterated on my previous design. Ben's new design switches the potentiometer to the positive input of the comparator, which allows for a modifiable voltage divider that is then compared to the LDR's negative input. This allows for greater control over the comparator's threshold and removes a resistor.
 
 <img src="/477grp5/team/trevor/Trevor_Week7_LdrSchematics.PNG" width="60%">
 
-_Figure 1: On the left, the new LDR circuit. On the right, the old LDR circuit._
+_Figure 1: On the left, the Ben's new LDR circuit. On the right, the old LDR circuit._
 
-<img src="/477grp5/team/trevor/Trevor_Week7_LdrTest.jpg" width="60%">
+<img src="/477grp5/team/trevor/Trevor_Week7_LdrTest.jpg" width="40%">
 
 _Figure 2: Test of the new LDR circuit._
 
@@ -59,11 +57,11 @@ _Figure 4: A 2x2 group of connected Sensor PCBs._
 
 - Minor improvements made based on feedback from Ben. (See figures 5 and 6 below for a comparison)
 
-<img src="/477grp5/team/trevor/Trevor_Week6_SensorSchematicNew.PNG" width="60%">
+<img src="/477grp5/team/trevor/Trevor_Week6_SensorSchematicNew.PNG" width="80%">
 
 _Figure 5: Sensor schematic before Ben's feedback._
 
-<img src="/477grp5/team/trevor/Trevor_Week7_SensorSchematicNew.PNG" width="60%">
+<img src="/477grp5/team/trevor/Trevor_Week7_SensorSchematicNew.PNG" width="80%">
 
 _Figure 6: Sensor sechematic after Ben's feedback._
 
@@ -75,7 +73,7 @@ _Figure 6: Sensor sechematic after Ben's feedback._
 
 - Took pictures to illustrate the blower set-up.
 
-<img src="/477grp5/team/trevor/Trevor_Week7_BlowerSetup.PNG" width="60%">
+<img src="/477grp5/team/trevor/Trevor_Week7_BlowerSetup.jpg" width="60%">
 
 _Figure 7: Blower setup._
 
