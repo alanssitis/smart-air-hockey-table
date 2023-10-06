@@ -102,14 +102,14 @@ void Error_Handler(void);
 #define DEBUG3_GPIO_Port GPIOC
 #define DEBUG4_Pin LL_GPIO_PIN_3
 #define DEBUG4_GPIO_Port GPIOC
+#define LED1OUT_Pin LL_GPIO_PIN_0
+#define LED1OUT_GPIO_Port GPIOA
 #define LED2OUT_Pin LL_GPIO_PIN_1
 #define LED2OUT_GPIO_Port GPIOA
 #define LED3OUT_Pin LL_GPIO_PIN_2
 #define LED3OUT_GPIO_Port GPIOA
 #define LED4OUT_Pin LL_GPIO_PIN_3
 #define LED4OUT_GPIO_Port GPIOA
-#define LED1OUT_Pin LL_GPIO_PIN_5
-#define LED1OUT_GPIO_Port GPIOA
 #define ROW0_Pin LL_GPIO_PIN_6
 #define ROW0_GPIO_Port GPIOA
 #define ROW1_Pin LL_GPIO_PIN_7
