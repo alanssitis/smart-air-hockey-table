@@ -5,6 +5,102 @@ title: Trevor Moorman Progress Report
 
 # Progress Report for Trevor
 
+## Week 7
+
+**Date:** 10/06/2023 \
+**Project Hours Since Last Report:** TODO \
+**Cumulative Semester Project Hours:** TODO
+
+### Description of Individual Project Work Efforts:
+
+**Hardware**
+
+- After receiving the team's KiCad order, I confirmed all components were included in the package. After which, I sent pictures of the shipping confirmation information to Ben to be sent to procurement.
+
+- Visited the ECE shop several times to gather electrical components needed by the team for testing or soldering PCBs. \
+  Components included, but were not limited to: resistors (100 Ohm, 1 kOhm, 10 kOhm), capacitors (10 nF, 1 uF, 4.7 uF, 10 uF), various potentiometers, LDRs, LEDs (red, yellow, and blue), LM339, dupont wires (male to female), and 2n7000 THT mosfets. \
+  Some components, such as white LEDs and 0.1 uF capacitors, were requested by the team but were unavailable from the ECE shop. 
+
+_Table 1: TODO_
+
+- Tested the new LDR circuit designed by Ben which iterated on my previous design. Ben's new design switches the potentiometer to the positive input of the comparator, which allows for a modifiable voltage divider that is then compared to the LDR's negative input. This allows for greater control over the comparator's threshold and removes a resistor.
+
+<img src="/477grp5/team/trevor/Trevor_Week7_LdrSchematics.PNG" width="60%">
+
+_Figure 1: On the left, the new LDR circuit. On the right, the old LDR circuit._
+
+<img src="/477grp5/team/trevor/Trevor_Week7_LdrTest.jpg" width="60%">
+
+_Figure 2: Test of the new LDR circuit._
+
+- Assisted Ben and Alan in soldering Sensor PCBs. This primarily consisted of getting the required passives and breaking apart the 1x8 angled pin headers into 1x2 angled pin headers.
+
+<img src="/477grp5/team/trevor/Trevor_Week7_SensorSoldered.jpg" width="60%">
+
+_Figure 3: A soldered Sensor PCB._
+
+- Alongside the rest of the team, tested a single Sensor PCB (including an overnight stress test).
+
+- Alongside the rest of the team, tested a 2x2 and 2x3 group of connected Sensor PCBs.
+
+<img src="/477grp5/team/trevor/Trevor_Week7_Sensor2x2.jpg" width="60%">
+
+_Figure 4: A 2x2 group of connected Sensor PCBs._
+
+- Assisted Ben in soldering and testing the buck converted on the Master PCB. We consulted the buck convertor's [datasheet](https://www.ti.com/lit/ds/symlink/tlv62568.pdf) to make sure our design matches. After confirming that our design matched the datasheets suggested design exactly, we performed several tests using the lab's digital multimeter. During our tests, we noticed that performing a test with the digital multimeter induced a transient response. We were unable to determine the issue before I had to leave, but Ben soon after discovered a faulty resistor connection. The digital multimeter's impedance when probing the circuit is what induced the transient response. Fixing the faulty resistor connection fixed the buck convertor.
+
+- Worked alongside Ben to test the encoder by building the PCB layout on a breadboard then measuring the rotary encoder's response on a oscilloscope. The rotary encoder's button worked as expected, but we were unsure whether the rotary encoder's rotations were creating the expected output or not. Further testing was performed by Will.
+
+**Firmware**
+
+- Assisted Will in fixing the ASCII printable character alphabet for the OLEDs.
+
+**Sensor Schematic**
+
+- Minor improvements made based on feedback from Ben. (See figures 5 and 6 below for a comparison)
+
+<img src="/477grp5/team/trevor/Trevor_Week6_SensorSchematicNew.PNG" width="60%">
+
+_Figure 5: Sensor schematic before Ben's feedback._
+
+<img src="/477grp5/team/trevor/Trevor_Week7_SensorSchematicNew.PNG" width="60%">
+
+_Figure 6: Sensor sechematic after Ben's feedback._
+
+**Midterm Design Review**
+
+- Coordinated with the team what needs to be done before the midterm design review; hardware, firmware, and presentation. Hardware and firmware are both ready for the presentation. For the slideshow, I am responsible for the electrical schematic and PCB layout for the Sensor PCB. After completing my section, I will give feedback on the other team members' sections.
+
+- Added notes to design documents marking what needs to be updated to reflect our current design.
+
+- Took pictures to illustrate the blower set-up.
+
+<img src="/477grp5/team/trevor/Trevor_Week7_BlowerSetup.PNG" width="60%">
+
+_Figure 7: Blower setup._
+
+### Next Steps:
+
+**Midterm Design Review**
+
+- As mentioned previously, I will create the slides for the electrical schematic and PCB layout of the Sensor PCB.
+
+- After completing my slides, I will provide feedback for the other members.
+
+- I will work alongside the rest of the team to edit the team's design documents using the notes that I have already added.
+
+- I will work alongside the rest of the team to update our team website in preparation for the midterm design review.
+
+**Firmware**
+
+- I will work with Will to convert our firmware to the new microcontroller.
+
+- I will fix the goal detection firmware to prevent multiple interrupts being generated by the same goal. This will be done by disabling the goal detection interrupts while the first interrupt is being serviced, then re-enabling the interrupts afterwards.
+
+**Sensor PCB**
+
+- Currently, the team has not discovered any issues with the Sensor PCB that require a revision. However, if an issue is discovered, then I will lead development of revision B of the Sensor PCB.
+
 ## Week 6
 
 **Date:** 09/29/2023 \
