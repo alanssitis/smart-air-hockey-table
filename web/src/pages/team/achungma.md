@@ -5,10 +5,106 @@ title: Alan Chung Ma Progress Report
 
 # Progress Report for Alan
 
+## Week 7
+
+**Date:** 2023-10-06 \
+**Week Hours:** 18 \
+**Total Hours:** 83
+
+### Description of Project Desgin Efforts
+
+This week, we were able to finish most of the sides of the table. The next steps
+are to make the dados and holes for the table itself. I also solder together a
+bunch of the daughter boards and test them.
+
+#### Finishing the sides of the table
+
+Me and will finished the sides of the table, finalizing the overall dimensions
+of the sides of the table.
+
+Below is a picture of some of the finished sides.
+![Some finished sides](/477grp5/team/alan/week07/figure1.jpg)
+
+For the two outer edges, we added 45 degree miter cuts and below are the
+dimensions of each edge:
+
+```
+Outside Long Edge:
+  - Width: 9 1/2"
+  - Length: 72"
+  - Thickness: 5/8"
+
+Outside Short Edge:
+  - Width: 9 1/2"
+  - Length: 33 1/4"
+  - Thickness: 5/8"
+
+Inner Short Edge:
+  - Width: 8 3/4"
+  - Length: 32 3/8"
+  - Thickness: 1/2"
+```
+
+For the dados, the inner short edge will slide into a 3/16" dado in the outside
+long edge. There will be 1/4" dado in the bottom of the outside edges that will
+sit with the base.
+
+To finish the final edges we had to use the planar and jointer to obtain a flat
+plank of the correct thickness, and we then used the table saw and Miter saw to
+cut it to width and length. The table saw was then used to get the 45 degree
+miter edges.
+
+We were unable to cut out the dados as Dan, basically the head of the wood shop
+at BIDC, was not in office. This is because we would have needed to change out
+the blade on the table saw.
+
+#### Soldering the boards and putting together electrical components
+
+Since the parts from Digikey have finally arrived, I soldered a few sensor
+boards so that we can do some preliminary testing.
+
+Below is a picture of a finished soldered board:
+![single soldered sensor board](/477grp5/team/alan/week07/figure4.jpg)
+
+And below is a picture of a bunch of them connected together with Will's code:
+![a bunch of sensor boards connected together](/477grp5/team/alan/week07/figure3.jpg)
+
+We also got the following connectors to connect the blower with a three-prong
+AC wire for power instead of the somewhat sketch method we had previously:
+![connectors for blowers](/477grp5/team/alan/week07/figure2.jpg)
+
+After Ben soldered the STM32 U585 on the first revision of our master PCB, I was
+able to detect the chip and get its register values with `STMCubeProgrammer`.
+![connecting stm32 with cube programmer](/477grp5/team/alan/week07/figure5.jpg)
+
+#### Testing the soldered boards
+
+From the picture above, you can see that we are now testing how we are
+connecting our daughter boards. We are able to individually connect the LEDs and
+were able to see the hall effect sensors on the oscilloscope. We plan to set up
+a proper testing rig since for the hall effect sensors since we could not put it
+all together properly. A video was not taken but it was shown in ManLab.
+
+#### Fixing documents and preparing for midterm review presentation.
+
+We began [updating and fixing some of the documents](https://github.com/alanssitis/smart-air-hockey-table/pull/71)
+so that we can put it all up on the website before the midterm review presentation.
+
+I set up the slides and we began working on them. The slide deck will be up in
+[Documents](/477grp5/documents/) by Wednesday.
+
+### Next Steps
+
+Besides working on the slide deck for the presentation and updating all
+technical reports. I will be working on the CAD model of the table so that it
+can be worked on in the wood gantry. I will also help with setting up the
+architecture of the firmware.
+
 ## Week 6
 
 **Date:** 2023-09-29 \
-**Total Hours:** 12
+**Week Hours:** 12 \
+**Total Hours:** 67
 
 ### Description of Project Design Efforts
 
@@ -83,7 +179,8 @@ will play a significant role in bringing our project closer to realization.
 ## Week 5
 
 **Date:** 2023-09-22 \
-**Total Hours:** 11
+**Week Hours:** 11 \
+**Total Hours:** 55
 
 ### Description of Project Design Efforts
 
@@ -171,7 +268,8 @@ what the board will act like.
 ## Week 4
 
 **Date:** 2023-09-15 \
-**Total Hours:** 10
+**Week Hours:** 16 \
+**Total Hours:** 44
 
 ### Description of Project Design Efforts
 
@@ -268,7 +366,8 @@ able to take advantage of the newer programmer tooling available out there.
 ## Week 3
 
 **Date:** 2023-09-08 \
-**Total Hours:** 18
+**Week Hours:** 18 \
+**Total Hours:** 34
 
 ### Description of Project Design Efforts
 
@@ -411,6 +510,7 @@ _Caption: "Battleship" puck detection system_
 ## Week 1 & 2
 
 **Date:** 2023-09-01 \
+**Week Hours:** 16 \
 **Total Hours:** 16
 
 ### Description of Project Design Efforts
