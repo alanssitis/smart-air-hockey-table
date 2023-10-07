@@ -5,6 +5,64 @@ title: Ben Owen Progress Report
 
 # Progress Report for Ben
 
+## Week 7
+
+**Date:** 2023-10-06 \
+**Project Hours Since Last Report:** 20 \
+**Total Hours:** 94
+
+### Description of Project Design Effors
+
+Lots of PCB design work, soldering, and testing.
+
+**Master PCB Design**
+
+Although we haven't found any issues with our master PCB, we decided to make some revisions for convenience for future testing.  This mainly consisted of expanding the PCB size to 100x100mm and placing components more conservatively, giving us much more room on the board.  The only additional components include ESD protection ICs on some of the external signals, and an optional external oscillator.
+
+<img src="/477grp5/team/ben/week7-master-pcb-layout.png" width="80%">
+
+_Figure 1: Master PCB Rev. B layout_
+
+<img src="/477grp5/team/ben/week7-master-pcb-render.png" width="80%">
+
+_Figure 2: Master PCB Rev. B render_
+
+**Master PCB soldering**
+
+Our Rev. A board still needed components placed.  I spent a lot of time putting everything on the board, and we were able to test connecting and flashing to the STM32 before the team left for break.  A picture of the PCB can be seen in Figure 3 and an image of us connected to the STM is shown in Figure 4.
+
+<img src="/477grp5/team/ben/week7-master-pcb-soldered.jpg" width="80%">
+
+_Figure 3: Master PCB Rev. A_
+
+<img src="/477grp5/team/ben/week7-stm-connected.jpg" width="80%">
+
+_Figure 4: Connected to STM32_
+
+**Sensor PCB soldering/testing**
+
+We put together 8 of our sensor PCBs, and tested the interconnection feature of the boards.  We were able to send LED data across multiple boards.  We were also able to see hall effect sensor data, also across multiple PCBs.  An image of the connected boards can be seen in Figure 5.
+
+<img src="/477grp5/team/ben/week7-sensor-pcbs.png" width="80%">
+
+_Figure 5: Sensor PCBs_
+
+### Next steps
+
+**Midterm design review presentation**
+
+Top of the priority list is finishing and practicing our design presentation.  We have multiple PCBs, revisions, and schematics, so there is a lot to cover.
+
+**Sensor PCB soldering**
+
+We want to test a full row of sensor boards (16 boards) before ordering the rest.  This is going to involve some time to solder all components and test everything.
+
+**Master PCB testing**
+
+We need to verify all of the components combined on our master PCB.  This involves slow testing of each component.  Some of these can be ported from our Nucleo testing, but will still be time consuming.
+
+---
+
 ## Week 6
 
 **Date:** 2023-09-29 \
