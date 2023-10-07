@@ -7,6 +7,56 @@ title: Will Dobert Progress Report
 
 ---
 
+## Week 7
+
+**Date:** 10/6/2023 \
+**Project Hours Since Last Report:** 16 \
+**Cumulative Semester Project Hours:** 74
+
+### Description of Project Design Efforts
+
+#### Display Driver Development
+
+As the week began, our last batch of ordered components arrived at the lab. The first hardware I began prototyping with was our OLED displays. The initial work I did on this front, mentioned in Week 5, gave me a great head start. I did my best at the time to wrap my head around how writing data to the display works, but I knew it would be a process of trial and error once the hardware arrived. At first, I imagined this driver would behave similarly to the LED matrix, where it holds a buffer of the device state and writes it to the device repeatedly. Implementing this idea might've been possible, but due to the way updating pixels on the display works, I came to realize that it would be wildly inefficent and over-engineered no matter what. Updating the entire display takes at least 1 millisecond, which is longer than we'd like our application's inner loop to take. Conversely, only updating portions of the display that have been changed would also introduce more overhead, to the point that pursuing this route is no longer worth it.
+
+![Early Text Test](/477grp5/team/will/rn_image_picker_lib_temp_02b4a850-5c2c-4cc6-97d1-cc98f8fe98cc.jpg)
+_Figure 1: Early test of writing text strings to the display_
+
+Instead of writing the driver to be unnecessarily flexible and general purpose, I decided to focus on directly implementing the functionality we would actually need from the display. After discussing with Ben what we needed the display to accomplish, I decided to implement two different functions for drawing to the display: text strings and score tracking. Shown above is an early test of using the display to show multiple lines of text. To accomplish this, I developed a quick-and-dirty C# script that loads a PNG file containing the "font" and translates it to a byte array to be pasted into a header file in our firmware. From there, portions of this byte array can be sent directly to the display to render characters.
+
+![Main Menu Concept](/477grp5/team/will/20231003_215302.jpg)
+_Figure 2: Prototype of the main menu display_
+
+The text strings functionality of the driver will be used to implement a main menu, which I mocked up a prototype of in Figure 2 above. Ben provided me with this smaller font to use, which looks quite sharp and allows us to fit 8 lines of 21 characters on the display. Showing text on the display will also be extremely useful for debugging in the future, as we won't have to rely on extraneous devices being attached to the microcontroller.
+
+![Score Tracking Display](/477grp5/team/will/20231003_224101.jpg)
+_Figure 3: Prototype of the score tracking display_
+
+Displaying the larger characters required for the score tracking functionality meant that I needed to create another "font". This time around, I created an image in *Paint.NET* and typed out each numeric character (and a hypen) in a monospaced font. The script I developed originally became useful once again to translate this image into a display-compatible format. The display driver supports drawing both separately and simultaneously to multiple displays, which will be required for both of the game's players to see their score.
+
+#### Updated Schematic Verification
+
+Even though we just finished assembling Revision A of our microcontroller PCB and flashing a test program to it, we are already wrapping up design for Revision B. Ben finalized the latest changes recently, and I assisted in verifying them by filling up a pinout in *STM32CubeIDE*. This process allows us to be sure that the microcontroller pins we've assigned to certain functions are actually capable of providing that functionality.
+
+![STM32U585 Pinout Verification](/477grp5/team/will/image.png)
+_Figure 4: STM32CubeIDE IOC file showing a fully assigned microcontroller pinout_
+
+Visible in the screenshot above are all 100 pins of the STM32U585 microcontroller that we are using for the Smart Air Hockey Table. I gave a custom name to each pin as they appear in our PCB schematic. This also makes it easier to identify what external peripherals the pins are connected to at a glance.
+
+#### Transitioning Firmware To New Microcontrollers
+
+Up until this point, we have been prototyping our firmware on a Nucleo F446 evaluation board. Now that we have solidified our choice of microcontroller and received the hardware, I began the process of transitioning our existing codebase to it. To speed up our firmware development process, we also ordered a Nucleo U575 evaluation board that closely matches the specifications of the microcontroller we will use in the final design. Since it is technically a different chip, the same IDE project can't be used for both. As a result, I will have to separate our codebase into two, and copy code between the workspaces whenever modifications made in one are needed in the other. At first, this sounded like it would be a large hassle to deal with. However, we will be prototyping new firmware solely with the Nucleo until our PCB design is finalized and assembled, so it won't be necessary to constantly copy code back and forth. I opened an issue on our [Kanban board](https://github.com/users/alanssitis/projects/2?pane=issue&itemId=40625168) to solidify our intentions for this process. 
+
+#### Continuing Table Construction
+
+This week in table construction, Alan and I finished planing, jointing, and mitering the side and end boards. The staff at the Bechtel Center has been incredibly helpful throughout this process, and I've enjoyed learning how to operate the tools as we dive further into construction. We were nearly ready to make dado cuts and start gluing the pieces together, but the tools in the workshop were not set up for dado cuts at the time.
+
+#### Next Steps
+
+Since we will be the first team to present our Midterm Design Review Presentation, I plan to focus on completing my chosen sections over the next few days. Once that has concluded, I'd like to keep working on transitioning our firmware to the new microcontrollers and eventually testing the resulting code. Table construction will continue, and I may assist with testing the combined functionality of our sensor and microcontroller PCBs.
+
+---
+
 ## Week 6
 
 **Date:** 9/29/2023 \
