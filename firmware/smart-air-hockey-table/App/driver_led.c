@@ -14,13 +14,15 @@
 #define LED_COMPARE_OFF 34
 #define LED_COMPARE_ON 69
 #define DMA_BUFFER_LENGTH (2 * LED_BITS)
-#define COLOR_8BIT_R 0x800000
-#define COLOR_8BIT_G 0x008000
-#define COLOR_8BIT_B 0x000080
+#define COLOR_8BIT_R 23
+#define COLOR_8BIT_G 15
+#define COLOR_8BIT_B 7
 
 static volatile uint32_t led_state[LED_COUNT];
 static volatile uint16_t dma_buffer[DMA_BUFFER_LENGTH];
 static volatile size_t led_index = 0;
+
+static const uint16_t led_compare_on_off[2] = {LED_COMPARE_OFF, LED_COMPARE_ON};
 
 void Driver_LED_Init()
 {
@@ -50,13 +52,15 @@ void Driver_LED_SetColor(uint8_t x, uint8_t y, uint32_t color)
 static void write_buffer(uint32_t color, uint8_t offset)
 {
 	if (offset >= DMA_BUFFER_LENGTH / LED_BITS) return;
-	offset *= LED_BITS;
+	uint8_t g_offset = offset * LED_BITS;
+	uint8_t r_offset = g_offset + 8;
+	uint8_t b_offset = g_offset + 16;
 
 	for (uint8_t i = 0; i < 8; i++)
 	{
-		dma_buffer[offset + i] = color & COLOR_8BIT_G >> i ? LED_COMPARE_ON : LED_COMPARE_OFF;
-		dma_buffer[offset + 8 + i] = color & COLOR_8BIT_R >> i ? LED_COMPARE_ON : LED_COMPARE_OFF;
-		dma_buffer[offset + 16 + i] = color & COLOR_8BIT_B >> i ? LED_COMPARE_ON : LED_COMPARE_OFF;
+		dma_buffer[r_offset + i] = led_compare_on_off[(color >> (COLOR_8BIT_R - i)) & 0b1];
+		dma_buffer[g_offset + i] = led_compare_on_off[(color >> (COLOR_8BIT_G - i)) & 0b1];
+		dma_buffer[b_offset + i] = led_compare_on_off[(color >> (COLOR_8BIT_B - i)) & 0b1];
 	}
 }
 
