@@ -6,8 +6,8 @@
 
   (title_block
     (title "Smart Air Hockey Table Master PCB")
-    (date "2023-09-16")
-    (rev "A")
+    (date "2023-10-08")
+    (rev "B")
     (company "ECE 477")
   )
 
@@ -3309,7 +3309,7 @@
     (fill (type none))
     (uuid 550f851a-9bca-4135-bfef-467f3b431a56)
   )
-  (rectangle (start 223.52 93.98) (end 252.73 151.13)
+  (rectangle (start 223.52 93.98) (end 252.73 147.32)
     (stroke (width 0) (type default))
     (fill (type none))
     (uuid 9f726862-3b4b-4cde-9af4-6b974d5430a0)
