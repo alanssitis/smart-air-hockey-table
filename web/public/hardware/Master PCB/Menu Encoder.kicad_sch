@@ -440,13 +440,13 @@
     (uuid f45e84e2-bb37-4918-8c59-5f3a32729ada)
   )
 
-  (rectangle (start 90.17 74.93) (end 182.88 123.19)
+  (rectangle (start 90.17 80.01) (end 182.88 123.19)
     (stroke (width 0) (type default))
     (fill (type none))
     (uuid 02b16366-404f-4129-ad37-27300d1eb54f)
   )
 
-  (text "Rotary encoder for table" (at 90.17 74.93 0)
+  (text "Rotary encoder for table" (at 90.17 80.01 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 123a4b43-998d-45d7-8c0e-afd4b07c0fec)
   )
