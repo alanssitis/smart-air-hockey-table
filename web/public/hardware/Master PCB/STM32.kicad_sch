@@ -2820,7 +2820,7 @@
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 95e9fc2e-a5cd-433c-a575-ad7b0e94c438)
   )
-  (text "STM32 Decoupling" (at 186.69 17.78 0)
+  (text "STM32 Decoupling" (at 177.8 17.78 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid adbd35a7-08f0-429d-ad6d-8cc64cd7d09e)
   )

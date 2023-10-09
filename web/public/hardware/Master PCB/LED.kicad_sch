@@ -535,6 +535,17 @@
     (uuid fcf97565-15fe-4764-9821-81e0ebdba90f)
   )
 
+  (rectangle (start 109.22 43.18) (end 163.83 148.59)
+    (stroke (width 0) (type default))
+    (fill (type none))
+    (uuid e01c85ae-95a4-44be-9c53-aca8149a8cab)
+  )
+
+  (text "LED level shifters" (at 109.22 43.18 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid 7186b2c3-734a-480e-b836-19548568bcda)
+  )
+
   (hierarchical_label "LED4IN" (shape input) (at 123.19 137.16 180) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify right))
     (uuid 005a5a11-2ad1-4f93-a200-bc72c48fe18d)
