@@ -122,8 +122,7 @@ void Driver_Display_Print(uint8_t display, uint8_t line, uint8_t offset, const c
 			inverted = !inverted;
 			continue;
 		}
-		if (character < FONT_6X8_MIN || character > FONT_6X8_MAX) continue;
-
+		if (character < FONT_6X8_MIN || character > FONT_6X8_MAX) character = ' ';
 		const uint8_t* character_data = font_6x8[character - FONT_6X8_MIN];
 		for (uint8_t col = 0; col < FONT_6X8_WIDTH; col++)
 		{
@@ -152,7 +151,7 @@ void Driver_Display_ShowScore(uint8_t display, uint8_t score_a, uint8_t score_b)
 	transmit_start(display, 1);
 	for (size_t i = 0; i < sizeof(font_score[tens_a]); i++) transmit_word(font_score[tens_a][i]);
 	for (size_t i = 0; i < sizeof(font_score[ones_a]); i++) transmit_word(font_score[ones_a][i]);
-	for (size_t i = 0; i < sizeof(font_score[10]); i++) transmit_word(font_score[10][i]);
+	for (size_t i = 0; i < sizeof(font_dash); i++) transmit_word(font_dash[i]);
 	for (size_t i = 0; i < sizeof(font_score[tens_b]); i++) transmit_word(font_score[tens_b][i]);
 	for (size_t i = 0; i < sizeof(font_score[ones_b]); i++) transmit_word(font_score[ones_b][i]);
 	transmit_end();
