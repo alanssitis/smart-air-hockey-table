@@ -2,6 +2,7 @@
 layout: ../layouts/MDLayout.astro
 title: ECE 477 Team 5 Homepage
 ---
+
 <img class="object-fill h-48 w-fit mx-auto" src="/477grp5/air_hockey_table_painting.png">
 
 # SMART AIR HOCKEY TABLE

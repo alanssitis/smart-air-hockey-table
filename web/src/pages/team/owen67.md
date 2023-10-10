@@ -17,7 +17,7 @@ Lots of PCB design work, soldering, and testing.
 
 **Master PCB Design**
 
-Although we haven't found any issues with our master PCB, we decided to make some revisions for convenience for future testing.  This mainly consisted of expanding the PCB size to 100x100mm and placing components more conservatively, giving us much more room on the board.  The only additional components include ESD protection ICs on some of the external signals, and an optional external oscillator.
+Although we haven't found any issues with our master PCB, we decided to make some revisions for convenience for future testing. This mainly consisted of expanding the PCB size to 100x100mm and placing components more conservatively, giving us much more room on the board. The only additional components include ESD protection ICs on some of the external signals, and an optional external oscillator.
 
 <img src="/477grp5/team/ben/week7-master-pcb-layout.png" width="80%">
 
@@ -29,7 +29,7 @@ _Figure 2: Master PCB Rev. B render_
 
 **Master PCB soldering**
 
-Our Rev. A board still needed components placed.  I spent a lot of time putting everything on the board, and we were able to test connecting and flashing to the STM32 before the team left for break.  A picture of the PCB can be seen in Figure 3 and an image of us connected to the STM is shown in Figure 4.
+Our Rev. A board still needed components placed. I spent a lot of time putting everything on the board, and we were able to test connecting and flashing to the STM32 before the team left for break. A picture of the PCB can be seen in Figure 3 and an image of us connected to the STM is shown in Figure 4.
 
 <img src="/477grp5/team/ben/week7-master-pcb-soldered.jpg" width="80%">
 
@@ -41,7 +41,7 @@ _Figure 4: Connected to STM32_
 
 **Sensor PCB soldering/testing**
 
-We put together 8 of our sensor PCBs, and tested the interconnection feature of the boards.  We were able to send LED data across multiple boards.  We were also able to see hall effect sensor data, also across multiple PCBs.  An image of the connected boards can be seen in Figure 5.
+We put together 8 of our sensor PCBs, and tested the interconnection feature of the boards. We were able to send LED data across multiple boards. We were also able to see hall effect sensor data, also across multiple PCBs. An image of the connected boards can be seen in Figure 5.
 
 <img src="/477grp5/team/ben/week7-sensor-pcbs.png" width="80%">
 
@@ -51,15 +51,15 @@ _Figure 5: Sensor PCBs_
 
 **Midterm design review presentation**
 
-Top of the priority list is finishing and practicing our design presentation.  We have multiple PCBs, revisions, and schematics, so there is a lot to cover.
+Top of the priority list is finishing and practicing our design presentation. We have multiple PCBs, revisions, and schematics, so there is a lot to cover.
 
 **Sensor PCB soldering**
 
-We want to test a full row of sensor boards (16 boards) before ordering the rest.  This is going to involve some time to solder all components and test everything.
+We want to test a full row of sensor boards (16 boards) before ordering the rest. This is going to involve some time to solder all components and test everything.
 
 **Master PCB testing**
 
-We need to verify all of the components combined on our master PCB.  This involves slow testing of each component.  Some of these can be ported from our Nucleo testing, but will still be time consuming.
+We need to verify all of the components combined on our master PCB. This involves slow testing of each component. Some of these can be ported from our Nucleo testing, but will still be time consuming.
 
 ---
 
@@ -75,17 +75,17 @@ This was exam week, but luckily we were in a position to order components, mainl
 
 **PCB Review**
 
-*Buck converter*
+_Buck converter_
 
-Before ordering PCBs last week, we made some final changes.  The biggest change involved the buck converter.  We ended up using copper pours to more closely match the datasheet.  A screenshot showing our newer copper pour layout can be seen in Figure 1.
+Before ordering PCBs last week, we made some final changes. The biggest change involved the buck converter. We ended up using copper pours to more closely match the datasheet. A screenshot showing our newer copper pour layout can be seen in Figure 1.
 
 <img src="/477grp5/team/ben/week6-buck-converter.png" width="80%">
 
 _Figure 1: Buck converter PCB layout_
 
-*5V power trace*
+_5V power trace_
 
-We also added a thicker 5V power trace to power our LEDs, LDRs, comparators, and other miscellaneous 5V components on the board.  We already had a 3V3 and GND pour, but the 5V line was a thin trace spanning multiple components.  To give ourselves more room for higher current draw, we expanded our board and added a thick 1mm trace to carry the 5V power line to many components.  This new power trace can be seen in Figure 2.
+We also added a thicker 5V power trace to power our LEDs, LDRs, comparators, and other miscellaneous 5V components on the board. We already had a 3V3 and GND pour, but the 5V line was a thin trace spanning multiple components. To give ourselves more room for higher current draw, we expanded our board and added a thick 1mm trace to carry the 5V power line to many components. This new power trace can be seen in Figure 2.
 
 <img src="/477grp5/team/ben/week6-power-trace.png" width="80%">
 
@@ -93,13 +93,13 @@ _Figure 2: 5V power trace_
 
 Some images of our PCBs can be seen in Figures 3 and 4.
 
-|            <img src="/477grp5/team/ben/week6-master-pcb.jpg" width="80%">            |            <img src="/477grp5/team/ben/week6-sensor-pcb.jpg" width="80%">            |
-| :---------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------: |
-| _Figure 3: Master PCB_ | _Figure 4: Sensor PCB_ |
+| <img src="/477grp5/team/ben/week6-master-pcb.jpg" width="80%"> | <img src="/477grp5/team/ben/week6-sensor-pcb.jpg" width="80%"> |
+| :------------------------------------------------------------: | :------------------------------------------------------------: |
+|                     _Figure 3: Master PCB_                     |                     _Figure 4: Sensor PCB_                     |
 
 **Testing of new components**
 
-Many components came in, including our air blower, OLED displays, connectors, power supply, and outlet relay.  Although there wasn't much time to test due to our team's exam schedule, we were able to test our power supply and outlet relay.  To do this, we cut a PC power cable and connected the hot, neutral, and ground wires to the correct screw terminals on our power supply.  We then connected this power supply to the outlet relay, which can be controlled with a low-voltage DC signal.  We connected this to our power supply, and tested the functionality with both 3V3 and 5V.  A video showing this testing can be seen in Figure 5.
+Many components came in, including our air blower, OLED displays, connectors, power supply, and outlet relay. Although there wasn't much time to test due to our team's exam schedule, we were able to test our power supply and outlet relay. To do this, we cut a PC power cable and connected the hot, neutral, and ground wires to the correct screw terminals on our power supply. We then connected this power supply to the outlet relay, which can be controlled with a low-voltage DC signal. We connected this to our power supply, and tested the functionality with both 3V3 and 5V. A video showing this testing can be seen in Figure 5.
 
 <video controls muted>
   <source src="/477grp5/team/ben/week6-outlet-relay-test.mp4" type="video/mp4">
@@ -111,7 +111,7 @@ _Figure 5: Outlet relay testing and proof of operation_
 
 **PCB revisions**
 
-Getting closer to fall break, we want to make PCB changes to improve our design.  Our first revision was to be in a position where we could prototype, but we already have a list of changes we want to make:
+Getting closer to fall break, we want to make PCB changes to improve our design. Our first revision was to be in a position where we could prototype, but we already have a list of changes we want to make:
 
 - Better placement of decoupling capacitors (under chip)
 - Expand PCB size (100 x 100 mm)
@@ -123,7 +123,7 @@ Getting closer to fall break, we want to make PCB changes to improve our design.
 
 **OLED driver**
 
-I am going to help test the new OLED displays and create a driver for easier usage.  I am planning to define an alphabet for character displays, since this display is designed to display graphics, not just text.  This means that we will have to define each letters' pixel arrangement.
+I am going to help test the new OLED displays and create a driver for easier usage. I am planning to define an alphabet for character displays, since this display is designed to display graphics, not just text. This means that we will have to define each letters' pixel arrangement.
 
 ---
 
@@ -139,79 +139,79 @@ I am going to help test the new OLED displays and create a driver for easier usa
 
 All of my efforts this week went into creating/finalizing the schematics for our master PCB and sensor PCB designs with Trevor.
 
-*Master PCB*
+_Master PCB_
 
-The primary schematic contains all external connectors and signals that are going off-board.  We used KiCad's hierarchical schematic function to keep everything clean.  You can see the main STM32 block in the center, connected to our EEPROM, OLED connectors, LEDs, LDR inputs, and row/column hall effect sensors.
+The primary schematic contains all external connectors and signals that are going off-board. We used KiCad's hierarchical schematic function to keep everything clean. You can see the main STM32 block in the center, connected to our EEPROM, OLED connectors, LEDs, LDR inputs, and row/column hall effect sensors.
 
 <img src="/477grp5/team/ben/week5-schematic-toplevel.png" width="80%">
 
 _Figure 1: Top level schematic_
 
-The STM32U585 is the microcontroller we decided on, and the schematic with the STM32 on it simply defines all of the pin connections, reset button, decoupling capacitors, and BOOT0 jumper.  We verified the pins' position and function using the STM32CubeIDE IOC program to make sure we were using correct pins (peripheral assignment, 5V tolerance, etc.)
+The STM32U585 is the microcontroller we decided on, and the schematic with the STM32 on it simply defines all of the pin connections, reset button, decoupling capacitors, and BOOT0 jumper. We verified the pins' position and function using the STM32CubeIDE IOC program to make sure we were using correct pins (peripheral assignment, 5V tolerance, etc.)
 
 <img src="/477grp5/team/ben/week5-schematic-stm32.png" width="80%">
 
 _Figure 2: STM32 schematic_
 
-To satisfy one of our PSDRs, we are implementing a buck converter to power our STM32.  We chose the TLV62568 due to its simplicity, small size, low price, and high enough output current at 1 amp.  The schematic for this regulator can be seen in Figure 3.
+To satisfy one of our PSDRs, we are implementing a buck converter to power our STM32. We chose the TLV62568 due to its simplicity, small size, low price, and high enough output current at 1 amp. The schematic for this regulator can be seen in Figure 3.
 
 <img src="/477grp5/team/ben/week5-schematic-buck.png" width="80%">
 
 _Figure 3: Buck converter schematic_
 
-Goal detection is achieved by using an LED/LDR pair.  This analog value is then compared against a reference voltage (created with a voltage divider) in a comparator circuit to convert this analog value to a digital value.  This digital signal is then connected to the STM32 to determine if a goal has been scored.  The schematic for our goal detection comparator circuit can be seen in Figure 4.
+Goal detection is achieved by using an LED/LDR pair. This analog value is then compared against a reference voltage (created with a voltage divider) in a comparator circuit to convert this analog value to a digital value. This digital signal is then connected to the STM32 to determine if a goal has been scored. The schematic for our goal detection comparator circuit can be seen in Figure 4.
 
 <img src="/477grp5/team/ben/week5-schematic-goal-detection.png" width="80%">
 
 _Figure 4: Goal detection schematic_
 
-One of our stretch goals is to have a menu system displayed on an OLED to allow users to change brightness, goals required to win, and other settings.  To allow the user to interact with the microcontroller, we are attempting to implement a rotary encoder with an integrated button.  The schematic representing this circuit can be seen in Figure 5.
+One of our stretch goals is to have a menu system displayed on an OLED to allow users to change brightness, goals required to win, and other settings. To allow the user to interact with the microcontroller, we are attempting to implement a rotary encoder with an integrated button. The schematic representing this circuit can be seen in Figure 5.
 
 <img src="/477grp5/team/ben/week5-schematic-encoder.png" width="80%">
 
 _Figure 5: Encoder schematic_
 
-The LEDs are interfaced from the STM32 through level shifters.  The WS2812B LEDs we are using run at 5V logic, and our STM32 can only provide 3.3V.  We implement the level shifter that Will had been testing with to support up to four independent channels for the LED control.  The schematic for these level shifters can be seen in Figure 6.
+The LEDs are interfaced from the STM32 through level shifters. The WS2812B LEDs we are using run at 5V logic, and our STM32 can only provide 3.3V. We implement the level shifter that Will had been testing with to support up to four independent channels for the LED control. The schematic for these level shifters can be seen in Figure 6.
 
 <img src="/477grp5/team/ben/week5-schematic-level-shifter.png" width="80%">
 
 _Figure 6: LED level shifter schematic_
 
-One of our other stretch goals is using an EEPROM to store table configuration and animation frames.  This is interfaced with our microcontroller over SPI.  The schematic representing this chip and its supporting hardware can be seen in Figure 7.
+One of our other stretch goals is using an EEPROM to store table configuration and animation frames. This is interfaced with our microcontroller over SPI. The schematic representing this chip and its supporting hardware can be seen in Figure 7.
 
 <img src="/477grp5/team/ben/week5-schematic-eeprom.png" width="80%">
 
 _Figure 7: EEPROM schematic_
 
-After the schematic was put together, we routed the first revision of our PCB.  We want to get these ordered as soon as possible to allow for debugging and ordering of a second round before week 8.  Many considerations, such as power requirements, decoupling capacitors, and communication protocols were considered when laying out components.  A side-by-side view of the layout and 3D renders can be seen in Figures 9 and 10.
+After the schematic was put together, we routed the first revision of our PCB. We want to get these ordered as soon as possible to allow for debugging and ordering of a second round before week 8. Many considerations, such as power requirements, decoupling capacitors, and communication protocols were considered when laying out components. A side-by-side view of the layout and 3D renders can be seen in Figures 9 and 10.
 
-|            <img src="/477grp5/team/ben/week5-master-layout.png" width="80%">            |            <img src="/477grp5/team/ben/week5-master-render.png" width="80%">            |
-| :---------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------: |
-| _Figure 9: Master PCB layout_ | _Figure 10: Master PCB 3D render_ |
+| <img src="/477grp5/team/ben/week5-master-layout.png" width="80%"> | <img src="/477grp5/team/ben/week5-master-render.png" width="80%"> |
+| :---------------------------------------------------------------: | :---------------------------------------------------------------: |
+|                   _Figure 9: Master PCB layout_                   |                 _Figure 10: Master PCB 3D render_                 |
 
-*Sensor PCB*
+_Sensor PCB_
 
-In addition to the master PCB, I worked a lot with Trevor doing the same process for our hall effect sensor PCB.  This was a simpler design.  We have 4 hall effect sensors per PCB, using AND logic gates to convert these values to rows/columns.  The data can be daisy-chained between PCBs, allowing the microcontroller to only need 48 GPIO inputs to determine the position of the puck.  In addition to the sensors, the schematic contains the LEDs and LED data signals, power passthrough for components on the boards, and solder jumpers to ensure non-floating inputs on our logic gates for PCBs with only two inputs (the first PCB in each row/column only has 2 inputs since there is no data being passed into it from another board).  The current schematic for this design can be seen in Figure 11.
+In addition to the master PCB, I worked a lot with Trevor doing the same process for our hall effect sensor PCB. This was a simpler design. We have 4 hall effect sensors per PCB, using AND logic gates to convert these values to rows/columns. The data can be daisy-chained between PCBs, allowing the microcontroller to only need 48 GPIO inputs to determine the position of the puck. In addition to the sensors, the schematic contains the LEDs and LED data signals, power passthrough for components on the boards, and solder jumpers to ensure non-floating inputs on our logic gates for PCBs with only two inputs (the first PCB in each row/column only has 2 inputs since there is no data being passed into it from another board). The current schematic for this design can be seen in Figure 11.
 
 <img src="/477grp5/team/ben/week5-schematic-sensor.png" width="80%">
 
 _Figure 11: Sensor PCB schematic_
 
-Figures 12 and 13 show the routing and 3D render for this PCB.  The main considerations were the edge connectors allowing for PCB-to-PCB connections, as well as a fixed 50mm distance between the hall effect sensors.  The large hole in the center is to assist in airflow for the PCBs mounted directly over the blower on the table.
+Figures 12 and 13 show the routing and 3D render for this PCB. The main considerations were the edge connectors allowing for PCB-to-PCB connections, as well as a fixed 50mm distance between the hall effect sensors. The large hole in the center is to assist in airflow for the PCBs mounted directly over the blower on the table.
 
-|            <img src="/477grp5/team/ben/week5-sensor-layout.png" width="80%">            |            <img src="/477grp5/team/ben/week5-sensor-render.png" width="80%">            |
-| :---------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------: |
-| _Figure 12: Sensor PCB layout_ | _Figure 13: Sensor PCB 3D render_ |
+| <img src="/477grp5/team/ben/week5-sensor-layout.png" width="80%"> | <img src="/477grp5/team/ben/week5-sensor-render.png" width="80%"> |
+| :---------------------------------------------------------------: | :---------------------------------------------------------------: |
+|                  _Figure 12: Sensor PCB layout_                   |                 _Figure 13: Sensor PCB 3D render_                 |
 
 ### Next steps
 
 **PCB review/ordering**
 
-I will probably look over these boards for a bit longer to try and find any mistakes in the schematic/routing before we order the boards.  Hopefully everything looks good, but I expect to spend a few hours checking again.
+I will probably look over these boards for a bit longer to try and find any mistakes in the schematic/routing before we order the boards. Hopefully everything looks good, but I expect to spend a few hours checking again.
 
 **Table state machine**
 
-Once the PCBs are ordered, we will need to wait to do anything hardware related until they arrive.  I will be helping the other team members, primarily on the firmware for the game state machine.  The current tasks include:
+Once the PCBs are ordered, we will need to wait to do anything hardware related until they arrive. I will be helping the other team members, primarily on the firmware for the game state machine. The current tasks include:
 
 - Creating the game superloop triggered off of a timer
 - Defining all of the states for the game
@@ -230,13 +230,13 @@ Once the PCBs are ordered, we will need to wait to do anything hardware related 
 
 **Puck tracking/hall effect sensors**
 
-The new magnets arrived and we found them to be much higher quality (and much stronger) than the ones we were using previously.  However, with our new design for battleship-style puck position tracking, we no longer need to use analog hall effect sensors, and can instead use simpler digital hall effect sensors.  Unfortunately, however, the ECE shop doesn't stock these models of sensors, so we will be ordering some this week along with our first round of PCBs.
+The new magnets arrived and we found them to be much higher quality (and much stronger) than the ones we were using previously. However, with our new design for battleship-style puck position tracking, we no longer need to use analog hall effect sensors, and can instead use simpler digital hall effect sensors. Unfortunately, however, the ECE shop doesn't stock these models of sensors, so we will be ordering some this week along with our first round of PCBs.
 
 **Individually-addressable LED driver**
 
-The majority of my time was spent working with Will on a driver to control the individually-addressable LEDs we will be placing under the table.  This is because we are not using a library from another source, but wanted to take advantage of the peripherals on our STM32 to maximize performance.  The driver we came up with uses a timer in PWM mode with the DMA to adjust the pulse width in order to create an 800KHz signal for the LEDs.
+The majority of my time was spent working with Will on a driver to control the individually-addressable LEDs we will be placing under the table. This is because we are not using a library from another source, but wanted to take advantage of the peripherals on our STM32 to maximize performance. The driver we came up with uses a timer in PWM mode with the DMA to adjust the pulse width in order to create an 800KHz signal for the LEDs.
 
-My work on the driver included the initial setup of the timer at the correct baud rate.  After trying to adjust the PWM duration using the CPU, we found that we were unable to change the timer's CCR register fast enough for reliable data transmission.  Therefore, we pivoted to a DMA-based design, where we store the CCR register values in memory and allow the DMA to cycle through them automatically.  This DMA event is triggered by the timer interrupt, so there is virtually no CPU overhead and no processing needs to occur to display the frame data on the LEDs.  We were able to achieve refresh rates well above 60Hz, likely into the hundreds (too fast to see with the naked eye).  This will obviously lessen with more LEDs in the chain, but it is very promising for our table's design.
+My work on the driver included the initial setup of the timer at the correct baud rate. After trying to adjust the PWM duration using the CPU, we found that we were unable to change the timer's CCR register fast enough for reliable data transmission. Therefore, we pivoted to a DMA-based design, where we store the CCR register values in memory and allow the DMA to cycle through them automatically. This DMA event is triggered by the timer interrupt, so there is virtually no CPU overhead and no processing needs to occur to display the frame data on the LEDs. We were able to achieve refresh rates well above 60Hz, likely into the hundreds (too fast to see with the naked eye). This will obviously lessen with more LEDs in the chain, but it is very promising for our table's design.
 
 An example of the work I put into the driver can be seen in Figures 1 and 2.
 
@@ -250,13 +250,13 @@ _Figure 2: LED driver demonstration (cycles between RGB spectrum)_
 
 **Microcontroller research and part selection**
 
-Our team met for around 3-4 hours on Thursday to try to finalize which microcontroller we wanted to order and implement for our first round of PCBs.  After a long discussion, we decided on the [STM32U585](https://www.st.com/en/microcontrollers-microprocessors/stm32u575-585.html) series, which falls in their "ultra-low power" family of microcontrollers.  Although power isn't the biggest concern on this project, this particular microcontroller offers a relatively fast clock speed of 160MHz, as well as a large ROM size of 2MB.
+Our team met for around 3-4 hours on Thursday to try to finalize which microcontroller we wanted to order and implement for our first round of PCBs. After a long discussion, we decided on the [STM32U585](https://www.st.com/en/microcontrollers-microprocessors/stm32u575-585.html) series, which falls in their "ultra-low power" family of microcontrollers. Although power isn't the biggest concern on this project, this particular microcontroller offers a relatively fast clock speed of 160MHz, as well as a large ROM size of 2MB.
 
-This microcontroller comes in a LQFP100 package, which will be relatively easy to solder and has just enough I/O for our application.  We determined in our meeting that we need 68 I/O pins, and this microcontroller offers 82.  We also consider other families of STM32, such as the F7 and H5 series, but we found that they were either too expensive, too large, or otherwise unnecessary for the scale of our project.  The U5 family is a good balance of the performance characteristics we need for our project.
+This microcontroller comes in a LQFP100 package, which will be relatively easy to solder and has just enough I/O for our application. We determined in our meeting that we need 68 I/O pins, and this microcontroller offers 82. We also consider other families of STM32, such as the F7 and H5 series, but we found that they were either too expensive, too large, or otherwise unnecessary for the scale of our project. The U5 family is a good balance of the performance characteristics we need for our project.
 
 **Microcontroller pin determination**
 
-After deciding on a microcontroller, I spent some time creating a document where we can start to assign pins on the microcontroller to peripherals in our project.  This is going to be a time-consuming process, and this is after the hours we already spend transposing the information from the datasheet to a spreadsheet for our own use.  So far, I spent time going through each pins' alternate functions and additional functionality and marked anything of interest, such as timer channels, SPI channels, oscillator inputs/outputs, etc.  I also marked pins that we will leave open, such as the BOOT0 pins to force bootloader booting, the SWD debugging pins, and the reset button pin.  An image from this document can be seen in Figure 3.
+After deciding on a microcontroller, I spent some time creating a document where we can start to assign pins on the microcontroller to peripherals in our project. This is going to be a time-consuming process, and this is after the hours we already spend transposing the information from the datasheet to a spreadsheet for our own use. So far, I spent time going through each pins' alternate functions and additional functionality and marked anything of interest, such as timer channels, SPI channels, oscillator inputs/outputs, etc. I also marked pins that we will leave open, such as the BOOT0 pins to force bootloader booting, the SWD debugging pins, and the reset button pin. An image from this document can be seen in Figure 3.
 
 <img src="/477grp5/team/ben/uc-pin-descriptions-week4.png" width="40%">
 
@@ -266,18 +266,18 @@ _Figure 3: Some of the microcontroller pin descriptions_
 
 **PCB Design**
 
-PCB design is the primary thing I will be working on this week, as we want to get these in hand as soon as possible.  Furthermore, we aren't able to test our final components since they are all SMD, so we need a board to mount them to for further testing.
+PCB design is the primary thing I will be working on this week, as we want to get these in hand as soon as possible. Furthermore, we aren't able to test our final components since they are all SMD, so we need a board to mount them to for further testing.
 
 - Trevor and I will continue determining pin selections for our microcontroller and laying this design out on our first round of PCBs
 - Current master PCB parts to be implemented:
-	- STM32U585 footprint with SWD programming header
-	- Buck converter to power STM32 from a 5VDC source
-	- Connections to OLED displays, hall effect sensors, and LEDs
+  - STM32U585 footprint with SWD programming header
+  - Buck converter to power STM32 from a 5VDC source
+  - Connections to OLED displays, hall effect sensors, and LEDs
 - Current sensor PCB parts to be implemented:
-	- SMD hall effect sensor (likely TI TMAG series) footprints in 2x2 grid per PCB
-	- LED footprints next to hall effect sensors, also in a 2x2 grid
-	- Footprints for digital logic gates to convert to row/column position data for the microcontroller
-	- Connection to the master/other sensor PCBs to daisy chain the signals along the boards
+  - SMD hall effect sensor (likely TI TMAG series) footprints in 2x2 grid per PCB
+  - LED footprints next to hall effect sensors, also in a 2x2 grid
+  - Footprints for digital logic gates to convert to row/column position data for the microcontroller
+  - Connection to the master/other sensor PCBs to daisy chain the signals along the boards
 
 ---
 
