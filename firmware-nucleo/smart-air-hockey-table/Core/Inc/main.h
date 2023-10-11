@@ -74,10 +74,27 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
-#define USER_BUTTON_Pin LL_GPIO_PIN_13
-#define USER_BUTTON_GPIO_Port GPIOC
+#define ENCODER_A_Pin LL_GPIO_PIN_3
+#define ENCODER_A_GPIO_Port GPIOE
+#define ENCODER_B_Pin LL_GPIO_PIN_4
+#define ENCODER_B_GPIO_Port GPIOE
+#define ENCODER_SW_Pin LL_GPIO_PIN_5
+#define ENCODER_SW_GPIO_Port GPIOE
+#define ENCODER_SW_EXTI_IRQn EXTI5_IRQn
+#define LDR1IN_Pin LL_GPIO_PIN_6
+#define LDR1IN_GPIO_Port GPIOE
+#define LDR1IN_EXTI_IRQn EXTI6_IRQn
 #define VBUS_SENSE_Pin LL_GPIO_PIN_2
 #define VBUS_SENSE_GPIO_Port GPIOC
+#define LDR2IN_Pin LL_GPIO_PIN_13
+#define LDR2IN_GPIO_Port GPIOF
+#define LDR2IN_EXTI_IRQn EXTI13_IRQn
+#define LDR3IN_Pin LL_GPIO_PIN_14
+#define LDR3IN_GPIO_Port GPIOF
+#define LDR3IN_EXTI_IRQn EXTI14_IRQn
+#define LDR4IN_Pin LL_GPIO_PIN_15
+#define LDR4IN_GPIO_Port GPIOF
+#define LDR4IN_EXTI_IRQn EXTI15_IRQn
 #define UCPD_FLT_Pin LL_GPIO_PIN_14
 #define UCPD_FLT_GPIO_Port GPIOB
 #define UCPD1_CC2_Pin LL_GPIO_PIN_15
