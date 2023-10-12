@@ -86,6 +86,14 @@ void Error_Handler(void);
 #define LDR1IN_EXTI_IRQn EXTI6_IRQn
 #define VBUS_SENSE_Pin LL_GPIO_PIN_2
 #define VBUS_SENSE_GPIO_Port GPIOC
+#define LED1OUT_Pin LL_GPIO_PIN_0
+#define LED1OUT_GPIO_Port GPIOA
+#define LED2OUT_Pin LL_GPIO_PIN_1
+#define LED2OUT_GPIO_Port GPIOA
+#define LED3OUT_Pin LL_GPIO_PIN_2
+#define LED3OUT_GPIO_Port GPIOA
+#define LED4OUT_Pin LL_GPIO_PIN_3
+#define LED4OUT_GPIO_Port GPIOA
 #define LDR2IN_Pin LL_GPIO_PIN_13
 #define LDR2IN_GPIO_Port GPIOF
 #define LDR2IN_EXTI_IRQn EXTI13_IRQn

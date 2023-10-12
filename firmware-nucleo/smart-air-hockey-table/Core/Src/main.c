@@ -21,7 +21,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "app_core.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -120,7 +120,7 @@ int main(void)
   MX_SPI2_Init();
   MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
-
+  App_Init();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -489,7 +489,7 @@ static void MX_TIM2_Init(void)
   NodeConfig.DestBurstLength = 1;
   NodeConfig.DestIncMode = LL_DMA_DEST_FIXED;
   NodeConfig.DestDataWidth = LL_DMA_DEST_DATAWIDTH_WORD;
-  NodeConfig.SrcAllocatedPort = LL_DMA_SRC_ALLOCATED_PORT0;
+  NodeConfig.SrcAllocatedPort = LL_DMA_SRC_ALLOCATED_PORT1;
   NodeConfig.SrcByteExchange = LL_DMA_SRC_BYTE_PRESERVE;
   NodeConfig.DataAlignment = LL_DMA_DATA_ALIGN_ZEROPADD;
   NodeConfig.SrcBurstLength = 1;
@@ -514,7 +514,7 @@ static void MX_TIM2_Init(void)
 
   DMA_InitLinkedListStruct.Priority = LL_DMA_LOW_PRIORITY_LOW_WEIGHT;
   DMA_InitLinkedListStruct.LinkStepMode = LL_DMA_LSM_FULL_EXECUTION;
-  DMA_InitLinkedListStruct.LinkAllocatedPort = LL_DMA_LINK_ALLOCATED_PORT0;
+  DMA_InitLinkedListStruct.LinkAllocatedPort = LL_DMA_LINK_ALLOCATED_PORT1;
   DMA_InitLinkedListStruct.TransferEventMode = LL_DMA_TCEM_BLK_TRANSFER;
   LL_DMA_List_Init(GPDMA1, LL_DMA_CHANNEL_0, &DMA_InitLinkedListStruct);
 
@@ -557,7 +557,7 @@ static void MX_TIM2_Init(void)
   PA2   ------> TIM2_CH3
   PA3   ------> TIM2_CH4
   */
-  GPIO_InitStruct.Pin = LL_GPIO_PIN_0|LL_GPIO_PIN_1|LL_GPIO_PIN_2|LL_GPIO_PIN_3;
+  GPIO_InitStruct.Pin = LED1OUT_Pin|LED2OUT_Pin|LED3OUT_Pin|LED4OUT_Pin;
   GPIO_InitStruct.Mode = LL_GPIO_MODE_ALTERNATE;
   GPIO_InitStruct.Speed = LL_GPIO_SPEED_FREQ_LOW;
   GPIO_InitStruct.OutputType = LL_GPIO_OUTPUT_PUSHPULL;

@@ -22,6 +22,7 @@
 #include "stm32u5xx_it.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "driver_led.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -85,7 +86,7 @@ void NMI_Handler(void)
 void HardFault_Handler(void)
 {
   /* USER CODE BEGIN HardFault_IRQn 0 */
-
+  LL_GPIO_SetOutputPin(GPIOG, LL_GPIO_PIN_2);
   /* USER CODE END HardFault_IRQn 0 */
   while (1)
   {
@@ -305,7 +306,16 @@ void EXTI15_IRQHandler(void)
 void GPDMA1_Channel0_IRQHandler(void)
 {
   /* USER CODE BEGIN GPDMA1_Channel0_IRQn 0 */
-
+  if (LL_DMA_IsActiveFlag_HT(GPDMA1, LL_DMA_CHANNEL_0))
+  {
+    LL_DMA_ClearFlag_HT(GPDMA1, LL_DMA_CHANNEL_0);
+    GPDMA1_Channel0_Handler(0);
+  }
+  else if (LL_DMA_IsActiveFlag_TC(GPDMA1, LL_DMA_CHANNEL_0))
+  {
+    LL_DMA_ClearFlag_TC(GPDMA1, LL_DMA_CHANNEL_0);
+    GPDMA1_Channel0_Handler(1);
+  }
   /* USER CODE END GPDMA1_Channel0_IRQn 0 */
 
   /* USER CODE BEGIN GPDMA1_Channel0_IRQn 1 */
