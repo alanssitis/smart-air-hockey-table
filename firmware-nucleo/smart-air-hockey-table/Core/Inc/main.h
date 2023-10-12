@@ -107,6 +107,14 @@ void Error_Handler(void);
 #define UCPD_FLT_GPIO_Port GPIOB
 #define UCPD1_CC2_Pin LL_GPIO_PIN_15
 #define UCPD1_CC2_GPIO_Port GPIOB
+#define OLED1CS_Pin LL_GPIO_PIN_10
+#define OLED1CS_GPIO_Port GPIOD
+#define OLED2CS_Pin LL_GPIO_PIN_11
+#define OLED2CS_GPIO_Port GPIOD
+#define OLEDDC_Pin LL_GPIO_PIN_12
+#define OLEDDC_GPIO_Port GPIOD
+#define OLEDRES_Pin LL_GPIO_PIN_13
+#define OLEDRES_GPIO_Port GPIOD
 #define LED_RED_Pin LL_GPIO_PIN_2
 #define LED_RED_GPIO_Port GPIOG
 #define LED_GREEN_Pin LL_GPIO_PIN_7

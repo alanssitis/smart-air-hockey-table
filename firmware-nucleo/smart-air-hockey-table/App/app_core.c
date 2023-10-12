@@ -5,7 +5,7 @@
 #include "stm32u5xx_ll_utils.h"
 
 #include "driver_led.h"
-//#include "driver_display.h"
+#include "driver_display.h"
 
 void App_Init()
 {
@@ -13,12 +13,7 @@ void App_Init()
 	LL_Init1msTick(160000000);
 
 	Driver_LED_Init();
-	//Driver_Display_Init();
-
-	Driver_LED_SetColor(0, 0, 0xFF0000);
-	Driver_LED_SetColor(1, 0, 0x00FF00);
-	Driver_LED_SetColor(2, 0, 0x0000FF);
-	Driver_LED_SetColor(3, 0, 0xFFFF00);
+	Driver_Display_Init();
 
 	// TODO: State machine loop
 }

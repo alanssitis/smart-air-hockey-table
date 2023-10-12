@@ -26,8 +26,8 @@ static const uint32_t led_compare_on_off[2] = {LED_COMPARE_OFF, LED_COMPARE_ON};
 void Driver_LED_Init()
 {
 	// Attach GPDMA1 Channel 0 to TIM2
-	LL_DMA_ConfigAddresses(GPDMA1, LL_DMA_CHANNEL_0, (uint32_t) dma_buffer, (uint32_t) &(TIM2->CCR1));
 	LL_DMA_SetBlkDataLength(GPDMA1, LL_DMA_CHANNEL_0, sizeof(dma_buffer));
+	LL_DMA_ConfigAddresses(GPDMA1, LL_DMA_CHANNEL_0, (uint32_t) dma_buffer, (uint32_t) &(TIM2->CCR1));
 	LL_DMA_EnableIT_HT(GPDMA1, LL_DMA_CHANNEL_0);
 	LL_DMA_EnableIT_TC(GPDMA1, LL_DMA_CHANNEL_0);
 	LL_DMA_EnableChannel(GPDMA1, LL_DMA_CHANNEL_0);
