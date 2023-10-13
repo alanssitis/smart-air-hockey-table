@@ -17,7 +17,7 @@ void App_Init()
 	// TODO: State machine loop
 
 	Driver_LED_SetColor(0, 0, 0xFF0000);
-	Driver_LED_SetColor(0, 0, 0xFF0000);
-	Driver_LED_SetColor(0, 0, 0xFF0000);
-	Driver_LED_SetColor(0, 0, 0xFF0000);
+	Driver_LED_SetColor(1, 0, 0xFF0000);
+	Driver_LED_SetColor(2, 0, 0xFF0000);
+	Driver_LED_SetColor(3, 0, 0xFF0000);
 }
