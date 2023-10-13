@@ -29,7 +29,6 @@ extern "C" {
 /* Includes ------------------------------------------------------------------*/
 #include "stm32u5xx_hal.h"
 #include "stm32u5xx_ll_adc.h"
-#include "stm32u5xx_ll_dma.h"
 #include "stm32u5xx_ll_icache.h"
 #include "stm32u5xx_ll_pwr.h"
 #include "stm32u5xx_ll_crs.h"
@@ -39,6 +38,7 @@ extern "C" {
 #include "stm32u5xx_ll_exti.h"
 #include "stm32u5xx_ll_cortex.h"
 #include "stm32u5xx_ll_utils.h"
+#include "stm32u5xx_ll_dma.h"
 #include "stm32u5xx_ll_spi.h"
 #include "stm32u5xx_ll_tim.h"
 #include "stm32u5xx_ll_ucpd.h"

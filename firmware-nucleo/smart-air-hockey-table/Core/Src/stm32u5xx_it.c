@@ -56,7 +56,7 @@
 /* USER CODE END 0 */
 
 /* External variables --------------------------------------------------------*/
-extern LL_DMA_LinkNodeTypeDef Node_GPDMA1_Channel0;
+extern DMA_HandleTypeDef handle_GPDMA1_Channel0;
 extern PCD_HandleTypeDef hpcd_USB_OTG_FS;
 /* USER CODE BEGIN EV */
 
@@ -317,7 +317,7 @@ void GPDMA1_Channel0_IRQHandler(void)
     GPDMA1_Channel0_Handler(1);
   }
   /* USER CODE END GPDMA1_Channel0_IRQn 0 */
-
+  HAL_DMA_IRQHandler(&handle_GPDMA1_Channel0);
   /* USER CODE BEGIN GPDMA1_Channel0_IRQn 1 */
 
   /* USER CODE END GPDMA1_Channel0_IRQn 1 */

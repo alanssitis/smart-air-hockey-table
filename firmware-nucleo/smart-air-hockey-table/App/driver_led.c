@@ -17,8 +17,11 @@
 #define COLOR_8BIT_G 15
 #define COLOR_8BIT_B 7
 
-static volatile uint32_t led_state[LED_COUNT];
 static volatile uint32_t dma_buffer[DMA_BUFFER_LENGTH];
+const uint32_t dma_buffer_address = (uint32_t) dma_buffer;
+const uint32_t dma_buffer_size = sizeof(dma_buffer);
+
+static volatile uint32_t led_state[LED_COUNT];
 static volatile size_t led_index = 0;
 
 static const uint32_t led_compare_on_off[2] = {LED_COMPARE_OFF, LED_COMPARE_ON};
@@ -26,11 +29,8 @@ static const uint32_t led_compare_on_off[2] = {LED_COMPARE_OFF, LED_COMPARE_ON};
 void Driver_LED_Init()
 {
 	// Attach GPDMA1 Channel 0 to TIM2
-	LL_DMA_SetBlkDataLength(GPDMA1, LL_DMA_CHANNEL_0, sizeof(dma_buffer));
-	LL_DMA_ConfigAddresses(GPDMA1, LL_DMA_CHANNEL_0, (uint32_t) dma_buffer, (uint32_t) &(TIM2->CCR1));
 	LL_DMA_EnableIT_HT(GPDMA1, LL_DMA_CHANNEL_0);
 	LL_DMA_EnableIT_TC(GPDMA1, LL_DMA_CHANNEL_0);
-	LL_DMA_EnableChannel(GPDMA1, LL_DMA_CHANNEL_0);
 
 	// Start TIM2 Channel 1
 	LL_TIM_SetUpdateSource(TIM2, LL_TIM_UPDATESOURCE_COUNTER);
