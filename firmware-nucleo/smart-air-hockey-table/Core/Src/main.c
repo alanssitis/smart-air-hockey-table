@@ -21,7 +21,6 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "linked_list.h"
 #include "app_core.h"
 /* USER CODE END Includes */
 
@@ -42,12 +41,12 @@
 
 /* Private variables ---------------------------------------------------------*/
 
-DMA_HandleTypeDef handle_GPDMA1_Channel0;
+LL_DMA_LinkNodeTypeDef Node_GPDMA1_Channel0;
 
 PCD_HandleTypeDef hpcd_USB_OTG_FS;
 
 /* USER CODE BEGIN PV */
-extern DMA_QListTypeDef LEDMatrix_Queue;
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -121,10 +120,6 @@ int main(void)
   MX_SPI2_Init();
   MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
-  MX_LEDMatrix_Queue_Config();
-  HAL_DMAEx_List_LinkQ(&handle_GPDMA1_Channel0, &LEDMatrix_Queue);
-  HAL_DMAEx_List_Start(&handle_GPDMA1_Channel0);
-
   App_Init();
   /* USER CODE END 2 */
 
@@ -324,29 +319,15 @@ static void MX_GPDMA1_Init(void)
   /* USER CODE END GPDMA1_Init 0 */
 
   /* Peripheral clock enable */
-  __HAL_RCC_GPDMA1_CLK_ENABLE();
+  LL_AHB1_GRP1_EnableClock(LL_AHB1_GRP1_PERIPH_GPDMA1);
 
   /* GPDMA1 interrupt Init */
-    HAL_NVIC_SetPriority(GPDMA1_Channel0_IRQn, 0, 0);
-    HAL_NVIC_EnableIRQ(GPDMA1_Channel0_IRQn);
+  NVIC_SetPriority(GPDMA1_Channel0_IRQn, NVIC_EncodePriority(NVIC_GetPriorityGrouping(),0, 0));
+  NVIC_EnableIRQ(GPDMA1_Channel0_IRQn);
 
   /* USER CODE BEGIN GPDMA1_Init 1 */
 
   /* USER CODE END GPDMA1_Init 1 */
-  handle_GPDMA1_Channel0.Instance = GPDMA1_Channel0;
-  handle_GPDMA1_Channel0.InitLinkedList.Priority = DMA_LOW_PRIORITY_LOW_WEIGHT;
-  handle_GPDMA1_Channel0.InitLinkedList.LinkStepMode = DMA_LSM_FULL_EXECUTION;
-  handle_GPDMA1_Channel0.InitLinkedList.LinkAllocatedPort = DMA_LINK_ALLOCATED_PORT0;
-  handle_GPDMA1_Channel0.InitLinkedList.TransferEventMode = DMA_TCEM_EACH_LL_ITEM_TRANSFER;
-  handle_GPDMA1_Channel0.InitLinkedList.LinkedListMode = DMA_LINKEDLIST_CIRCULAR;
-  if (HAL_DMAEx_List_Init(&handle_GPDMA1_Channel0) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  if (HAL_DMA_ConfigChannelAttributes(&handle_GPDMA1_Channel0, DMA_CHANNEL_NPRIV) != HAL_OK)
-  {
-    Error_Handler();
-  }
   /* USER CODE BEGIN GPDMA1_Init 2 */
 
   /* USER CODE END GPDMA1_Init 2 */
@@ -491,10 +472,51 @@ static void MX_TIM2_Init(void)
   LL_TIM_InitTypeDef TIM_InitStruct = {0};
   LL_TIM_OC_InitTypeDef TIM_OC_InitStruct = {0};
 
+  LL_DMA_InitNodeTypeDef NodeConfig = {0};
+  LL_DMA_LinkNodeTypeDef Node_GPDMA1_Channel0 = {0};
+  LL_DMA_InitLinkedListTypeDef DMA_InitLinkedListStruct = {0};
   LL_GPIO_InitTypeDef GPIO_InitStruct = {0};
 
   /* Peripheral clock enable */
   LL_APB1_GRP1_EnableClock(LL_APB1_GRP1_PERIPH_TIM2);
+
+  /* TIM2 DMA Init */
+
+  /* GPDMA1_REQUEST_TIM2_UP Init */
+  NodeConfig.DestAllocatedPort = LL_DMA_DEST_ALLOCATED_PORT0;
+  NodeConfig.DestHWordExchange = LL_DMA_DEST_HALFWORD_PRESERVE;
+  NodeConfig.DestByteExchange = LL_DMA_DEST_BYTE_PRESERVE;
+  NodeConfig.DestBurstLength = 1;
+  NodeConfig.DestIncMode = LL_DMA_DEST_FIXED;
+  NodeConfig.DestDataWidth = LL_DMA_DEST_DATAWIDTH_WORD;
+  NodeConfig.SrcAllocatedPort = LL_DMA_SRC_ALLOCATED_PORT1;
+  NodeConfig.SrcByteExchange = LL_DMA_SRC_BYTE_PRESERVE;
+  NodeConfig.DataAlignment = LL_DMA_DATA_ALIGN_ZEROPADD;
+  NodeConfig.SrcBurstLength = 1;
+  NodeConfig.SrcIncMode = LL_DMA_SRC_INCREMENT;
+  NodeConfig.SrcDataWidth = LL_DMA_SRC_DATAWIDTH_WORD;
+  NodeConfig.TransferEventMode = LL_DMA_TCEM_BLK_TRANSFER;
+  NodeConfig.TriggerPolarity = LL_DMA_TRIG_POLARITY_MASKED;
+  NodeConfig.BlkHWRequest = LL_DMA_HWREQUEST_SINGLEBURST;
+  NodeConfig.Direction = LL_DMA_DIRECTION_MEMORY_TO_PERIPH;
+  NodeConfig.Request = LL_GPDMA1_REQUEST_TIM2_UP;
+  NodeConfig.UpdateRegisters = (LL_DMA_UPDATE_CTR1 | LL_DMA_UPDATE_CTR2 | LL_DMA_UPDATE_CBR1 | LL_DMA_UPDATE_CSAR | LL_DMA_UPDATE_CDAR | LL_DMA_UPDATE_CTR3 | LL_DMA_UPDATE_CBR2 | LL_DMA_UPDATE_CLLR);
+  NodeConfig.NodeType = LL_DMA_GPDMA_LINEAR_NODE;
+  LL_DMA_CreateLinkNode(&NodeConfig, &Node_GPDMA1_Channel0);
+
+  LL_DMA_ConnectLinkNode(&Node_GPDMA1_Channel0, LL_DMA_CLLR_OFFSET5, &Node_GPDMA1_Channel0, LL_DMA_CLLR_OFFSET5);
+
+  /* Next function call is commented because it will not compile as is. The Node structure address has to be cast to an unsigned int (uint32_t)pNode_DMAxCHy */
+  /*
+
+  */
+  LL_DMA_SetLinkedListBaseAddr(GPDMA1, LL_DMA_CHANNEL_0, (uint32_t)&Node_GPDMA1_Channel0);
+
+  DMA_InitLinkedListStruct.Priority = LL_DMA_LOW_PRIORITY_LOW_WEIGHT;
+  DMA_InitLinkedListStruct.LinkStepMode = LL_DMA_LSM_FULL_EXECUTION;
+  DMA_InitLinkedListStruct.LinkAllocatedPort = LL_DMA_LINK_ALLOCATED_PORT1;
+  DMA_InitLinkedListStruct.TransferEventMode = LL_DMA_TCEM_BLK_TRANSFER;
+  LL_DMA_List_Init(GPDMA1, LL_DMA_CHANNEL_0, &DMA_InitLinkedListStruct);
 
   /* USER CODE BEGIN TIM2_Init 1 */
 
@@ -753,8 +775,8 @@ static void MX_GPIO_Init(void)
   /* GPIO Ports Clock Enable */
   LL_AHB2_GRP1_EnableClock(LL_AHB2_GRP1_PERIPH_GPIOE);
   LL_AHB2_GRP1_EnableClock(LL_AHB2_GRP1_PERIPH_GPIOC);
-  LL_AHB2_GRP1_EnableClock(LL_AHB2_GRP1_PERIPH_GPIOF);
   LL_AHB2_GRP1_EnableClock(LL_AHB2_GRP1_PERIPH_GPIOA);
+  LL_AHB2_GRP1_EnableClock(LL_AHB2_GRP1_PERIPH_GPIOF);
   LL_AHB2_GRP1_EnableClock(LL_AHB2_GRP1_PERIPH_GPIOB);
   LL_AHB2_GRP1_EnableClock(LL_AHB2_GRP1_PERIPH_GPIOD);
   LL_AHB2_GRP1_EnableClock(LL_AHB2_GRP1_PERIPH_GPIOG);
@@ -779,9 +801,6 @@ static void MX_GPIO_Init(void)
   LL_EXTI_SetEXTISource(LL_EXTI_EXTI_PORTE, LL_EXTI_EXTI_LINE6);
 
   /**/
-  LL_EXTI_SetEXTISource(LL_EXTI_EXTI_PORTF, LL_EXTI_EXTI_LINE4);
-
-  /**/
   LL_EXTI_SetEXTISource(LL_EXTI_EXTI_PORTF, LL_EXTI_EXTI_LINE13);
 
   /**/
@@ -801,13 +820,6 @@ static void MX_GPIO_Init(void)
   EXTI_InitStruct.Line_0_31 = LL_EXTI_LINE_6;
   EXTI_InitStruct.LineCommand = ENABLE;
   EXTI_InitStruct.Mode = LL_EXTI_MODE_IT;
-  EXTI_InitStruct.Trigger = LL_EXTI_TRIGGER_RISING;
-  LL_EXTI_Init(&EXTI_InitStruct);
-
-  /**/
-  EXTI_InitStruct.Line_0_31 = LL_EXTI_LINE_4;
-  EXTI_InitStruct.LineCommand = ENABLE;
-  EXTI_InitStruct.Mode = LL_EXTI_MODE_EVENT;
   EXTI_InitStruct.Trigger = LL_EXTI_TRIGGER_RISING;
   LL_EXTI_Init(&EXTI_InitStruct);
 
@@ -839,9 +851,6 @@ static void MX_GPIO_Init(void)
   LL_GPIO_SetPinPull(LDR1IN_GPIO_Port, LDR1IN_Pin, LL_GPIO_PULL_NO);
 
   /**/
-  LL_GPIO_SetPinPull(GPIOF, LL_GPIO_PIN_4, LL_GPIO_PULL_UP);
-
-  /**/
   LL_GPIO_SetPinPull(LDR2IN_GPIO_Port, LDR2IN_Pin, LL_GPIO_PULL_NO);
 
   /**/
@@ -855,9 +864,6 @@ static void MX_GPIO_Init(void)
 
   /**/
   LL_GPIO_SetPinMode(LDR1IN_GPIO_Port, LDR1IN_Pin, LL_GPIO_MODE_INPUT);
-
-  /**/
-  LL_GPIO_SetPinMode(GPIOF, LL_GPIO_PIN_4, LL_GPIO_MODE_INPUT);
 
   /**/
   LL_GPIO_SetPinMode(LDR2IN_GPIO_Port, LDR2IN_Pin, LL_GPIO_MODE_INPUT);
