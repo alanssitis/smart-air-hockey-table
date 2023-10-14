@@ -22,6 +22,7 @@
 #include "stm32u5xx_it.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "app_core.h"
 #include "driver_led.h"
 /* USER CODE END Includes */
 
@@ -56,7 +57,6 @@
 /* USER CODE END 0 */
 
 /* External variables --------------------------------------------------------*/
-extern LL_DMA_LinkNodeTypeDef Node_GPDMA1_Channel0;
 extern PCD_HandleTypeDef hpcd_USB_OTG_FS;
 /* USER CODE BEGIN EV */
 
@@ -185,7 +185,7 @@ void PendSV_Handler(void)
 void SysTick_Handler(void)
 {
   /* USER CODE BEGIN SysTick_IRQn 0 */
-
+  App_Tick();
   /* USER CODE END SysTick_IRQn 0 */
   HAL_IncTick();
   /* USER CODE BEGIN SysTick_IRQn 1 */
@@ -306,15 +306,10 @@ void EXTI15_IRQHandler(void)
 void GPDMA1_Channel0_IRQHandler(void)
 {
   /* USER CODE BEGIN GPDMA1_Channel0_IRQn 0 */
-  if (LL_DMA_IsActiveFlag_HT(GPDMA1, LL_DMA_CHANNEL_0))
-  {
-    LL_DMA_ClearFlag_HT(GPDMA1, LL_DMA_CHANNEL_0);
-    GPDMA1_Channel0_Handler(0);
-  }
-  else if (LL_DMA_IsActiveFlag_TC(GPDMA1, LL_DMA_CHANNEL_0))
+  if (LL_DMA_IsActiveFlag_TC(GPDMA1, LL_DMA_CHANNEL_0))
   {
     LL_DMA_ClearFlag_TC(GPDMA1, LL_DMA_CHANNEL_0);
-    GPDMA1_Channel0_Handler(1);
+    GPDMA1_Channel0_Handler_TC();
   }
   /* USER CODE END GPDMA1_Channel0_IRQn 0 */
 
