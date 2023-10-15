@@ -30,6 +30,7 @@ void Driver_LED_Init()
 	LL_DMA_EnableIT_TC(GPDMA1, LL_DMA_CHANNEL_0);
 
 	// Start TIM2 Channel 1
+	LL_TIM_EnableDMAReq_UPDATE(TIM2);
 	LL_TIM_SetUpdateSource(TIM2, LL_TIM_UPDATESOURCE_COUNTER);
 	LL_TIM_CC_EnableChannel(TIM2, LL_TIM_CHANNEL_CH1);
 	LL_TIM_EnableCounter(TIM2);
@@ -53,7 +54,6 @@ void Driver_LED_SetColor(uint8_t x, uint8_t y, uint32_t color)
 		dma_buffer[g_offset + i] = led_compare_off_on[(color >> (COLOR_8BIT_G - i)) & 0b1];
 		dma_buffer[b_offset + i] = led_compare_off_on[(color >> (COLOR_8BIT_B - i)) & 0b1];
 	}
-
 	is_transfer_requested = 1;
 }
 
@@ -63,6 +63,7 @@ void Driver_LED_Clear()
 	{
 		dma_buffer[i] = LED_COMPARE_OFF;
 	}
+	is_transfer_requested = 1;
 }
 
 void Driver_LED_Tick()
