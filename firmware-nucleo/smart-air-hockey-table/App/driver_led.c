@@ -4,8 +4,8 @@
 #include "stm32u5xx_ll_dma.h"
 #include "stm32u5xx_ll_tim.h"
 
-#define LED_MATRIX_WIDTH 4
-#define LED_MATRIX_HEIGHT 1
+#define LED_MATRIX_WIDTH 2
+#define LED_MATRIX_HEIGHT 2
 #define LED_BITS 24
 #define LED_COMPARE_RESET 0
 #define LED_COMPARE_OFF 3
@@ -41,6 +41,7 @@ void Driver_LED_SetColor(uint8_t x, uint8_t y, uint32_t color)
 	if (x >= LED_MATRIX_WIDTH || y >= LED_MATRIX_HEIGHT) return;
 
 	// Remaps XY coords to physical LED index
+	if (y & 1) x = (LED_MATRIX_WIDTH - 1) - x;
 	size_t pixel_index = x + y * LED_MATRIX_WIDTH;
 
 	// Offset of each color channel within the 24 buffer values that define a pixel

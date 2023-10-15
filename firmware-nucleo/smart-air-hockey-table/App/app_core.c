@@ -6,7 +6,7 @@
 #include "driver_led.h"
 //#include "driver_display.h"
 
-static volatile uint32_t time_ms;
+static volatile uint32_t ticks_elapsed;
 
 void App_Init()
 {
@@ -27,7 +27,7 @@ void App_Init()
 
 void TIM6_Handler()
 {
-	time_ms++;
+	ticks_elapsed++;
 }
 
 void TIM7_Handler()
@@ -37,7 +37,7 @@ void TIM7_Handler()
 	Driver_LED_Tick();
 }
 
-uint32_t App_GetTime()
+uint32_t App_GetTicksElapsed()
 {
-	return time_ms;
+	return ticks_elapsed;
 }
