@@ -23,6 +23,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "app_core.h"
+#include "driver_goaldetection.h"
 #include "driver_led.h"
 #include "driver_encoder.h"
 /* USER CODE END Includes */
@@ -227,13 +228,13 @@ void EXTI5_IRQHandler(void)
 void EXTI6_IRQHandler(void)
 {
   /* USER CODE BEGIN EXTI6_IRQn 0 */
-
+  // LDR1IN Interrupt Handler
   /* USER CODE END EXTI6_IRQn 0 */
   if (LL_EXTI_IsActiveRisingFlag_0_31(LL_EXTI_LINE_6) != RESET)
   {
     LL_EXTI_ClearRisingFlag_0_31(LL_EXTI_LINE_6);
     /* USER CODE BEGIN LL_EXTI_LINE_6_RISING */
-
+    Driver_GoalDetection_SetScoreState(ScoreState_A);
     /* USER CODE END LL_EXTI_LINE_6_RISING */
   }
   /* USER CODE BEGIN EXTI6_IRQn 1 */
@@ -247,13 +248,13 @@ void EXTI6_IRQHandler(void)
 void EXTI13_IRQHandler(void)
 {
   /* USER CODE BEGIN EXTI13_IRQn 0 */
-
+  // LDR2IN Interrupt Handler
   /* USER CODE END EXTI13_IRQn 0 */
   if (LL_EXTI_IsActiveRisingFlag_0_31(LL_EXTI_LINE_13) != RESET)
   {
     LL_EXTI_ClearRisingFlag_0_31(LL_EXTI_LINE_13);
     /* USER CODE BEGIN LL_EXTI_LINE_13_RISING */
-
+    Driver_GoalDetection_SetScoreState(ScoreState_A);
     /* USER CODE END LL_EXTI_LINE_13_RISING */
   }
   /* USER CODE BEGIN EXTI13_IRQn 1 */
@@ -267,13 +268,13 @@ void EXTI13_IRQHandler(void)
 void EXTI14_IRQHandler(void)
 {
   /* USER CODE BEGIN EXTI14_IRQn 0 */
-
+  // LDR3IN Interrupt Handler
   /* USER CODE END EXTI14_IRQn 0 */
   if (LL_EXTI_IsActiveRisingFlag_0_31(LL_EXTI_LINE_14) != RESET)
   {
     LL_EXTI_ClearRisingFlag_0_31(LL_EXTI_LINE_14);
     /* USER CODE BEGIN LL_EXTI_LINE_14_RISING */
-
+    Driver_GoalDetection_SetScoreState(ScoreState_B);
     /* USER CODE END LL_EXTI_LINE_14_RISING */
   }
   /* USER CODE BEGIN EXTI14_IRQn 1 */
@@ -287,13 +288,13 @@ void EXTI14_IRQHandler(void)
 void EXTI15_IRQHandler(void)
 {
   /* USER CODE BEGIN EXTI15_IRQn 0 */
-
+  // LDR4IN Interrupt Handler
   /* USER CODE END EXTI15_IRQn 0 */
   if (LL_EXTI_IsActiveRisingFlag_0_31(LL_EXTI_LINE_15) != RESET)
   {
     LL_EXTI_ClearRisingFlag_0_31(LL_EXTI_LINE_15);
     /* USER CODE BEGIN LL_EXTI_LINE_15_RISING */
-
+    Driver_GoalDetection_SetScoreState(ScoreState_B);
     /* USER CODE END LL_EXTI_LINE_15_RISING */
   }
   /* USER CODE BEGIN EXTI15_IRQn 1 */
