@@ -15,20 +15,27 @@ uint8_t App_StateMachine_GetWinScore()
 	return winScore;
 }
 
+// If an invalid playerIdx is provided, then UINT8_MAX is returned
 uint8_t App_StateMachine_GetPlayerScore(uint8_t playerIdx)
 {
+	// Boundary checking
 	if (playerIdx < NUM_PLAYERS)
 	{
-		return playerScores[playerIdx];
+		return UINT8_MAX;
 	}
+
+	return playerScores[playerIdx];
 }
 
 void App_StateMachine_IncrementPlayerScore(uint8_t playerIdx)
 {
-	if (playerIdx < NUM_PLAYERS)
+	// Boundary checking
+	if (playerIdx >= NUM_PLAYERS)
 	{
-		playerScores[playerIdx] += 1;
+		return;
 	}
+
+	playerScores[playerIdx] += 1;
 }
 
 // Super-loop that is called every TIM7 tick (1ms)
