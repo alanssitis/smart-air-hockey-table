@@ -447,7 +447,7 @@ static void MX_SPI2_Init(void)
   SPI_InitStruct.ClockPolarity = LL_SPI_POLARITY_LOW;
   SPI_InitStruct.ClockPhase = LL_SPI_PHASE_1EDGE;
   SPI_InitStruct.NSS = LL_SPI_NSS_SOFT;
-  SPI_InitStruct.BaudRate = LL_SPI_BAUDRATEPRESCALER_DIV16;
+  SPI_InitStruct.BaudRate = LL_SPI_BAUDRATEPRESCALER_DIV32;
   SPI_InitStruct.BitOrder = LL_SPI_MSB_FIRST;
   SPI_InitStruct.CRCCalculation = LL_SPI_CRCCALCULATION_DISABLE;
   SPI_InitStruct.CRCPoly = 0x7;
@@ -911,7 +911,7 @@ static void MX_GPIO_Init(void)
   LL_EXTI_Init(&EXTI_InitStruct);
 
   /**/
-  LL_GPIO_SetPinPull(ENCODER_SW_GPIO_Port, ENCODER_SW_Pin, LL_GPIO_PULL_NO);
+  LL_GPIO_SetPinPull(ENCODER_SW_GPIO_Port, ENCODER_SW_Pin, LL_GPIO_PULL_UP);
 
   /**/
   LL_GPIO_SetPinPull(LDR1IN_GPIO_Port, LDR1IN_Pin, LL_GPIO_PULL_NO);

@@ -24,6 +24,7 @@
 /* USER CODE BEGIN Includes */
 #include "app_core.h"
 #include "driver_led.h"
+#include "driver_encoder.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -212,7 +213,7 @@ void EXTI5_IRQHandler(void)
   {
     LL_EXTI_ClearRisingFlag_0_31(LL_EXTI_LINE_5);
     /* USER CODE BEGIN LL_EXTI_LINE_5_RISING */
-
+    EXTI5_Handler();
     /* USER CODE END LL_EXTI_LINE_5_RISING */
   }
   /* USER CODE BEGIN EXTI5_IRQn 1 */
