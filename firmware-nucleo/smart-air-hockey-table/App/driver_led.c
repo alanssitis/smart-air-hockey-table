@@ -81,7 +81,7 @@ void Driver_LED_Tick()
 	}
 }
 
-void GPDMA1_Channel0_Handler_TC()
+void GPDMA1_Channel0_Handler()
 {
 	is_transfer_active = 0;
 }
