@@ -24,7 +24,6 @@ static void transmit_start(uint8_t display, uint8_t isData)
 	// CS#
 	if (display & 0x01) LL_GPIO_ResetOutputPin(GPIOD, LL_GPIO_PIN_10);
 	if (display & 0x02) LL_GPIO_ResetOutputPin(GPIOD, LL_GPIO_PIN_11);
-	LL_mDelay(1);
 }
 
 static void transmit_end()
@@ -36,7 +35,7 @@ static void transmit_end()
 static void transmit_word(uint8_t word)
 {
 	LL_SPI_TransmitData8(SPI2, word);
-	while (!LL_SPI_IsActiveFlag_EOT(SPI2));
+	while (!LL_SPI_IsActiveFlag_TXC(SPI2));
 }
 
 static void set_region(uint8_t display, uint8_t col_start, uint8_t col_end, uint8_t page_start, uint8_t page_end)
@@ -54,6 +53,7 @@ static void set_region(uint8_t display, uint8_t col_start, uint8_t col_end, uint
 void Driver_Display_Init()
 {
 	LL_SPI_Enable(SPI2);
+	LL_SPI_StartMasterTransfer(SPI2);
 
 	// Hardware reset all OLEDs on shared pin
 	LL_GPIO_ResetOutputPin(GPIOD, LL_GPIO_PIN_13);
@@ -160,10 +160,10 @@ void Driver_Display_ShowScore(uint8_t display, uint8_t score_a, uint8_t score_b)
 void Driver_Display_FontTest(uint8_t display)
 {
 	Driver_Display_Clear(display);
-	Driver_Display_Print(0, 0, 0, " !\"#$%%&'()*+,-./");
-	Driver_Display_Print(0, 1, 0, "0123456789:;<=>?");
-	Driver_Display_Print(0, 2, 0, "@ABCDEFGHIJKLMNO");
-	Driver_Display_Print(0, 3, 0, "PQRSTUVWXYZ[\\]^_");
-	Driver_Display_Print(0, 4, 0, "`abcdefghijklmno");
-	Driver_Display_Print(0, 5, 0, "pqrstuvwxyz{|}~ ");
+	Driver_Display_Print(display, 0, 0, " !\"#$%%&'()*+,-./");
+	Driver_Display_Print(display, 1, 0, "0123456789:;<=>?");
+	Driver_Display_Print(display, 2, 0, "@ABCDEFGHIJKLMNO");
+	Driver_Display_Print(display, 3, 0, "PQRSTUVWXYZ[\\]^_");
+	Driver_Display_Print(display, 4, 0, "`abcdefghijklmno");
+	Driver_Display_Print(display, 5, 0, "pqrstuvwxyz{|}~ ");
 }
