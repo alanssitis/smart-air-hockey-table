@@ -159,7 +159,6 @@ void Driver_Display_ShowScore(uint8_t display, uint8_t score_a, uint8_t score_b)
 
 void Driver_Display_FontTest(uint8_t display)
 {
-	Driver_Display_Clear(display);
 	Driver_Display_Print(display, 0, 0, " !\"#$%%&'()*+,-./");
 	Driver_Display_Print(display, 1, 0, "0123456789:;<=>?");
 	Driver_Display_Print(display, 2, 0, "@ABCDEFGHIJKLMNO");

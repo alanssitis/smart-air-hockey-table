@@ -36,7 +36,7 @@ void TIM7_Handler()
 {
 	if (ticks_completed + ticks_missed != ticks_elapsed)
 	{
-		uint32_t ticks_difference = ticks_elapsed - ticks_completed;
+		uint32_t ticks_difference = ticks_elapsed - ticks_completed - ticks_missed;
 		ticks_missed += ticks_difference;
 		// Doesn't do much yet, but we can detect when ticks are missed
 	}
