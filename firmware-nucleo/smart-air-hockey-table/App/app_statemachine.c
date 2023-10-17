@@ -2,8 +2,8 @@
 #include "driver_hall_effect.h"
 #include "driver_relay.h"
 
-static volatile struct {
-	GameState currGameState;
+volatile struct {
+	uint8_t currGameState;
 	uint32_t timeInState; // Time (in ticks) in a given state
 	uint8_t winScore; // Number of points required for a player to win
 	uint8_t playerScoreA; // Current number of points Player A has scored
@@ -26,25 +26,25 @@ void App_StateMachine_GameTick()
 	//  Coordinating switch statement, each case calls a function which will handle currGameInfo
 	switch (GameInfo.currGameState)
 	{
-		case (GameState_Idle):
+		case (GAMESTATE_IDLE):
 			// TODO: Implement state handling function
 			// TODO switch states on encoder button flag
 
 			if (GameInfo.timeInState > IDLE_SLEEP_TIME)
 			{
-				App_StateMachine_SetState(GameState_Sleep);
+				App_StateMachine_SetState(GAMESTATE_SLEEP);
 			}
 			break;
 
-		case (GameState_Sleep):
+		case (GAMESTATE_SLEEP):
 			// TODO: Implement state handling function
 			break;
 
-		case (GameState_StartGame):
+		case (GAMESTATE_START):
 			// TODO: Implement state handling function
 			break;
 
-		case (GameState_StartAnimationA):
+		case (GAMESTATE_WAITA):
 		{
 			// TODO: Implement state handling function
 
@@ -55,7 +55,7 @@ void App_StateMachine_GameTick()
 			break;
 		}
 
-		case (GameState_StartAnimationB):
+		case (GAMESTATE_WAITB):
 		{
 			// TODO: Implement state handling function
 
@@ -66,29 +66,29 @@ void App_StateMachine_GameTick()
 			break;
 		}
 
-		case (GameState_RunGame):
+		case (GAMESTATE_RUN):
 			// TODO: Implement state handling function
 			break;
 
-		case (GameState_ScoreAnimationA):
+		case (GAMESTATE_SCOREA):
 			// TODO: Implement state handling function
 			break;
 
-		case (GameState_ScoreAnimationB):
+		case (GAMESTATE_SCOREB):
 			// TODO: Implement state handling function
 			break;
 
-		case (GameState_WinAnimationA):
+		case (GAMESTATE_WINA):
 			// TODO: Implement state handling function
 			break;
 
-		case (GameState_WinAnimationB):
+		case (GAMESTATE_WINB):
 			// TODO: Implement state handling function
 			break;
 
 		default:
 			// Error: default should never occur
-			GameInfo.currGameState = GameState_Idle;
+			GameInfo.currGameState = GAMESTATE_IDLE;
 			break;
 	}
 }
