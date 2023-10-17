@@ -132,7 +132,6 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-    asm("wfi");
   }
   /* USER CODE END 3 */
 }
@@ -939,6 +938,12 @@ static void MX_GPIO_Init(void)
 
   /**/
   LL_GPIO_SetPinMode(LDR4IN_GPIO_Port, LDR4IN_Pin, LL_GPIO_MODE_INPUT);
+
+  /**/
+  GPIO_InitStruct.Pin = LL_GPIO_PIN_4|LL_GPIO_PIN_5|LL_GPIO_PIN_6|LL_GPIO_PIN_7;
+  GPIO_InitStruct.Mode = LL_GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = LL_GPIO_PULL_UP;
+  LL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
   /**/
   GPIO_InitStruct.Pin = UCPD_FLT_Pin;

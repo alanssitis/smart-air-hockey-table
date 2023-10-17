@@ -6,7 +6,7 @@
 #include "driver_hall_effect.h"
 #include "driver_relay.h"
 
-#define INITIAL_GAMESTATE	GAMESTATE_IDLE
+#define INITIAL_GAMESTATE	GAMESTATE_RUN
 #define IDLE_SLEEP_TIME		60000
 
 typedef enum _GameState {

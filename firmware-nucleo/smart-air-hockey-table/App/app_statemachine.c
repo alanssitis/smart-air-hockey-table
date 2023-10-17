@@ -41,6 +41,10 @@ void App_StateMachine_GameTick()
 		case (GAMESTATE_SLEEP):
 		{
 			// TODO: Implement state handling function
+			Driver_LED_Clear();
+			Driver_Display_Clear(0x1);
+			Driver_Display_Clear(0x2);
+
 			break;
 		}
 
@@ -75,6 +79,8 @@ void App_StateMachine_GameTick()
 		case (GAMESTATE_RUN):
 		{
 			// TODO: Implement state handling function
+			Driver_Hall_Effect_ReadHalls();
+
 			break;
 		}
 
@@ -93,12 +99,16 @@ void App_StateMachine_GameTick()
 		case (GAMESTATE_WINA):
 		{
 			// TODO: Implement state handling function
+			Driver_Relay_TurnOff();
+
 			break;
 		}
 
 		case (GAMESTATE_WINB):
 		{
 			// TODO: Implement state handling function
+			Driver_Relay_TurnOff();
+
 			break;
 		}
 
@@ -112,7 +122,7 @@ void App_StateMachine_GameTick()
 }
 
 // Set desired state
-inline void App_StateMachine_SetState(GameState newstate)
+void App_StateMachine_SetState(GameState newstate)
 {
 	// Clear globals
 	GameInfo.timeInState = 0;
