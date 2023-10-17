@@ -7,10 +7,6 @@
 #define PLAYER_A_IDX 0
 #define PLAYER_B_IDX 1
 
-/* TODO:
- * May be able to combine states for each player (e.g. GameState_StartAnimationA & GameState_StartAnimationB)
- * Will know whether or not once we begin work on the states' handling function.
- */
 typedef enum _GameState {
 	GameState_SetUp,			// Initial set-up of the table
 	GameState_Idle,				// Idle before start of the game
