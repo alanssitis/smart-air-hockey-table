@@ -19,8 +19,6 @@ static volatile uint8_t dma_buffer[DMA_BUFFER_LENGTH + 1]; // Leave space for re
 static volatile uint8_t is_transfer_requested;
 static volatile uint8_t is_transfer_active;
 
-static const uint8_t led_compare_off_on[2] = {LED_COMPARE_OFF, LED_COMPARE_ON};
-
 void Driver_LED_Init()
 {
 	Driver_LED_Clear();
@@ -51,9 +49,12 @@ void Driver_LED_SetColor(uint8_t x, uint8_t y, uint32_t color)
 
 	for (uint8_t i = 0; i < 8; i++)
 	{
-		dma_buffer[r_offset + i] = led_compare_off_on[(color >> (COLOR_8BIT_R - i)) & 0b1];
-		dma_buffer[g_offset + i] = led_compare_off_on[(color >> (COLOR_8BIT_G - i)) & 0b1];
-		dma_buffer[b_offset + i] = led_compare_off_on[(color >> (COLOR_8BIT_B - i)) & 0b1];
+		uint8_t r_bit = (color >> (COLOR_8BIT_R - i)) & 0b1;
+		uint8_t g_bit = (color >> (COLOR_8BIT_G - i)) & 0b1;
+		uint8_t b_bit = (color >> (COLOR_8BIT_B - i)) & 0b1;
+		dma_buffer[r_offset + i] = (~r_bit) * LED_COMPARE_OFF + r_bit * LED_COMPARE_ON;
+		dma_buffer[g_offset + i] = (~g_bit) * LED_COMPARE_OFF + g_bit * LED_COMPARE_ON;
+		dma_buffer[b_offset + i] = (~b_bit) * LED_COMPARE_OFF + b_bit * LED_COMPARE_ON;
 	}
 	is_transfer_requested = 1;
 }
