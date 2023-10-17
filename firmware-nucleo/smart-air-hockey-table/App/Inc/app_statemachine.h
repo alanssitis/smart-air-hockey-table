@@ -2,9 +2,13 @@
 #define INC_APP_STATEMACHINE_H_
 
 #include <inttypes.h>
+#include "driver_hall_effect.h"
+#include "driver_relay.h"
+
+#define IDLE_SLEEP_TIME		60000
+#define INITIAL_GAMESTATE	GameState_Idle
 
 typedef enum _GameState {
-	GameState_SetUp,			// Initial set-up of the table
 	GameState_Idle,				// Idle before start of the game
 	GameState_Sleep,			// Low-power mode after inactivity
 	GameState_StartGame,		// Set-up sequence for new game
@@ -20,5 +24,7 @@ typedef enum _GameState {
 } GameState;
 
 void App_StateMachine_GameTick();
+
+inline void App_StateMachine_SetState(GameState);
 
 #endif /* INC_APP_STATEMACHINE_H_ */
