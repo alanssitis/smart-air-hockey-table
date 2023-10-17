@@ -25,18 +25,7 @@ int8_t Driver_Encoder_PollRotation()
 	int8_t rotation_delta = LL_TIM_GetCounter(TIM3) - rotation_basis;
 
 	// Only detect rotation on a multiple of ENCODER_SCALING (on the detent)
-	int8_t result = 0;
-	if (rotation_delta >= ENCODER_SCALING)
-	{
-		result++;
-		rotation_delta -= ENCODER_SCALING;
-	}
-	if (rotation_delta <= -ENCODER_SCALING)
-	{
-		result--;
-		rotation_delta += ENCODER_SCALING;
-	}
-
+	int8_t result = (rotation_delta + (rotation_delta > -rotation_delta) * (ENCODER_SCALING - 1)) / ENCODER_SCALING;
 	rotation_basis += result * ENCODER_SCALING;
 	return result;
 }
