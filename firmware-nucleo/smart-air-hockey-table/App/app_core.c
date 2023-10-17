@@ -1,4 +1,5 @@
 #include "app_core.h"
+#include "app_statemachine.h"
 
 #include "stm32u5xx_ll_tim.h"
 #include "stm32u5xx_ll_utils.h"
@@ -19,6 +20,9 @@ void App_Init()
 	Driver_LED_Init();
 	Driver_Display_Init();
 	Driver_Encoder_Init();
+
+	// Last step: set initial state
+	App_StateMachine_Init();
 
 	// Start 1000 Hz "superloop"
 	LL_TIM_SetUpdateSource(TIM6, LL_TIM_UPDATESOURCE_COUNTER);
