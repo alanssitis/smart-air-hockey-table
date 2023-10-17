@@ -2,25 +2,25 @@
 #define INC_APP_STATEMACHINE_H_
 
 #include <inttypes.h>
+
 #include "driver_hall_effect.h"
 #include "driver_relay.h"
 
+#define INITIAL_GAMESTATE	GAMESTATE_IDLE
 #define IDLE_SLEEP_TIME		60000
-#define INITIAL_GAMESTATE	GameState_Idle
 
 typedef enum _GameState {
-	GameState_Idle,				// Idle before start of the game
-	GameState_Sleep,			// Low-power mode after inactivity
-	GameState_StartGame,		// Set-up sequence for new game
-	GameState_StartAnimationA,	// Playing start animation for player A
-	GameState_StartAnimationB,	// Playing start animation for player B
-	GameState_RunGame,			// Game is in progress
-	GameState_ScoreAnimationA,	// Player A scored (not the winning shot)
-	GameState_ScoreAnimationB,	// Player B scored (not the winning shot)
-	GameState_WinAnimationA,	// Player A won the game (winning shot)
-	GameState_WinAnimationB,	// Player B won the game (winning shot)
-	GameState_Error,			// Error state
-	GameState_Count				// State used for boundary checking
+	GAMESTATE_IDLE,		// Idle before start of the game
+	GAMESTATE_SLEEP,	// Low-power mode after inactivity
+	GAMESTATE_START,	// Set-up sequence for new game
+	GAMESTATE_WAITA,	// Playing start animation for player A
+	GAMESTATE_WAITB,	// Playing start animation for player B
+	GAMESTATE_RUN,		// Game is in progress
+	GAMESTATE_SCOREA,	// Player A scored (not the winning shot)
+	GAMESTATE_SCOREB,	// Player B scored (not the winning shot)
+	GAMESTATE_WINA,		// Player A won the game (winning shot)
+	GAMESTATE_WINB,		// Player B won the game (winning shot)
+	GAMESTATE_ERROR		// Error state
 } GameState;
 
 void App_StateMachine_GameTick();
