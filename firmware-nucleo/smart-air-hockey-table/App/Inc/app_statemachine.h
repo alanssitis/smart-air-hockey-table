@@ -3,9 +3,11 @@
 
 #include <inttypes.h>
 
-#define NUM_PLAYERS 2
-#define PLAYER_A_IDX 0
-#define PLAYER_B_IDX 1
+typedef enum _PlayerId {
+	PlayerId_A,		// Used to identify player A
+	PlayerId_B,		// Used to identify player B
+	PlayerId_Count	// Used for boundary checking
+} PlayerId;
 
 typedef enum _GameState {
 	GameState_SetUp,			// Initial set-up of the table
@@ -25,8 +27,8 @@ typedef enum _GameState {
 
 GameState App_StateMachine_GetGameState();
 uint8_t App_StateMachine_GetWinScore();
-uint8_t App_StateMachine_GetPlayerScore(uint8_t playerIdx);
-void App_StateMachine_IncrementPlayerScore(uint8_t playerIdx);
+uint8_t App_StateMachine_GetPlayerScore(PlayerId id);
+void App_StateMachine_IncrementPlayerScore(PlayerId id);
 void App_StateMachine_GameTick();
 
 #endif /* INC_APP_STATEMACHINE_H_ */
