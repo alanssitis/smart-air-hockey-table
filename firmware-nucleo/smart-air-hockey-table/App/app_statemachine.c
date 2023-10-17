@@ -3,7 +3,8 @@
 static volatile GameState currGameState = GameState_Error;
 // TODO: Make winScore modifiable by the player through the OLED menu, for now it is hard-coded to 7
 static volatile uint8_t winScore = 7; // Number of points required for a player to win
-static volatile uint8_t playerScores[NUM_PLAYERS];
+static volatile uint8_t playerScoreA; // Current number of points Player A has scored
+static volatile uint8_t playerScoreB; // Current number of points Player B has scored
 
 GameState App_StateMachine_GetGameState()
 {
@@ -15,27 +16,27 @@ uint8_t App_StateMachine_GetWinScore()
 	return winScore;
 }
 
-// If an invalid playerIdx is provided, then UINT8_MAX is returned
-uint8_t App_StateMachine_GetPlayerScore(uint8_t playerIdx)
+// If an invalid PlayerId is provided, then UINT8_MAX is returned
+uint8_t App_StateMachine_GetPlayerScore(PlayerId id)
 {
-	// Boundary checking
-	if (playerIdx < NUM_PLAYERS)
-	{
-		return UINT8_MAX;
+	if (id == PlayerId_A) {
+		return playerScoreA;
+	}
+	else if (id == PlayerId_B) {
+		return playerScoreB;
 	}
 
-	return playerScores[playerIdx];
+	return UINT8_MAX;
 }
 
-void App_StateMachine_IncrementPlayerScore(uint8_t playerIdx)
+void App_StateMachine_IncrementPlayerScore(PlayerId id)
 {
-	// Boundary checking
-	if (playerIdx >= NUM_PLAYERS)
-	{
-		return;
+	if (id == PlayerId_A) {
+		playerScoreA += 1;
 	}
-
-	playerScores[playerIdx] += 1;
+	else if (id == PlayerId_B) {
+		playerScoreB += 1;
+	}
 }
 
 // Super-loop that is called every TIM7 tick (1ms)
