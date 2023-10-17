@@ -63,7 +63,7 @@ void Driver_Display_Init()
 	LL_mDelay(1);
 
 	// Use bitmask to send to all displays simultaneously
-	transmit_start(0xFF, false);
+	transmit_start(DISPLAY_ALL, false);
 
 	// Vertical addressing mode
 	transmit_word(0x20);
@@ -80,10 +80,10 @@ void Driver_Display_Init()
 	transmit_end();
 
 	// Clear GDDRAM
-	Driver_Display_Clear(0xFF);
+	Driver_Display_Clear(DISPLAY_ALL);
 
 	// Display on
-	transmit_start(0xFF, false);
+	transmit_start(DISPLAY_ALL, false);
 	transmit_word(0xAF);
 	transmit_end();
 }
