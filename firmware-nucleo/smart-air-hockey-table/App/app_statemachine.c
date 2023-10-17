@@ -27,6 +27,7 @@ void App_StateMachine_GameTick()
 	switch (GameInfo.currGameState)
 	{
 		case (GAMESTATE_IDLE):
+		{
 			// TODO: Implement state handling function
 			// TODO switch states on encoder button flag
 
@@ -35,14 +36,19 @@ void App_StateMachine_GameTick()
 				App_StateMachine_SetState(GAMESTATE_SLEEP);
 			}
 			break;
+		}
 
 		case (GAMESTATE_SLEEP):
+		{
 			// TODO: Implement state handling function
 			break;
+		}
 
 		case (GAMESTATE_START):
+		{
 			// TODO: Implement state handling function
 			break;
+		}
 
 		case (GAMESTATE_WAITA):
 		{
@@ -67,29 +73,41 @@ void App_StateMachine_GameTick()
 		}
 
 		case (GAMESTATE_RUN):
+		{
 			// TODO: Implement state handling function
 			break;
+		}
 
 		case (GAMESTATE_SCOREA):
+		{
 			// TODO: Implement state handling function
 			break;
+		}
 
 		case (GAMESTATE_SCOREB):
+		{
 			// TODO: Implement state handling function
 			break;
+		}
 
 		case (GAMESTATE_WINA):
+		{
 			// TODO: Implement state handling function
 			break;
+		}
 
 		case (GAMESTATE_WINB):
+		{
 			// TODO: Implement state handling function
 			break;
+		}
 
 		default:
+		{
 			// Error: default should never occur
 			GameInfo.currGameState = GAMESTATE_IDLE;
 			break;
+		}
 	}
 }
 
