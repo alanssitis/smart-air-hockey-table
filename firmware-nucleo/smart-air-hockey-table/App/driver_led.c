@@ -1,5 +1,6 @@
 #include "driver_led.h"
 
+#include <stdbool.h>
 #include <stddef.h>
 #include "stm32u5xx_ll_dma.h"
 #include "stm32u5xx_ll_tim.h"
@@ -16,8 +17,8 @@
 #define COLOR_8BIT_B 7
 
 static volatile uint8_t dma_buffer[DMA_BUFFER_LENGTH + 1]; // Leave space for reset value
-static volatile uint8_t is_transfer_requested;
-static volatile uint8_t is_transfer_active;
+static volatile bool is_transfer_requested;
+static volatile bool is_transfer_active;
 
 void Driver_LED_Init()
 {
@@ -56,7 +57,7 @@ void Driver_LED_SetColor(uint8_t x, uint8_t y, uint32_t color)
 		dma_buffer[g_offset + i] = (~g_bit) * LED_COMPARE_OFF + g_bit * LED_COMPARE_ON;
 		dma_buffer[b_offset + i] = (~b_bit) * LED_COMPARE_OFF + b_bit * LED_COMPARE_ON;
 	}
-	is_transfer_requested = 1;
+	is_transfer_requested = true;
 }
 
 void Driver_LED_Clear()
@@ -65,15 +66,15 @@ void Driver_LED_Clear()
 	{
 		dma_buffer[i] = LED_COMPARE_OFF;
 	}
-	is_transfer_requested = 1;
+	is_transfer_requested = true;
 }
 
 void Driver_LED_Tick()
 {
 	if (is_transfer_requested && !is_transfer_active)
 	{
-		is_transfer_requested = 0;
-		is_transfer_active = 1;
+		is_transfer_requested = false;
+		is_transfer_active = true;
 
 		// Configure GPDMA Channel 0
 		LL_DMA_ConfigAddresses(GPDMA1, LL_DMA_CHANNEL_0, (uint32_t) dma_buffer, (uint32_t) &(TIM2->CCR1));
@@ -84,5 +85,5 @@ void Driver_LED_Tick()
 
 void GPDMA1_Channel0_Handler()
 {
-	is_transfer_active = 0;
+	is_transfer_active = false;
 }

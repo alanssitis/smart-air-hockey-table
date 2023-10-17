@@ -5,6 +5,7 @@
 
 #include "driver_led.h"
 #include "driver_display.h"
+#include "driver_encoder.h"
 
 static volatile uint32_t ticks_elapsed;
 static volatile uint32_t ticks_completed;
@@ -17,6 +18,7 @@ void App_Init()
 
 	Driver_LED_Init();
 	Driver_Display_Init();
+	Driver_Encoder_Init();
 
 	// Start 1000 Hz "superloop"
 	LL_TIM_SetUpdateSource(TIM6, LL_TIM_UPDATESOURCE_COUNTER);
