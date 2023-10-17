@@ -1,8 +1,9 @@
 #include "driver_display.h"
 
+#include <stdarg.h>
+#include <stdbool.h>
 #include <stddef.h>
 #include <stdio.h>
-#include <stdarg.h>
 #include "stm32u5xx_ll_gpio.h"
 #include "stm32u5xx_ll_utils.h"
 #include "stm32u5xx_ll_spi.h"
@@ -15,10 +16,10 @@
 #define DISPLAY_WIDTH 128
 #define DISPLAY_HEIGHT 64
 
-static void transmit_start(uint8_t display, uint8_t isData)
+static void transmit_start(uint8_t display, bool is_data)
 {
 	// DC
-	if (isData) LL_GPIO_SetOutputPin(GPIOD, LL_GPIO_PIN_12);
+	if (is_data) LL_GPIO_SetOutputPin(GPIOD, LL_GPIO_PIN_12);
 	else LL_GPIO_ResetOutputPin(GPIOD, LL_GPIO_PIN_12);
 
 	// CS#
@@ -40,7 +41,7 @@ static void transmit_word(uint8_t word)
 
 static void set_region(uint8_t display, uint8_t col_start, uint8_t col_end, uint8_t page_start, uint8_t page_end)
 {
-	transmit_start(display, 0);
+	transmit_start(display, false);
 	transmit_word(0x21);
 	transmit_word(col_start);
 	transmit_word(col_end);
@@ -62,7 +63,7 @@ void Driver_Display_Init()
 	LL_mDelay(1);
 
 	// Use bitmask to send to all displays simultaneously
-	transmit_start(0xFF, 0);
+	transmit_start(0xFF, false);
 
 	// Vertical addressing mode
 	transmit_word(0x20);
@@ -82,7 +83,7 @@ void Driver_Display_Init()
 	Driver_Display_Clear(0xFF);
 
 	// Display on
-	transmit_start(0xFF, 0);
+	transmit_start(0xFF, false);
 	transmit_word(0xAF);
 	transmit_end();
 }
@@ -91,7 +92,7 @@ void Driver_Display_Clear(uint8_t display)
 {
 	set_region(display, 0, DISPLAY_COLUMNS - 1, 0, DISPLAY_PAGES - 1);
 
-	transmit_start(display, 1);
+	transmit_start(display, true);
 	for (size_t i = 0; i < DISPLAY_WIDTH * DISPLAY_HEIGHT / 8; i++) transmit_word(0x00);
 	transmit_end();
 }
@@ -111,9 +112,10 @@ void Driver_Display_Print(uint8_t display, uint8_t line, uint8_t offset, const c
 	char* string = &buffer[0];
 
 	// Send string to the display
-	uint8_t inverted = 0, column = 0;
+	bool inverted = 0;
+	uint8_t column = 0;
 	set_region(display, offset * FONT_6X8_WIDTH, DISPLAY_COLUMNS - 1, line, line);
-	transmit_start(display, 1);
+	transmit_start(display, true);
 	while (*string != '\0')
 	{
 		uint8_t character = *(string++);
@@ -148,7 +150,7 @@ void Driver_Display_ShowScore(uint8_t display, uint8_t score_a, uint8_t score_b)
 
 	set_region(display, (DISPLAY_COLUMNS - FONT_SCORE_WIDTH * 5) / 2, DISPLAY_COLUMNS - 1, 3, 6);
 
-	transmit_start(display, 1);
+	transmit_start(display, true);
 	for (size_t i = 0; i < sizeof(font_score[tens_a]); i++) transmit_word(font_score[tens_a][i]);
 	for (size_t i = 0; i < sizeof(font_score[ones_a]); i++) transmit_word(font_score[ones_a][i]);
 	for (size_t i = 0; i < sizeof(font_dash); i++) transmit_word(font_dash[i]);
