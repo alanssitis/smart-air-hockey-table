@@ -1,6 +1,6 @@
 #include "app_statemachine.h"
 
-static volatile GameState currGameState;
+static volatile GameState currGameState = GameState_Error;
 // TODO: Make winScore modifiable by the player through the OLED menu, for now it is hard-coded to 7
 static volatile uint8_t winScore = 7; // Number of points required for a player to win
 static volatile uint8_t playerScores[NUM_PLAYERS];
