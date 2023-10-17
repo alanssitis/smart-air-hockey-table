@@ -1,18 +1,25 @@
 #include "app_statemachine.h"
 
-static volatile struct currGameInfo {
-	GameState currGameState = GameState_Error;
+static volatile struct {
+	GameState currGameState;
+	uint8_t winScore; // Number of points required for a player to win
+	uint8_t playerScoreA; // Current number of points Player A has scored
+	uint8_t playerScoreB; // Current number of points Player B has scored
+} GameInfo;
+
+void App_StateMachine_Init() {
+	GameInfo.currGameState = GameState_SetUp;
 	// TODO: Make winScore modifiable by the player through the OLED menu, for now it is hard-coded to 7
-	uint8_t winScore = 7; // Number of points required for a player to win
-	uint8_t playerScoreA = 0; // Current number of points Player A has scored
-	uint8_t playerScoreB = 0; // Current number of points Player B has scored
-};
+	GameInfo.winScore = 7;
+	GameInfo.playerScoreA = 0;
+	GameInfo.playerScoreB = 0;
+}
 
 // Super-loop that is called every TIM7 tick (1ms)
 void App_StateMachine_GameTick()
 {
 	//  Coordinating switch statement, each case calls a function which will handle currGameInfo
-	switch (currGameState)
+	switch (GameInfo.currGameState)
 	{
 		case (GameState_SetUp):
 			// TODO: Implement state handling function
@@ -49,7 +56,7 @@ void App_StateMachine_GameTick()
 			break;
 		default:
 			// Error: default should never occur
-			currGameState = GameState_Error;
+			GameInfo.currGameState = GameState_Error;
 			break;
 	}
 }
