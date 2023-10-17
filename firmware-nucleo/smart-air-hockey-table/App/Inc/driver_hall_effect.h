@@ -4,8 +4,8 @@
 #include <inttypes.h>
 #include "stm32u575xx.h"
 
-uint32_t hall_effect_cols;
-uint16_t hall_effect_rows;
+extern uint32_t hall_effect_cols;
+extern uint16_t hall_effect_rows;
 
 #define ROW0_ODR	GPIO_ODR_OD6	// GPIOA
 #define ROW1_ODR	GPIO_ODR_OD7	// GPIOA
