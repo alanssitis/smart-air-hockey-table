@@ -1,5 +1,8 @@
 #include "driver_hall_effect.h"
 
+uint32_t hall_effect_cols;
+uint16_t hall_effect_rows;
+
 void Driver_Hall_Effect_ReadHalls()
 {
 	hall_effect_rows = 0;
