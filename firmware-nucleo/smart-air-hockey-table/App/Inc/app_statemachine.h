@@ -23,6 +23,7 @@ typedef enum _GameState {
 	GameState_ScoreAnimationB,	// Player B scored (not the winning shot)
 	GameState_WinAnimationA,	// Player A won the game (winning shot)
 	GameState_WinAnimationB,	// Player B won the game (winning shot)
+	GameState_Error,			// Error state
 	GameState_Count				// State used for boundary checking
 } GameState;
 

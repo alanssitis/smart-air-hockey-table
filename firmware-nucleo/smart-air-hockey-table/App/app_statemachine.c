@@ -78,7 +78,8 @@ void App_StateMachine_GameTick()
 			// TODO: Implement state handling function
 			break;
 		default:
-			// Error: default should occur
+			// Error: default should never occur
+			currGameState = GameState_Error;
 			break;
 	}
 }
