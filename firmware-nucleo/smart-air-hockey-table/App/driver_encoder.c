@@ -6,17 +6,11 @@
 
 static volatile bool is_button_pressed;
 static volatile uint32_t rotation_basis;
-static volatile int8_t rotation_delta;
 
 void Driver_Encoder_Init()
 {
 	LL_TIM_EnableCounter(TIM3);
 	is_button_pressed = false; // Clear the flag since it is triggered at startup
-}
-
-void Driver_Encoder_Tick()
-{
-	rotation_delta = LL_TIM_GetCounter(TIM3) - rotation_basis;
 }
 
 bool Driver_Encoder_PollButton()
@@ -28,6 +22,9 @@ bool Driver_Encoder_PollButton()
 
 int8_t Driver_Encoder_PollRotation()
 {
+	int8_t rotation_delta = LL_TIM_GetCounter(TIM3) - rotation_basis;
+
+	// Only detect rotation on a multiple of ENCODER_SCALING (on the detent)
 	int8_t result = rotation_delta % ENCODER_SCALING == 0 ? rotation_delta / ENCODER_SCALING : 0;
 	if (result != 0) rotation_basis += rotation_delta;
 	return result;

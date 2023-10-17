@@ -46,7 +46,6 @@ void TIM7_Handler()
 	// TODO: State machine logic
 
 	Driver_LED_Tick();
-	Driver_Encoder_Tick();
 
 	ticks_completed++;
 }
