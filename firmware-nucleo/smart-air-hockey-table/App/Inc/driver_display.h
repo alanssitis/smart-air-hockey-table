@@ -2,6 +2,7 @@
 #define INC_DRIVER_DISPLAY_H_
 
 #include <inttypes.h>
+#include <stdbool.h>
 
 typedef enum
 {

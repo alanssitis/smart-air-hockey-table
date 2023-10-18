@@ -1,7 +1,6 @@
 #include "driver_display.h"
 
 #include <stdarg.h>
-#include <stdbool.h>
 #include <stddef.h>
 #include <stdio.h>
 #include "stm32u5xx_ll_gpio.h"
