@@ -16,15 +16,15 @@
 #define DISPLAY_WIDTH 128
 #define DISPLAY_HEIGHT 64
 
-static void transmit_start(uint8_t display, bool is_data)
+static void transmit_start(Display display, bool is_data)
 {
 	// DC
 	if (is_data) LL_GPIO_SetOutputPin(GPIOD, LL_GPIO_PIN_12);
 	else LL_GPIO_ResetOutputPin(GPIOD, LL_GPIO_PIN_12);
 
 	// CS#
-	if (display & 0x01) LL_GPIO_ResetOutputPin(GPIOD, LL_GPIO_PIN_10);
-	if (display & 0x02) LL_GPIO_ResetOutputPin(GPIOD, LL_GPIO_PIN_11);
+	if (display & DISPLAY_0) LL_GPIO_ResetOutputPin(GPIOD, LL_GPIO_PIN_10);
+	if (display & DISPLAY_1) LL_GPIO_ResetOutputPin(GPIOD, LL_GPIO_PIN_11);
 }
 
 static void transmit_end()
@@ -39,7 +39,7 @@ static void transmit_word(uint8_t word)
 	while (!LL_SPI_IsActiveFlag_TXC(SPI2));
 }
 
-static void set_region(uint8_t display, uint8_t col_start, uint8_t col_end, uint8_t page_start, uint8_t page_end)
+static void set_region(Display display, uint8_t col_start, uint8_t col_end, uint8_t page_start, uint8_t page_end)
 {
 	transmit_start(display, false);
 	transmit_word(0x21);
@@ -63,7 +63,7 @@ void Driver_Display_Init()
 	LL_mDelay(1);
 
 	// Use bitmask to send to all displays simultaneously
-	transmit_start(0xFF, false);
+	transmit_start(DISPLAY_ALL, false);
 
 	// Vertical addressing mode
 	transmit_word(0x20);
@@ -80,15 +80,15 @@ void Driver_Display_Init()
 	transmit_end();
 
 	// Clear GDDRAM
-	Driver_Display_Clear(0xFF);
+	Driver_Display_Clear(DISPLAY_ALL);
 
 	// Display on
-	transmit_start(0xFF, false);
+	transmit_start(DISPLAY_ALL, false);
 	transmit_word(0xAF);
 	transmit_end();
 }
 
-void Driver_Display_Clear(uint8_t display)
+void Driver_Display_Clear(Display display)
 {
 	set_region(display, 0, DISPLAY_COLUMNS - 1, 0, DISPLAY_PAGES - 1);
 
@@ -97,7 +97,7 @@ void Driver_Display_Clear(uint8_t display)
 	transmit_end();
 }
 
-void Driver_Display_Print(uint8_t display, uint8_t line, uint8_t offset, const char* format, ...)
+void Driver_Display_Print(Display display, uint8_t line, uint8_t offset, const char* format, ...)
 {
 	if (line >= DISPLAY_PAGES) return;
 	if (offset * FONT_6X8_WIDTH >= DISPLAY_COLUMNS) return;
@@ -139,7 +139,7 @@ void Driver_Display_Print(uint8_t display, uint8_t line, uint8_t offset, const c
 	transmit_end();
 }
 
-void Driver_Display_ShowScore(uint8_t display, uint8_t score_a, uint8_t score_b)
+void Driver_Display_ShowScore(Display display, uint8_t score_a, uint8_t score_b)
 {
 	if (score_a > 99 || score_b > 99) return;
 
@@ -159,7 +159,7 @@ void Driver_Display_ShowScore(uint8_t display, uint8_t score_a, uint8_t score_b)
 	transmit_end();
 }
 
-void Driver_Display_FontTest(uint8_t display)
+void Driver_Display_FontTest(Display display)
 {
 	Driver_Display_Print(display, 0, 0, " !\"#$%%&'()*+,-./");
 	Driver_Display_Print(display, 1, 0, "0123456789:;<=>?");
