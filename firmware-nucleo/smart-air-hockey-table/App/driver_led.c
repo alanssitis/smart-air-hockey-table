@@ -53,9 +53,9 @@ void Driver_LED_SetColor(uint8_t x, uint8_t y, uint32_t color)
 		uint8_t r_bit = (color >> (COLOR_8BIT_R - i)) & 0b1;
 		uint8_t g_bit = (color >> (COLOR_8BIT_G - i)) & 0b1;
 		uint8_t b_bit = (color >> (COLOR_8BIT_B - i)) & 0b1;
-		dma_buffer[r_offset + i] = (~r_bit) * LED_COMPARE_OFF + r_bit * LED_COMPARE_ON;
-		dma_buffer[g_offset + i] = (~g_bit) * LED_COMPARE_OFF + g_bit * LED_COMPARE_ON;
-		dma_buffer[b_offset + i] = (~b_bit) * LED_COMPARE_OFF + b_bit * LED_COMPARE_ON;
+		dma_buffer[r_offset + i] = (!r_bit) * LED_COMPARE_OFF + r_bit * LED_COMPARE_ON;
+		dma_buffer[g_offset + i] = (!g_bit) * LED_COMPARE_OFF + g_bit * LED_COMPARE_ON;
+		dma_buffer[b_offset + i] = (!b_bit) * LED_COMPARE_OFF + b_bit * LED_COMPARE_ON;
 	}
 	is_transfer_requested = true;
 }
