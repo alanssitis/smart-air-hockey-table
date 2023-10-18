@@ -1,7 +1,6 @@
 ﻿Designator,Footprint,Quantity,Value,LCSC Part #
 "C1, C2, C3, C4, C5, C6",0805,6,0.1uF,C49678
-D1,LED_WS2812B_PLCC4_5.0x5.0mm_P3.2mm,1,WS2812B,
-"D2, D3, D4",LED_WS2812B_PLCC4_5.0x5.0mm_P3.2mm,3,WS2812B,C4154882
+"D1, D2, D3, D4",LED_WS2812B_PLCC4_5.0x5.0mm_P3.2mm,4,WS2812B,C4154882
 H1,MountingHole_2.7mm_M2.5,1,Top Left Mounting Hole,
 H2,MountingHole_2.7mm_M2.5,1,Bottom Left Mounting Hole,
 H3,MountingHole_2.7mm_M2.5,1,Top Right Mounting Hole,
