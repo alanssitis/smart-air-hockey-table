@@ -848,7 +848,8 @@ static void MX_GPIO_Init(void)
   LL_PWR_EnableVDDIO2();
 
   /**/
-  LL_GPIO_ResetOutputPin(GPIOD, OLED1CS_Pin|OLED2CS_Pin|OLEDDC_Pin|OLEDRES_Pin);
+  LL_GPIO_ResetOutputPin(GPIOD, OLED1CS_Pin|OLED2CS_Pin|OLEDDC_Pin|OLEDRES_Pin
+                          |LL_GPIO_PIN_14);
 
   /**/
   LL_GPIO_ResetOutputPin(LED_RED_GPIO_Port, LED_RED_Pin);
@@ -952,7 +953,8 @@ static void MX_GPIO_Init(void)
   LL_GPIO_Init(UCPD_FLT_GPIO_Port, &GPIO_InitStruct);
 
   /**/
-  GPIO_InitStruct.Pin = OLED1CS_Pin|OLED2CS_Pin|OLEDDC_Pin|OLEDRES_Pin;
+  GPIO_InitStruct.Pin = OLED1CS_Pin|OLED2CS_Pin|OLEDDC_Pin|OLEDRES_Pin
+                          |LL_GPIO_PIN_14;
   GPIO_InitStruct.Mode = LL_GPIO_MODE_OUTPUT;
   GPIO_InitStruct.Speed = LL_GPIO_SPEED_FREQ_LOW;
   GPIO_InitStruct.OutputType = LL_GPIO_OUTPUT_PUSHPULL;

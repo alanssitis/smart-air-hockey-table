@@ -80,6 +80,8 @@ void App_StateMachine_GameTick()
 		{
 			// TODO: Implement state handling function
 			Driver_Hall_Effect_ReadHalls();
+			Driver_Relay_TurnOn();
+			Driver_Relay_TurnOff();
 
 			break;
 		}
