@@ -205,8 +205,8 @@ _Figure 1: Current Master PCB Schematic_
 
 - I assisted Ben in routing a portion of the Master PCB.
 
-|<img src="/477grp5/team/trevor/Trevor_Week4_MasterPcbDesign.PNG" width="70%">|<img src="/477grp5/team/trevor/Trevor_Week4_MasterPcbRender.PNG" width="100%">|
-|:---:|:---:|
+| <img src="/477grp5/team/trevor/Trevor_Week4_MasterPcbDesign.PNG" width="70%"> | <img src="/477grp5/team/trevor/Trevor_Week4_MasterPcbRender.PNG" width="100%"> |
+| :---------------------------------------------------------------------------: | :----------------------------------------------------------------------------: |
 
 _Figure 2: Current Master PCB_
 
@@ -218,8 +218,8 @@ _Figure 3: Current Sensor PCB Schematic_
 
 - I lead assigning component footprints, laying out components, and routing in KiCad.
 
-|<img src="/477grp5/team/trevor/Trevor_Week4_SensorPcbDesign.PNG" width="70%">|<img src="/477grp5/team/trevor/Trevor_Week4_SensorPcbRender.PNG" height="100%">|
-|:---:|:---:|
+| <img src="/477grp5/team/trevor/Trevor_Week4_SensorPcbDesign.PNG" width="70%"> | <img src="/477grp5/team/trevor/Trevor_Week4_SensorPcbRender.PNG" height="100%"> |
+| :---------------------------------------------------------------------------: | :-----------------------------------------------------------------------------: |
 
 _Figure 4: Current Sensor PCB_
 
