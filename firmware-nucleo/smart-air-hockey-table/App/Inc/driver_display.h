@@ -12,6 +12,7 @@ typedef enum
 
 void Driver_Display_Init();
 void Driver_Display_Clear(Display display);
+void Driver_Display_SetPowered(Display display, bool is_powered);
 void Driver_Display_Print(Display display, uint8_t line, uint8_t offset, const char* format, ...);
 void Driver_Display_ShowScore(Display display, uint8_t score_a, uint8_t score_b);
 void Driver_Display_FontTest(Display display);
