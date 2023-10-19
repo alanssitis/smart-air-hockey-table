@@ -1,16 +1,21 @@
 #include "app_statemachine.h"
-#include "driver_hall_effect.h"
+
+#include "driver_led.h"
+#include "driver_display.h"
+#include "driver_encoder.h"
 #include "driver_relay.h"
+#include "driver_halleffect.h"
 
 volatile struct {
-	uint8_t currGameState;
-	uint32_t timeInState; // Time (in ticks) in a given state
+	GameState currGameState;
+	uint32_t ticksInState; // Ticks in a given state
 	uint8_t winScore; // Number of points required for a player to win
 	uint8_t playerScoreA; // Current number of points Player A has scored
 	uint8_t playerScoreB; // Current number of points Player B has scored
 } GameInfo;
 
-void App_StateMachine_Init() {
+void App_StateMachine_Init()
+{
 	GameInfo.currGameState = INITIAL_GAMESTATE;
 	// TODO: Make winScore modifiable by the player through the OLED menu, for now it is hard-coded to 7
 	GameInfo.winScore = 7;
@@ -21,7 +26,7 @@ void App_StateMachine_Init() {
 // Super-loop that is called every TIM7 tick (1ms)
 void App_StateMachine_GameTick()
 {
-	GameInfo.timeInState++; // add 1 tick count to timer
+	GameInfo.ticksInState++; // Add 1 tick to counter
 
 	//  Coordinating switch statement, each case calls a function which will handle currGameInfo
 	switch (GameInfo.currGameState)
@@ -31,7 +36,7 @@ void App_StateMachine_GameTick()
 			// TODO: Implement state handling function
 			// TODO switch states on encoder button flag
 
-			if (GameInfo.timeInState > IDLE_SLEEP_TIME)
+			if (GameInfo.ticksInState > IDLE_SLEEP_TICKS)
 			{
 				App_StateMachine_SetState(GAMESTATE_SLEEP);
 			}
@@ -42,9 +47,7 @@ void App_StateMachine_GameTick()
 		{
 			// TODO: Implement state handling function
 			Driver_LED_Clear();
-			Driver_Display_Clear(0x1);
-			Driver_Display_Clear(0x2);
-
+			Driver_Display_Clear(DISPLAY_ALL);
 			break;
 		}
 
@@ -54,7 +57,7 @@ void App_StateMachine_GameTick()
 			break;
 		}
 
-		case (GAMESTATE_WAITA):
+		case (GAMESTATE_WAIT_A):
 		{
 			// TODO: Implement state handling function
 
@@ -65,7 +68,7 @@ void App_StateMachine_GameTick()
 			break;
 		}
 
-		case (GAMESTATE_WAITB):
+		case (GAMESTATE_WAIT_B):
 		{
 			// TODO: Implement state handling function
 
@@ -78,39 +81,34 @@ void App_StateMachine_GameTick()
 
 		case (GAMESTATE_RUN):
 		{
+			Driver_HallEffect_PollInputs();
 			// TODO: Implement state handling function
-			Driver_Hall_Effect_ReadHalls();
-			// Driver_Relay_TurnOn();
-			// Driver_Relay_TurnOff();
-
 			break;
 		}
 
-		case (GAMESTATE_SCOREA):
+		case (GAMESTATE_SCORE_A):
 		{
 			// TODO: Implement state handling function
 			break;
 		}
 
-		case (GAMESTATE_SCOREB):
+		case (GAMESTATE_SCORE_B):
 		{
 			// TODO: Implement state handling function
 			break;
 		}
 
-		case (GAMESTATE_WINA):
+		case (GAMESTATE_WIN_A):
 		{
 			// TODO: Implement state handling function
 			Driver_Relay_TurnOff();
-
 			break;
 		}
 
-		case (GAMESTATE_WINB):
+		case (GAMESTATE_WIN_B):
 		{
 			// TODO: Implement state handling function
 			Driver_Relay_TurnOff();
-
 			break;
 		}
 
@@ -124,11 +122,11 @@ void App_StateMachine_GameTick()
 }
 
 // Set desired state
-void App_StateMachine_SetState(GameState newstate)
+void App_StateMachine_SetState(GameState new_state)
 {
 	// Clear globals
-	GameInfo.timeInState = 0;
+	GameInfo.ticksInState = 0;
 
 	// Switch states
-	GameInfo.currGameState = newstate;
+	GameInfo.currGameState = new_state;
 }

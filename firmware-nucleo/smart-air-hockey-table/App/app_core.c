@@ -7,6 +7,8 @@
 #include "driver_led.h"
 #include "driver_display.h"
 #include "driver_encoder.h"
+#include "driver_relay.h"
+#include "driver_halleffect.h"
 
 static volatile uint32_t ticks_elapsed;
 static volatile uint32_t ticks_completed;
