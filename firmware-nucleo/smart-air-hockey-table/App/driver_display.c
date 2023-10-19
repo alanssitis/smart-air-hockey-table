@@ -1,7 +1,6 @@
 #include "driver_display.h"
 
 #include <stdarg.h>
-#include <stdbool.h>
 #include <stddef.h>
 #include <stdio.h>
 #include "stm32u5xx_ll_gpio.h"
@@ -79,13 +78,8 @@ void Driver_Display_Init()
 
 	transmit_end();
 
-	// Clear GDDRAM
 	Driver_Display_Clear(DISPLAY_ALL);
-
-	// Display on
-	transmit_start(DISPLAY_ALL, false);
-	transmit_word(0xAF);
-	transmit_end();
+	Driver_Display_SetPowered(DISPLAY_ALL, true);
 }
 
 void Driver_Display_Clear(Display display)
@@ -94,6 +88,14 @@ void Driver_Display_Clear(Display display)
 
 	transmit_start(display, true);
 	for (size_t i = 0; i < DISPLAY_WIDTH * DISPLAY_HEIGHT / 8; i++) transmit_word(0x00);
+	transmit_end();
+}
+
+void Driver_Display_SetPowered(Display display, bool is_powered)
+{
+	// Controls power to the OLED panel, the driver IC is always on
+	transmit_start(display, false);
+	transmit_word(is_powered ? 0xAF : 0xAE);
 	transmit_end();
 }
 
