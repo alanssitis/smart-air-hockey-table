@@ -15,8 +15,8 @@ typedef enum {
 	GAMESTATE_RUN,		// Game is in progress
 	GAMESTATE_SCORE_A,	// Player A scored (not the winning shot)
 	GAMESTATE_SCORE_B,	// Player B scored (not the winning shot)
-	GAMESTATE_WIN_A,		// Player A won the game (winning shot)
-	GAMESTATE_WIN_B,		// Player B won the game (winning shot)
+	GAMESTATE_WIN_A,	// Player A won the game (winning shot)
+	GAMESTATE_WIN_B,	// Player B won the game (winning shot)
 	GAMESTATE_ERROR		// Error state
 } GameState;
 
