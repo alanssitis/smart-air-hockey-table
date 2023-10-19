@@ -130,9 +130,8 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-
-    /* USER CODE BEGIN 3 */
     asm("wfi");
+    /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
 }
@@ -849,7 +848,8 @@ static void MX_GPIO_Init(void)
   LL_PWR_EnableVDDIO2();
 
   /**/
-  LL_GPIO_ResetOutputPin(GPIOD, OLED1CS_Pin|OLED2CS_Pin|OLEDDC_Pin|OLEDRES_Pin);
+  LL_GPIO_ResetOutputPin(GPIOD, OLED1CS_Pin|OLED2CS_Pin|OLEDDC_Pin|OLEDRES_Pin
+                          |LL_GPIO_PIN_14);
 
   /**/
   LL_GPIO_ResetOutputPin(LED_RED_GPIO_Port, LED_RED_Pin);
@@ -941,13 +941,20 @@ static void MX_GPIO_Init(void)
   LL_GPIO_SetPinMode(LDR4IN_GPIO_Port, LDR4IN_Pin, LL_GPIO_MODE_INPUT);
 
   /**/
+  GPIO_InitStruct.Pin = LL_GPIO_PIN_4|LL_GPIO_PIN_5|LL_GPIO_PIN_6|LL_GPIO_PIN_7;
+  GPIO_InitStruct.Mode = LL_GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = LL_GPIO_PULL_UP;
+  LL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  /**/
   GPIO_InitStruct.Pin = UCPD_FLT_Pin;
   GPIO_InitStruct.Mode = LL_GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = LL_GPIO_PULL_NO;
   LL_GPIO_Init(UCPD_FLT_GPIO_Port, &GPIO_InitStruct);
 
   /**/
-  GPIO_InitStruct.Pin = OLED1CS_Pin|OLED2CS_Pin|OLEDDC_Pin|OLEDRES_Pin;
+  GPIO_InitStruct.Pin = OLED1CS_Pin|OLED2CS_Pin|OLEDDC_Pin|OLEDRES_Pin
+                          |LL_GPIO_PIN_14;
   GPIO_InitStruct.Mode = LL_GPIO_MODE_OUTPUT;
   GPIO_InitStruct.Speed = LL_GPIO_SPEED_FREQ_LOW;
   GPIO_InitStruct.OutputType = LL_GPIO_OUTPUT_PUSHPULL;
