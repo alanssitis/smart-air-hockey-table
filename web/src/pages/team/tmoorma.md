@@ -5,6 +5,94 @@ title: Trevor Moorman Progress Report
 
 # Progress Report for Trevor
 
+## Week 8 & 9
+
+**Date:** 10/20/2023 \
+**Project Hours Since Last Report:** TODO \
+**Cumulative Semester Project Hours:** TODO
+
+### Description of Individual Project Work Efforts:
+
+**Midterm Design Review**
+
+Slideshow:
+
+- Created the slides covering the electrical schematic, PCB layout, and PCB verification of the sensor PCBs. Each slide is accompanied by a list of talking points to hit during the presentation.
+
+<img src="/477grp5/team/trevor/Trevor_Week9_SlideExample.PNG" width="60%">
+
+_Figure 1: A sample of a slide created by me for the midterm design review presentation._
+
+- A team meeting was held virtually over Fall break to finalize the slideshow, where I added suggestions to improve other sections of the presentation and received feedback on my section.
+
+Website:
+
+- Added notes to all team docs on the website with what needed to be updated.
+
+**Firmware**
+
+Migration from Nucleo-stm32f4 to Nucleo-stm32u5:
+
+- Reviewed changes made by Will
+
+State Machine:
+
+- Re-implemented the framework for the state machine on the new Nucleo-stm32u5's firmware.
+
+- Following Alan's review, implemented several recommended changes.
+
+- Following discussion with each of the team members individually, discovered that each team member has a different idea on how the state machine should be implemented and the responsibilities assigned to it. I paused work until a full team meeting to get everyone's perspective and to straighten out how the state machine will integrate into the rest of the firmware. From this discussion, the team decided to have state changes be handled entirely by the state machine and each state will be implemented within the state machine itself, rather than abstracting this into a handler function. Therefore, polling will be used to get sensor data rather than utilizing external interrupts.
+
+Goal Driver:
+
+- Created based on the LDR circuits' outputs raising external interrupts.
+
+- After the aforementioned discussion with the team, reworked to use a polling-based system for software filtering.
+
+- Currently finished and awaiting review from the other team members.
+
+| <img src="/477grp5/team/trevor/Trevor_Week9_OldGoalDriver.PNG" width="60%"> | <img src="/477grp5/team/trevor/Trevor_Week9_NewGoalDriver.PNG" width="100%"> |
+| :-------------------------------------------------------------------------: | :--------------------------------------------------------------------------: |
+
+_Figure 2: On the left, the old external interrupt-based goal driver. On the right, the new polling-based goal driver._
+
+Hall Driver:
+
+- Implemented the hall driver alongside Ben with pair programming. The driver polls the output of all the row and column outputs of hall effect sensors.
+
+Relay Driver:
+
+- Implemented the relay driver alongside Ben with pair programming. The driver turns on and off the power supply to the air hockey table's fan.
+
+Master PCB Rev A:
+
+- After programming the hall driver and relay driver, Ben and I programmed the assembled rev A of the master PCB to test the drivers and the master PCB.
+
+**PCB Ordering - Sensor PCB**
+
+- Ben discovered that a significant amount of money could be saved by having JLCPCB assemble the 128 sensor PCBs given the cost saved per component.
+  When setting up the assembly order, JLCPCB did not have a sufficient stock of CD74HC11 for our order. I researched the differences between the CD74HC11 ([datasheet](https://www.ti.com/lit/ds/symlink/cd74hc11.pdf)) and the SN74HC11 ([datasheet](https://www.ti.com/lit/ds/symlink/sn74hc11.pdf)), which JLCPCB had enough of for our order. The SN74HC11 is available in the same package the sensor PCB uses (SOIC-14) and all differences listed in the datasheet were minor. Given the few requirements of the triple 3-Input AND gates for the sensor PCBs, no concerns were found with the SN74HC11. Furthermore, the SN74HC11 is meant to be Texas Instruments' version of the CD74HC11 which was initially developed by Harris Semiconductor, which was acquired by Texas Instruments.
+
+- Edge rails were required for the sensor PCB to be assembled by JLCPCB. The team was concerned with how these edge rails would affect the sensor PCBs' shape and size, given that the shape of the sensor PCBs affects our overall table design. I discussed how these edge rails are typically handled with Joe. He informed me that the edge rails are typically scored, either with a v-score or mouse bites, although he was unsure how JLCPCB handles edge rails. I relayed this conversation with Ben, who oversaw ordering the PCBs. Afterwards, Ben and I got into contact with a representative of JLCPCB who informed us that the edge rails are v-scored with the optional fee being to have JLCPCB break the boards before shipping. The team opted to forgo this optional fee and will break off the edge rails from the PCBs ourselves.
+
+<img src="/477grp5/team/trevor/Trevor_Week9_EdgeRailScoring.PNG" width="80%">
+
+_Figure 3: An example of the scoring performed by JLCPCB on the edge rails, courtesy of the JLCPCB representative._
+
+### Next Steps:
+
+**Goal Driver**
+
+- After the team reviews my work, I will fix any issues that are found.
+
+- Otherwise, the driver is complete.
+
+**State Machine**
+
+- I will lead any changes to the core framework of the state machine if any are needed as we continue developing the project's firmware.
+
+- Otherwise, I will continue to work alongside the rest of the team to implement the required functionality of each state.
+
 ## Week 7
 
 **Date:** 10/06/2023 \
