@@ -1,4 +1,5 @@
-#include <driver_goal.h>
+#include "driver_goal.h"
+
 #include "stm32u575xx.h"
 
 // Goal Sensor LDR1IN
