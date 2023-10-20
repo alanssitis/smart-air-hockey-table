@@ -1,5 +1,5 @@
 #include <driver_goal.h>
-#include "stm32u5xx_ll_exti.h"
+#include "stm32u575xx.h"
 
 // Goal Sensor LDR1IN
 #define LDR1IN_GPIO	GPIOE
