@@ -18,7 +18,7 @@
 #define LDR4IN_GPIO	GPIOF	// GPIOC for master PCB
 #define LDR4IN_IDR	GPIO_IDR_ID15
 
-bool Driver_Goal_Poll(GoalSensor goalSensor)
+bool Driver_Goal_Poll(GoalSensor goal_sensor)
 {
 	switch (goalSensor)
 	{
