@@ -3,7 +3,7 @@
 
 #include <stdbool.h>
 
-typedef enum _GoalSensor {
+typedef enum {
 	LDR1IN,
 	LDR2IN,
 	LDR3IN,
