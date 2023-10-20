@@ -51,8 +51,8 @@ Goal Driver:
 
 - Currently finished and awaiting review from the other team members.
 
-| <img src="/477grp5/team/trevor/Trevor_Week9_OldGoalDriver.PNG" width="60%"> | <img src="/477grp5/team/trevor/Trevor_Week9_NewGoalDriver.PNG" width="100%"> |
-| :-------------------------------------------------------------------------: | :--------------------------------------------------------------------------: |
+| <img src="/477grp5/team/trevor/Trevor_Week9_OldGoalDriver.PNG" width="100%"> | <img src="/477grp5/team/trevor/Trevor_Week9_NewGoalDriver.PNG" width="100%"> |
+| :--------------------------------------------------------------------------: | :--------------------------------------------------------------------------: |
 
 _Figure 2: On the left, the old external interrupt-based goal driver. On the right, the new polling-based goal driver._
 
@@ -75,7 +75,7 @@ Master PCB Rev A:
 
 - Edge rails were required for the sensor PCB to be assembled by JLCPCB. The team was concerned with how these edge rails would affect the sensor PCBs' shape and size, given that the shape of the sensor PCBs affects our overall table design. I discussed how these edge rails are typically handled with Joe. He informed me that the edge rails are typically scored, either with a v-score or mouse bites, although he was unsure how JLCPCB handles edge rails. I relayed this conversation with Ben, who oversaw ordering the PCBs. Afterwards, Ben and I got into contact with a representative of JLCPCB who informed us that the edge rails are v-scored with the optional fee being to have JLCPCB break the boards before shipping. The team opted to forgo this optional fee and will break off the edge rails from the PCBs ourselves.
 
-<img src="/477grp5/team/trevor/Trevor_Week9_EdgeRailScoring.PNG" width="80%">
+<img src="/477grp5/team/trevor/Trevor_Week9_EdgeRailScoring.PNG" width="50%">
 
 _Figure 3: An example of the scoring performed by JLCPCB on the edge rails, courtesy of the JLCPCB representative._
 
