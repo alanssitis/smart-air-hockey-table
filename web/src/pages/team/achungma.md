@@ -5,13 +5,59 @@ title: Alan Chung Ma Progress Report
 
 # Progress Report for Alan
 
+## Week 8 & 9
+
+**Date:** 2023-10-20 \
+**Week Hours:** 20 \
+**Total Hours:** 103
+
+### Description of Project Design Efforts
+
+My work for week 8 was mostly finishing the slides for the presentation and updating the relevant documents and merging pull requests and making minor optimizations. As for week 9, I worked with Will with the encoder, fixed a few branches for merging in git, and worked on the table.
+
+#### Presentation Prep
+
+In [Documents](/477grp5/documents), you can view the presentation slides the whole team worked on. I also updated A2 and A3.
+
+#### Working on the Encoder driver
+
+I worked with Will to get some of the delta logic working, PRs are available [here](https://github.com/alanssitis/smart-air-hockey-table/pull/89) and [here](https://github.com/alanssitis/smart-air-hockey-table/pull/92). One of the main concerns was figuring out when and where we wanted it to update using the encoder scaling factor.
+
+#### Fixing git branching
+
+I spent a good amount of time fixing and cleaning up a few of the branches in the repository.
+
+#### Working on the Table
+
+For the presentation, I made a whole model from scratch since a lot of the measurements have changed. Below is a picture of it.
+
+![Figure of built-to-size CAD model](/477grp5/team/alan/week09/figure1.png)
+
+After, I made a CAM for the MDF so our PCBs can properly fit on them. However, we had to push running the gantry back since we weren't sure whether or not having the PCBs assembled will change the dimensions of the final PCB. Below is a video of the simulation of the CAM.
+
+<video controls muted>
+  <source src="/477grp5/team/alan/week09/video1.mp4" type="video/mp4">
+</video>
+
+Since I couldn't run the gantry, I used the [panel saw](https://www.purdue.edu/bidc/wp-content/uploads/2022/07/Panel-Saw.pdf) and table saw to cut the plywood to the final dimension of `71.25" x 32.5` and also cut down the MDF to a smaller size of `70" x 40"` to make carrying it much, much easier.
+
+Later, I also cut up the holes to grab the puck using the [drill press](https://www.purdue.edu/bidc/wp-content/uploads/2022/07/Drill-Press_manual-2.pdf) and a cordless jigsaw. This was followed by adding [rabbets](https://en.wikipedia.org/wiki/Rabbet) joints to the outside edges. Below are pictures of the result.
+
+| Almost finished short edges | Almost finished long edges |
+| --  | -- |
+| ![Figure of almost finished short edges](/477grp5/team/alan/week09/figure3.jpg) |  ![Figure of almost finished long edges](/477grp5/team/alan/week09/figure4.jpg) |
+
+### Next Steps
+
+If all goes well, the table exterior and MDF will be finished next week, unfortunately, the CAM will have to be redone since I cut down the MDF. I will use the spindle sander to clean up the big holes and will need to add holes and dados to a few panels before gluing it all together. Finishing the MDF will give us more space to put all the sensor PCBs for testing. I will also begin helping the team design and build an algorithm to test integration between sensors and LEDs.
+
 ## Week 7
 
 **Date:** 2023-10-06 \
 **Week Hours:** 18 \
 **Total Hours:** 83
 
-### Description of Project Desgin Efforts
+### Description of Project Design Efforts
 
 This week, we were able to finish most of the sides of the table. The next steps
 are to make the dados and holes for the table itself. I also solder together a
