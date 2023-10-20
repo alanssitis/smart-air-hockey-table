@@ -1,6 +1,7 @@
 #include "driver_goal.h"
 
 #include "stm32u575xx.h"
+#include "app_core.h"
 
 // Goal Sensor LDR1IN
 #define LDR1IN_GPIO	GPIOE
@@ -18,32 +19,33 @@
 #define LDR4IN_GPIO	GPIOF	// GPIOC for master PCB
 #define LDR4IN_IDR	GPIO_IDR_ID15
 
-bool Driver_Goal_Poll(GoalSensor goal_sensor)
-{
-	switch (goal_sensor)
-	{
-		case LDR1IN:
-		{
-			return (LDR1IN_GPIO->IDR & LDR1IN_IDR);
-			break;
-		}
-		case LDR2IN:
-		{
-			return (LDR2IN_GPIO->IDR & LDR2IN_IDR);
-			break;
-		}
-		case LDR3IN:
-		{
-			return (LDR3IN_GPIO->IDR & LDR3IN_IDR);
-			break;
-		}
-		case LDR4IN:
-		{
-			return (LDR4IN_GPIO->IDR & LDR4IN_IDR);
-			break;
-		}
-	}
+#define GOAL_DELAY_TICKS	10										// TIME IN TICKS
+#define GOAL_DELAY_MASK		~BIT_MASK(uint_fast32_t, GOAL_DELAY)	// BITMASK
 
-	// If this return is hit, then goal_sensor is invalid
-	return false;
+static uint_fast32_t ldr1_in;
+static uint_fast32_t ldr2_in;
+static uint_fast32_t ldr3_in;
+static uint_fast32_t ldr4_in;
+
+bool ldr1_goal;
+bool ldr2_goal;
+bool ldr3_goal;
+bool ldr4_goal;
+
+void Driver_Goal_Poll()
+{
+	ldr1_in <<= 1;
+	ldr2_in <<= 1;
+	ldr3_in <<= 1;
+	ldr4_in <<= 1;
+
+	ldr1_in &= (LDR1IN_GPIO->IDR & LDR1IN_IDR) >> 6;
+	ldr2_in &= (LDR2IN_GPIO->IDR & LDR2IN_IDR) >> 13;
+	ldr3_in &= (LDR3IN_GPIO->IDR & LDR3IN_IDR) >> 14;
+	ldr4_in &= (LDR4IN_GPIO->IDR & LDR4IN_IDR) >> 15;
+
+	ldr1_goal = ldr1_in & GOAL_DELAY_MASK;
+	ldr2_goal = ldr2_in & GOAL_DELAY_MASK;
+	ldr3_goal = ldr3_in & GOAL_DELAY_MASK;
+	ldr4_goal = ldr4_in & GOAL_DELAY_MASK;
 }

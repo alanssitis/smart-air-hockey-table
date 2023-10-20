@@ -3,13 +3,11 @@
 
 #include <stdbool.h>
 
-typedef enum {
-	LDR1IN,
-	LDR2IN,
-	LDR3IN,
-	LDR4IN
-} GoalSensor;
+extern bool ldr1_goal;
+extern bool ldr2_goal;
+extern bool ldr3_goal;
+extern bool ldr4_goal;
 
-bool Driver_Goal_Poll(GoalSensor goal_sensor);
+void Driver_Goal_Poll();
 
 #endif /* INC_DRIVER_GOAL_H_ */
