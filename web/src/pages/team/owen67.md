@@ -5,6 +5,158 @@ title: Ben Owen Progress Report
 
 # Progress Report for Ben
 
+## Weeks 8-9
+
+**Date:** 2023-10-20 \
+**Project Hours Since Last Report:** 20 \
+**Total Hours:** 114
+
+### Description of Project Design Effors
+
+**Midterm Design Presentation**
+
+We spend a lot of time putting together and practicing our midterm design presentation.  We were the first group presenting.  A link to our final presentation can be seen on the Documents page of our website.
+
+**Sensor PCB Soldering/Testing**
+
+We wanted to be able to test a longer strip of PCBs in order to confirm our hall effect and individually-addressable LED configuration for the final run of boards.  I spent a lot of time soldering new sensor boards, and fixing some that weren't soldered correctly.  We were able to confirm that our hall effect AND gate logic works perfectly, and scales well across longer and longer PCB runs.  We also confirmed that there were no apparent issues with the LEDs, as signal could be transmitted along and back the entire 9-board configuration.
+
+A picture of this long sensor PCB testing can be seen in Figure 1.
+
+<img src="/477grp5/team/ben/week9-sensor-pcb-testing.jpg" width="80%">
+
+_Figure 1: Sensor PCB testing_
+
+**Master PCB external power test**
+
+We finally got a chance to test our onboard buck converter on the master PCB while powering the STM32.  We prepared a simple program to flash to our STM32, and while powering with an external 5V source, we were able to program and read flash data from the microcontroller.  A screenshot from this testing can be seen in Figure 2.
+
+<img src="/477grp5/team/ben/week9-stm32-connected.jpg" width="80%">
+
+_Figure 2: STM32 externally powered and connected_
+
+**PCB reviews and ordering**
+
+For our master PCB, we already had Revision B finished and ready to order.  However, upon preparing to order the second round of sensor PCBs, we decided to price out other suppliers for our components.  After much discussion, we learned that JLCPCB's assembly service was actually cheaper than us hand-soldering these boards, and it was more likely that the soldering quality would be higher.  We then spend a long time preparing production files for JLCPCB assembly, sourcing part numbers and ensuring the pick and place files were correct.
+
+A render from JLCPCB's pick and place confirmation tool can be seen in Figure 3
+
+<img src="/477grp5/team/ben/week9-sensor-pcb-pickandplace.png" width="80%">
+
+_Figure 3: JLCPCB sensor PCB pick and place render_
+
+**Drivers and state machine firmware**
+
+Since the PCBs are finished, I had a chance to work on firmware and prepare for implementing the entire sensor PCB array in a few weeks.  This week, I helped write a driver to turn our outlet relay on/off.  I also worked on a driver to read in our hall effect sensor row/column data and insert it into an easy-to-use variable.  This involved a lot of planning and preparation to correctly shift each input data bit to the correct location.  Code snippets for this driver can be seen in Figure 4.  Full driver code and implementation are on our Github repository.
+
+```
+void Driver_HallEffect_PollInputs()
+{
+	// need to shift hall data to correct bit position
+	// shift amount calculated by function (IDR bit position - desired bit position)
+	//
+	// example: ROW1 is on PA7, so IDR is bit 7
+	// desired position is bit 1 (2nd from right), so we calculate shift amount to be (7 - 1) = 6
+	// final shift is >> 6
+	//
+	// positive values are right shift
+	// negative values are left shift
+	// zero value is no shift
+
+	uint16_t result_rows = 0xFFFF;
+	result_rows ^= (ROW0_GPIO->IDR & ROW0_IDR) >> 6;
+	result_rows ^= (ROW1_GPIO->IDR & ROW1_IDR) >> 6;
+	result_rows ^= (ROW2_GPIO->IDR & ROW2_IDR) >> 3;
+	result_rows ^= (ROW3_GPIO->IDR & ROW3_IDR) >> 2;
+	result_rows ^= (ROW4_GPIO->IDR & ROW4_IDR) << 3;
+	result_rows ^= (ROW5_GPIO->IDR & ROW5_IDR) << 2;
+	result_rows ^= (ROW6_GPIO->IDR & ROW6_IDR) >> 1;
+	result_rows ^= (ROW7_GPIO->IDR & ROW7_IDR) >> 1;
+	result_rows ^= (ROW8_GPIO->IDR & ROW8_IDR) >> 1;
+	result_rows ^= (ROW9_GPIO->IDR & ROW9_IDR) >> 1;
+	result_rows ^= (ROW10_GPIO->IDR & ROW10_IDR) >> 1;
+	result_rows ^= (ROW11_GPIO->IDR & ROW11_IDR) >> 1;
+	result_rows ^= (ROW12_GPIO->IDR & ROW12_IDR) >> 1;
+	result_rows ^= (ROW13_GPIO->IDR & ROW13_IDR) >> 1;
+	result_rows ^= (ROW14_GPIO->IDR & ROW14_IDR) >> 1;
+	result_rows ^= (ROW15_GPIO->IDR & ROW15_IDR) << 5;
+	halleffect_rows = result_rows;
+
+	uint32_t result_cols = 0xFFFFFFFF;
+	result_cols ^= (COL0_GPIO->IDR & COL0_IDR) >> 2;
+	result_cols ^= (COL1_GPIO->IDR & COL1_IDR);
+	result_cols ^= (COL2_GPIO->IDR & COL2_IDR) << 2;
+	result_cols ^= (COL3_GPIO->IDR & COL3_IDR) >> 6;
+	result_cols ^= (COL4_GPIO->IDR & COL4_IDR) >> 5;
+	result_cols ^= (COL5_GPIO->IDR & COL5_IDR) >> 2;
+	result_cols ^= (COL6_GPIO->IDR & COL6_IDR);
+	result_cols ^= (COL7_GPIO->IDR & COL7_IDR) >> 2;
+	result_cols ^= (COL8_GPIO->IDR & COL8_IDR) << 4;
+	result_cols ^= (COL9_GPIO->IDR & COL9_IDR) << 6;
+	result_cols ^= (COL10_GPIO->IDR & COL10_IDR) << 3;
+	result_cols ^= (COL11_GPIO->IDR & COL11_IDR) << 5;
+	result_cols ^= (COL12_GPIO->IDR & COL12_IDR) << 7;
+	result_cols ^= (COL13_GPIO->IDR & COL13_IDR) << 9;
+	result_cols ^= (COL14_GPIO->IDR & COL14_IDR) << 11;
+	result_cols ^= (COL15_GPIO->IDR & COL15_IDR) << 13;
+	result_cols ^= (COL16_GPIO->IDR & COL16_IDR) << 15;
+	result_cols ^= (COL17_GPIO->IDR & COL17_IDR) << 17;
+	result_cols ^= (COL18_GPIO->IDR & COL18_IDR) << 6;
+	result_cols ^= (COL19_GPIO->IDR & COL19_IDR) << 8;
+	result_cols ^= (COL20_GPIO->IDR & COL20_IDR) << 10;
+	result_cols ^= (COL21_GPIO->IDR & COL21_IDR) << 6;
+	result_cols ^= (COL22_GPIO->IDR & COL22_IDR) << 10;
+	result_cols ^= (COL23_GPIO->IDR & COL23_IDR) << 12;
+	result_cols ^= (COL24_GPIO->IDR & COL24_IDR) << 14;
+	result_cols ^= (COL25_GPIO->IDR & COL25_IDR) << 16;
+	result_cols ^= (COL26_GPIO->IDR & COL26_IDR) << 18;
+	result_cols ^= (COL27_GPIO->IDR & COL27_IDR) << 18;
+	result_cols ^= (COL28_GPIO->IDR & COL28_IDR) << 20;
+	result_cols ^= (COL29_GPIO->IDR & COL29_IDR) << 22;
+	result_cols ^= (COL30_GPIO->IDR & COL30_IDR) << 24;
+	result_cols ^= (COL31_GPIO->IDR & COL31_IDR) << 16;
+	halleffect_cols = result_cols;
+}
+```
+
+_Figure 4: Hall effect input data driver_
+
+Other miscellaneous testing was done in the state machine, but big changes include defining the current list of states we are handling.  This enum is defined in Figure 5.
+
+```
+typedef enum {
+	GAMESTATE_IDLE,		// Idle before start of the game
+	GAMESTATE_SLEEP,	// Low-power mode after inactivity
+	GAMESTATE_START,	// Set-up sequence for new game
+	GAMESTATE_WAIT_A,	// Playing start animation for player A
+	GAMESTATE_WAIT_B,	// Playing start animation for player B
+	GAMESTATE_RUN,		// Game is in progress
+	GAMESTATE_SCORE_A,	// Player A scored (not the winning shot)
+	GAMESTATE_SCORE_B,	// Player B scored (not the winning shot)
+	GAMESTATE_WIN_A,	// Player A won the game (winning shot)
+	GAMESTATE_WIN_B,	// Player B won the game (winning shot)
+	GAMESTATE_ERROR		// Error state
+} GameState;
+```
+
+_Figure 5: GameState enum definition_
+
+### Next steps
+
+**State machine firmware**
+
+As we prepare for the large-scale sensor PCB testing, we are continuing to add state machine code to ensure we handle the game states correctly.  This testing will involve simulating the full table inputs on our Nucleo/master PCB.
+
+**Goal detection driver**
+
+The last major driver we need to complete is the one handling the LDR/LED goal detection inputs on the STM32.  This will require state machine testing, as we may use software filtering to ensure we avoid incorrectly detecting goals during gameplay.
+
+**PCB assembly (if possible)**
+
+It is unlikely to happen this week, but if the PCBs arrive this week, we will assembly the master PCB and begin testing all of the sensor PCBs to ensure correct operation.  This will be a time consuming process.
+
+---
+
 ## Week 7
 
 **Date:** 2023-10-06 \
