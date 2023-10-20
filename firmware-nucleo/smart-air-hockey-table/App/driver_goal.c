@@ -44,6 +44,6 @@ bool Driver_Goal_Poll(GoalSensor goal_sensor)
 		}
 	}
 
-	// If this return is hit, then goalSensor is invalid
+	// If this return is hit, then goal_sensor is invalid
 	return false;
 }
