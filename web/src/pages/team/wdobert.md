@@ -7,6 +7,24 @@ title: Will Dobert Progress Report
 
 ---
 
+## Week 8 & 9
+
+**Date:** 10/20/2023 \
+**Project Hours Since Last Report:** 22 \
+**Cumulative Semester Project Hours:** 96
+
+### Description of Project Design Efforts
+
+#### TODO
+
+TODO
+
+#### Next Steps
+
+TODO
+
+---
+
 ## Week 7
 
 **Date:** 10/6/2023 \
