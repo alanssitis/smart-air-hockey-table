@@ -39,6 +39,12 @@ void Driver_Goal_Poll()
 	ldr3_in <<= 1;
 	ldr4_in <<= 1;
 
+	// need to put the IDR value into the rightmost value for the LDR
+	// after we shifted by 1 to left, we AND the IDR to isolate the LDR bit
+	// we then shift to the right by the bit position
+	//
+	// for example, LDR1 is on pin 6, so its bit is position 6
+	// thus, we shift to the right by 6 to place it in bit position 0
 	ldr1_in &= (LDR1IN_GPIO->IDR & LDR1IN_IDR) >> 6;
 	ldr2_in &= (LDR2IN_GPIO->IDR & LDR2IN_IDR) >> 13;
 	ldr3_in &= (LDR3IN_GPIO->IDR & LDR3IN_IDR) >> 14;
