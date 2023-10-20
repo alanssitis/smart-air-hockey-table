@@ -20,7 +20,7 @@
 
 bool Driver_Goal_Poll(GoalSensor goal_sensor)
 {
-	switch (goalSensor)
+	switch (goal_sensor)
 	{
 		case LDR1IN:
 		{
