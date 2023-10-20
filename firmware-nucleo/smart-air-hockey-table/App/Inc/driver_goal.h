@@ -10,6 +10,6 @@ typedef enum {
 	LDR4IN
 } GoalSensor;
 
-bool Driver_Goal_Poll(GoalSensor goalSensor);
+bool Driver_Goal_Poll(GoalSensor goal_sensor);
 
 #endif /* INC_DRIVER_GOAL_H_ */
