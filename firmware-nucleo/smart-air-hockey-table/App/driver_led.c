@@ -26,6 +26,8 @@ static volatile size_t transfers_active;
 void Driver_LED_Init()
 {
 	Driver_LED_Clear();
+
+	// Populate reset values at end of each channel
 	for (size_t channel = 0; channel < LED_CHANNELS; channel++)
 	{
 		for (size_t i = 0; i < LED_RESET_LENGTH; i++)
@@ -54,7 +56,7 @@ void Driver_LED_SetColor(uint8_t x, uint8_t y, uint32_t color)
 {
 	if (x >= LED_MATRIX_WIDTH || y >= LED_MATRIX_HEIGHT) return;
 
-	// Remaps XY coords to physical LED index
+	// Remaps XY coords to per-channel physical LED index
 	if (y & 1) x = (LED_MATRIX_WIDTH - 1) - x;
 	size_t pixel_index = x + y * LED_MATRIX_WIDTH;
 	size_t channel = pixel_index / (DMA_BUFFER_LENGTH / LED_BITS);
@@ -97,7 +99,7 @@ void Driver_LED_Tick()
 		is_transfer_active = true;
 		transfers_active = LED_CHANNELS;
 
-		// Configure GPDMA Channels
+		// Configure GPDMA Channels to initiate transfer
 		LL_DMA_ConfigAddresses(GPDMA1, LL_DMA_CHANNEL_0, (uint32_t) dma_buffer[0], (uint32_t) &(TIM2->CCR1));
 		LL_DMA_ConfigAddresses(GPDMA1, LL_DMA_CHANNEL_1, (uint32_t) dma_buffer[1], (uint32_t) &(TIM2->CCR2));
 		LL_DMA_ConfigAddresses(GPDMA1, LL_DMA_CHANNEL_2, (uint32_t) dma_buffer[2], (uint32_t) &(TIM2->CCR3));
