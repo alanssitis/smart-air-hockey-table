@@ -19,8 +19,8 @@
 #define LDR4IN_GPIO	GPIOF	// GPIOC for master PCB
 #define LDR4IN_IDR	GPIO_IDR_ID15
 
-#define GOAL_DELAY_TICKS	10										// TIME IN TICKS
-#define GOAL_DELAY_MASK		~BIT_MASK(uint_fast32_t, GOAL_DELAY)	// BITMASK
+#define GOAL_DELAY_TICKS	10											// TIME IN TICKS
+#define GOAL_DELAY_MASK		~BIT_MASK(uint_fast32_t, GOAL_DELAY_TICKS)	// BITMASK
 
 static uint_fast32_t ldr1_in;
 static uint_fast32_t ldr2_in;
