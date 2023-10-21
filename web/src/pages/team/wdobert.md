@@ -15,13 +15,36 @@ title: Will Dobert Progress Report
 
 ### Description of Project Design Efforts
 
-#### TODO
+#### Transitioning Firmware To New Microcontrollers
 
-TODO
+As mentioned in the last update, I began working on moving our existing firmware project to the _STM32U5_ family that we'll be using for the remainder of the project. My initial steps towards this goal went by fairly quickly, as I only needed to set up peripheral configurations equivalent to our old project. Timers, SPI, and interrupts all function identically on the new hardware, but STM's implementation of DMA has changed drastically. It seems to be almost entirely linked-list-based now, the available configuration and control registers are unfamiliar, and it has been renamed to **GPDMA**. DMA is vital to the operation of our LED matrix driver, so I knew I'd need to climb the learning curve for this sooner or later. Over the course of several days, I spent hours and hours fruitlessly attemping to coax the GPDMA system into working. Since this system is so new and currently has relatively little adoption, resources on how to use it are few and far between. STM has a series of guides, but they are rather surface level and make heavy use of their HAL. Since we aren't interested in programming with the HAL, these guides were of questionable value in solving the issue. I eventually resorted to watching device register values with a runtime debugger, and managed to learn more details about GPDMA. Despite a few close calls where I nearly had things working the way I wanted, there was never an instance of all the pieces clicking into place at once and just working. I raised my concerns to the team on how our choice of microcontroller may not have been as ideal as imagined, since the newness of it was becoming an issue. Ben and I decided a new course of action would be best, given what we knew about the GPDMA system. The LED matrix driver will no longer continually transmit data in a loop, but instead it will be triggered whenever the state of the matrix changes. This simplified our interface with GPDMA, and allowed us to get the driver working again. Although this new approach uses more RAM, it will greatly reduce the active CPU load imposed by the driver. Rewriting the display driver was much simpler, but some small adjustments were still needed along the way. All of the aforementioned firmware development has thus far utilized the STM32U575 Nucleo board, as our Revision B PCB has not arrived yet.
+
+![STM32U575 IOC](/477grp5/team/will/Screenshot-2023-10-20-223649.png)
+_Figure 1: STM32U575 (Nucleo) IOC file showing a small subset of pins assigned_
+
+#### Rotary Encoder Driver
+
+After successfully demonstrating a proof-of-concept for connecting a rotary encoder to our microcontroller, I decided to go ahead with developing a firmware driver for it. To take advantage of the "superloop" approach to our application's central state machine, I designed this driver with a polling-based interface. The driver acts as a sort of latch, where it will accumulate inputs from the rotary encoder, and clear them once the state machine has polled the device. This behavior could lead to cases where the encoder is not being polled for a while, and when the state machine finally polls it, it will get very out-of-date information. I included a function to deactivate the driver for times when input is not needed. I created a [snippet of code](https://github.com/alanssitis/smart-air-hockey-table/commit/42dbfd727366a09a193b0d9b09efd30fc20a0cb2) that shows a simple menu on the display, and reacts to the rotary encoder input accordingly. It was useful for testing the driver's functionality, and may also be useful in the future when we implement a settings menu for the project.
+
+_Figure 2 (Check back soon!): Prototype menu selection showcasing rotary encoder functionality_
+
+#### Quad-Channel LED Matrix Driver
+
+Near the end of this week, I refactored the LED matrix driver to support multi-channel output. This is made possible by employing 4 DMA channels to synchronously control 4 timer PWM output channels. Both revisions of our main PCB were designed with this in mind, so no additional effort is needed in terms of hardware. Driving the LED matrix on multiple channels allows us to update it much more frequently, since the total refresh cycle will now take a quarter of the time. Updating the LED matrix could end up being a bottleneck in the future, as it could potentially happen hundreds of times per tick when drawing animations to the matrix. I made sure to discuss with the team on how to approach this rewrite with performance in mind. Much of the computation related to the driver is faster to execute due to several of the numbers involved being powers of two.
+
+_Figure 3 (Check back soon!): Two LED matrix segments being driven on separate channels_
+
+#### Midterm Design Review Presentation
+
+At the very beginning of week 8, I contributed to my portions of the team's Midterm Design Review Presentation. I presented the prototyping progress, software development status, and timeline for the remainder of the semester. I enjoyed the opportunity to share my team's work with a group of peer reviewers, and to see what my team had to share as well.
+
+#### Miscellaneous Firmware Development
+
+Over the course of week 9, I have been contributing reviews and feedback to the many pull requests that our firmware has been seeing lately. It has been an insightful process to see other's approach to problems and learn from them more than I would've learned on my own. I have also gone back and made modifications to code I previously developed after seeing how new code written by the team was needing to interact with it.
 
 #### Next Steps
 
-TODO
+As I understand it, table construction is closing in on completion, so I may assist in pushing towards that finish line within the next week. I will continue to test and make improvements to our firmware as new code is introduced. If our next batch of PCBs arrives soon enough, I would like to immediately start testing our firmware with the final hardware.
 
 ---
 
