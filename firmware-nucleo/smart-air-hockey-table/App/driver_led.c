@@ -13,12 +13,12 @@
 #define LED_COMPARE_RESET 0
 #define LED_COMPARE_OFF 3
 #define LED_COMPARE_ON 6
-#define DMA_BUFFER_LENGTH (LED_MATRIX_WIDTH * LED_MATRIX_HEIGHT * LED_BITS / LED_CHANNELS)
+#define LED_DATA_LENGTH (LED_MATRIX_WIDTH * LED_MATRIX_HEIGHT * LED_BITS / LED_CHANNELS)
 #define COLOR_8BIT_R 23
 #define COLOR_8BIT_G 15
 #define COLOR_8BIT_B 7
 
-static volatile uint8_t dma_buffer[LED_CHANNELS][DMA_BUFFER_LENGTH + LED_RESET_LENGTH]; // Leave space for reset values
+static volatile uint8_t led_data[LED_CHANNELS][LED_DATA_LENGTH + LED_RESET_LENGTH]; // Leave space for reset values
 static volatile bool is_transfer_requested;
 static volatile bool is_transfer_active;
 static volatile size_t transfers_active;
@@ -32,7 +32,7 @@ void Driver_LED_Init()
 	{
 		for (size_t i = 0; i < LED_RESET_LENGTH; i++)
 		{
-			dma_buffer[channel][DMA_BUFFER_LENGTH + i] = LED_COMPARE_RESET;
+			led_data[channel][LED_DATA_LENGTH + i] = LED_COMPARE_RESET;
 		}
 	}
 
@@ -59,8 +59,8 @@ void Driver_LED_SetColor(uint8_t x, uint8_t y, uint32_t color)
 	// Remaps XY coords to per-channel physical LED index
 	if (y & 1) x = (LED_MATRIX_WIDTH - 1) - x;
 	size_t pixel_index = x + y * LED_MATRIX_WIDTH;
-	size_t channel = pixel_index / (DMA_BUFFER_LENGTH / LED_BITS);
-	pixel_index %= DMA_BUFFER_LENGTH / LED_BITS;
+	size_t channel = pixel_index / (LED_DATA_LENGTH / LED_BITS);
+	pixel_index %= LED_DATA_LENGTH / LED_BITS;
 
 	// Offset of each color channel within the 24 buffer values that define a pixel
 	size_t g_offset = pixel_index * LED_BITS;
@@ -72,9 +72,9 @@ void Driver_LED_SetColor(uint8_t x, uint8_t y, uint32_t color)
 		uint8_t r_bit = (color >> (COLOR_8BIT_R - i)) & 0b1;
 		uint8_t g_bit = (color >> (COLOR_8BIT_G - i)) & 0b1;
 		uint8_t b_bit = (color >> (COLOR_8BIT_B - i)) & 0b1;
-		dma_buffer[channel][r_offset + i] = (!r_bit) * LED_COMPARE_OFF + r_bit * LED_COMPARE_ON;
-		dma_buffer[channel][g_offset + i] = (!g_bit) * LED_COMPARE_OFF + g_bit * LED_COMPARE_ON;
-		dma_buffer[channel][b_offset + i] = (!b_bit) * LED_COMPARE_OFF + b_bit * LED_COMPARE_ON;
+		led_data[channel][r_offset + i] = (!r_bit) * LED_COMPARE_OFF + r_bit * LED_COMPARE_ON;
+		led_data[channel][g_offset + i] = (!g_bit) * LED_COMPARE_OFF + g_bit * LED_COMPARE_ON;
+		led_data[channel][b_offset + i] = (!b_bit) * LED_COMPARE_OFF + b_bit * LED_COMPARE_ON;
 	}
 	is_transfer_requested = true;
 }
@@ -83,9 +83,9 @@ void Driver_LED_Clear()
 {
 	for (size_t channel = 0; channel < LED_CHANNELS; channel++)
 	{
-		for (size_t i = 0; i < DMA_BUFFER_LENGTH; i++)
+		for (size_t i = 0; i < LED_DATA_LENGTH; i++)
 		{
-			dma_buffer[channel][i] = LED_COMPARE_OFF;
+			led_data[channel][i] = LED_COMPARE_OFF;
 		}
 	}
 	is_transfer_requested = true;
@@ -100,14 +100,14 @@ void Driver_LED_Tick()
 		transfers_active = LED_CHANNELS;
 
 		// Configure GPDMA Channels to initiate transfer
-		LL_DMA_ConfigAddresses(GPDMA1, LL_DMA_CHANNEL_0, (uint32_t) dma_buffer[0], (uint32_t) &(TIM2->CCR1));
-		LL_DMA_ConfigAddresses(GPDMA1, LL_DMA_CHANNEL_1, (uint32_t) dma_buffer[1], (uint32_t) &(TIM2->CCR2));
-		LL_DMA_ConfigAddresses(GPDMA1, LL_DMA_CHANNEL_2, (uint32_t) dma_buffer[2], (uint32_t) &(TIM2->CCR3));
-		LL_DMA_ConfigAddresses(GPDMA1, LL_DMA_CHANNEL_3, (uint32_t) dma_buffer[3], (uint32_t) &(TIM2->CCR4));
-		LL_DMA_SetBlkDataLength(GPDMA1, LL_DMA_CHANNEL_0, DMA_BUFFER_LENGTH + LED_RESET_LENGTH);
-		LL_DMA_SetBlkDataLength(GPDMA1, LL_DMA_CHANNEL_1, DMA_BUFFER_LENGTH + LED_RESET_LENGTH);
-		LL_DMA_SetBlkDataLength(GPDMA1, LL_DMA_CHANNEL_2, DMA_BUFFER_LENGTH + LED_RESET_LENGTH);
-		LL_DMA_SetBlkDataLength(GPDMA1, LL_DMA_CHANNEL_3, DMA_BUFFER_LENGTH + LED_RESET_LENGTH);
+		LL_DMA_ConfigAddresses(GPDMA1, LL_DMA_CHANNEL_0, (uint32_t) led_data[0], (uint32_t) &(TIM2->CCR1));
+		LL_DMA_ConfigAddresses(GPDMA1, LL_DMA_CHANNEL_1, (uint32_t) led_data[1], (uint32_t) &(TIM2->CCR2));
+		LL_DMA_ConfigAddresses(GPDMA1, LL_DMA_CHANNEL_2, (uint32_t) led_data[2], (uint32_t) &(TIM2->CCR3));
+		LL_DMA_ConfigAddresses(GPDMA1, LL_DMA_CHANNEL_3, (uint32_t) led_data[3], (uint32_t) &(TIM2->CCR4));
+		LL_DMA_SetBlkDataLength(GPDMA1, LL_DMA_CHANNEL_0, LED_DATA_LENGTH + LED_RESET_LENGTH);
+		LL_DMA_SetBlkDataLength(GPDMA1, LL_DMA_CHANNEL_1, LED_DATA_LENGTH + LED_RESET_LENGTH);
+		LL_DMA_SetBlkDataLength(GPDMA1, LL_DMA_CHANNEL_2, LED_DATA_LENGTH + LED_RESET_LENGTH);
+		LL_DMA_SetBlkDataLength(GPDMA1, LL_DMA_CHANNEL_3, LED_DATA_LENGTH + LED_RESET_LENGTH);
 		LL_DMA_EnableChannel(GPDMA1, LL_DMA_CHANNEL_0);
 		LL_DMA_EnableChannel(GPDMA1, LL_DMA_CHANNEL_1);
 		LL_DMA_EnableChannel(GPDMA1, LL_DMA_CHANNEL_2);
