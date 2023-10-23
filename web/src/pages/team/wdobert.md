@@ -26,13 +26,21 @@ _Figure 1: STM32U575 (Nucleo) IOC file showing a small subset of pins assigned_
 
 After successfully demonstrating a proof-of-concept for connecting a rotary encoder to our microcontroller, I decided to go ahead with developing a firmware driver for it. To take advantage of the "superloop" approach to our application's central state machine, I designed this driver with a polling-based interface. The driver acts as a sort of latch, where it will accumulate inputs from the rotary encoder, and clear them once the state machine has polled the device. This behavior could lead to cases where the encoder is not being polled for a while, and when the state machine finally polls it, it will get very out-of-date information. I included a function to deactivate the driver for times when input is not needed. I created a [snippet of code](https://github.com/alanssitis/smart-air-hockey-table/commit/42dbfd727366a09a193b0d9b09efd30fc20a0cb2) that shows a simple menu on the display, and reacts to the rotary encoder input accordingly. It was useful for testing the driver's functionality, and may also be useful in the future when we implement a settings menu for the project.
 
-_Figure 2 (Check back soon!): Prototype menu selection showcasing rotary encoder functionality_
+<video controls muted>
+  <source src="/477grp5/team/will/20231023_150601_1.mp4" type="video/mp4">
+</video>
+
+_Figure 2: Prototype menu selection showcasing rotary encoder functionality_
 
 #### Quad-Channel LED Matrix Driver
 
 Near the end of this week, I refactored the LED matrix driver to support multi-channel output. This is made possible by employing 4 DMA channels to synchronously control 4 timer PWM output channels. Both revisions of our main PCB were designed with this in mind, so no additional effort is needed in terms of hardware. Driving the LED matrix on multiple channels allows us to update it much more frequently, since the total refresh cycle will now take a quarter of the time. Updating the LED matrix could end up being a bottleneck in the future, as it could potentially happen hundreds of times per tick when drawing animations to the matrix. I made sure to discuss with the team on how to approach this rewrite with performance in mind. Much of the computation related to the driver is faster to execute due to several of the numbers involved being powers of two.
 
-_Figure 3 (Check back soon!): Two LED matrix segments being driven on separate channels_
+<video controls muted>
+  <source src="/477grp5/team/will/20231023_152716_1.mp4" type="video/mp4">
+</video>
+
+_Figure 3: Two LED matrix segments being driven on separate channels_
 
 #### Midterm Design Review Presentation
 
