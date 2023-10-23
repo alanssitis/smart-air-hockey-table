@@ -20,7 +20,6 @@
 
 static volatile uint8_t led_data[LED_CHANNELS][LED_DATA_LENGTH + LED_RESET_LENGTH]; // Leave space for reset values
 static volatile bool is_transfer_requested;
-static volatile bool is_transfer_active;
 static volatile size_t transfers_active;
 
 void Driver_LED_Init()
@@ -93,10 +92,9 @@ void Driver_LED_Clear()
 
 void Driver_LED_Tick()
 {
-	if (is_transfer_requested && !is_transfer_active)
+	if (is_transfer_requested && transfers_active == 0)
 	{
 		is_transfer_requested = false;
-		is_transfer_active = true;
 		transfers_active = LED_CHANNELS;
 
 		// Configure GPDMA Channels to initiate transfer
@@ -117,5 +115,5 @@ void Driver_LED_Tick()
 
 void GPDMA1_Channel0123_Handler()
 {
-	if (--transfers_active == 0) is_transfer_active = false;
+	transfers_active--;
 }
