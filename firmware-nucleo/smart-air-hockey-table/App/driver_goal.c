@@ -51,8 +51,8 @@ void Driver_Goal_Poll()
 	ldr4_in |= (LDR4IN_GPIO->IDR & LDR4IN_IDR) >> 15;
 
 	// result is true if ldrx_in has any of the lowest GOAL_DELAY_TICKS bits set
-	ldr1_goal = ldr1_in & GOAL_DELAY_MASK;
-	ldr2_goal = ldr2_in & GOAL_DELAY_MASK;
-	ldr3_goal = ldr3_in & GOAL_DELAY_MASK;
-	ldr4_goal = ldr4_in & GOAL_DELAY_MASK;
+	ldr1_goal = (~ldr1_in & GOAL_DELAY_MASK) == GOAL_DELAY_MASK;
+	ldr2_goal = (~ldr2_in & GOAL_DELAY_MASK) == GOAL_DELAY_MASK;
+	ldr3_goal = (~ldr3_in & GOAL_DELAY_MASK) == GOAL_DELAY_MASK;
+	ldr4_goal = (~ldr4_in & GOAL_DELAY_MASK) == GOAL_DELAY_MASK;
 }
