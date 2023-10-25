@@ -5,6 +5,7 @@
 #include <inttypes.h>
 
 void Driver_Encoder_Init();
+void Driver_Encoder_Tick();
 bool Driver_Encoder_PollButton();
 int8_t Driver_Encoder_PollRotation();
 void Driver_Encoder_SetActive(bool active);

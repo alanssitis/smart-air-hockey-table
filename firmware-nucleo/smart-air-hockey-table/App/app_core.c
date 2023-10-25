@@ -52,6 +52,7 @@ void TIM7_Handler()
 	App_StateMachine_GameTick();
 
 	Driver_LED_Tick();
+	Driver_Encoder_Tick();
 
 	ticks_completed++;
 }

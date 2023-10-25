@@ -1,6 +1,7 @@
 #include "driver_goal.h"
 
 #include "stm32u575xx.h"
+
 #include "app_core.h"
 
 // Goal Sensor LDR1IN
@@ -50,7 +51,7 @@ void Driver_Goal_Poll()
 	ldr3_in |= (LDR3IN_GPIO->IDR & LDR3IN_IDR) >> 14;
 	ldr4_in |= (LDR4IN_GPIO->IDR & LDR4IN_IDR) >> 15;
 
-	// result is true if ldrx_in has any of the lowest GOAL_DELAY_TICKS bits set
+	// Result is true if ldrx_in has all of the lowest GOAL_DELAY_TICKS bits cleared
 	ldr1_goal = !(ldr1_in & GOAL_DELAY_MASK);
 	ldr2_goal = !(ldr2_in & GOAL_DELAY_MASK);
 	ldr3_goal = !(ldr3_in & GOAL_DELAY_MASK);

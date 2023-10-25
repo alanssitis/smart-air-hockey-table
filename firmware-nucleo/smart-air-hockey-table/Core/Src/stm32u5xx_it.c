@@ -24,7 +24,6 @@
 /* USER CODE BEGIN Includes */
 #include "app_core.h"
 #include "driver_led.h"
-#include "driver_encoder.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -87,7 +86,7 @@ void NMI_Handler(void)
 void HardFault_Handler(void)
 {
   /* USER CODE BEGIN HardFault_IRQn 0 */
-  LL_GPIO_SetOutputPin(GPIOG, LL_GPIO_PIN_2);
+
   /* USER CODE END HardFault_IRQn 0 */
   while (1)
   {
@@ -200,26 +199,6 @@ void SysTick_Handler(void)
 /* For the available peripheral interrupt handler names,                      */
 /* please refer to the startup file (startup_stm32u5xx.s).                    */
 /******************************************************************************/
-
-/**
-  * @brief This function handles EXTI Line5 interrupt.
-  */
-void EXTI5_IRQHandler(void)
-{
-  /* USER CODE BEGIN EXTI5_IRQn 0 */
-
-  /* USER CODE END EXTI5_IRQn 0 */
-  if (LL_EXTI_IsActiveRisingFlag_0_31(LL_EXTI_LINE_5) != RESET)
-  {
-    LL_EXTI_ClearRisingFlag_0_31(LL_EXTI_LINE_5);
-    /* USER CODE BEGIN LL_EXTI_LINE_5_RISING */
-    EXTI5_Handler();
-    /* USER CODE END LL_EXTI_LINE_5_RISING */
-  }
-  /* USER CODE BEGIN EXTI5_IRQn 1 */
-
-  /* USER CODE END EXTI5_IRQn 1 */
-}
 
 /**
   * @brief This function handles GPDMA1 Channel 0 global interrupt.
