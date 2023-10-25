@@ -327,12 +327,6 @@ static void MX_GPDMA1_Init(void)
   /* GPDMA1 interrupt Init */
   NVIC_SetPriority(GPDMA1_Channel0_IRQn, NVIC_EncodePriority(NVIC_GetPriorityGrouping(),0, 0));
   NVIC_EnableIRQ(GPDMA1_Channel0_IRQn);
-  NVIC_SetPriority(GPDMA1_Channel1_IRQn, NVIC_EncodePriority(NVIC_GetPriorityGrouping(),0, 0));
-  NVIC_EnableIRQ(GPDMA1_Channel1_IRQn);
-  NVIC_SetPriority(GPDMA1_Channel2_IRQn, NVIC_EncodePriority(NVIC_GetPriorityGrouping(),0, 0));
-  NVIC_EnableIRQ(GPDMA1_Channel2_IRQn);
-  NVIC_SetPriority(GPDMA1_Channel3_IRQn, NVIC_EncodePriority(NVIC_GetPriorityGrouping(),0, 0));
-  NVIC_EnableIRQ(GPDMA1_Channel3_IRQn);
 
   /* USER CODE BEGIN GPDMA1_Init 1 */
 
@@ -488,87 +482,6 @@ static void MX_TIM2_Init(void)
   LL_APB1_GRP1_EnableClock(LL_APB1_GRP1_PERIPH_TIM2);
 
   /* TIM2 DMA Init */
-
-  /* GPDMA1_REQUEST_TIM2_UP Init */
-  DMA_InitStruct.SrcAddress = 0x00000000U;
-  DMA_InitStruct.DestAddress = 0x00000000U;
-  DMA_InitStruct.Direction = LL_DMA_DIRECTION_MEMORY_TO_PERIPH;
-  DMA_InitStruct.BlkHWRequest = LL_DMA_HWREQUEST_SINGLEBURST;
-  DMA_InitStruct.DataAlignment = LL_DMA_DATA_ALIGN_ZEROPADD;
-  DMA_InitStruct.SrcBurstLength = 1;
-  DMA_InitStruct.DestBurstLength = 1;
-  DMA_InitStruct.SrcDataWidth = LL_DMA_SRC_DATAWIDTH_BYTE;
-  DMA_InitStruct.DestDataWidth = LL_DMA_DEST_DATAWIDTH_WORD;
-  DMA_InitStruct.SrcIncMode = LL_DMA_SRC_INCREMENT;
-  DMA_InitStruct.DestIncMode = LL_DMA_DEST_FIXED;
-  DMA_InitStruct.Priority = LL_DMA_LOW_PRIORITY_LOW_WEIGHT;
-  DMA_InitStruct.BlkDataLength = 0x00000000U;
-  DMA_InitStruct.TriggerMode = LL_DMA_TRIGM_BLK_TRANSFER;
-  DMA_InitStruct.TriggerPolarity = LL_DMA_TRIG_POLARITY_MASKED;
-  DMA_InitStruct.TriggerSelection = 0x00000000U;
-  DMA_InitStruct.Request = LL_GPDMA1_REQUEST_TIM2_UP;
-  DMA_InitStruct.TransferEventMode = LL_DMA_TCEM_BLK_TRANSFER;
-  DMA_InitStruct.SrcAllocatedPort = LL_DMA_SRC_ALLOCATED_PORT1;
-  DMA_InitStruct.DestAllocatedPort = LL_DMA_DEST_ALLOCATED_PORT0;
-  DMA_InitStruct.LinkAllocatedPort = LL_DMA_LINK_ALLOCATED_PORT1;
-  DMA_InitStruct.LinkStepMode = LL_DMA_LSM_FULL_EXECUTION;
-  DMA_InitStruct.LinkedListBaseAddr = 0x00000000U;
-  DMA_InitStruct.LinkedListAddrOffset = 0x00000000U;
-  LL_DMA_Init(GPDMA1, LL_DMA_CHANNEL_3, &DMA_InitStruct);
-
-  /* GPDMA1_REQUEST_TIM2_UP Init */
-  DMA_InitStruct.SrcAddress = 0x00000000U;
-  DMA_InitStruct.DestAddress = 0x00000000U;
-  DMA_InitStruct.Direction = LL_DMA_DIRECTION_MEMORY_TO_PERIPH;
-  DMA_InitStruct.BlkHWRequest = LL_DMA_HWREQUEST_SINGLEBURST;
-  DMA_InitStruct.DataAlignment = LL_DMA_DATA_ALIGN_ZEROPADD;
-  DMA_InitStruct.SrcBurstLength = 1;
-  DMA_InitStruct.DestBurstLength = 1;
-  DMA_InitStruct.SrcDataWidth = LL_DMA_SRC_DATAWIDTH_BYTE;
-  DMA_InitStruct.DestDataWidth = LL_DMA_DEST_DATAWIDTH_WORD;
-  DMA_InitStruct.SrcIncMode = LL_DMA_SRC_INCREMENT;
-  DMA_InitStruct.DestIncMode = LL_DMA_DEST_FIXED;
-  DMA_InitStruct.Priority = LL_DMA_LOW_PRIORITY_LOW_WEIGHT;
-  DMA_InitStruct.BlkDataLength = 0x00000000U;
-  DMA_InitStruct.TriggerMode = LL_DMA_TRIGM_BLK_TRANSFER;
-  DMA_InitStruct.TriggerPolarity = LL_DMA_TRIG_POLARITY_MASKED;
-  DMA_InitStruct.TriggerSelection = 0x00000000U;
-  DMA_InitStruct.Request = LL_GPDMA1_REQUEST_TIM2_UP;
-  DMA_InitStruct.TransferEventMode = LL_DMA_TCEM_BLK_TRANSFER;
-  DMA_InitStruct.SrcAllocatedPort = LL_DMA_SRC_ALLOCATED_PORT1;
-  DMA_InitStruct.DestAllocatedPort = LL_DMA_DEST_ALLOCATED_PORT0;
-  DMA_InitStruct.LinkAllocatedPort = LL_DMA_LINK_ALLOCATED_PORT1;
-  DMA_InitStruct.LinkStepMode = LL_DMA_LSM_FULL_EXECUTION;
-  DMA_InitStruct.LinkedListBaseAddr = 0x00000000U;
-  DMA_InitStruct.LinkedListAddrOffset = 0x00000000U;
-  LL_DMA_Init(GPDMA1, LL_DMA_CHANNEL_2, &DMA_InitStruct);
-
-  /* GPDMA1_REQUEST_TIM2_UP Init */
-  DMA_InitStruct.SrcAddress = 0x00000000U;
-  DMA_InitStruct.DestAddress = 0x00000000U;
-  DMA_InitStruct.Direction = LL_DMA_DIRECTION_MEMORY_TO_PERIPH;
-  DMA_InitStruct.BlkHWRequest = LL_DMA_HWREQUEST_SINGLEBURST;
-  DMA_InitStruct.DataAlignment = LL_DMA_DATA_ALIGN_ZEROPADD;
-  DMA_InitStruct.SrcBurstLength = 1;
-  DMA_InitStruct.DestBurstLength = 1;
-  DMA_InitStruct.SrcDataWidth = LL_DMA_SRC_DATAWIDTH_BYTE;
-  DMA_InitStruct.DestDataWidth = LL_DMA_DEST_DATAWIDTH_WORD;
-  DMA_InitStruct.SrcIncMode = LL_DMA_SRC_INCREMENT;
-  DMA_InitStruct.DestIncMode = LL_DMA_DEST_FIXED;
-  DMA_InitStruct.Priority = LL_DMA_LOW_PRIORITY_LOW_WEIGHT;
-  DMA_InitStruct.BlkDataLength = 0x00000000U;
-  DMA_InitStruct.TriggerMode = LL_DMA_TRIGM_BLK_TRANSFER;
-  DMA_InitStruct.TriggerPolarity = LL_DMA_TRIG_POLARITY_MASKED;
-  DMA_InitStruct.TriggerSelection = 0x00000000U;
-  DMA_InitStruct.Request = LL_GPDMA1_REQUEST_TIM2_UP;
-  DMA_InitStruct.TransferEventMode = LL_DMA_TCEM_BLK_TRANSFER;
-  DMA_InitStruct.SrcAllocatedPort = LL_DMA_SRC_ALLOCATED_PORT1;
-  DMA_InitStruct.DestAllocatedPort = LL_DMA_DEST_ALLOCATED_PORT0;
-  DMA_InitStruct.LinkAllocatedPort = LL_DMA_LINK_ALLOCATED_PORT1;
-  DMA_InitStruct.LinkStepMode = LL_DMA_LSM_FULL_EXECUTION;
-  DMA_InitStruct.LinkedListBaseAddr = 0x00000000U;
-  DMA_InitStruct.LinkedListAddrOffset = 0x00000000U;
-  LL_DMA_Init(GPDMA1, LL_DMA_CHANNEL_1, &DMA_InitStruct);
 
   /* GPDMA1_REQUEST_TIM2_UP Init */
   DMA_InitStruct.SrcAddress = 0x00000000U;
