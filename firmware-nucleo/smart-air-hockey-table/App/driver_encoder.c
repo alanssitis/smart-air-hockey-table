@@ -10,9 +10,9 @@
 #define ENCODER_SCALING 4
 
 static volatile uint32_t button_in;
-static volatile bool is_button_pressed;
 static volatile bool is_button_down;
 static volatile bool is_button_down_prev;
+static volatile bool is_button_pressed;
 static volatile uint32_t rotation_basis;
 
 void Driver_Encoder_Init()
