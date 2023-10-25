@@ -49,16 +49,3 @@ int8_t Driver_Encoder_PollRotation()
 	rotation_basis += result * ENCODER_SCALING;
 	return result;
 }
-
-void Driver_Encoder_SetActive(bool active)
-{
-	if (active)
-	{
-		is_button_pressed = false;
-		LL_TIM_EnableCounter(TIM3);
-	}
-	else
-	{
-		LL_TIM_DisableCounter(TIM3);
-	}
-}
