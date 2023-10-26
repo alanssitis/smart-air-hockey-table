@@ -113,7 +113,7 @@ void Driver_Display_Print(Display display, uint_fast8_t line, uint_fast8_t offse
 	char* string = &buffer[0];
 
 	// Send string to the display
-	bool inverted = 0;
+	bool inverted = false;
 	uint_fast8_t column = 0;
 	set_region(display, offset * FONT_6X8_WIDTH, DISPLAY_COLUMNS - 1, line, line);
 	transmit_start(display, true);
