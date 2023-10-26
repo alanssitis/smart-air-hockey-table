@@ -11,9 +11,9 @@
 #include "driver_relay.h"
 #include "driver_halleffect.h"
 
-static volatile uint_fast32_t ticks_elapsed; // volatile: TIM6_Handler has higher priority
+//static volatile uint_fast32_t ticks_elapsed; // volatile: TIM6_Handler has higher priority
 static uint_fast32_t ticks_completed;
-static uint_fast32_t ticks_missed;
+//static uint_fast32_t ticks_missed;
 
 void App_Init()
 {
@@ -28,36 +28,31 @@ void App_Init()
 	App_StateMachine_Init();
 
 	// Start 1000 Hz "superloop"
-	LL_TIM_SetUpdateSource(TIM6, LL_TIM_UPDATESOURCE_COUNTER);
+//	LL_TIM_SetUpdateSource(TIM6, LL_TIM_UPDATESOURCE_COUNTER);
 	LL_TIM_SetUpdateSource(TIM7, LL_TIM_UPDATESOURCE_COUNTER);
-	LL_TIM_EnableIT_UPDATE(TIM6);
+//	LL_TIM_EnableIT_UPDATE(TIM6);
 	LL_TIM_EnableIT_UPDATE(TIM7);
-	LL_TIM_EnableCounter(TIM6);
+//	LL_TIM_EnableCounter(TIM6);
 	LL_TIM_EnableCounter(TIM7);
 }
 
 void TIM6_Handler()
 {
-	ticks_elapsed++;
+//	ticks_elapsed++;
 }
 
 void TIM7_Handler()
 {
-	if (ticks_completed + ticks_missed != ticks_elapsed)
-	{
-		uint_fast32_t ticks_difference = ticks_elapsed - ticks_completed - ticks_missed;
-		ticks_missed += ticks_difference;
-		// Doesn't do much yet, but we can detect when ticks are missed
-	}
+//	if (ticks_completed + ticks_missed != ticks_elapsed)
+//	{
+//		uint_fast32_t ticks_difference = ticks_elapsed - ticks_completed - ticks_missed;
+//		ticks_missed += ticks_difference;
+//		// Doesn't do much yet, but we can detect when ticks are missed
+//	}
 
 	App_StateMachine_GameTick();
 
 	Driver_LED_Tick();
 
 	ticks_completed++;
-}
-
-uint_fast32_t App_GetTicksElapsed()
-{
-	return ticks_elapsed;
 }
