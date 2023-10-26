@@ -1,7 +1,6 @@
 #include "driver_led.h"
 
 #include <stdbool.h>
-#include <stddef.h>
 #include "stm32u5xx_ll_dma.h"
 #include "stm32u5xx_ll_tim.h"
 
@@ -21,16 +20,16 @@
 #define COLOR_8BIT_G 15
 #define COLOR_8BIT_B 7
 
-static volatile uint8_t led_buffer[LED_BUFFER_LENGTH];
-static volatile bool is_transfer_requested;
-static volatile bool is_transfer_active;
+static uint8_t led_buffer[LED_BUFFER_LENGTH];
+static bool is_transfer_requested;
+static bool is_transfer_active; // non-volatile: GPDMA1_Channel0_Handler has lower priority
 
 void Driver_LED_Init()
 {
 	Driver_LED_Clear();
 
 	// Populate reset values after all data values
-	for (size_t i = LED_DATA_LENGTH; i < LED_DATA_LENGTH + LED_RESET_LENGTH; i++)
+	for (uint_fast32_t i = LED_DATA_LENGTH; i < LED_DATA_LENGTH + LED_RESET_LENGTH; i++)
 	{
 		led_buffer[i] = LED_COMPARE_RESET;
 	}
@@ -49,7 +48,7 @@ void Driver_LED_Init()
 	LL_TIM_EnableCounter(TIM2);
 }
 
-void Driver_LED_SetColor(uint8_t x, uint8_t y, uint32_t color)
+void Driver_LED_SetColor(uint_fast8_t x, uint_fast8_t y, uint32_t color)
 {
 	if (x >= LED_MATRIX_WIDTH || y >= LED_MATRIX_HEIGHT) return;
 
@@ -57,24 +56,24 @@ void Driver_LED_SetColor(uint8_t x, uint8_t y, uint32_t color)
 	if (y & 1) x = (LED_MATRIX_WIDTH - 1) - x;
 
 	// XY coords to linear index
-	size_t pixel_index = x + y * LED_MATRIX_WIDTH;
+	uint_fast32_t pixel_index = x + y * LED_MATRIX_WIDTH;
 
 	// Determine which channel LED is in
-	size_t channel = pixel_index / (LED_MATRIX_PIXELS / LED_CHANNELS);
+	uint_fast32_t channel = pixel_index / (LED_MATRIX_PIXELS / LED_CHANNELS);
 
 	// Transform to a per-channel linear index
 	pixel_index %= LED_MATRIX_PIXELS / LED_CHANNELS;
 
 	// Offset of each color channel within the 24 buffer values that define a pixel
-	size_t g_offset = pixel_index * LED_DATA_BITS;
-	size_t r_offset = g_offset + 8;
-	size_t b_offset = g_offset + 16;
+	uint_fast32_t g_offset = pixel_index * LED_DATA_BITS;
+	uint_fast32_t r_offset = g_offset + 8;
+	uint_fast32_t b_offset = g_offset + 16;
 
-	for (uint8_t i = 0; i < 8; i++)
+	for (uint_fast8_t i = 0; i < 8; i++)
 	{
-		uint8_t r_bit = (color >> (COLOR_8BIT_R - i)) & 0b1;
-		uint8_t g_bit = (color >> (COLOR_8BIT_G - i)) & 0b1;
-		uint8_t b_bit = (color >> (COLOR_8BIT_B - i)) & 0b1;
+		uint_fast8_t r_bit = (color >> (COLOR_8BIT_R - i)) & 0b1;
+		uint_fast8_t g_bit = (color >> (COLOR_8BIT_G - i)) & 0b1;
+		uint_fast8_t b_bit = (color >> (COLOR_8BIT_B - i)) & 0b1;
 		led_buffer[(r_offset + i) * LED_CHANNELS + channel] = (!r_bit) * LED_COMPARE_OFF + r_bit * LED_COMPARE_ON;
 		led_buffer[(g_offset + i) * LED_CHANNELS + channel] = (!g_bit) * LED_COMPARE_OFF + g_bit * LED_COMPARE_ON;
 		led_buffer[(b_offset + i) * LED_CHANNELS + channel] = (!b_bit) * LED_COMPARE_OFF + b_bit * LED_COMPARE_ON;
@@ -84,7 +83,7 @@ void Driver_LED_SetColor(uint8_t x, uint8_t y, uint32_t color)
 
 void Driver_LED_Clear()
 {
-	for (size_t i = 0; i < LED_DATA_LENGTH; i++)
+	for (uint_fast32_t i = 0; i < LED_DATA_LENGTH; i++)
 	{
 		led_buffer[i] = LED_COMPARE_OFF;
 	}

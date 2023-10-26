@@ -87,7 +87,7 @@ void NMI_Handler(void)
 void HardFault_Handler(void)
 {
   /* USER CODE BEGIN HardFault_IRQn 0 */
-  LL_GPIO_SetOutputPin(GPIOG, LL_GPIO_PIN_2);
+
   /* USER CODE END HardFault_IRQn 0 */
   while (1)
   {

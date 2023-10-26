@@ -11,6 +11,6 @@
 void App_Init();
 void TIM6_Handler();
 void TIM7_Handler();
-uint32_t App_GetTicksElapsed();
+uint_fast32_t App_GetTicksElapsed();
 
 #endif /* INC_APP_CORE_H_ */

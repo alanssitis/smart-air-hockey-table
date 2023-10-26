@@ -4,8 +4,8 @@
 
 #define ENCODER_SCALING 4
 
-static volatile bool is_button_pressed;
-static volatile uint32_t rotation_basis;
+static bool is_button_pressed; // non-volatile: EXTI5_Handler has lower priority
+static uint_fast32_t rotation_basis;
 
 void Driver_Encoder_Init()
 {
@@ -20,12 +20,12 @@ bool Driver_Encoder_PollButton()
 	return result;
 }
 
-int8_t Driver_Encoder_PollRotation()
+int_fast8_t Driver_Encoder_PollRotation()
 {
-	int8_t rotation_delta = LL_TIM_GetCounter(TIM3) - rotation_basis;
+	int_fast8_t rotation_delta = LL_TIM_GetCounter(TIM3) - rotation_basis;
 
 	// Only detect rotation on a multiple of ENCODER_SCALING (on the detent)
-	int8_t result = rotation_delta / ENCODER_SCALING;
+	int_fast8_t result = rotation_delta / ENCODER_SCALING;
 	rotation_basis += result * ENCODER_SCALING;
 	return result;
 }

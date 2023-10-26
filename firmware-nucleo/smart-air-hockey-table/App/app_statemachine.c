@@ -1,17 +1,19 @@
 #include "app_statemachine.h"
 
+#include <inttypes.h>
 #include "driver_led.h"
 #include "driver_display.h"
 #include "driver_encoder.h"
 #include "driver_relay.h"
 #include "driver_halleffect.h"
 
-volatile struct {
+static struct
+{
 	GameState currGameState;
-	uint32_t ticksInState; // Ticks in a given state
-	uint8_t winScore; // Number of points required for a player to win
-	uint8_t playerScoreA; // Current number of points Player A has scored
-	uint8_t playerScoreB; // Current number of points Player B has scored
+	uint_fast32_t ticksInState; // Ticks in a given state
+	uint_fast8_t winScore; // Number of points required for a player to win
+	uint_fast8_t playerScoreA; // Current number of points Player A has scored
+	uint_fast8_t playerScoreB; // Current number of points Player B has scored
 } GameInfo;
 
 void App_StateMachine_Init()

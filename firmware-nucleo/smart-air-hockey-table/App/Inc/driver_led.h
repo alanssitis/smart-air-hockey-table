@@ -4,7 +4,7 @@
 #include <inttypes.h>
 
 void Driver_LED_Init();
-void Driver_LED_SetColor(uint8_t x, uint8_t y, uint32_t color);
+void Driver_LED_SetColor(uint_fast8_t x, uint_fast8_t y, uint32_t color);
 void Driver_LED_Clear();
 void Driver_LED_Tick();
 void GPDMA1_Channel0_Handler();

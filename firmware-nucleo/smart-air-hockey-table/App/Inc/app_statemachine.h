@@ -1,12 +1,11 @@
 #ifndef INC_APP_STATEMACHINE_H_
 #define INC_APP_STATEMACHINE_H_
 
-#include <inttypes.h>
-
 #define INITIAL_GAMESTATE	GAMESTATE_RUN
 #define IDLE_SLEEP_TICKS	60000
 
-typedef enum {
+typedef enum
+{
 	GAMESTATE_IDLE,		// Idle before start of the game
 	GAMESTATE_SLEEP,	// Low-power mode after inactivity
 	GAMESTATE_START,	// Set-up sequence for new game

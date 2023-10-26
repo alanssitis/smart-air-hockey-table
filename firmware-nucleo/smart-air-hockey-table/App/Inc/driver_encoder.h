@@ -6,7 +6,7 @@
 
 void Driver_Encoder_Init();
 bool Driver_Encoder_PollButton();
-int8_t Driver_Encoder_PollRotation();
+int_fast8_t Driver_Encoder_PollRotation();
 void Driver_Encoder_SetActive(bool active);
 void EXTI5_Handler();
 
