@@ -144,10 +144,10 @@ void Driver_Display_ShowScore(Display display, uint_fast8_t score_a, uint_fast8_
 {
 	if (score_a > 99 || score_b > 99) return;
 
-	uint_fast8_t tens_a = (score_a / 10) % 10;
-	uint_fast8_t ones_a = score_a % 10;
-	uint_fast8_t tens_b = (score_b / 10) % 10;
-	uint_fast8_t ones_b = score_b % 10;
+	uint_fast8_t tens_a = (score_a / 10);
+	uint_fast8_t ones_a = score_a - tens_a * 10;
+	uint_fast8_t tens_b = (score_b / 10);
+	uint_fast8_t ones_b = score_b - tens_b * 10;
 
 	set_region(display, (DISPLAY_COLUMNS - FONT_SCORE_WIDTH * 5) / 2, DISPLAY_COLUMNS - 1, 3, 6);
 
