@@ -8,8 +8,8 @@ title: Trevor Moorman Progress Report
 ## Week 10
 
 **Date:** 10/27/2023 \
-**Project Hours Since Last Report:** TODO \
-**Cumulative Semester Project Hours:** TODO
+**Project Hours Since Last Report:** 10 \
+**Cumulative Semester Project Hours:** 118
 
 ### Description of Individual Project Work Efforts:
 
@@ -58,7 +58,8 @@ _Figure 3: On the top, a full view of the processed MDF with two of the sensor P
 
 **External EEPROM Driver**
 
-- As mentioned previously, the EEPROM driver has only just entered a concrete ideation stage. Ben and I will continue to plan the EEPROM driver, then utilize pair programming, as we used for the hall effect and relay drivers, to develop the EEPROM driver.
+- As mentioned previously, the EEPROM driver has only just entered a concrete ideation stage. Ben and I will continue to plan the EEPROM driver.
+- Once Ben and I have completed enough planning, we will then utilize pair programmingto develop the EEPROM driver, similarly to how we developed the hall effect and relay drivers.
 
 ## Week 8 & 9
 
