@@ -127,7 +127,9 @@ void Driver_Display_Print(Display display, uint_fast8_t line, uint_fast8_t offse
 			continue;
 		}
 		if (character < FONT_6X8_MIN || character > FONT_6X8_MAX)
+        {
 			character = ' ';
+        }
 		const uint8_t* character_data = font_6x8[character - FONT_6X8_MIN];
 		for (uint_fast8_t col = 0; col < FONT_6X8_WIDTH; col++)
 		{
