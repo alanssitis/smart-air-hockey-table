@@ -127,9 +127,9 @@ void Driver_Display_Print(Display display, uint_fast8_t line, uint_fast8_t offse
 			continue;
 		}
 		if (character < FONT_6X8_MIN || character > FONT_6X8_MAX)
-        {
+		{
 			character = ' ';
-        }
+		}
 		const uint8_t* character_data = font_6x8[character - FONT_6X8_MIN];
 		for (uint_fast8_t col = 0; col < FONT_6X8_WIDTH; col++)
 		{
@@ -147,7 +147,9 @@ void Driver_Display_Print(Display display, uint_fast8_t line, uint_fast8_t offse
 static inline void transmit_large_word(const uint8_t font_char[])
 {
 	for (uint_fast32_t i = 0; i < FONT_ARRAY_SIZE; i++)
+	{
 		transmit_word(font_char[i]);
+	}
 }
 
 void Driver_Display_ShowScore(Display display, uint_fast8_t score_a, uint_fast8_t score_b)
