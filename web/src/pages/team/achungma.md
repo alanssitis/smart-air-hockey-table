@@ -5,6 +5,34 @@ title: Alan Chung Ma Progress Report
 
 # Progress Report for Alan
 
+## Week 10
+
+**Date:** 2023-10-27 \
+**Week Hours:** 14 \
+**Total Hours:** 117
+
+### Description of Project Design Efforts
+
+This week consisted of creating a new CAM for the gantry to run to get the MDF and running it. The secondary efforts surrounded the minor software and firmware optimizations. I also worked on the Legal Analysis (A9) this week, it should be up in [Documents](/477grp5/documents).
+
+#### New MDF CAM and Running the gantry
+
+I noticed that the model I had originally had wrong dimensions and I needed to add tolerances to the outside of the PCB since the gantry cannot make exact 90 degree cuts. Therefore, I made a new model and CAM for it. We decided to cut the MDF down to correct shape first and then just having it be vacuumed onto the table. A TA also changed some parameters and the whole job took much less than one hour, which was more than half than the original job that I was going to run last week. Below is a video of it running in Fusion 360 and below it are pictures of the finished piece.
+
+<video controls muted>
+  <source src="/477grp5/team/alan/week10/video1.mp4" type="video/mp4">
+</video>
+
+![Figure of finished MDF in the lab](/477grp5/team/alan/week10/figure1.jpg)
+
+#### Minor software updates
+
+I also participated in some software changes, and also have a PR for small optimizations. Here is a link to the PRs: [#116](https://github.com/alanssitis/smart-air-hockey-table/pull/116), [#88](https://github.com/alanssitis/smart-air-hockey-table/pull/88). 
+
+### Next Steps
+
+The goal for next week is to finish some of the exterior of the table. This would not result in the finished table since legs and top covers will still need to be built and designed. I will also begin design and development of an algorithm to store and display animations on the table. This may to wait until all PCBs arrive next week. I will also help soldering the rest of the boards.
+
 ## Week 8 & 9
 
 **Date:** 2023-10-20 \
