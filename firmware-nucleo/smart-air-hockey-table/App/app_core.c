@@ -1,18 +1,19 @@
 #include "app_core.h"
-#include "app_statemachine.h"
 
 #include "stm32u5xx_ll_tim.h"
 #include "stm32u5xx_ll_utils.h"
 
+#include "app_statemachine.h"
 #include "driver_led.h"
 #include "driver_display.h"
 #include "driver_encoder.h"
+#include "driver_goal.h"
 #include "driver_relay.h"
 #include "driver_halleffect.h"
 
-static volatile uint32_t ticks_elapsed;
-static volatile uint32_t ticks_completed;
-static volatile uint32_t ticks_missed;
+//static volatile uint_fast32_t ticks_elapsed; // volatile: TIM6_Handler has higher priority
+static uint_fast32_t ticks_completed;
+//static uint_fast32_t ticks_missed;
 
 void App_Init()
 {
@@ -37,14 +38,14 @@ void App_Init()
 
 void TIM6_Handler()
 {
-	ticks_elapsed++;
+//	ticks_elapsed++;
 }
 
 void TIM7_Handler()
 {
 //	if (ticks_completed + ticks_missed != ticks_elapsed)
 //	{
-//		uint32_t ticks_difference = ticks_elapsed - ticks_completed - ticks_missed;
+//		uint_fast32_t ticks_difference = ticks_elapsed - ticks_completed - ticks_missed;
 //		ticks_missed += ticks_difference;
 //		// Doesn't do much yet, but we can detect when ticks are missed
 //	}
@@ -54,9 +55,4 @@ void TIM7_Handler()
 	Driver_LED_Tick();
 
 	ticks_completed++;
-}
-
-uint32_t App_GetTicksElapsed()
-{
-	return ticks_elapsed;
 }

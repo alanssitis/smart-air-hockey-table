@@ -148,8 +148,8 @@
 #define COL31_GPIO	GPIOD
 #define COL31_IDR	GPIO_IDR_ID15
 
-volatile uint16_t halleffect_rows;
-volatile uint32_t halleffect_cols;
+uint16_t halleffect_rows;
+uint32_t halleffect_cols;
 
 void Driver_HallEffect_PollInputs()
 {
@@ -164,57 +164,55 @@ void Driver_HallEffect_PollInputs()
 	// negative values are left shift
 	// zero value is no shift
 
-	uint16_t result_rows = 0xFFFF;
-	result_rows ^= (ROW0_GPIO->IDR & ROW0_IDR) >> 6;
-	result_rows ^= (ROW1_GPIO->IDR & ROW1_IDR) >> 6;
-	result_rows ^= (ROW2_GPIO->IDR & ROW2_IDR) >> 3;
-	result_rows ^= (ROW3_GPIO->IDR & ROW3_IDR) >> 2;
-	result_rows ^= (ROW4_GPIO->IDR & ROW4_IDR) << 3;
-	result_rows ^= (ROW5_GPIO->IDR & ROW5_IDR) << 2;
-	result_rows ^= (ROW6_GPIO->IDR & ROW6_IDR) >> 1;
-	result_rows ^= (ROW7_GPIO->IDR & ROW7_IDR) >> 1;
-	result_rows ^= (ROW8_GPIO->IDR & ROW8_IDR) >> 1;
-	result_rows ^= (ROW9_GPIO->IDR & ROW9_IDR) >> 1;
-	result_rows ^= (ROW10_GPIO->IDR & ROW10_IDR) >> 1;
-	result_rows ^= (ROW11_GPIO->IDR & ROW11_IDR) >> 1;
-	result_rows ^= (ROW12_GPIO->IDR & ROW12_IDR) >> 1;
-	result_rows ^= (ROW13_GPIO->IDR & ROW13_IDR) >> 1;
-	result_rows ^= (ROW14_GPIO->IDR & ROW14_IDR) >> 1;
-	result_rows ^= (ROW15_GPIO->IDR & ROW15_IDR) << 5;
-	halleffect_rows = result_rows;
+	halleffect_rows = 0xFFFF;
+	halleffect_rows ^= (ROW0_GPIO->IDR & ROW0_IDR) >> 6;
+	halleffect_rows ^= (ROW1_GPIO->IDR & ROW1_IDR) >> 6;
+	halleffect_rows ^= (ROW2_GPIO->IDR & ROW2_IDR) >> 3;
+	halleffect_rows ^= (ROW3_GPIO->IDR & ROW3_IDR) >> 2;
+	halleffect_rows ^= (ROW4_GPIO->IDR & ROW4_IDR) << 3;
+	halleffect_rows ^= (ROW5_GPIO->IDR & ROW5_IDR) << 2;
+	halleffect_rows ^= (ROW6_GPIO->IDR & ROW6_IDR) >> 1;
+	halleffect_rows ^= (ROW7_GPIO->IDR & ROW7_IDR) >> 1;
+	halleffect_rows ^= (ROW8_GPIO->IDR & ROW8_IDR) >> 1;
+	halleffect_rows ^= (ROW9_GPIO->IDR & ROW9_IDR) >> 1;
+	halleffect_rows ^= (ROW10_GPIO->IDR & ROW10_IDR) >> 1;
+	halleffect_rows ^= (ROW11_GPIO->IDR & ROW11_IDR) >> 1;
+	halleffect_rows ^= (ROW12_GPIO->IDR & ROW12_IDR) >> 1;
+	halleffect_rows ^= (ROW13_GPIO->IDR & ROW13_IDR) >> 1;
+	halleffect_rows ^= (ROW14_GPIO->IDR & ROW14_IDR) >> 1;
+	halleffect_rows ^= (ROW15_GPIO->IDR & ROW15_IDR) << 5;
 
-	uint32_t result_cols = 0xFFFFFFFF;
-	result_cols ^= (COL0_GPIO->IDR & COL0_IDR) >> 2;
-	result_cols ^= (COL1_GPIO->IDR & COL1_IDR);
-	result_cols ^= (COL2_GPIO->IDR & COL2_IDR) << 2;
-	result_cols ^= (COL3_GPIO->IDR & COL3_IDR) >> 6;
-	result_cols ^= (COL4_GPIO->IDR & COL4_IDR) >> 5;
-	result_cols ^= (COL5_GPIO->IDR & COL5_IDR) >> 2;
-	result_cols ^= (COL6_GPIO->IDR & COL6_IDR);
-	result_cols ^= (COL7_GPIO->IDR & COL7_IDR) >> 2;
-	result_cols ^= (COL8_GPIO->IDR & COL8_IDR) << 4;
-	result_cols ^= (COL9_GPIO->IDR & COL9_IDR) << 6;
-	result_cols ^= (COL10_GPIO->IDR & COL10_IDR) << 3;
-	result_cols ^= (COL11_GPIO->IDR & COL11_IDR) << 5;
-	result_cols ^= (COL12_GPIO->IDR & COL12_IDR) << 7;
-	result_cols ^= (COL13_GPIO->IDR & COL13_IDR) << 9;
-	result_cols ^= (COL14_GPIO->IDR & COL14_IDR) << 11;
-	result_cols ^= (COL15_GPIO->IDR & COL15_IDR) << 13;
-	result_cols ^= (COL16_GPIO->IDR & COL16_IDR) << 15;
-	result_cols ^= (COL17_GPIO->IDR & COL17_IDR) << 17;
-	result_cols ^= (COL18_GPIO->IDR & COL18_IDR) << 6;
-	result_cols ^= (COL19_GPIO->IDR & COL19_IDR) << 8;
-	result_cols ^= (COL20_GPIO->IDR & COL20_IDR) << 10;
-	result_cols ^= (COL21_GPIO->IDR & COL21_IDR) << 6;
-	result_cols ^= (COL22_GPIO->IDR & COL22_IDR) << 10;
-	result_cols ^= (COL23_GPIO->IDR & COL23_IDR) << 12;
-	result_cols ^= (COL24_GPIO->IDR & COL24_IDR) << 14;
-	result_cols ^= (COL25_GPIO->IDR & COL25_IDR) << 16;
-	result_cols ^= (COL26_GPIO->IDR & COL26_IDR) << 18;
-	result_cols ^= (COL27_GPIO->IDR & COL27_IDR) << 18;
-	result_cols ^= (COL28_GPIO->IDR & COL28_IDR) << 20;
-	result_cols ^= (COL29_GPIO->IDR & COL29_IDR) << 22;
-	result_cols ^= (COL30_GPIO->IDR & COL30_IDR) << 24;
-	result_cols ^= (COL31_GPIO->IDR & COL31_IDR) << 16;
-	halleffect_cols = result_cols;
+	halleffect_cols = 0xFFFFFFFF;
+	halleffect_cols ^= (COL0_GPIO->IDR & COL0_IDR) >> 2;
+	halleffect_cols ^= (COL1_GPIO->IDR & COL1_IDR);
+	halleffect_cols ^= (COL2_GPIO->IDR & COL2_IDR) << 2;
+	halleffect_cols ^= (COL3_GPIO->IDR & COL3_IDR) >> 6;
+	halleffect_cols ^= (COL4_GPIO->IDR & COL4_IDR) >> 5;
+	halleffect_cols ^= (COL5_GPIO->IDR & COL5_IDR) >> 2;
+	halleffect_cols ^= (COL6_GPIO->IDR & COL6_IDR);
+	halleffect_cols ^= (COL7_GPIO->IDR & COL7_IDR) >> 2;
+	halleffect_cols ^= (COL8_GPIO->IDR & COL8_IDR) << 4;
+	halleffect_cols ^= (COL9_GPIO->IDR & COL9_IDR) << 6;
+	halleffect_cols ^= (COL10_GPIO->IDR & COL10_IDR) << 3;
+	halleffect_cols ^= (COL11_GPIO->IDR & COL11_IDR) << 5;
+	halleffect_cols ^= (COL12_GPIO->IDR & COL12_IDR) << 7;
+	halleffect_cols ^= (COL13_GPIO->IDR & COL13_IDR) << 9;
+	halleffect_cols ^= (COL14_GPIO->IDR & COL14_IDR) << 11;
+	halleffect_cols ^= (COL15_GPIO->IDR & COL15_IDR) << 13;
+	halleffect_cols ^= (COL16_GPIO->IDR & COL16_IDR) << 15;
+	halleffect_cols ^= (COL17_GPIO->IDR & COL17_IDR) << 17;
+	halleffect_cols ^= (COL18_GPIO->IDR & COL18_IDR) << 6;
+	halleffect_cols ^= (COL19_GPIO->IDR & COL19_IDR) << 8;
+	halleffect_cols ^= (COL20_GPIO->IDR & COL20_IDR) << 10;
+	halleffect_cols ^= (COL21_GPIO->IDR & COL21_IDR) << 6;
+	halleffect_cols ^= (COL22_GPIO->IDR & COL22_IDR) << 10;
+	halleffect_cols ^= (COL23_GPIO->IDR & COL23_IDR) << 12;
+	halleffect_cols ^= (COL24_GPIO->IDR & COL24_IDR) << 14;
+	halleffect_cols ^= (COL25_GPIO->IDR & COL25_IDR) << 16;
+	halleffect_cols ^= (COL26_GPIO->IDR & COL26_IDR) << 18;
+	halleffect_cols ^= (COL27_GPIO->IDR & COL27_IDR) << 18;
+	halleffect_cols ^= (COL28_GPIO->IDR & COL28_IDR) << 20;
+	halleffect_cols ^= (COL29_GPIO->IDR & COL29_IDR) << 22;
+	halleffect_cols ^= (COL30_GPIO->IDR & COL30_IDR) << 24;
+	halleffect_cols ^= (COL31_GPIO->IDR & COL31_IDR) << 16;
 }

@@ -3,8 +3,8 @@
 
 #include <inttypes.h>
 
-extern volatile uint32_t halleffect_cols;
-extern volatile uint16_t halleffect_rows;
+extern uint32_t halleffect_cols;
+extern uint16_t halleffect_rows;
 
 void Driver_HallEffect_PollInputs();
 

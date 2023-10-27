@@ -1,7 +1,6 @@
 #include "driver_display.h"
 
 #include <stdarg.h>
-#include <stddef.h>
 #include <stdio.h>
 #include "stm32u5xx_ll_gpio.h"
 #include "stm32u5xx_ll_utils.h"
@@ -38,7 +37,7 @@ static void transmit_word(uint8_t word)
 	while (!LL_SPI_IsActiveFlag_TXC(SPI2));
 }
 
-static void set_region(Display display, uint8_t col_start, uint8_t col_end, uint8_t page_start, uint8_t page_end)
+static void set_region(Display display, uint_fast8_t col_start, uint_fast8_t col_end, uint_fast8_t page_start, uint_fast8_t page_end)
 {
 	transmit_start(display, false);
 	transmit_word(0x21);
@@ -87,7 +86,7 @@ void Driver_Display_Clear(Display display)
 	set_region(display, 0, DISPLAY_COLUMNS - 1, 0, DISPLAY_PAGES - 1);
 
 	transmit_start(display, true);
-	for (size_t i = 0; i < DISPLAY_WIDTH * DISPLAY_HEIGHT / 8; i++) transmit_word(0x00);
+	for (uint_fast32_t i = 0; i < DISPLAY_WIDTH * DISPLAY_HEIGHT / 8; i++) transmit_word(0x00);
 	transmit_end();
 }
 
@@ -99,7 +98,7 @@ void Driver_Display_SetPowered(Display display, bool is_powered)
 	transmit_end();
 }
 
-void Driver_Display_Print(Display display, uint8_t line, uint8_t offset, const char* format, ...)
+void Driver_Display_Print(Display display, uint_fast8_t line, uint_fast8_t offset, const char* format, ...)
 {
 	if (line >= DISPLAY_PAGES) return;
 	if (offset * FONT_6X8_WIDTH >= DISPLAY_COLUMNS) return;
@@ -114,8 +113,8 @@ void Driver_Display_Print(Display display, uint8_t line, uint8_t offset, const c
 	char* string = &buffer[0];
 
 	// Send string to the display
-	bool inverted = 0;
-	uint8_t column = 0;
+	bool inverted = false;
+	uint_fast8_t column = 0;
 	set_region(display, offset * FONT_6X8_WIDTH, DISPLAY_COLUMNS - 1, line, line);
 	transmit_start(display, true);
 	while (*string != '\0')
@@ -128,7 +127,7 @@ void Driver_Display_Print(Display display, uint8_t line, uint8_t offset, const c
 		}
 		if (character < FONT_6X8_MIN || character > FONT_6X8_MAX) character = ' ';
 		const uint8_t* character_data = font_6x8[character - FONT_6X8_MIN];
-		for (uint8_t col = 0; col < FONT_6X8_WIDTH; col++)
+		for (uint_fast8_t col = 0; col < FONT_6X8_WIDTH; col++)
 		{
 			uint8_t column_data = character_data[col];
 			if (inverted) column_data = ~column_data;
@@ -141,23 +140,23 @@ void Driver_Display_Print(Display display, uint8_t line, uint8_t offset, const c
 	transmit_end();
 }
 
-void Driver_Display_ShowScore(Display display, uint8_t score_a, uint8_t score_b)
+void Driver_Display_ShowScore(Display display, uint_fast8_t score_a, uint_fast8_t score_b)
 {
 	if (score_a > 99 || score_b > 99) return;
 
-	uint8_t tens_a = (score_a / 10) % 10;
-	uint8_t ones_a = score_a % 10;
-	uint8_t tens_b = (score_b / 10) % 10;
-	uint8_t ones_b = score_b % 10;
+	uint_fast8_t tens_a = score_a / 10;
+	uint_fast8_t ones_a = score_a - tens_a * 10;
+	uint_fast8_t tens_b = score_b / 10;
+	uint_fast8_t ones_b = score_b - tens_b * 10;
 
 	set_region(display, (DISPLAY_COLUMNS - FONT_SCORE_WIDTH * 5) / 2, DISPLAY_COLUMNS - 1, 3, 6);
 
 	transmit_start(display, true);
-	for (size_t i = 0; i < sizeof(font_score[tens_a]); i++) transmit_word(font_score[tens_a][i]);
-	for (size_t i = 0; i < sizeof(font_score[ones_a]); i++) transmit_word(font_score[ones_a][i]);
-	for (size_t i = 0; i < sizeof(font_dash); i++) transmit_word(font_dash[i]);
-	for (size_t i = 0; i < sizeof(font_score[tens_b]); i++) transmit_word(font_score[tens_b][i]);
-	for (size_t i = 0; i < sizeof(font_score[ones_b]); i++) transmit_word(font_score[ones_b][i]);
+	for (uint_fast32_t i = 0; i < sizeof(font_score[tens_a]); i++) transmit_word(font_score[tens_a][i]);
+	for (uint_fast32_t i = 0; i < sizeof(font_score[ones_a]); i++) transmit_word(font_score[ones_a][i]);
+	for (uint_fast32_t i = 0; i < sizeof(font_dash); i++) transmit_word(font_dash[i]);
+	for (uint_fast32_t i = 0; i < sizeof(font_score[tens_b]); i++) transmit_word(font_score[tens_b][i]);
+	for (uint_fast32_t i = 0; i < sizeof(font_score[ones_b]); i++) transmit_word(font_score[ones_b][i]);
 	transmit_end();
 }
 
