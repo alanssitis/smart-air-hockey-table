@@ -34,6 +34,8 @@ bool ldr4_goal;
 
 void Driver_Goal_Poll()
 {
+	// TODO: Potential optimization in combining both inputs
+	// Meaning we would only need to track two registers instead of one for debouncing
 	ldr1_in <<= 1;
 	ldr2_in <<= 1;
 	ldr3_in <<= 1;

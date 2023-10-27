@@ -117,7 +117,7 @@ void App_StateMachine_GameTick()
 		default:
 		{
 			// Error: default should never occur
-			GameInfo.currGameState = GAMESTATE_IDLE;
+			App_StateMachine_SetState(GAMESTATE_ERROR);
 			break;
 		}
 	}
