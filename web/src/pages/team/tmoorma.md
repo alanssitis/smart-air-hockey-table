@@ -21,7 +21,7 @@ title: Trevor Moorman Progress Report
 
 <img src="/477grp5/team/trevor/Trevor_Week10_DigiKeyPurchase.PNG" width="100%">
 
-_Figure 1: The final DigiKey order (Note that, despite using the "Senior Design Purchase Request Form", this order was purchased personally by me)._
+_Figure 1: The final DigiKey order (Note that, despite using the "Senior Design Purchase Request Form", this order was purchased by me)._
 
 **Table Construction**
 
@@ -31,21 +31,21 @@ _Figure 1: The final DigiKey order (Note that, despite using the "Senior Design 
 - Alan and Ben returned just as the CNC router finished the second operation. Alan and I deburred the slots using a brush, cleaned the area of sawdust, and performed the standard operating procedure for powering down and cleaning the CNC machine.
 - Ben and I then carried the processed MDF board from BIDC to the lab.
 
-<video controls muted>
+<video controls muted width="50%">
   <source src="/477grp5/team/trevor/Trevor_Week10_CncOp1.MOV" type="video/mp4">
 </video>
 
 _Figure 2: A short video of the CNC router in the middle of performing the first operation._
 
-| <img src="/477grp5/team/trevor/Trevor_Week10_MdfFull.jpg" width="100%"> |
+| <img src="/477grp5/team/trevor/Trevor_Week10_MdfFull.jpg" width="50%"> |
 |-------------------------------------------------------------------------|
-| <img src="/477grp5/team/trevor/Trevor_Week10_MdfZoom.jpg" width="100%"> |
+| <img src="/477grp5/team/trevor/Trevor_Week10_MdfZoom.jpg" width="25%"> |
 
 _Figure 3: On the top, a full view of the processed MDF with two of the sensor PCB slots filled. On the bottom, a zoomed view of one of the sensor PCB slots._
 
 **EEPROM Driver**
 
-- Before this Thursday's lecture, Ben and I began discussing how we should implement a driver for communicating with the ([external EEPROM](/477grp5/references/M95P32-I_EEPROM_Datasheet)), which will store persistent user data and animations, using SPI.
+- Before this Thursday's lecture, Ben and I began discussing how we should implement a driver for communicating with the [external EEPROM](/477grp5/references/M95P32-I_EEPROM_Datasheet.pdf), which will store persistent user data and animations, using SPI.
 - After this Thursday's lecture, the entire team discussed how loading and playing the animations should work. Which informed Ben and I on how we want to construct the driver.
 - Ben and I currently plan to create a generic function for selecting and communicating with the external EEPROM using SPI, functions which implement the individual instructions available on the external EEPROM, and functions coordinating these instruction calls in a way that fits our intended use case. More details will follow in next week's progress report as more planning and development is completed.
 
