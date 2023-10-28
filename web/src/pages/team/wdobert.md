@@ -10,18 +10,29 @@ title: Will Dobert Progress Report
 ## Week 10
 
 **Date:** 10/27/2023 \
-**Project Hours Since Last Report:** 9 \
-**Cumulative Semester Project Hours:** 105
+**Project Hours Since Last Report:** 10 \
+**Cumulative Semester Project Hours:** 106
 
 ### Description of Project Design Efforts
 
-#### TODO
+#### Rotary Encoder Button Debouncing
 
-TODO
+Since Trevor finished developing the goal detection driver earlier this week, I decided to take another look at the encoder driver for the sake of consistency between them. Our rotary encoder hardware contains a push button, and as far as our firmware is concerned, the goal detector essentially functions as a light-activated button. The goal detection driver uses software debouncing to detect a goal once the signal has been low for several milliseconds consecutively. I copied this same functionality over to the encoder driver, and removed the external interrupts that we had previously been using to detect button pushes. I had to redo the button polling logic to accomodate this new approach, but it eventually worked as expected. After putting the code up for review, I became aware that we will have hardware debouncing for the button on our PCB. This negates the requirement to have software debouncing, and meant that changing our approach for the encoder driver was no longer necessary. I decided to close the review, since having such close consistency between the drivers' functionality wasn't very important in this instance.
+
+#### Quad-Channel LED Matrix Optimization
+
+Around the middle of the week, Ben brought up an idea for further improving our LED matrix driver, on top of what I implemented last week. Instead of keeping the data for each channel separated and driven by separate DMA transfers, we could carefully interleave the data into a single stream that one DMA transfer can handle. The benefit to this approach is that it slightly reduces the CPU overhead for updating the LED matrix, as we are only configuring and initiating one DMA transfer every time instead of four. Uncovering a way to accomplish this was challenging at first, as there were no readily available ways to configure the DMA transfer to handle interleaved data in this manner. Back when I was transitioning our firmware to the new microcontroller, I noticed a confusingly named DMA "burst" feature for the microcontroller's timer peripherals. As it turns out, this was the key to unlocking the exact functionality I needed. This feature enables DMA to write to any number of contiguous timer control registers on a single transfer request, including those that control our LED matrix data transmission. All that I needed to do from here was retool the LED matrix driver to organize the outgoing data in the correct order. These changes can be viewed on our [public repository](https://github.com/alanssitis/smart-air-hockey-table/pull/104/commits/f01de850adb1d114250f8c7e3fa196bd6b5319a5#diff-c6acd8edab8b6c7ab734c9b871fa2884e209a1568adb239602c67e0c68d44ce2).
+
+![Interleaved DMA Data](/477grp5/team/will/week10.png)
+_Figure 1: Graphical representation of old and new methods for transmitting LED data on multiple channels_
+
+#### Firmware Cleanup
+
+After looking over our firmware over the past couple weeks, I thought of a couple larger-scope adjustments to make in the future. Now that all of our drivers are implemented and the basis of our application structure is in place, I decided at the end of this week to implement the changes. The first and most wide-reaching change was to replace every instance of the `uint8_t` and `uint32_t` data types with `uint_fast8_t` and `uint_fast32_t`. When reviewing the recently implemented goal detection driver code, I noticed that Ben introduced the use of `uint_fast32_t` on a few variables. After some discussing, we decided that propagating this pattern to the rest of our code wouldn't be a bad idea. There were a few places where I decided it was necessary to keep the original fixed-size data types for compatibility with external hardware (e.g. OLED display). The next change I made was to remove almost every instance of the `volatile` keyword. This keyword turns off certain compiler optimizations when applied to a variable, but going forward we'd like to have our code fairly tightly optimized. We were using it up until this point because our application structure wasn't yet well defined and utilizing it may be necessary in some cases. Now that we have a better idea of how many interrupt routines there are and what their individual priorities are, making decisions about the "interruptability" of sections of our code is much easier. `volatile` only remained on one variable, which keeps track of the realtime passage of milliseconds in response to a high-priority timer interrupt. The rest of the changes I made were minor; I focused on cleaning up formatting mistakes and keeping consistent implementations between similar driver code. Just prior to the end of the week, Alan submitted some revisions for review also, so I had the opportunity to provide a couple suggestions there as well.
 
 #### Next Steps
 
-TODO
+As of the time of writing, our shipment of PCBs is due to arrive very early next week. Although our code has been tested on a handful of sensor PCBs linked together, we don't know for certain that a full scale implementation works until we can test it. I plan to be involved in mounting and testing the full grid of sensor PCBs once they arrive. Provided that Trevor and Ben's work goes well, I look forward to reviewing their code for the EEPROM driver next week.
 
 ---
 
