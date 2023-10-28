@@ -5,6 +5,62 @@ title: Trevor Moorman Progress Report
 
 # Progress Report for Trevor
 
+## Week 10
+
+**Date:** 10/27/2023 \
+**Project Hours Since Last Report:** 10 \
+**Cumulative Semester Project Hours:** 118
+
+### Description of Individual Project Work Efforts:
+
+**DigiKey Order**
+
+- In preparation for receiving the sensor PCBs and rev B master PCBs, I began creating a DigiKey order for the components required.
+- 128 of the 150 sensor PCBs will be assembled at JLCPCB, thus no electronic components were required.
+- Some of the parts previously purchased for the rev A master PCB could be used for the rev B master PCB, therefore only a portion of the components required to assemble the rev B master PCB needed to be ordered. 
+
+<img src="/477grp5/team/trevor/Trevor_Week10_DigiKeyPurchase.PNG" width="100%">
+
+_Figure 1: The final DigiKey order (Note that, despite using the "Senior Design Purchase Request Form", this order was purchased by me)._
+
+**Table Construction**
+
+- I assisted Alan in creating the MDF layer of the air hockey table where the sensor PCBs will be mounted at Bechtel Innovation Design Center (BIDC).
+- First, Alan and I, under the supervision of a teaching assistant, cut the MDF to size using a panel saw.
+- Second, the MDF was placed on a CNC router which had Alan's CAD model loaded. The CNC router would perform two operations. The first operation consisted of using a 1/2" bit to cut a grid of 8x16 slots with the same depth as a sensor PCB and slightly wider and longer than a sensor PCB. The second operation consisted of using a 1/8" bit to cut channels within each of these slots to account for the THT pin headers. Alan and I loaded the 1/2" diameter and 1/8" diameter bits into the machine. After starting the CNC router, Alan had to leave with Ben to go to a different team meeting. I stayed to operate and supervise the machine, pausing between the operations to vacuum the sawdust since the CNC router's vacuum was broken.
+- Alan and Ben returned just as the CNC router finished the second operation. Alan and I deburred the slots using a brush, cleaned the area of sawdust, and performed the standard operating procedure for powering down and cleaning the CNC machine.
+- Ben and I then carried the processed MDF board from BIDC to the lab.
+
+<video controls muted width="50%">
+  <source src="/477grp5/team/trevor/Trevor_Week10_CncOp1.MOV" type="video/mp4">
+</video>
+
+_Figure 2: A short video of the CNC router in the middle of performing the first operation._
+
+| <img src="/477grp5/team/trevor/Trevor_Week10_MdfFull.jpg" width="50%"> |
+|-------------------------------------------------------------------------|
+| <img src="/477grp5/team/trevor/Trevor_Week10_MdfZoom.jpg" width="25%"> |
+
+_Figure 3: On the top, a full view of the processed MDF with two of the sensor PCB slots filled. On the bottom, a zoomed view of one of the sensor PCB slots._
+
+**EEPROM Driver**
+
+- Before this Thursday's lecture, Ben and I began discussing how we should implement a driver for communicating with the [external EEPROM](/477grp5/references/M95P32-I_EEPROM_Datasheet.pdf), which will store persistent user data and animations, using SPI.
+- After this Thursday's lecture, the entire team discussed how loading and playing the animations should work. Which informed Ben and I on how we want to construct the driver.
+- Ben and I currently plan to create a generic function for selecting and communicating with the external EEPROM using SPI, functions which implement the individual instructions available on the external EEPROM, and functions coordinating these instruction calls in a way that fits our intended use case. More details will follow in next week's progress report as more planning and development is completed.
+
+### Next Steps:
+
+**Table Construction**
+
+- The MDF still needs to have holes cut through it to connect to the air hockey table's blower before being considered finished. However, the MDF's current state is enough to allow us to begin testing connecting the sensor PCBs in the final grid configuration once the assembled sensor PCBs are received.
+- Alan is still the team member in charge of the air hockey table's construction, but I will assist him when possible.
+
+**External EEPROM Driver**
+
+- As mentioned previously, the EEPROM driver has only just entered a concrete ideation stage. Ben and I will continue to plan the EEPROM driver.
+- Once Ben and I have completed enough planning, we will then utilize pair programmingto develop the EEPROM driver, similarly to how we developed the hall effect and relay drivers.
+
 ## Week 8 & 9
 
 **Date:** 10/20/2023 \
