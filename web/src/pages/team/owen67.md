@@ -5,6 +5,63 @@ title: Ben Owen Progress Report
 
 # Progress Report for Ben
 
+## Weeks 10
+
+**Date:** 2023-10-27 \
+**Project Hours Since Last Report:** 8 \
+**Total Hours:** 122
+
+### Description of Project Design Effors
+
+**Table Construction**
+
+Alan worked a lot on the gentry files for the MDF mounting plate for our sensor PCBs, but he needed some help transporting the board and physically running the equipment.  I went with Alan and Trevor to BIDC this week and spent a few hours getting the board cut successfully.  We then relocated the table to our lab in EE.  An image of this MDF with some PCBs on it can be seen in Figure 1.
+
+<img src="/477grp5/team/ben/week10-mdf.jpg" width="80%">
+
+_Figure 1: Sensor PCB testing_
+
+**EEPROM driver considerations**
+
+Trevor and I are working on the EEPROM driver which is present on our master PCB.  We spent a lot of time making calculations and discussing which instructions we need for our driver.  Our current list of instructions are shown in Figure 2.
+
+```
+// Necessary instructions
+WREN: write enable
+WRDI: write disable
+RDSR: read status register
+WDSR: write status register
+FREAD: fast single data read
+PGWR: page write (erage and program)
+CHER: chip erase
+RSTEN: enable reset
+RESET: software reset
+
+// Stretch instructions
+DPD: deep power-down enter
+RDPD: deep power-down release
+```
+
+_Figure 2: EEPROM instructions_
+
+A big calculation we performed was best-case time to load an entire table frame.  To calculate this, we take the amount of data for an entire table (512 LEDs * 3 bytes per LED * 8 bits per byte) and add it with the instruction to send to EEPROM (8 bits per instruction + 24 bits per address + 8 "dummy" bits for faster reads).  This is a total amount of data of 12,328 bits, or 12,328 SPI clock cycles.  At 80 MHz clock (the fastest the EEPROM supports for these instructions), this takes around 150 uS.  Since our game tick is currently set to 1 ms, we are optimistic that we would be able to read an entire animation frame in a single game loop.  If proven, this would allow us not need to coordinate partial animation frame loads.  We hopefully will be able to test this next week.
+
+### Next steps
+
+**Sensor PCB testing**
+
+When our assembled sensor PCBs arrive, we need to test each of them for correct operation.  We will then line them up on our now finished MDF backing plate and connect them together.  This will allow us to do large-scale testing in the coming weeks on final hardware.
+
+**EEPROM driver**
+
+For bonus PSDRs and ease of use, we need a driver to interact with our EEPROM.  To do this, we will implement the instructions mentioned in this week's progress report (as well as some others such as write protection).
+
+**PCB assembly**
+
+PCBs should be arriving this week with components, so I will be assembling and testing the master PCB.
+
+---
+
 ## Weeks 8-9
 
 **Date:** 2023-10-20 \
