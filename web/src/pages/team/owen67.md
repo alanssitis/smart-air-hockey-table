@@ -15,7 +15,7 @@ title: Ben Owen Progress Report
 
 **Table Construction**
 
-Alan worked a lot on the gentry files for the MDF mounting plate for our sensor PCBs, but he needed some help transporting the board and physically running the equipment.  I went with Alan and Trevor to BIDC this week and spent a few hours getting the board cut successfully.  We then relocated the table to our lab in EE.  An image of this MDF with some PCBs on it can be seen in Figure 1.
+Alan worked a lot on the gantry files for the MDF mounting plate for our sensor PCBs, but he needed some help transporting the board and physically running the equipment.  I went with Alan and Trevor to BIDC this week and spent a few hours getting the board cut successfully.  We then relocated the table to our lab in EE.  An image of this MDF with some PCBs on it can be seen in Figure 1.
 
 <img src="/477grp5/team/ben/week10-mdf.jpg" width="80%">
 
