@@ -4,8 +4,6 @@
 #include "stm32u5xx_ll_dma.h"
 #include "stm32u5xx_ll_tim.h"
 
-#define LED_MATRIX_WIDTH 2
-#define LED_MATRIX_HEIGHT 8
 #define LED_MATRIX_PIXELS (LED_MATRIX_WIDTH * LED_MATRIX_HEIGHT)
 #define LED_CHANNELS 4
 #define LED_DATA_BITS 24
@@ -16,11 +14,9 @@
 #define LED_COMPARE_RESET 0
 #define LED_COMPARE_OFF 3
 #define LED_COMPARE_ON 6
-#define COLOR_8BIT_R 23
-#define COLOR_8BIT_G 15
-#define COLOR_8BIT_B 7
 
 static uint8_t led_buffer[LED_BUFFER_LENGTH];
+static Color led_state[LED_MATRIX_PIXELS];
 static bool is_transfer_requested;
 static bool is_transfer_active; // non-volatile: GPDMA1_Channel0_Handler has lower priority
 
@@ -48,9 +44,10 @@ void Driver_LED_Init()
 	LL_TIM_EnableCounter(TIM2);
 }
 
-void Driver_LED_SetColor(uint_fast8_t x, uint_fast8_t y, uint32_t color)
+void Driver_LED_SetColor(uint_fast8_t x, uint_fast8_t y, Color color)
 {
 	if (x >= LED_MATRIX_WIDTH || y >= LED_MATRIX_HEIGHT) return;
+	led_state[x + y * LED_MATRIX_WIDTH] = color;
 
 	// Adjust for snaking pattern by reversing every other row
 	if (y & 1) x = (LED_MATRIX_WIDTH - 1) - x;
@@ -71,9 +68,9 @@ void Driver_LED_SetColor(uint_fast8_t x, uint_fast8_t y, uint32_t color)
 
 	for (uint_fast8_t i = 0; i < 8; i++)
 	{
-		uint_fast8_t r_bit = (color >> (COLOR_8BIT_R - i)) & 0b1;
-		uint_fast8_t g_bit = (color >> (COLOR_8BIT_G - i)) & 0b1;
-		uint_fast8_t b_bit = (color >> (COLOR_8BIT_B - i)) & 0b1;
+		uint_fast8_t r_bit = (color.r >> (7 - i)) & 0b1;
+		uint_fast8_t g_bit = (color.g >> (7 - i)) & 0b1;
+		uint_fast8_t b_bit = (color.b >> (7 - i)) & 0b1;
 		led_buffer[(r_offset + i) * LED_CHANNELS + channel] = (!r_bit) * LED_COMPARE_OFF + r_bit * LED_COMPARE_ON;
 		led_buffer[(g_offset + i) * LED_CHANNELS + channel] = (!g_bit) * LED_COMPARE_OFF + g_bit * LED_COMPARE_ON;
 		led_buffer[(b_offset + i) * LED_CHANNELS + channel] = (!b_bit) * LED_COMPARE_OFF + b_bit * LED_COMPARE_ON;
@@ -81,11 +78,20 @@ void Driver_LED_SetColor(uint_fast8_t x, uint_fast8_t y, uint32_t color)
 	is_transfer_requested = true;
 }
 
+Color Driver_LED_GetColor(uint_fast8_t x, uint_fast8_t y)
+{
+	return led_state[x + y * LED_MATRIX_WIDTH];
+}
+
 void Driver_LED_Clear()
 {
 	for (uint_fast32_t i = 0; i < LED_DATA_LENGTH; i++)
 	{
 		led_buffer[i] = LED_COMPARE_OFF;
+	}
+	for (uint_fast32_t i = 0; i < LED_MATRIX_PIXELS; i++)
+	{
+		led_state[i] = (Color) {0};
 	}
 	is_transfer_requested = true;
 }
