@@ -80,6 +80,7 @@ void Driver_LED_SetColor(uint_fast8_t x, uint_fast8_t y, Color color)
 
 Color Driver_LED_GetColor(uint_fast8_t x, uint_fast8_t y)
 {
+	if (x >= LED_MATRIX_WIDTH || y >= LED_MATRIX_HEIGHT) return;
 	return led_state[x + y * LED_MATRIX_WIDTH];
 }
 
