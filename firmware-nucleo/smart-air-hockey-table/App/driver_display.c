@@ -144,11 +144,11 @@ void Driver_Display_Print(Display display, uint_fast8_t line, uint_fast8_t offse
 	transmit_end();
 }
 
-static inline void transmit_large_word(const uint8_t font_char[])
+static inline void transmit_large_character(const uint8_t font_score[])
 {
-	for (uint_fast32_t i = 0; i < FONT_ARRAY_SIZE; i++)
+	for (uint_fast32_t i = 0; i < FONT_SCORE_ARRAY_SIZE; i++)
 	{
-		transmit_word(font_char[i]);
+		transmit_word(font_score[i]);
 	}
 }
 
@@ -165,11 +165,11 @@ void Driver_Display_ShowScore(Display display, uint_fast8_t score_a, uint_fast8_
 	set_region(display, (DISPLAY_COLUMNS - FONT_SCORE_WIDTH * 5) / 2, DISPLAY_COLUMNS - 1, 3, 6);
 
 	transmit_start(display, true);
-	transmit_large_word(font_score[tens_a]);
-	transmit_large_word(font_score[ones_a]);
-	transmit_large_word(font_dash);
-	transmit_large_word(font_score[tens_b]);
-	transmit_large_word(font_score[ones_b]);
+	transmit_large_character(font_score[tens_a]);
+	transmit_large_character(font_score[ones_a]);
+	transmit_large_character(font_dash);
+	transmit_large_character(font_score[tens_b]);
+	transmit_large_character(font_score[ones_b]);
 	transmit_end();
 }
 
