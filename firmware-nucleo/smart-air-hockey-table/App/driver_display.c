@@ -13,6 +13,7 @@
 #define DISPLAY_PAGES 8
 #define DISPLAY_WIDTH 128
 #define DISPLAY_HEIGHT 64
+#define DISPLAY_BUFFER_SIZE (2 * DISPLAY_COLUMNS / FONT_6X8_WIDTH)
 
 static void transmit_start(Display display, bool is_data)
 {
@@ -104,28 +105,31 @@ void Driver_Display_Print(Display display, uint_fast8_t line, uint_fast8_t offse
 	if (offset * FONT_6X8_WIDTH >= DISPLAY_COLUMNS) return;
 
 	// Write format string to buffer
-	char buffer[2 * DISPLAY_COLUMNS / FONT_6X8_WIDTH]; // Extra space for escape codes
+	char buffer[DISPLAY_BUFFER_SIZE]; // Extra space for escape codes
 	va_list args;
 	va_start(args, format);
 	vsnprintf(buffer, sizeof(buffer), format, args);
 	va_end(args);
 
-	char* string = &buffer[0];
+	char* curr = &buffer[0];
 
 	// Send string to the display
 	bool inverted = false;
 	uint_fast8_t column = 0;
 	set_region(display, offset * FONT_6X8_WIDTH, DISPLAY_COLUMNS - 1, line, line);
 	transmit_start(display, true);
-	while (*string != '\0')
+	while (*curr != '\0' && curr - buffer < DISPLAY_BUFFER_SIZE)
 	{
-		uint8_t character = *(string++);
+		uint8_t character = *(curr++);
 		if (character == '\t')
 		{
 			inverted = !inverted;
 			continue;
 		}
-		if (character < FONT_6X8_MIN || character > FONT_6X8_MAX) character = ' ';
+		if (character < FONT_6X8_MIN || character > FONT_6X8_MAX)
+		{
+			character = ' ';
+		}
 		const uint8_t* character_data = font_6x8[character - FONT_6X8_MIN];
 		for (uint_fast8_t col = 0; col < FONT_6X8_WIDTH; col++)
 		{
@@ -140,8 +144,17 @@ void Driver_Display_Print(Display display, uint_fast8_t line, uint_fast8_t offse
 	transmit_end();
 }
 
+static inline void transmit_large_character(const uint8_t font_score[])
+{
+	for (uint_fast32_t i = 0; i < FONT_SCORE_ARRAY_SIZE; i++)
+	{
+		transmit_word(font_score[i]);
+	}
+}
+
 void Driver_Display_ShowScore(Display display, uint_fast8_t score_a, uint_fast8_t score_b)
 {
+	// TOOD: this could be removed if we enforce a ceiling value every time someone scores
 	if (score_a > 99 || score_b > 99) return;
 
 	uint_fast8_t tens_a = score_a / 10;
@@ -152,11 +165,11 @@ void Driver_Display_ShowScore(Display display, uint_fast8_t score_a, uint_fast8_
 	set_region(display, (DISPLAY_COLUMNS - FONT_SCORE_WIDTH * 5) / 2, DISPLAY_COLUMNS - 1, 3, 6);
 
 	transmit_start(display, true);
-	for (uint_fast32_t i = 0; i < sizeof(font_score[tens_a]); i++) transmit_word(font_score[tens_a][i]);
-	for (uint_fast32_t i = 0; i < sizeof(font_score[ones_a]); i++) transmit_word(font_score[ones_a][i]);
-	for (uint_fast32_t i = 0; i < sizeof(font_dash); i++) transmit_word(font_dash[i]);
-	for (uint_fast32_t i = 0; i < sizeof(font_score[tens_b]); i++) transmit_word(font_score[tens_b][i]);
-	for (uint_fast32_t i = 0; i < sizeof(font_score[ones_b]); i++) transmit_word(font_score[ones_b][i]);
+	transmit_large_character(font_score[tens_a]);
+	transmit_large_character(font_score[ones_a]);
+	transmit_large_character(font_dash);
+	transmit_large_character(font_score[tens_b]);
+	transmit_large_character(font_score[ones_b]);
 	transmit_end();
 }
 
