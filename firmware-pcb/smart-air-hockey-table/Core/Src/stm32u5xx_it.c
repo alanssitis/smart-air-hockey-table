@@ -177,20 +177,6 @@ void PendSV_Handler(void)
   /* USER CODE END PendSV_IRQn 1 */
 }
 
-/**
-  * @brief This function handles System tick timer.
-  */
-void SysTick_Handler(void)
-{
-  /* USER CODE BEGIN SysTick_IRQn 0 */
-
-  /* USER CODE END SysTick_IRQn 0 */
-  HAL_IncTick();
-  /* USER CODE BEGIN SysTick_IRQn 1 */
-
-  /* USER CODE END SysTick_IRQn 1 */
-}
-
 /******************************************************************************/
 /* STM32U5xx Peripheral Interrupt Handlers                                    */
 /* Add here the Interrupt Handlers for the used peripherals.                  */
@@ -216,86 +202,6 @@ void EXTI5_IRQHandler(void)
   /* USER CODE BEGIN EXTI5_IRQn 1 */
 
   /* USER CODE END EXTI5_IRQn 1 */
-}
-
-/**
-  * @brief This function handles EXTI Line6 interrupt.
-  */
-void EXTI6_IRQHandler(void)
-{
-  /* USER CODE BEGIN EXTI6_IRQn 0 */
-
-  /* USER CODE END EXTI6_IRQn 0 */
-  if (LL_EXTI_IsActiveRisingFlag_0_31(LL_EXTI_LINE_6) != RESET)
-  {
-    LL_EXTI_ClearRisingFlag_0_31(LL_EXTI_LINE_6);
-    /* USER CODE BEGIN LL_EXTI_LINE_6_RISING */
-
-    /* USER CODE END LL_EXTI_LINE_6_RISING */
-  }
-  /* USER CODE BEGIN EXTI6_IRQn 1 */
-
-  /* USER CODE END EXTI6_IRQn 1 */
-}
-
-/**
-  * @brief This function handles EXTI Line13 interrupt.
-  */
-void EXTI13_IRQHandler(void)
-{
-  /* USER CODE BEGIN EXTI13_IRQn 0 */
-
-  /* USER CODE END EXTI13_IRQn 0 */
-  if (LL_EXTI_IsActiveRisingFlag_0_31(LL_EXTI_LINE_13) != RESET)
-  {
-    LL_EXTI_ClearRisingFlag_0_31(LL_EXTI_LINE_13);
-    /* USER CODE BEGIN LL_EXTI_LINE_13_RISING */
-
-    /* USER CODE END LL_EXTI_LINE_13_RISING */
-  }
-  /* USER CODE BEGIN EXTI13_IRQn 1 */
-
-  /* USER CODE END EXTI13_IRQn 1 */
-}
-
-/**
-  * @brief This function handles EXTI Line14 interrupt.
-  */
-void EXTI14_IRQHandler(void)
-{
-  /* USER CODE BEGIN EXTI14_IRQn 0 */
-
-  /* USER CODE END EXTI14_IRQn 0 */
-  if (LL_EXTI_IsActiveRisingFlag_0_31(LL_EXTI_LINE_14) != RESET)
-  {
-    LL_EXTI_ClearRisingFlag_0_31(LL_EXTI_LINE_14);
-    /* USER CODE BEGIN LL_EXTI_LINE_14_RISING */
-
-    /* USER CODE END LL_EXTI_LINE_14_RISING */
-  }
-  /* USER CODE BEGIN EXTI14_IRQn 1 */
-
-  /* USER CODE END EXTI14_IRQn 1 */
-}
-
-/**
-  * @brief This function handles EXTI Line15 interrupt.
-  */
-void EXTI15_IRQHandler(void)
-{
-  /* USER CODE BEGIN EXTI15_IRQn 0 */
-
-  /* USER CODE END EXTI15_IRQn 0 */
-  if (LL_EXTI_IsActiveRisingFlag_0_31(LL_EXTI_LINE_15) != RESET)
-  {
-    LL_EXTI_ClearRisingFlag_0_31(LL_EXTI_LINE_15);
-    /* USER CODE BEGIN LL_EXTI_LINE_15_RISING */
-
-    /* USER CODE END LL_EXTI_LINE_15_RISING */
-  }
-  /* USER CODE BEGIN EXTI15_IRQn 1 */
-
-  /* USER CODE END EXTI15_IRQn 1 */
 }
 
 /**
