@@ -10,14 +10,13 @@
 #define LED_RESET_LENGTH (LED_CHANNELS * LED_RESET_MSG_SIZE)
 #define LED_BUFFER_LENGTH (LED_DATA_LENGTH + LED_RESET_LENGTH)
 
-#define LED_COMPARE_RESET 0
-#define LED_COMPARE_OFF 3
-#define LED_COMPARE_ON 6
+#define COLOR_COMPARE_OFF 3
+#define COLOR_COMPARE_ON 6
 #define COLOR_8BIT_R 23
 #define COLOR_8BIT_G 15
 #define COLOR_8BIT_B 7
 
-static uint8_t led_buffer[LED_BUFFER_LENGTH] = {0}; // TODO: convert to 32bits
+static uint8_t led_buffer[LED_BUFFER_LENGTH] = {0};
 static bool is_transfer_requested;
 static bool is_transfer_active; // non-volatile: GPDMA1_Channel0_Handler has lower priority
 
@@ -39,7 +38,7 @@ void Driver_LED_Init()
 	LL_TIM_EnableCounter(TIM2);
 }
 
-void Driver_LED_SetColor(uint_fast8_t row, uint_fast8_t col, uint32_t color)
+void Driver_LED_SetColor(uint_fast8_t row, uint_fast8_t col, Color color)
 {
 	if (row >= LED_MATRIX_ROW_SIZE || col >= LED_MATRIX_COL_SIZE) return;
 
@@ -62,12 +61,12 @@ void Driver_LED_SetColor(uint_fast8_t row, uint_fast8_t col, uint32_t color)
 
 	for (uint_fast8_t i = 0; i < 8; i++)
 	{
-		uint_fast8_t r_bit = (color >> (COLOR_8BIT_R - i)) & 0b1;
-		uint_fast8_t g_bit = (color >> (COLOR_8BIT_G - i)) & 0b1;
-		uint_fast8_t b_bit = (color >> (COLOR_8BIT_B - i)) & 0b1;
-		led_buffer[(r_offset + i) * LED_CHANNELS + channel] = (!r_bit) * LED_COMPARE_OFF + r_bit * LED_COMPARE_ON;
-		led_buffer[(g_offset + i) * LED_CHANNELS + channel] = (!g_bit) * LED_COMPARE_OFF + g_bit * LED_COMPARE_ON;
-		led_buffer[(b_offset + i) * LED_CHANNELS + channel] = (!b_bit) * LED_COMPARE_OFF + b_bit * LED_COMPARE_ON;
+		uint_fast8_t r_bit = (color.red >> (7 - i)) & 0b1;
+		uint_fast8_t g_bit = (color.green >> (7 - i)) & 0b1;
+		uint_fast8_t b_bit = (color.blue >> (7 - i)) & 0b1;
+		led_buffer[(r_offset + i) * LED_CHANNELS + channel] = (!r_bit) * COLOR_COMPARE_OFF + r_bit * COLOR_COMPARE_ON;
+		led_buffer[(g_offset + i) * LED_CHANNELS + channel] = (!g_bit) * COLOR_COMPARE_OFF + g_bit * COLOR_COMPARE_ON;
+		led_buffer[(b_offset + i) * LED_CHANNELS + channel] = (!b_bit) * COLOR_COMPARE_OFF + b_bit * COLOR_COMPARE_ON;
 	}
 	is_transfer_requested = true;
 }
@@ -76,7 +75,7 @@ void Driver_LED_Clear()
 {
 	for (uint_fast32_t i = 0; i < LED_DATA_LENGTH; i++)
 	{
-		led_buffer[i] = LED_COMPARE_OFF;
+		led_buffer[i] = COLOR_COMPARE_OFF;
 	}
 	is_transfer_requested = true;
 }
