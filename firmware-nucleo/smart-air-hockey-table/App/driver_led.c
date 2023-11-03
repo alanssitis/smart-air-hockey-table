@@ -12,9 +12,7 @@
 
 #define COLOR_COMPARE_OFF 3
 #define COLOR_COMPARE_ON 6
-#define COLOR_8BIT_R 23
-#define COLOR_8BIT_G 15
-#define COLOR_8BIT_B 7
+#define COLOR_8BIT_OFFSET 7
 
 static uint8_t led_buffer[LED_BUFFER_LENGTH] = {0};
 static bool is_transfer_requested;
@@ -61,9 +59,9 @@ void Driver_LED_SetColor(uint_fast8_t col, uint_fast8_t row, Color color)
 
 	for (uint_fast8_t i = 0; i < 8; i++)
 	{
-		uint_fast8_t r_bit = (color.red >> (7 - i)) & 0b1;
-		uint_fast8_t g_bit = (color.green >> (7 - i)) & 0b1;
-		uint_fast8_t b_bit = (color.blue >> (7 - i)) & 0b1;
+		uint_fast8_t r_bit = (color.red >> (COLOR_8BIT_OFFSET - i)) & 0b1;
+		uint_fast8_t g_bit = (color.green >> (COLOR_8BIT_OFFSET - i)) & 0b1;
+		uint_fast8_t b_bit = (color.blue >> (COLOR_8BIT_OFFSET - i)) & 0b1;
 		led_buffer[(r_offset + i) * LED_CHANNELS + channel] = (!r_bit) * COLOR_COMPARE_OFF + r_bit * COLOR_COMPARE_ON;
 		led_buffer[(g_offset + i) * LED_CHANNELS + channel] = (!g_bit) * COLOR_COMPARE_OFF + g_bit * COLOR_COMPARE_ON;
 		led_buffer[(b_offset + i) * LED_CHANNELS + channel] = (!b_bit) * COLOR_COMPARE_OFF + b_bit * COLOR_COMPARE_ON;
