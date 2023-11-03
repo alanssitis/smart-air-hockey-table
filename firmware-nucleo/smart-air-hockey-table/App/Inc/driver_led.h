@@ -18,6 +18,6 @@ void Driver_LED_Init();
 void Driver_LED_SetColor(uint_fast8_t col, uint_fast8_t row, Color color);
 void Driver_LED_Clear();
 void Driver_LED_Tick();
-void GPDMA1_Channel0_Handler();
+void GPDMA1_Channel0123_Handler();
 
 #endif /* INC_DRIVER_LED_H_ */
