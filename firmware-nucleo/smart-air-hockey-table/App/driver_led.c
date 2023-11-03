@@ -38,15 +38,15 @@ void Driver_LED_Init()
 	LL_TIM_EnableCounter(TIM2);
 }
 
-void Driver_LED_SetColor(uint_fast8_t row, uint_fast8_t col, Color color)
+void Driver_LED_SetColor(uint_fast8_t col, uint_fast8_t row, Color color)
 {
-	if (row >= LED_MATRIX_ROW_SIZE || col >= LED_MATRIX_COL_SIZE) return;
+	if (row >= LED_MATRIX_ROW_NUM || col >= LED_MATRIX_COL_NUM) return;
 
 	// Adjust for snaking pattern by reversing every other row
-	if (col & 1) row = (LED_MATRIX_ROW_SIZE - 1) - row;
+	if (row & 1) col = (LED_MATRIX_COL_NUM - 1) - col;
 
 	// (r, c) to linear index
-	uint_fast32_t pixel_index = row + col * LED_MATRIX_ROW_SIZE;
+	uint_fast32_t pixel_index = col + row * LED_MATRIX_COL_NUM;
 
 	// Determine which channel LED is in
 	uint_fast32_t channel = pixel_index / (LED_MATRIX_PIXEL_COUNT / LED_CHANNELS);
