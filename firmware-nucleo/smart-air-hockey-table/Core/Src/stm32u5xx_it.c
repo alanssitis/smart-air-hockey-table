@@ -230,7 +230,7 @@ void GPDMA1_Channel0_IRQHandler(void)
   if (LL_DMA_IsActiveFlag_TC(GPDMA1, LL_DMA_CHANNEL_0))
   {
     LL_DMA_ClearFlag_TC(GPDMA1, LL_DMA_CHANNEL_0);
-    GPDMA1_Channel0123_Handler();
+    GPDMA1_Channel0123_Handler(0);
   }
   /* USER CODE END GPDMA1_Channel0_IRQn 0 */
 
@@ -248,7 +248,7 @@ void GPDMA1_Channel1_IRQHandler(void)
   if (LL_DMA_IsActiveFlag_TC(GPDMA1, LL_DMA_CHANNEL_1))
   {
     LL_DMA_ClearFlag_TC(GPDMA1, LL_DMA_CHANNEL_1);
-    GPDMA1_Channel0123_Handler();
+    GPDMA1_Channel0123_Handler(1);
   }
   /* USER CODE END GPDMA1_Channel1_IRQn 0 */
 
@@ -266,7 +266,7 @@ void GPDMA1_Channel2_IRQHandler(void)
   if (LL_DMA_IsActiveFlag_TC(GPDMA1, LL_DMA_CHANNEL_2))
   {
     LL_DMA_ClearFlag_TC(GPDMA1, LL_DMA_CHANNEL_2);
-    GPDMA1_Channel0123_Handler();
+    GPDMA1_Channel0123_Handler(2);
   }
   /* USER CODE END GPDMA1_Channel2_IRQn 0 */
 
@@ -284,7 +284,7 @@ void GPDMA1_Channel3_IRQHandler(void)
   if (LL_DMA_IsActiveFlag_TC(GPDMA1, LL_DMA_CHANNEL_3))
   {
     LL_DMA_ClearFlag_TC(GPDMA1, LL_DMA_CHANNEL_3);
-    GPDMA1_Channel0123_Handler();
+    GPDMA1_Channel0123_Handler(3);
   }
   /* USER CODE END GPDMA1_Channel3_IRQn 0 */
 

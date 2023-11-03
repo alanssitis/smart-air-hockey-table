@@ -14,7 +14,7 @@
 
 static uint8_t led_buffer[LED_CHANNELS][LED_CHANNEL_LENGTH] = {0};
 static bool is_transfer_requested;
-static uint_fast8_t transfers_active; // non-volatile: GPDMA1_Channel0123_Handler has lower priority
+static uint_fast8_t active_transfers_mask; // non-volatile: GPDMA1_Channel0123_Handler has lower priority
 
 void Driver_LED_Init()
 {
@@ -83,10 +83,10 @@ void Driver_LED_Clear()
 
 void Driver_LED_Tick()
 {
-	if (is_transfer_requested && transfers_active == 0)
+	if (is_transfer_requested && active_transfers_mask == 0)
 	{
 		is_transfer_requested = false;
-		transfers_active = LED_CHANNELS;
+		active_transfers_mask = 0xF;
 
 		// Configure GPDMA Channel to initiate transfer
 		LL_DMA_ConfigAddresses(GPDMA1, LL_DMA_CHANNEL_0, (uint32_t) led_buffer[0], (uint32_t) &(TIM2->CCR1));
@@ -101,10 +101,11 @@ void Driver_LED_Tick()
 		LL_DMA_EnableChannel(GPDMA1, LL_DMA_CHANNEL_1);
 		LL_DMA_EnableChannel(GPDMA1, LL_DMA_CHANNEL_2);
 		LL_DMA_EnableChannel(GPDMA1, LL_DMA_CHANNEL_3);
+
 	}
 }
 
-void GPDMA1_Channel0123_Handler()
+void GPDMA1_Channel0123_Handler(uint_fast8_t channel)
 {
-	transfers_active--;
+	active_transfers_mask ^= 1 << channel;
 }
