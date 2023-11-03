@@ -50,6 +50,29 @@ void TIM7_Handler()
 //		// Doesn't do much yet, but we can detect when ticks are missed
 //	}
 
+	const Color colors[12] = {
+			{ 0x44, 0x00, 0x00 },
+			{ 0x33, 0x11, 0x00 },
+			{ 0x22, 0x22, 0x00 },
+			{ 0x11, 0x33, 0x00 },
+			{ 0x00, 0x44, 0x00 },
+			{ 0x00, 0x33, 0x11 },
+			{ 0x00, 0x22, 0x22 },
+			{ 0x00, 0x11, 0x33 },
+			{ 0x00, 0x00, 0x44 },
+			{ 0x11, 0x00, 0x33 },
+			{ 0x22, 0x00, 0x22 },
+			{ 0x33, 0x00, 0x00 }
+	};
+
+	for (uint_fast32_t col = 0; col < LED_MATRIX_COL_NUM; col++)
+	{
+		for (uint_fast32_t row = 0; row < LED_MATRIX_ROW_NUM; row++)
+		{
+			Driver_LED_SetColor(col, row, colors[(col + row + ticks_completed / 128) % 12]);
+		}
+	}
+
 	App_StateMachine_GameTick();
 
 	Driver_LED_Tick();
