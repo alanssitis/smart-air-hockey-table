@@ -7,6 +7,43 @@ title: Will Dobert Progress Report
 
 ---
 
+## Week 11
+
+**Date:** 11/3/2023 \
+**Project Hours Since Last Report:** 9 \
+**Cumulative Semester Project Hours:** 115
+
+### Description of Project Design Efforts
+
+#### Revamped Firmware Workspaces
+
+As integration testing nears, we will be focused on validating the functionality of our firmware as we move to the full-scale table. The most pressing target for us to hit is keeping our **core loop execution time** under 1 millisecond. Throughout development, we've made various judgement calls that hinge on the compiler performing specific optimizations on our code before it is run on the microcontroller. A prime example of this is division operations (`x / y`) being replaced by bit shifting (`x >> z`), where `y = 2^z`. For the purposes of debugging, we've been compiling our code without any optimizations up until now. Since runtime debugging will continue to be a valuable tool in the future, I left the existing _Debug_ mode intact and created a new _Release_ mode. This mode enables full compiler optimizations on our code and results in a considerable speedup. Although it would be nice if _Release_ mode wasn't required for our firmware to function, it may become a necessity as we increase to full-scale.
+
+Last week, when making our final Digikey order, we discovered that the microcontroller we intended to use (_STM32U585_) was out of stock. Fortunately, the nearly-identical _STM32U575_ that we already use on the Nucleo prototyping board was in stock. After a quick check to ensure identical pinouts and functionality, we made the choice to switch. Due to the way _STM32CubeIDE_ projects work, this change necessitated recreating and configuring the firmware project for the new microcontroller. I also used this process as an opportunity to bring the project up-to-date with configuration changes made to the Nucleo project over time. Reassigning and naming each of the 100 pins was a very manual task, but it went by fast since I've done this a few times already. The aforementioned _Release_ mode was introduced to the project at this time as well.
+
+#### Miscellaneous Code Adjustments
+
+Over the course of this week, Alan has submitted several small changes to our firmware for review. These have mostly been focused on renaming certain variables and constants, but also preparing for upcoming changes as well. As I reviewed these changes, there were several instances where I provided feedback or suggested modifications. The most impactful part of these overall adjustments has been to remove the LED matrix interleaving that I implemented last week. Keeping the data interleaved makes it harder to process and modify in an optimized way, but upcoming changes will require it. Ultimately, we do not solve any performance bottlenecks by interleaving the data, so it isn't a huge loss to remove for the sake of making larger gains elsewhere. Several scattered changes have been made to the code since interleaving was introduced, so removing it wasn't as simple as reverting a commit. Manually removing it gave me the opportunity to clean up some portions of the LED matrix driver at the same time. To test these changes prior to submitting them, I wrote a piece of test code to show a rainbow gradient on the LED matrix. Since we haven't finished assembling all of our sensor PCBs, I tested with two half-rows of boards that were already set up.
+
+<video controls muted>
+  <source src="/477grp5/team/will/20231103_130755.mp4" type="video/mp4">
+</video>
+
+_Figure 1: Test gradient applied to LED matrix to validate functionality_
+
+#### Relocating The Table
+
+Late in the week, Trevor and I wheeled an empty cart to the Bechtel Center to fetch our table and bring it back to the lab. We also removed the various clamps that had been attached to it and cleaned up the area it had been sitting. The most intensive portions of construction have been completed, so we feel confident in continuing to work on it at our lab station. The added benefit to this arrangement is that we can work on it whenever we want, instead of making timed reservations for equipment at the Bechtel Center. The half-mile journey back to BHEE was slow due to our cart not being well-suited for the rugged streets of the Purdue campus.
+
+![Table in Lab](/477grp5/team/will/20231103_154017.jpg)
+_Figure 2: Two pieces of the table reunited after relocation to the lab_
+
+#### Next Steps
+
+The thousands of wires needed to connect the sensor PCBs together will arrive early next week, so I plan to connect those as the boards are assembled. The rest of the team will be working on contributions to the firmware next week as well, so I look forward to reviewing those as they're developed. There is still plenty to be done with constructing the table, so I'd like to make significant progress in that area soon.
+
+---
+
 ## Week 10
 
 **Date:** 10/27/2023 \
