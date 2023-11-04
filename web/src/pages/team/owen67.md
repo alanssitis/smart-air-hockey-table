@@ -15,19 +15,29 @@ title: Ben Owen Progress Report
 
 This week was exam week, so major progress wasn't made.
 
+**Acrylic Spacers CAD**
+
+I worked on designing some spacers to go between the MDF and top acrylic layers.  This was designed in FreeCAD, and allows for easy manipulation of parameters such as height, screw diameter, overall diameter, etc.  I will be 3D printing some of these this upcoming week to test them out and see if we want to make any changes to them, but the plan is to use these to support the acrylic.
+
+A picture of the CAD render can be seen in Figure 1.
+
+<img src="/477grp5/team/ben/week11-spacer-cad.png" width="80%">
+
+_Figure 1: Acrylic spacers CAD model_
+
 **Sensor PCB Testing**
 
 Trevor and I spent a lot of time unpacking the assembled sensor PCBs and getting them prepared for testing.  They arrived with V-scores along the edges, so we snapped all 4 edges off for each of the assembled boards.  After laying them out on the MDF, we were then able to solder the position jumpers (for the first row/column PCBs) and pin headers.  This allowed us to finally test our design over a full 16-PCB length.  Luckily, our circuit works as expected, and we were able to propagage hall effect data and LED data along the entire string of PCBs.  However, we don't want to do stress tests at this time, as our power delivery is starting to become less safe (pulling 2 amps continuous through a small breadboard jumper is not the best idea).
 
-A picture of the delivered sensor PCBs (unassembled and assembled) and our MDF with the PCBs on top can be seen in Figures 1 and 2.
+A picture of the delivered sensor PCBs (unassembled and assembled) and our MDF with the PCBs on top can be seen in Figures 2 and 3.
 
 <img src="/477grp5/team/ben/week11-sensor-pcbs.jpg" width="80%">
 
-_Figure 1: Sensor PCBs_
+_Figure 2: Sensor PCBs_
 
 <img src="/477grp5/team/ben/week11-mdf.jpg" width="80%">
 
-_Figure 2: PCBs on MDF_
+_Figure 3: PCBs on MDF_
 
 **Master PCB assembly**
 
@@ -37,19 +47,19 @@ To start, Digi-Key didn't ship our inductors with the rest of our order, so we h
 
 Since the inductor should be rated for the low power we will be using, we plan to not replace this inductor when the parts eventually arrive.  However, for our second master PCB (for backup use or other testing), we will wait to assemble that buck converter circuit until the correct inductors arrive.  If we have issues with the buck converter circuit, we may switch the first PCB inductor.
 
-An image of the jank inductor setup can be seen in Figure 3.
+An image of the jank inductor setup can be seen in Figure 4.
 
 <img src="/477grp5/team/ben/week11-inductor.jpg" width="80%">
 
-_Figure 3: Wack inductor_
+_Figure 4: Wack inductor_
 
 After this was assembled, we had time to test our STM32 connection to our computer while being externally powered.  To do this, I soldered the STM32 along with the minimum supporting components (BOOT0 jumper, reset passives, and programming header), and after verifying no shorts across power planes, connected the programming header to my computer while powering the STM32 through the buck converter.  We were able to successfully connect to the microcontroller, which tells us that our STM32 is working normally at this point.  This was also enough to check off one of our PSDRs relating to the buck converter powering the STM32.
 
-An image of the minimum-assembled PCB can be seen in Figure 4.
+An image of the minimum-assembled PCB can be seen in Figure 5.
 
 <img src="/477grp5/team/ben/week11-master-pcb.jpg" width="80%">
 
-_Figure 4: Partially-assembled master PCB_
+_Figure 5: Partially-assembled master PCB_
 
 ### Next steps
 
