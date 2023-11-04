@@ -13,7 +13,7 @@ title: Alan Chung Ma Progress Report
 
 ### Description of Project Design Efforts
 
-This week consisted of preping the boards for the table and gluing it together, soldering boards and testing some code on them, and changes to code.
+This week consisted of prepping the boards for the table and gluing it together, soldering boards and testing some code on them, and changes to code.
 
 #### Finishing Boards
 
