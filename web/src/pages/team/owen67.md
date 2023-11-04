@@ -5,7 +5,65 @@ title: Ben Owen Progress Report
 
 # Progress Report for Ben
 
-## Weeks 10
+## Week 11
+
+**Date:** 2023-11-03 \
+**Project Hours Since Last Report:** 10 \
+**Total Hours:** 132
+
+### Description of Project Design Effors
+
+This week was exam week, so major progress wasn't made.
+
+**Sensor PCB Testing**
+
+Trevor and I spent a lot of time unpacking the assembled sensor PCBs and getting them prepared for testing.  They arrived with V-scores along the edges, so we snapped all 4 edges off for each of the assembled boards.  After laying them out on the MDF, we were then able to solder the position jumpers (for the first row/column PCBs) and pin headers.  This allowed us to finally test our design over a full 16-PCB length.  Luckily, our circuit works as expected, and we were able to propagage hall effect data and LED data along the entire string of PCBs.  However, we don't want to do stress tests at this time, as our power delivery is starting to become less safe (pulling 2 amps continuous through a small breadboard jumper is not the best idea).
+
+A picture of the delivered sensor PCBs (unassembled and assembled) and our MDF with the PCBs on top can be seen in Figures 1 and 2.
+
+<img src="/477grp5/team/ben/week11-sensor-pcbs.jpg" width="80%">
+
+_Figure 1: Sensor PCBs_
+
+<img src="/477grp5/team/ben/week11-mdf.jpg" width="80%">
+
+_Figure 2: PCBs on MDF_
+
+**Master PCB assembly**
+
+The Digi-Key items arrived later than expected, so we weren't able to fully solder our master PCB this week.  However, we were able to test our microcontroller connection and our buck converter, which are the two most critical components of our board.
+
+To start, Digi-Key didn't ship our inductors with the rest of our order, so we had to improvise to test this buck converter.  To do this, Trevor and I went to the EE shop and found a through-hole inductor with a suitable current rating.  We then bent the THT leads to allow the inductor to sit flat on the PCB, with the pins sitting on top of the SMD pads.  We were then able to solder the component to the board and verify correct operation of our circuit.
+
+Since the inductor should be rated for the low power we will be using, we plan to not replace this inductor when the parts eventually arrive.  However, for our second master PCB (for backup use or other testing), we will wait to assemble that buck converter circuit until the correct inductors arrive.  If we have issues with the buck converter circuit, we may switch the first PCB inductor.
+
+An image of the jank inductor setup can be seen in Figure 3.
+
+<img src="/477grp5/team/ben/week11-inductor.jpg" width="80%">
+
+_Figure 3: Wack inductor_
+
+After this was assembled, we had time to test our STM32 connection to our computer while being externally powered.  To do this, I soldered the STM32 along with the minimum supporting components (BOOT0 jumper, reset passives, and programming header), and after verifying no shorts across power planes, connected the programming header to my computer while powering the STM32 through the buck converter.  We were able to successfully connect to the microcontroller, which tells us that our STM32 is working normally at this point.  This was also enough to check off one of our PSDRs relating to the buck converter powering the STM32.
+
+An image of the minimum-assembled PCB can be seen in Figure 4.
+
+<img src="/477grp5/team/ben/week11-master-pcb.jpg" width="80%">
+
+_Figure 4: Partially-assembled master PCB_
+
+### Next steps
+
+**EEPROM driver**
+
+Trevor and I both had multiple exams this week, so no times really lined up to work on this.  However, our schedules are a lot emptier this upcoming week, so we plan on finishing it next week.
+
+**PCB assembly**
+
+We will finish assembling our master PCB and hopefully check off our remaining PSDRs (preliminary).
+
+---
+
+## Week 10
 
 **Date:** 2023-10-27 \
 **Project Hours Since Last Report:** 8 \
