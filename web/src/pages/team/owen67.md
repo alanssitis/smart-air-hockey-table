@@ -27,7 +27,7 @@ _Figure 1: Acrylic spacers CAD model_
 
 **Sensor PCB Testing**
 
-Trevor and I spent a lot of time unpacking the assembled sensor PCBs and getting them prepared for testing.  They arrived with V-scores along the edges, so we snapped all 4 edges off for each of the assembled boards.  After laying them out on the MDF, we were then able to solder the position jumpers (for the first row/column PCBs) and pin headers.  This allowed us to finally test our design over a full 16-PCB length.  Luckily, our circuit works as expected, and we were able to propagage hall effect data and LED data along the entire string of PCBs.  However, we don't want to do stress tests at this time, as our power delivery is starting to become less safe (pulling 2 amps continuous through a small breadboard jumper is not the best idea).
+Trevor and I spent a lot of time unpacking the assembled sensor PCBs and getting them prepared for testing.  They arrived with V-scores along the edges, so we snapped all 4 edges off for each of the assembled boards.  After laying them out on the MDF, we were then able to solder the position jumpers (for the first row/column PCBs) and pin headers.  This allowed us to finally test our design over a full 16-PCB length.  Luckily, our circuit works as expected, and we were able to propagate hall effect data and LED data along the entire string of PCBs.  However, we don't want to do stress tests at this time, as our power delivery is starting to become less safe (pulling 2 amps continuous through a small breadboard jumper is not the best idea).
 
 A picture of the delivered sensor PCBs (unassembled and assembled) and our MDF with the PCBs on top can be seen in Figures 2 and 3.
 
