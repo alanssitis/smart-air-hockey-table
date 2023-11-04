@@ -17,17 +17,17 @@ title: Trevor Moorman Progress Report
 
 - On 10/31/2023, the team's JLCPCB order, placed by Ben, was received.
 
-<img src="/477grp5/team/trevor/Trevor_Week11_SensorStack.jpg" width="100%">
+<img src="/477grp5/team/trevor/Trevor_Week11_SensorStack.jpg" width="25%">
 
 _Figure 1: The stack of sensor PCB as received from JLCPCB._
 
-<img src="/477grp5/team/trevor/Trevor_Week11_SensorComparison.jpg" width="100%">
+<img src="/477grp5/team/trevor/Trevor_Week11_SensorComparison.jpg" width="50%">
 
 _Figure 2: On the left, a bare sensor PCB. On the right, a JLCPCB assembled sensor PCB (without the THT components, AKA the pin headers)._
 
 - Ben and I snapped the v-scores off the assembled sensor PCBs and placed them on the MDF. The top row and leftmost column have the solder jump pads configured properly for their position.
 
-<img src="/477grp5/team/trevor/Trevor_Week11_FilledMdf.jpg" width="100%">
+<img src="/477grp5/team/trevor/Trevor_Week11_FilledMdf.jpg" width="50%">
 
 _Figure 3: The MDF filled with JLCPCB assembled sensor PCBs. Note that the sensor PCBs are not installed._
 
@@ -45,7 +45,7 @@ _Figure 3: The MDF filled with JLCPCB assembled sensor PCBs. Note that the senso
 - Worked alongside Alan to glue the main body of the air hockey table together. 
 - The individual pieces were previously fabricated by Alan and Will. However, some pieces required additional shaping so they would fit together properly.
 
-<video controls muted width="50%">
+<video controls muted width="75%">
   <source src="/477grp5/team/trevor/Trevor_Week11_GlueTimelapse.MP4" type="video/mp4">
 </video>
 
@@ -58,7 +58,7 @@ _Figure 5: Various views of the air hockey table's main body drying._
 
 - After leaving the table in the bay to dry (with BIDC staff's permission), Will and I transported the main body of the air hockey table to the lab as further work will only require small tools. Furthermore, the lab provides better access as the team will not need to reserve time slots at BIDC.
 
-<img src="/477grp5/team/trevor/Trevor_Week11_LabTable.jpg" width="100%">
+<img src="/477grp5/team/trevor/Trevor_Week11_LabTable.jpg" width="50%">
 
 _Figure 6: The air hockey table's main body in the ECE477 lab._
 
