@@ -5,6 +5,86 @@ title: Trevor Moorman Progress Report
 
 # Progress Report for Trevor
 
+## Week 11
+
+**Date:** 11/03/2023 \
+**Project Hours Since Last Report:** TODO \
+**Cumulative Semester Project Hours:** TODO
+
+### Description of Individual Project Work Efforts:
+
+**JLCPCB Order**
+
+- On 10/31/2023, the team's JLCPCB order, placed by Ben, was received.
+
+<img src="/477grp5/team/trevor/Trevor_Week11_SensorStack.jpg" width="100%">
+
+_Figure 1: The stack of sensor PCB as received from JLCPCB._
+
+<img src="/477grp5/team/trevor/Trevor_Week11_SensorComparison.jpg" width="100%">
+
+_Figure 2: On the left, a bare sensor PCB. On the right, a JLCPCB assembled sensor PCB (without the THT components, AKA the pin headers)._
+
+- Ben and I snapped the v-scores off the assembled sensor PCBs and placed them on the MDF. The top row and leftmost column have the solder jump pads configured properly for their position.
+
+<img src="/477grp5/team/trevor/Trevor_Week11_FilledMdf.jpg" width="100%">
+
+_Figure 3: The MDF filled with JLCPCB assembled sensor PCBs. Note that the sensor PCBs are not installed._
+
+- Besides this initial progress, the other team members have primarily been working with this grid so I will leave describing the progress made on that front to my other team members.
+
+**DigiKey Order**
+
+- While a single order was placed with DigiKey on (as described in the previous progress report), DigiKey had an internal error that resulted in the delivery being separated into two packages.
+- The first package was received on 10/31/2023 and was brought to the lab the same day.
+- However, by 10/31/2023, the second package's tracking information stated that it had not been received by FedEx. Thus, I notified DigiKey of the issue and the package was received on 11/03/2023 and was brought to the lab the same day.
+- There were some minor delays in the assembly of the rev B master PCB due to the second package being delayed; primarily due to missing the inductor required for the buck converter.
+
+**Table Construction**
+
+- Worked alongside Alan to glue the main body of the air hockey table together. 
+- The individual pieces were previously fabricated by Alan and Will. However, some pieces required additional shaping so they would fit together properly.
+
+<video controls muted width="50%">
+  <source src="/477grp5/team/trevor/Trevor_Week11_GlueTimelapse.MP4" type="video/mp4">
+</video>
+
+_Figure 4: A timelapse of Alan and I gluing the air hockey table's main body together._
+
+| <img src="/477grp5/team/trevor/Trevor_Week11_TableIso.jpg" width="100%"> | <img src="/477grp5/team/trevor/Trevor_Week11_TableWidth.jpg" width="100%"> | <img src="/477grp5/team/trevor/Trevor_Week11_TableLength.jpg" width="100%"> |
+| :---: | :---: | :---: |
+
+_Figure 5: Various views of the air hockey table's main body drying._
+
+- After leaving the table in the bay to dry (with BIDC staff's permission), Will and I transported the main body of the air hockey table to the lab as further work will only require small tools. Furthermore, the lab provides better access as the team will not need to reserve time slots at BIDC.
+
+<img src="/477grp5/team/trevor/Trevor_Week11_LabTable.jpg" width="100%">
+
+_Figure 6: The air hockey table's main body in the ECE477 lab._
+
+**Firmware**
+
+- The focus on completing this stage of the air hockey table's construction before Alan's absence combined with the DigiKey delivery issue has resulted in development on the external EEPROM driver effectively being effectively delayed. While there has been some discussion between Ben and I on how to implement the external EEPROM driver, we have been hesitant to continue development given our inability to test since the rev B master PCB could not be assembled. While the rev B master PCB can now be assembled, Ben and I have decided to pause development on the external EEPROM driver until the preliminary PSDR checks have been completed with the rev B master PCB.
+
+### Next Steps:
+
+**Table Construction**
+
+- Now that the main body of the air hockey table is at our lab station, progress on the packaging of the air hockey table should increase.
+- As stated before, Alan is still the team member in charge of the air hockey table's construction, and I will assist him when possible.
+- However, Alan will be absent for a significant portion of this upcoming week due to traveling for a conference. The team has yet to decide whether we will pause construction on the table while Alan is absent. This will be determined based on how long it takes to complete the firmware tasks described below.
+
+**Firmware**
+
+Preliminary PSDR Checkoffs:
+
+- Despite all the project's primary PSDRs being defined as hardware PSDRs, each requires integrating the microcontroller (except for the PSDR #5). Thus, a simple program provides the easiest way of proving that our project meets the PSDRs requirements for a preliminary checkoff.
+- While Ben assembles each component of the rev B master PCB, I will create a demonstration program for each preliminary PSDR checkoff. These demonstration programs may use the team's previously developed drivers when necessary, though I will attempt to keep the programs as simple as possible.
+
+External EEPROM Driver:
+
+- As stated previously, Ben and I still plan to develop the external EEPROM driver together. However, this will be delayed until the team has completed all the preliminary PSDR checks.
+
 ## Week 10
 
 **Date:** 10/27/2023 \
