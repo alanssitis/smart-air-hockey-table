@@ -5,6 +5,52 @@ title: Alan Chung Ma Progress Report
 
 # Progress Report for Alan
 
+## Week 11
+
+**Date:** 2023-11-03 \
+**Week Hours:** 16 \
+**Total Hours:** 133
+
+### Description of Project Design Efforts
+
+This week consisted of prepping the boards for the table and gluing it together, soldering boards and testing some code on them, and changes to code.
+
+#### Finishing Boards
+
+I was finally able to finish a bulk of the work, and finished the holes, goal slits, and added cable holes in the table. I used the spindle sander, the router table, the hand router, and the drill press. Below are pictures of the finished boards.
+
+| Smoothened holes | Dados and cable holes |
+| --- | --- |
+|![picture 1](/477grp5/team/alan/week11/figure1.jpg) | ![picture 2](/477grp5/team/alan/week11/figure2.jpg)|
+
+#### Gluing the Table
+
+Me and Trevor glued together the Table together with the boards, below are pictures of the finished products and a video of the process is available in Trevor's [report](/477grp5/team/tmoorma).
+
+|![picture 3](/477grp5/team/alan/week11/figure3.jpg) | ![picture 4](/477grp5/team/alan/week11/figure4.jpg)|
+| --- | --- |
+|![picture 5](/477grp5/team/alan/week11/figure5.jpg) | ![picture 6](/477grp5/team/alan/week11/figure6.jpg)|
+
+#### Soldering Sensor Boards and Doing initial Functionality Tests
+
+I soldered about a third of the pin headers of the sensor boards. Surprisingly enough, it takes longer than expected. Below is a picture of some of the finished boards and them being hooked up to the oscilloscope's wave gen.
+
+| Before Fix | After Fix |
+| --- | --- |
+|![picture 7](/477grp5/team/alan/week11/figure7.jpg) | ![picture 8](/477grp5/team/alan/week11/figure8.jpg)|
+
+As you can faintly tell from the pictures above, the tail end of the boards to the left are warmer and not as bright. After hooking up both `GND` and `5V` to the tail end, the whole line was of the same color. This was because there was a significant voltage drop across a single row. This means that we will need to run wires to both sides of the table to properly power all the LEDs.
+
+#### Changes to Code
+
+I made various changes to the codebase, below is a list of the PRs:
+- [Reverting LED Matrix Interleaving](https://github.com/alanssitis/smart-air-hockey-table/pull/128)
+- [Improving Readability](https://github.com/alanssitis/smart-air-hockey-table/pull/127)
+
+### Next Steps
+
+Since next week I will be at a conference in Chicago, my progress will be limited to things I can do remotely. Therefore, the bulk of my work next week will be optimizing the existing codebase and implementing a lazy algorithm for LED update.
+
 ## Week 10
 
 **Date:** 2023-10-27 \
