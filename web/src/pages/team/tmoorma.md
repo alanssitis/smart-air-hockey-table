@@ -46,7 +46,7 @@ _Figure 3: The MDF filled with JLCPCB assembled sensor PCBs. Note that the senso
 - The individual pieces were previously fabricated by Alan and Will. However, some pieces required additional shaping so they would fit together properly.
 
 <video controls muted width="75%">
-  <source src="/477grp5/team/trevor/Trevor_Week11_GlueTimelapse.MP4" type="video/mp4">
+  <source src="/477grp5/team/trevor/Trevor_Week11_GlueTimelapse.mp4" type="video/mp4">
 </video>
 
 _Figure 4: A timelapse of Alan and I gluing the air hockey table's main body together._
