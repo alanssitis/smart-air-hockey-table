@@ -1,6 +1,8 @@
 #include "app_core.h"
 
+#include <stdbool.h>
 #include "stm32u5xx_ll_tim.h"
+#include "stm32u5xx_ll_gpio.h"
 #include "stm32u5xx_ll_utils.h"
 
 #include "app_statemachine.h"
@@ -25,7 +27,9 @@ void App_Init()
 	Driver_Encoder_Init();
 
 	// Last step: set initial state
-	App_StateMachine_Init();
+	//App_StateMachine_Init();
+
+	Driver_Display_Print(DISPLAY_ALL, 0, 0, "\tSmart Air Hockey Table");
 
 	// Start 1000 Hz "superloop"
 //	LL_TIM_SetUpdateSource(TIM6, LL_TIM_UPDATESOURCE_COUNTER);
@@ -50,9 +54,43 @@ void TIM7_Handler()
 //		// Doesn't do much yet, but we can detect when ticks are missed
 //	}
 
-	App_StateMachine_GameTick();
+	//App_StateMachine_GameTick();
+
+	/*static uint_fast32_t rotation;
+	static bool is_pressed;
+
+	if (Driver_Encoder_PollButton())
+	{
+		is_pressed = !is_pressed;
+		if (is_pressed) Driver_Encoder_PollRotation();
+	}
+
+	LL_GPIO_ResetOutputPin(GPIOC, LL_GPIO_PIN_0 | LL_GPIO_PIN_1 | LL_GPIO_PIN_2 | LL_GPIO_PIN_3);
+	if (is_pressed) {
+		rotation += Driver_Encoder_PollRotation();
+		LL_GPIO_SetOutputPin(GPIOC, LL_GPIO_PIN_0 << (rotation % 4));
+	}*/
+
+	static uint_fast32_t score_a, score_b;
+	if (ticks_completed % 500 == 0) score_a++;
+	if (ticks_completed % 900 == 0) score_b++;
+	if (ticks_completed % 500 == 0 || ticks_completed % 900 == 0)
+	{
+		Driver_Display_ShowScore(DISPLAY_0, score_a % 100, score_b % 100);
+		Driver_Display_ShowScore(DISPLAY_1, score_b % 100, score_a % 100);
+	}
+
+	if (halleffect_rows & 0b0001) LL_GPIO_SetOutputPin(GPIOC, LL_GPIO_PIN_0);
+	else LL_GPIO_SetOutputPin(GPIOC, LL_GPIO_PIN_0);
+	if (halleffect_rows & 0b0010) LL_GPIO_SetOutputPin(GPIOC, LL_GPIO_PIN_1);
+	else LL_GPIO_SetOutputPin(GPIOC, LL_GPIO_PIN_1);
+	if (halleffect_rows & 0b0100) LL_GPIO_SetOutputPin(GPIOC, LL_GPIO_PIN_2);
+	else LL_GPIO_SetOutputPin(GPIOC, LL_GPIO_PIN_2);
+	if (halleffect_rows & 0b1000) LL_GPIO_SetOutputPin(GPIOC, LL_GPIO_PIN_3);
+	else LL_GPIO_SetOutputPin(GPIOC, LL_GPIO_PIN_3);
 
 	Driver_LED_Tick();
+	Driver_HallEffect_PollInputs();
 
 	ticks_completed++;
 }
