@@ -198,9 +198,9 @@ void EXTI5_IRQHandler(void)
   if (LL_EXTI_IsActiveFallingFlag_0_31(LL_EXTI_LINE_5) != RESET)
   {
     LL_EXTI_ClearFallingFlag_0_31(LL_EXTI_LINE_5);
-    /* USER CODE BEGIN LL_EXTI_LINE_5_RISING */
+    /* USER CODE BEGIN LL_EXTI_LINE_5_FALLING */
     EXTI5_Handler();
-    /* USER CODE END LL_EXTI_LINE_5_RISING */
+    /* USER CODE END LL_EXTI_LINE_5_FALLING */
   }
   /* USER CODE BEGIN EXTI5_IRQn 1 */
 
