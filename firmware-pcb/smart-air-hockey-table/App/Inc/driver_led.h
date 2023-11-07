@@ -3,7 +3,7 @@
 
 #include <inttypes.h>
 
-#define LED_MATRIX_COL_NUM 16
+#define LED_MATRIX_COL_NUM 2
 #define LED_MATRIX_ROW_NUM 8
 #define LED_MATRIX_PIXEL_COUNT (LED_MATRIX_ROW_NUM * LED_MATRIX_COL_NUM)
 #define LED_COLOR_DATA_SIZE 24

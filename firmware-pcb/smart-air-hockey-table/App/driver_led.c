@@ -101,7 +101,6 @@ void Driver_LED_Tick()
 		LL_DMA_EnableChannel(GPDMA1, LL_DMA_CHANNEL_1);
 		LL_DMA_EnableChannel(GPDMA1, LL_DMA_CHANNEL_2);
 		LL_DMA_EnableChannel(GPDMA1, LL_DMA_CHANNEL_3);
-
 	}
 }
 

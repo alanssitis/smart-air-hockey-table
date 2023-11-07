@@ -56,7 +56,7 @@ void TIM7_Handler()
 
 	//App_StateMachine_GameTick();
 
-	/*static uint_fast32_t rotation;
+	static uint_fast32_t rotation;
 	static bool is_pressed;
 
 	if (Driver_Encoder_PollButton())
@@ -69,7 +69,7 @@ void TIM7_Handler()
 	if (is_pressed) {
 		rotation += Driver_Encoder_PollRotation();
 		LL_GPIO_SetOutputPin(GPIOC, LL_GPIO_PIN_0 << (rotation % 4));
-	}*/
+	}
 
 	static uint_fast32_t score_a, score_b;
 	if (ticks_completed % 500 == 0) score_a++;
@@ -80,17 +80,18 @@ void TIM7_Handler()
 		Driver_Display_ShowScore(DISPLAY_1, score_b % 100, score_a % 100);
 	}
 
-	if (halleffect_rows & 0b0001) LL_GPIO_SetOutputPin(GPIOC, LL_GPIO_PIN_0);
-	else LL_GPIO_SetOutputPin(GPIOC, LL_GPIO_PIN_0);
-	if (halleffect_rows & 0b0010) LL_GPIO_SetOutputPin(GPIOC, LL_GPIO_PIN_1);
-	else LL_GPIO_SetOutputPin(GPIOC, LL_GPIO_PIN_1);
-	if (halleffect_rows & 0b0100) LL_GPIO_SetOutputPin(GPIOC, LL_GPIO_PIN_2);
-	else LL_GPIO_SetOutputPin(GPIOC, LL_GPIO_PIN_2);
-	if (halleffect_rows & 0b1000) LL_GPIO_SetOutputPin(GPIOC, LL_GPIO_PIN_3);
-	else LL_GPIO_SetOutputPin(GPIOC, LL_GPIO_PIN_3);
+	Driver_HallEffect_PollInputs();
+
+	if ((halleffect_cols & 0b01) && (halleffect_rows & 0b01)) Driver_LED_SetColor(0, 0, (Color) { 0x77, 0x77, 0x77 });
+	else Driver_LED_SetColor(0, 0, (Color) { 0x00, 0x00, 0x00 });
+	if ((halleffect_cols & 0b01) && (halleffect_rows & 0b10)) Driver_LED_SetColor(0, 1, (Color) { 0x77, 0x77, 0x77 });
+	else Driver_LED_SetColor(0, 1, (Color) { 0x00, 0x00, 0x00 });
+	if ((halleffect_cols & 0b10) && (halleffect_rows & 0b01)) Driver_LED_SetColor(1, 0, (Color) { 0x77, 0x77, 0x77 });
+	else Driver_LED_SetColor(1, 0, (Color) { 0x00, 0x00, 0x00 });
+	if ((halleffect_cols & 0b10) && (halleffect_rows & 0b10)) Driver_LED_SetColor(1, 1, (Color) { 0x77, 0x77, 0x77 });
+	else Driver_LED_SetColor(1, 1, (Color) { 0x00, 0x00, 0x00 });
 
 	Driver_LED_Tick();
-	Driver_HallEffect_PollInputs();
 
 	ticks_completed++;
 }
