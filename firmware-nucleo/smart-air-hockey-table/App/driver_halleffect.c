@@ -167,10 +167,10 @@ void Driver_HallEffect_PollInputs()
 	halleffect_rows = 0xFFFF;
 	halleffect_rows ^= (ROW0_GPIO->IDR & ROW0_IDR) >> 6;
 	halleffect_rows ^= (ROW1_GPIO->IDR & ROW1_IDR) >> 6;
-	halleffect_rows ^= (ROW2_GPIO->IDR & ROW2_IDR) >> 3;
+	halleffect_rows ^= (ROW2_GPIO->IDR & ROW2_IDR) >> 2;
 	halleffect_rows ^= (ROW3_GPIO->IDR & ROW3_IDR) >> 2;
 	halleffect_rows ^= (ROW4_GPIO->IDR & ROW4_IDR) << 3;
-	halleffect_rows ^= (ROW5_GPIO->IDR & ROW5_IDR) << 2;
+	halleffect_rows ^= (ROW5_GPIO->IDR & ROW5_IDR) << 3;
 	halleffect_rows ^= (ROW6_GPIO->IDR & ROW6_IDR) >> 1;
 	halleffect_rows ^= (ROW7_GPIO->IDR & ROW7_IDR) >> 1;
 	halleffect_rows ^= (ROW8_GPIO->IDR & ROW8_IDR) >> 1;
@@ -187,10 +187,10 @@ void Driver_HallEffect_PollInputs()
 	halleffect_cols ^= (COL1_GPIO->IDR & COL1_IDR);
 	halleffect_cols ^= (COL2_GPIO->IDR & COL2_IDR) << 2;
 	halleffect_cols ^= (COL3_GPIO->IDR & COL3_IDR) >> 6;
-	halleffect_cols ^= (COL4_GPIO->IDR & COL4_IDR) >> 5;
+	halleffect_cols ^= (COL4_GPIO->IDR & COL4_IDR) >> 4;
 	halleffect_cols ^= (COL5_GPIO->IDR & COL5_IDR) >> 2;
 	halleffect_cols ^= (COL6_GPIO->IDR & COL6_IDR);
-	halleffect_cols ^= (COL7_GPIO->IDR & COL7_IDR) >> 2;
+	halleffect_cols ^= (COL7_GPIO->IDR & COL7_IDR) << 2;
 	halleffect_cols ^= (COL8_GPIO->IDR & COL8_IDR) << 4;
 	halleffect_cols ^= (COL9_GPIO->IDR & COL9_IDR) << 6;
 	halleffect_cols ^= (COL10_GPIO->IDR & COL10_IDR) << 3;
