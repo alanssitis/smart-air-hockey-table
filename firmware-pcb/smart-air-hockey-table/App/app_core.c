@@ -56,6 +56,7 @@ void TIM7_Handler()
 
 	//App_StateMachine_GameTick();
 
+/*
 	static uint_fast32_t rotation;
 	static bool is_pressed;
 
@@ -70,6 +71,9 @@ void TIM7_Handler()
 		rotation += Driver_Encoder_PollRotation();
 		LL_GPIO_SetOutputPin(GPIOC, LL_GPIO_PIN_0 << (rotation % 4));
 	}
+*/
+	Driver_Goal_Poll();
+	ldr1_goal ? LL_GPIO_ResetOutputPin(GPIOC, LL_GPIO_PIN_0) : LL_GPIO_SetOutputPin(GPIOC, LL_GPIO_PIN_0);
 
 	static uint_fast32_t score_a, score_b;
 	if (ticks_completed % 500 == 0) score_a++;
