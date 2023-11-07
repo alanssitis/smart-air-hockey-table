@@ -22,6 +22,9 @@
 #include "stm32u5xx_it.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "app_core.h"
+#include "driver_led.h"
+#include "driver_encoder.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -195,9 +198,9 @@ void EXTI5_IRQHandler(void)
   if (LL_EXTI_IsActiveFallingFlag_0_31(LL_EXTI_LINE_5) != RESET)
   {
     LL_EXTI_ClearFallingFlag_0_31(LL_EXTI_LINE_5);
-    /* USER CODE BEGIN LL_EXTI_LINE_5_FALLING */
-
-    /* USER CODE END LL_EXTI_LINE_5_FALLING */
+    /* USER CODE BEGIN LL_EXTI_LINE_5_RISING */
+    EXTI5_Handler();
+    /* USER CODE END LL_EXTI_LINE_5_RISING */
   }
   /* USER CODE BEGIN EXTI5_IRQn 1 */
 
@@ -210,7 +213,11 @@ void EXTI5_IRQHandler(void)
 void GPDMA1_Channel0_IRQHandler(void)
 {
   /* USER CODE BEGIN GPDMA1_Channel0_IRQn 0 */
-
+  if (LL_DMA_IsActiveFlag_TC(GPDMA1, LL_DMA_CHANNEL_0))
+  {
+    LL_DMA_ClearFlag_TC(GPDMA1, LL_DMA_CHANNEL_0);
+    GPDMA1_Channel0123_Handler(0);
+  }
   /* USER CODE END GPDMA1_Channel0_IRQn 0 */
 
   /* USER CODE BEGIN GPDMA1_Channel0_IRQn 1 */
@@ -224,7 +231,11 @@ void GPDMA1_Channel0_IRQHandler(void)
 void GPDMA1_Channel1_IRQHandler(void)
 {
   /* USER CODE BEGIN GPDMA1_Channel1_IRQn 0 */
-
+  if (LL_DMA_IsActiveFlag_TC(GPDMA1, LL_DMA_CHANNEL_1))
+  {
+    LL_DMA_ClearFlag_TC(GPDMA1, LL_DMA_CHANNEL_1);
+    GPDMA1_Channel0123_Handler(1);
+  }
   /* USER CODE END GPDMA1_Channel1_IRQn 0 */
 
   /* USER CODE BEGIN GPDMA1_Channel1_IRQn 1 */
@@ -238,7 +249,11 @@ void GPDMA1_Channel1_IRQHandler(void)
 void GPDMA1_Channel2_IRQHandler(void)
 {
   /* USER CODE BEGIN GPDMA1_Channel2_IRQn 0 */
-
+  if (LL_DMA_IsActiveFlag_TC(GPDMA1, LL_DMA_CHANNEL_2))
+  {
+    LL_DMA_ClearFlag_TC(GPDMA1, LL_DMA_CHANNEL_2);
+    GPDMA1_Channel0123_Handler(2);
+  }
   /* USER CODE END GPDMA1_Channel2_IRQn 0 */
 
   /* USER CODE BEGIN GPDMA1_Channel2_IRQn 1 */
@@ -252,7 +267,11 @@ void GPDMA1_Channel2_IRQHandler(void)
 void GPDMA1_Channel3_IRQHandler(void)
 {
   /* USER CODE BEGIN GPDMA1_Channel3_IRQn 0 */
-
+  if (LL_DMA_IsActiveFlag_TC(GPDMA1, LL_DMA_CHANNEL_3))
+  {
+    LL_DMA_ClearFlag_TC(GPDMA1, LL_DMA_CHANNEL_3);
+    GPDMA1_Channel0123_Handler(3);
+  }
   /* USER CODE END GPDMA1_Channel3_IRQn 0 */
 
   /* USER CODE BEGIN GPDMA1_Channel3_IRQn 1 */
@@ -266,7 +285,11 @@ void GPDMA1_Channel3_IRQHandler(void)
 void TIM6_IRQHandler(void)
 {
   /* USER CODE BEGIN TIM6_IRQn 0 */
-
+  if (LL_TIM_IsActiveFlag_UPDATE(TIM6))
+  {
+    LL_TIM_ClearFlag_UPDATE(TIM6);
+    TIM6_Handler();
+  }
   /* USER CODE END TIM6_IRQn 0 */
   /* USER CODE BEGIN TIM6_IRQn 1 */
 
@@ -279,7 +302,11 @@ void TIM6_IRQHandler(void)
 void TIM7_IRQHandler(void)
 {
   /* USER CODE BEGIN TIM7_IRQn 0 */
-
+  if (LL_TIM_IsActiveFlag_UPDATE(TIM7))
+  {
+    LL_TIM_ClearFlag_UPDATE(TIM7);
+    TIM7_Handler();
+  }
   /* USER CODE END TIM7_IRQn 0 */
   /* USER CODE BEGIN TIM7_IRQn 1 */
 
