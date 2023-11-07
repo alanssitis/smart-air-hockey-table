@@ -1,5 +1,0 @@
-(sym_lib_table
-  (version 7)
-  (lib (name "Memory_EEPROM_Custom")(type "KiCad")(uri "${KIPRJMOD}/lib/Memory_EEPROM_Custom.kicad_sym")(options "")(descr ""))
-  (lib (name "Device_Custom")(type "KiCad")(uri "${KIPRJMOD}/Device_Custom.kicad_sym")(options "")(descr ""))
-)
