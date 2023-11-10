@@ -5,6 +5,66 @@ title: Ben Owen Progress Report
 
 # Progress Report for Ben
 
+## Week 12
+
+**Date:** 2023-11-03 \
+**Project Hours Since Last Report:** 16 \
+**Total Hours:** 148
+
+### Description of Project Design Effors
+
+With Alan out of town for a conference, we focused most of our time on mechanical progress.
+
+**Master PCB assembly/testing**
+
+I finished soldering the master PCB and testing each of the components.  We were able to get all of our PSDRs checked off (preliminary) and verified that everything on our board works as expected.
+
+A picture of the master PCB can be seen in Figure 1.
+
+<img src="/477grp5/team/ben/week12-master-pcb.jpg" width="80%">
+
+_Figure 1: Master PCB_
+
+One of the other things we tested was our motor encoder, which is demonstrated in Figure 2.
+
+<video controls muted>
+  <source src="/477grp5/team/ben/week12-encoder-demo.mov">
+</video>
+
+_Figure 2: Encoder demo_
+
+**External connections**
+
+For the master PCB, there are a number of components that are far away from the PCB.  These include the OLED displays, menu encoder, and LDR/LED pairs.  I spent a lot of time crimping connectors for these components and putting them inside of wire looms for durability.  Currently, I have completed all 4 LEDs, all 4 LDRs, 1 OLED display, and the motor encoder.  The remaining connectors are the other OLED display and the relay connector for turning our blower motor on/off.
+
+A picture of these can be seen in Figure 3.
+
+<img src="/477grp5/team/ben/week12-connectors.jpg" width="80%">
+
+_Figure 3: External components_
+
+**Mechanical progress**
+
+Since Alan was out of town, we focused on making progress on the mechanical aspects of the table.  Mainly, we need to begin mounting the blower and other electrical components, since we have verified our PCBs functionality.  Therefore, we spent a number of hours finding wood for table legs and getting it cut to the correct size at BIDC.  We then cut out holes in the bottom plywood to inset the legs up unto the table for strength.  Four screws hold in each of the legs to the table.  Then, we added support beams along the long edge of the table connected to the table legs.  This ensures that 
+
+An image of the current table can be seen in Figure 4.
+
+<img src="/477grp5/team/ben/week12-table.jpg" width="80%">
+
+_Figure 4: Table (upside down)_
+
+### Next steps
+
+- Mechanical progress
+  - Mount blower to plywood
+  - Mount outlet to plywood
+  - Mount 5V PSU to plywood
+  - Add internal MDF supports for sensor PCB mounting board
+- Electrical/mechanical progress
+  - Create "bus bar" for our sensor PCBs out of unmilled copper board
+
+---
+
 ## Week 11
 
 **Date:** 2023-11-03 \
