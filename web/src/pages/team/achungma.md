@@ -3,7 +3,30 @@ layout: ../../layouts/MDLayout.astro
 title: Alan Chung Ma Progress Report
 ---
 
-# Progress Report for Alan
+# Progress Report for Alan\
+
+## Weel 12
+
+**Date:** 2023-11-10 \
+**Week Hours:** 7 \
+**Total Hours:** 140
+
+### Description of Project Design Efforts
+
+Due to my attendance at [KubeCon NA 2023](https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/), I was unable to do much for the project this week. I was only able to help consult the team in the finalization of the construction of the table and a few minor patches ([#143](https://github.com/alanssitis/smart-air-hockey-table/pull/143)).
+
+I do not usually take pictures, but below are some of the pictures I took over the weekend.
+
+![picture 1](/477grp5/team/alan/week12/figure1.jpg)
+![picture 2](/477grp5/team/alan/week12/figure2.jpg)
+
+I was mostly involved in manning the project booth for [in-toto](https://in-toto.io) and participating in meetings throughout the rest of the day. I was in Chicago from Sunday through Friday, below is a screenshot of the airbnb I stayed at (Exact address masked to avoid any issues with the platform).
+
+![picture 3](/477grp5/team/alan/week12/figure3.png)
+
+### Next Steps
+
+I will consult with the team over the weekend and see what needs to be done to finalize the project and go from there. This coming Saturday I will be going to BIDC to figure out the construction of the acrylic surface. There are also some optimizations I plan to add over the weekend.
 
 ## Week 11
 
