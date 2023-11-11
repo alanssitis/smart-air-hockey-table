@@ -8,8 +8,8 @@ title: Trevor Moorman Progress Report
 ## Week 12
 
 **Date:** 11/10/2023 \
-**Project Hours Since Last Report:** TODO \
-**Cumulative Semester Project Hours:** TODO
+**Project Hours Since Last Report:** 25 \
+**Cumulative Semester Project Hours:** 154
 
 ### Description of Individual Project Work Efforts:
 
