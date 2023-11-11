@@ -69,7 +69,11 @@ _Figure 4: The table (upside down) with the length-wise braces installed._
 - I created a basis for the external EEPROM driver, which Ben and I can test and work off of. The basis includes creating basic helper functions, an initialization function, and functions calling individual EEPROM instructions. \
 [In-Progress Header File](/477grp5/team/trevor/Trevor_Week12_driver_eeprom.h) & [In-Progress Source File](/477grp5/team/trevor/Trevor_Week12_driver_encoder.c)
 
-[TODO: Add working on Ethical & Environmental Analysis]
+**A11 - Ethical and Environmental Analysis**
+  
+- I am responsible for performing the ethical and environmental analysis of the Smart Air Hockey Table for the team.
+- I have created a rough draft of the document organizing topics to discuss for the ethical and environmental analysis.
+- The environmental analysis is almost completed.
 
 **Project Housekeeping**
 
@@ -90,7 +94,9 @@ _Figure 4: The table (upside down) with the length-wise braces installed._
 
 - As mentioned previously, Ben and I will need to test the basis that I have created. After testing the basis of the driver, Ben and I can focus on developing the specific EEPROM functionality required by the project to meet our stretch PSDR. Most notably, the project will need to be able to save and load persistent user data and load animation frames. In addition, the driver should provide a way for programming the EEPROM with the animation frames, although this functionality will only be used in a companion program for initially programming the EEPROM.
 
-[TODO: Add working on Ethical & Environmental Analysis if I don't finish]
+**A11 - Ethical and Environmental Analysis**
+  
+- I need to complete the environmental analysis then begin and complete the ethical analysis.
 
 ## Week 11
 
