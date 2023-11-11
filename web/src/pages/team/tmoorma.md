@@ -70,7 +70,8 @@ _Figure 7: The table (upside down) with the length-wise braces installed._
 
 **External EEPROM Driver**
 
-- I created a basis for the external EEPROM driver, which Ben and I can test and work off of. The basis includes creating basic helper functions, an initialization function, and functions calling individual EEPROM instructions. \
+- I created a basis for the external EEPROM driver, which Ben and I can test and work off of. The basis includes creating basic helper functions, an initialization function, and functions calling individual EEPROM instructions.
+
 [In-Progress Header File](/477grp5/team/trevor/Trevor_Week12_driver_eeprom.h) & [In-Progress Source File](/477grp5/team/trevor/Trevor_Week12_driver_encoder.c)
 
 **A11 - Ethical and Environmental Analysis**
