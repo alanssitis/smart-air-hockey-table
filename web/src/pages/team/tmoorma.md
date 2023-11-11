@@ -5,6 +5,104 @@ title: Trevor Moorman Progress Report
 
 # Progress Report for Trevor
 
+## Week 12
+
+**Date:** 11/10/2023 \
+**Project Hours Since Last Report:** 25 \
+**Cumulative Semester Project Hours:** 154
+
+### Description of Individual Project Work Efforts:
+
+**Testing & Preliminary PSDR Checkoffs**
+
+- I created a basic test for the debug LEDs which toggled the debug LEDs every 100 milliseconds. In addition to testing the debug LEDs, this test was also used to test that the microcontroller was being programmed properly.
+- I created a test for the hall effect sensor inputs which mapped each of the four hall effect sensors of a sensor PCB to a debug LED. (Associated with PSDR #1)
+- I created a test for the LDR inputs which mapped each of the four LDR inputs to a debug LED. (Associated with PSDR #2)
+- I created a test for the OLED displays which simply displayed Will's font test to all connected displays. (Associated with PSDR #3)
+- I created a test for the encoder switch and rotation. Pressing the encoder's switch toggled a debug LED. The "selected" debug LED could be changed by rotating the encoder while the debug LED is on. (Associated with one of the stretch PSDRs)
+
+<video controls muted width="25%">
+  <source src="/477grp5/team/trevor/Trevor_Week12_EncoderDemo.MOV" type="video/mp4">
+</video>
+
+_Figure 1: A short example of the encoder test showing the "selected" debug LED changing as the encoder is rotated._
+
+- During testing the individual components as we assembled more of the master PCB, an issue was discovered concerning programming and resetting the microcontroller. The microcontroller occasionally would not run the code programmed to it using the ST-LINK v2. Using the on-board reset button would sometimes work and other times cause the microcontroller to become unresponsive. However, holding the reset button for several seconds before releasing would cause the microcontroller to properly reset every time. Power cycling the microcontroller by manually turning off then back on the power supply acted similarly, but we also noticed that reducing the length of the wire connecting the master PCB to the power supply increased the chances the master PCB would work properly after power cycling. After Ben and I heuristically discovered these issues as well as performing several voltage measurements at key points, we hypothesized that there was interference in the signal which caused the undesired behavior. To test this theory and potentially rectify the issue, Ben continued assembling the master PCB by adding the decoupling capacitors. After adding the decoupling capacitors, the problem completely disappeared with the microcontroller working properly 100% of the time after being programmed, reset, or power cycled.
+- During testing the hall effect sensors, we discovered an issue within the hall effect driver. Some of the bit shift operations being performed to combine the various inputs were incorrect. The fix for this was simple as we could utilize STM32CubeIDE's debugger to view the variable stored the combined inputs as we tested each input individually. If the variable did not change how we expected, then we would recalculate and fix the respective bit shift operation.
+- During testing the LDR inputs, we discovered an issue within the goal detection driver. The pins used as inputs for LDRs were different between the nucleo used for prototyping and the master PCB since the nucleo used a larger chip package. The fix for this was extremely simple since Ben and I designed the driver to use the pins defined at the top of the file, which allows for it to be easily reconfigured.
+- On 11/7, Ben and I were able to demonstrate four of the PSDRs for their preliminary checkoffs. Thus, all five of the project's PSDRs have received their preliminary checkoffs.
+
+<img src="/477grp5/team/trevor/Trevor_Week12_PreliminaryCheckoffs.jpg" width="25%">
+
+_Figure 2: The team's PSDR checkoff sheet with all preliminary PSDR checkoffs being completed._
+
+**Table Construction**
+
+- Ben and I used white primer to roughly coat the top of the MDF. The team intends for this to make the table look more cohesive under the frosted acrylic when the Smart Air Hockey Table is turned off. Given that this is an aesthetic concern of a prototype, the imperfect result is acceptable.
+- Alongside Ben, I went to BIDC to look at the available scrap wood to see if any were viable for creating legs for the table. Later that day, Ben and I showed Will the pictures we took of potentially viable pieces of scrap wood to use. We collectively determined which was the best candidate, which Will and I then went to claim.
+- I reserved a time slot at BIDC for cutting the table's legs out of the scrap wood and cutting supports to place under the MDF using leftover MDF. The MDF supports will also create the central air chamber transferring the airflow from the air blower attached to the bottom of the table to the MDF.
+- Ben, Will, and I worked together to cut the legs and MDF supports at BIDC under TA supervision. The legs were cut using a vertical band saw and the MDF supports were cut using a table saw.
+
+<img src="/477grp5/team/trevor/Trevor_Week12_LegBandSaw.jpg" width="25%">
+
+_Figure 3: One of the legs being cut using the vertical band saw._
+
+<img src="/477grp5/team/trevor/Trevor_Week12_MdfSupports.jpg" width="25%">
+
+_Figure 4: The MDF supports stacked in lab after being cut to size at BIDC._
+
+- Ben, Will, and I attached the legs to the table.
+
+| <img src="/477grp5/team/trevor/Trevor_Week12_TableLegsTop.jpg" width="75%"> | <img src="/477grp5/team/trevor/Trevor_Week12_TableLegsBottom.jpg" width="75%"> |
+| :-------------------------------------------------------------------------: | :----------------------------------------------------------------------------: |
+
+_Figure 5: On the left, the table with legs from a top, isometric view. On the right, the table with legs from a bottom, isometric view._
+
+- Ben and I claimed scrap wood from BIDC for bracing under the table. The planks going length-wise across the table was split in half width-wise using a table saw then trimmed length wise using a hand saw. Ben and I have installed the length-wise braces, but the width-wise braces will wait until after we have determined where to install the components under the table. This namely includes the blower, power relay, and master PCB.
+
+<img src="/477grp5/team/trevor/Trevor_Week12_BottomBraces.jpg" width="25%">
+
+_Figure 6: The planks that will be used for the length-wise and width-wise braces under the table._
+
+<img src="/477grp5/team/trevor/Trevor_Week12_TableBraces.jpg" width="50%">
+
+_Figure 7: The table (upside down) with the length-wise braces installed._
+
+**External EEPROM Driver**
+
+- I created a basis for the external EEPROM driver, which Ben and I can test and work off of. The basis includes creating basic helper functions, an initialization function, and functions calling individual EEPROM instructions.
+
+[In-Progress Header File](/477grp5/team/trevor/Trevor_Week12_driver_eeprom.h) & [In-Progress Source File](/477grp5/team/trevor/Trevor_Week12_driver_encoder.c)
+
+**A11 - Ethical and Environmental Analysis**
+  
+- I am responsible for performing the ethical and environmental analysis of the Smart Air Hockey Table for the team.
+- I have created a rough draft of the document organizing topics to discuss for the ethical and environmental analysis.
+- The environmental analysis is almost completed.
+
+**Project Housekeeping**
+
+- Ben, Will, and I cleaned off the team's lab tables of the clutter that accumulated over the course of electrical assembly.
+- I submitted my Qualtrics form to register the Smart Air Hockey Table for the Spark Challenge.
+
+### Next Steps:
+
+**Table Construction**
+
+- As mentioned previously, the team still needs to install the MDF supports which will also create the air chamber. In addition, a hole will need to be cut within this air chamber to mount the air blower to.
+- As mentioned previously, the team needs to determine where each component will mounted beneath the table. After this is determined, then the width-wise braces can be installed either before or after mounting those components.
+- The table still needs a goal feeder mechanism which can house the white LED and LDR pair.
+- The table still needs covers above the goal mechanism with OLEDs embedded to house the wiring and other components underneath. The team has been discussing potentially making the cover removable to provide serviceability to those components.
+- As table construction continues, the team will soon be able to install various components, such as the power supply, the power relay, the master PCB, etc.
+
+**External EEPROM Driver**
+
+- As mentioned previously, Ben and I will need to test the basis that I have created. After testing the basis of the driver, Ben and I can focus on developing the specific EEPROM functionality required by the project to meet our stretch PSDR. Most notably, the project will need to be able to save and load persistent user data and load animation frames. In addition, the driver should provide a way for programming the EEPROM with the animation frames, although this functionality will only be used in a companion program for initially programming the EEPROM.
+
+**A11 - Ethical and Environmental Analysis**
+  
+- I need to complete the environmental analysis then begin and complete the ethical analysis.
+
 ## Week 11
 
 **Date:** 11/03/2023 \
