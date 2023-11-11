@@ -5,7 +5,7 @@ title: Trevor Moorman Progress Report
 
 # Progress Report for Trevor
 
-## Week 11
+## Week 12
 
 **Date:** 11/10/2023 \
 **Project Hours Since Last Report:** TODO \
@@ -21,7 +21,7 @@ title: Trevor Moorman Progress Report
 - I created a test for the OLED displays which simply displayed Will's font test to all connected displays. (Associated with PSDR #3)
 - I created a test for the encoder switch and rotation. Pressing the encoder's switch toggled a debug LED. The "selected" debug LED could be changed by rotating the encoder while the debug LED is on. (Associated with one of the stretch PSDRs)
 
-<video controls muted width="50%">
+<video controls muted width="25%">
   <source src="/477grp5/team/trevor/Trevor_Week12_EncoderDemo.MOV" type="video/mp4">
 </video>
 
@@ -32,7 +32,7 @@ _Figure 1: A short example of the encoder test showing the "selected" debug LED 
 - During testing the LDR inputs, we discovered an issue within the goal detection driver. The pins used as inputs for LDRs were different between the nucleo used for prototyping and the master PCB since the nucleo used a larger chip package. The fix for this was extremely simple since Ben and I designed the driver to use the pins defined at the top of the file, which allows for it to be easily reconfigured.
 - On 11/7, Ben and I were able to demonstrate four of the PSDRs for their preliminary checkoffs. Thus, all five of the project's PSDRs have received their preliminary checkoffs.
 
-<img src="/477grp5/team/trevor/Trevor_Week12_PreliminaryCheckoffs.jpg" width="100%">
+<img src="/477grp5/team/trevor/Trevor_Week12_PreliminaryCheckoffs.jpg" width="25%">
 
 _Figure 2: The team's PSDR checkoff sheet with all preliminary PSDR checkoffs being completed._
 
@@ -43,26 +43,30 @@ _Figure 2: The team's PSDR checkoff sheet with all preliminary PSDR checkoffs be
 - I reserved a time slot at BIDC for cutting the table's legs out of the scrap wood and cutting supports to place under the MDF using leftover MDF. The MDF supports will also create the central air chamber transferring the airflow from the air blower attached to the bottom of the table to the MDF.
 - Ben, Will, and I worked together to cut the legs and MDF supports at BIDC under TA supervision. The legs were cut using a vertical band saw and the MDF supports were cut using a table saw.
 
-<img src="/477grp5/team/trevor/Trevor_Week12_LegBandSaw.jpg" width="100%">
+<img src="/477grp5/team/trevor/Trevor_Week12_LegBandSaw.jpg" width="25%">
 
 _Figure 3: One of the legs being cut using the vertical band saw._
 
-<img src="/477grp5/team/trevor/Trevor_Week12_BottomBraces.jpg" width="100%">
+<img src="/477grp5/team/trevor/Trevor_Week12_MdfSupports.jpg" width="25%">
 
-_Figure 4: The MDF supports in lab after being cut to size at BIDC._
+_Figure 4: The MDF supports stacked in lab after being cut to size at BIDC._
 
 - Ben, Will, and I attached the legs to the table.
 
-| <img src="/477grp5/team/trevor/Trevor_Week12_TableLegsTop.jpg" width="100%"> | <img src="/477grp5/team/trevor/Trevor_Week12_TableLegsBottom.jpg" width="100%"> |
-| :--------------------------------------------------------------------------: | :-----------------------------------------------------------------------------: |
+| <img src="/477grp5/team/trevor/Trevor_Week12_TableLegsTop.jpg" width="75%"> | <img src="/477grp5/team/trevor/Trevor_Week12_TableLegsBottom.jpg" width="75%"> |
+| :-------------------------------------------------------------------------: | :----------------------------------------------------------------------------: |
 
 _Figure 5: On the left, the table with legs from a top, isometric view. On the right, the table with legs from a bottom, isometric view._
 
 - Ben and I claimed scrap wood from BIDC for bracing under the table. The planks going length-wise across the table was split in half width-wise using a table saw then trimmed length wise using a hand saw. Ben and I have installed the length-wise braces, but the width-wise braces will wait until after we have determined where to install the components under the table. This namely includes the blower, power relay, and master PCB.
 
-<img src="/477grp5/team/trevor/Trevor_Week12_TableBraces.jpg" width="100%">
+<img src="/477grp5/team/trevor/Trevor_Week12_BottomBraces.jpg" width="25%">
 
-_Figure 4: The table (upside down) with the length-wise braces installed._
+_Figure 6: The planks that will be used for the length-wise and width-wise braces under the table._
+
+<img src="/477grp5/team/trevor/Trevor_Week12_TableBraces.jpg" width="50%">
+
+_Figure 7: The table (upside down) with the length-wise braces installed._
 
 **External EEPROM Driver**
 
