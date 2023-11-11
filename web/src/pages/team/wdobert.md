@@ -7,6 +7,46 @@ title: Will Dobert Progress Report
 
 ---
 
+## Week 12
+
+**Date:** 11/10/2023 \
+**Project Hours Since Last Report:** 13 \
+**Cumulative Semester Project Hours:** 128
+
+### Description of Project Design Efforts
+
+#### Main PCB Testing and Verification
+
+With all of our hardware finally in hand, this week's important task was to finish assembling the main PCB. Aside from the task of physical assembly, which I was not directly hands-on with, PCB assembly also requires testing each functional block on the board after it is put together. I worked together with Trevor to develop simple functionality tests for the various hardware features as Ben was assembling the board. By the end, we verified that all the hardware components work with our firmware drivers that were originally written for the Nucleo prototyping board. From this point on, all firmware development will take place within the `firmware-pcb` workspace of our [public respository](https://github.com/alanssitis/smart-air-hockey-table/tree/main/firmware-pcb). We are planning to remove the `firmware-nucleo` workspace once the main PCB is mounted to the table and connected to all external hardware.
+
+#### Large Strides in Table Construction
+
+With the point that our firmware and electronic hardware reached in the first half of the week, our primary avenue of progress then became table construction. We decided that creating supports for the MDF and putting legs on the table would be straightforward objectives to achieve. We started by cutting our leftover panel of MDF into 4 properly sized pieces; they will hold up the large MDF panel and form the walls of the internal air chamber. We also cut 2 smaller pieces that allow us to adjust the overall size of the air chamber independently from the supports. The table legs were formed from a large block of wood that Trevor and Ben identified earlier in the week. It was challenging to heave the immense block onto a cart and wheel it up to the bandsaw for cutting. Once there, it took 4 sets of hands to lift the block and feed it through the bandsaw. The first cut was just to bring the block down to a manageable size, as we only needed less than half of its total length. From there, we cut off several 30"×4"×3.5" posts to serve as table legs. Afterwards, I helped carry our various pieces of wood back to the lab where the rest of our table now resides. We came back later that day to attach the legs and finally get the table standing on its own. Through the use of a drill, jigsaw, hammer, and chisel, we cut holes up through the table's corners, slid the legs through, and drilled screws in from the outside to attach them. Miraculously, the table stands sturdily with no wobbling at all despite eyeballing the leg attachment positions.
+
+![Inverted Table](/477grp5/team/will/20231110_204910.jpg)
+_Figure 1: Table legs attached to our upside down table_
+
+#### Designing a Goal Chute
+
+Although the bulk of our mechanical design effort is carpentry-related, there is an element of the table that requires some special attention. The chute that takes the puck from the goal, through the LDR circuit, and out the exit must be basically infallible. Getting a puck trapped in the mechanism would severely harm the user experience, so I designed the goal chute with this in mind. The three major elements are the rotator, funnel, and exit slot.
+
+![Chute Side Profile](/477grp5/team/will/Screenshot-2023-11-10-222508.png)
+_Figure 2: CAD sketch of the goal chute's side profile_
+
+The curved upper portion is the rotator; it turns the puck vertical and confines it to minimize the chance of the puck wobbling and becoming stuck. The central portion is the funnel; it brings the puck inward to a channel slightly wider than the puck itself. This is where the LDR goal detection circuit will be mounted to. The bottom portion is the exit slot; the user will simply retrieve the puck from here after a goal is scored. The figure shown above depicts the second major revision of the goal chute. The first iteration was largely the same, except the funnel wasn't tilted and the exit slot was shaped differently. The second iteration was also made to be modified easier by making use of constraints instead of "hard coding" dimensions into the design.
+
+![Second Chute Iteration](/477grp5/team/will/ezgif-5-f5adb224f3.gif)
+_Figure 3: 3D CAD rendering of goal chute in Fusion 360_
+
+![3D Printed Chute](/477grp5/team/will/20231110_220208.jpg)
+_Figure 4: 3D printed upper portions of the first design iteration, courtesy of Ben_
+
+#### Next Steps
+
+Next week will see the continuation of our focus on table construction. I plan to be involved in mounting components to the underside of the table and routing cables between them. I will also be searching for adjustable feet for the legs. I do not anticipate there being much movement on the firmware side of things, but some small adjustments may come up throughout the week.
+
+---
+
 ## Week 11
 
 **Date:** 11/3/2023 \
@@ -17,7 +57,7 @@ title: Will Dobert Progress Report
 
 #### Revamped Firmware Workspaces
 
-As integration testing nears, we will be focused on validating the functionality of our firmware as we move to the full-scale table. The most pressing target for us to hit is keeping our **core loop execution time** under 1 millisecond. Throughout development, we've made various judgement calls that hinge on the compiler performing specific optimizations on our code before it is run on the microcontroller. A prime example of this is division operations (`x / y`) being replaced by bit shifting (`x >> z`), where `y = 2^z`. For the purposes of debugging, we've been compiling our code without any optimizations up until now. Since runtime debugging will continue to be a valuable tool in the future, I left the existing _Debug_ mode intact and created a new _Release_ mode. This mode enables full compiler optimizations on our code and results in a considerable speedup. Although it would be nice if _Release_ mode wasn't required for our firmware to function, it may become a necessity as we increase to full-scale.
+As integration testing nears, we will be focused on validating the functionality of our firmware as we move to the full-scale table. The most pressing target for us to hit is keeping our **core loop execution time** under 1 millisecond. Throughout development, we've made various judgment calls that hinge on the compiler performing specific optimizations on our code before it is run on the microcontroller. A prime example of this is division operations (`x / y`) being replaced by bit shifting (`x >> z`), where `y = 2^z`. For the purposes of debugging, we've been compiling our code without any optimizations up until now. Since runtime debugging will continue to be a valuable tool in the future, I left the existing _Debug_ mode intact and created a new _Release_ mode. This mode enables full compiler optimizations on our code and results in a considerable speedup. Although it would be nice if _Release_ mode wasn't required for our firmware to function, it may become a necessity as we increase to full-scale.
 
 Last week, when making our final Digikey order, we discovered that the microcontroller we intended to use (_STM32U585_) was out of stock. Fortunately, the nearly-identical _STM32U575_ that we already use on the Nucleo prototyping board was in stock. After a quick check to ensure identical pinouts and functionality, we made the choice to switch. Due to the way _STM32CubeIDE_ projects work, this change necessitated recreating and configuring the firmware project for the new microcontroller. I also used this process as an opportunity to bring the project up-to-date with configuration changes made to the Nucleo project over time. Reassigning and naming each of the 100 pins was a very manual task, but it went by fast since I've done this a few times already. The aforementioned _Release_ mode was introduced to the project at this time as well.
 
