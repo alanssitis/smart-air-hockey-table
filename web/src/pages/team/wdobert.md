@@ -7,6 +7,36 @@ title: Will Dobert Progress Report
 
 ---
 
+## Week 13
+
+**Date:** 11/17/2023 \
+**Project Hours Since Last Report:** 2+1+  \
+**Cumulative Semester Project Hours:** 128+^
+
+### Description of Project Design Efforts
+
+#### Goal Chute Revisions
+
+TODO
+* Extend out into goal area
+* Mounting tabs
+* Less inviting chute opening
+
+#### Table Construction Continues
+
+Over the weekend, I paid a visit to Menards to pick up some adjustable feet for the table. Keeping the table level no matter what surface it's placed on is key to the quality of gameplay, otherwise the puck will continually drift towards one side. After drilling 4 holes and hammering the T-nuts into the bottom of the legs, I screwed the feet in and attached felt pads to them.
+
+![Table Leg Foot](/477grp5/team/will/20231113_115513.jpg)
+_Figure 1: Adjustable foot attached to a table leg_
+
+TODO
+
+#### Next Steps
+
+TODO
+
+---
+
 ## Week 12
 
 **Date:** 11/10/2023 \
