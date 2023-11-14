@@ -1,10 +1,3 @@
-/*
- * precomputed_color_data_field.h
- *
- *  Created on: Nov 10, 2023
- *      Author: alancm
- */
-
 #ifndef INC_PRECOMPUTED_COLOR_DATA_FIELD_H_
 #define INC_PRECOMPUTED_COLOR_DATA_FIELD_H_
 
