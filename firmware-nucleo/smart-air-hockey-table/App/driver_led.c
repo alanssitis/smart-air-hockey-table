@@ -3,13 +3,14 @@
 #include <stdbool.h>
 #include "stm32u5xx_ll_dma.h"
 #include "stm32u5xx_ll_tim.h"
-#include "precomputed_color_data_field.h"
 
 #define LED_CHANNELS 4
 #define LED_CHANNEL_DATA_LENGTH (LED_MATRIX_PIXEL_COUNT * LED_COLOR_DATA_SIZE / LED_CHANNELS)
 #define LED_CHANNEL_RESET_LENGTH (LED_COLOR_DATA_SIZE * 3)
 #define LED_CHANNEL_LENGTH (LED_CHANNEL_DATA_LENGTH + LED_CHANNEL_RESET_LENGTH)
 #define COLOR_COMPARE_OFF 3
+#define COLOR_COMPARE_ON 6
+#define COLOR_8BIT_OFFSET 7
 
 static uint8_t led_buffer[LED_CHANNELS][LED_CHANNEL_LENGTH] = {0};
 static bool is_transfer_requested;
@@ -51,14 +52,20 @@ void Driver_LED_SetColor(uint_fast8_t col, uint_fast8_t row, Color color)
 	// Transform to a per-channel linear index
 	pixel_index %= LED_MATRIX_PIXEL_COUNT / LED_CHANNELS;
 
-	// Color channel base address with pointer magic
-	uint64_t *color_base = (uint64_t *) &(led_buffer[channel][pixel_index * LED_COLOR_DATA_SIZE]);
+	// Offset of each color channel within the 24 buffer values that define a pixel
+	uint_fast32_t g_offset = pixel_index * LED_COLOR_DATA_SIZE;
+	uint_fast32_t r_offset = g_offset + 8;
+	uint_fast32_t b_offset = g_offset + 16;
 
-	// Assign values
-	*(color_base++) = color_data_field[color.green];
-	*(color_base++) = color_data_field[color.red];
-	*(color_base) = color_data_field[color.blue];
-
+	for (uint_fast8_t i = 0; i < 8; i++)
+	{
+		uint_fast8_t r_bit = (color.red >> (COLOR_8BIT_OFFSET - i)) & 0b1;
+		uint_fast8_t g_bit = (color.green >> (COLOR_8BIT_OFFSET - i)) & 0b1;
+		uint_fast8_t b_bit = (color.blue >> (COLOR_8BIT_OFFSET - i)) & 0b1;
+		led_buffer[channel][r_offset + i] = (!r_bit) * COLOR_COMPARE_OFF + r_bit * COLOR_COMPARE_ON;
+		led_buffer[channel][g_offset + i] = (!g_bit) * COLOR_COMPARE_OFF + g_bit * COLOR_COMPARE_ON;
+		led_buffer[channel][b_offset + i] = (!b_bit) * COLOR_COMPARE_OFF + b_bit * COLOR_COMPARE_ON;
+	}
 	is_transfer_requested = true;
 }
 
