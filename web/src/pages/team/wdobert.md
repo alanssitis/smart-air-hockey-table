@@ -10,7 +10,7 @@ title: Will Dobert Progress Report
 ## Week 13
 
 **Date:** 11/17/2023 \
-**Project Hours Since Last Report:** 2+1+  \
+**Project Hours Since Last Report:** 2+1+3+1  \
 **Cumulative Semester Project Hours:** 128+^
 
 ### Description of Project Design Efforts
@@ -21,6 +21,7 @@ TODO
 * Extend out into goal area
 * Mounting tabs
 * Less inviting chute opening
+* Deeper retrieval area
 
 #### Table Construction Continues
 
@@ -29,7 +30,7 @@ Over the weekend, I paid a visit to Menards to pick up some adjustable feet for 
 ![Table Leg Foot](/477grp5/team/will/20231113_115513.jpg)
 _Figure 1: Adjustable foot attached to a table leg_
 
-TODO
+In this week's lab session, I worked with the team to test-fit the MDF into the table by placing the support planks in and laying it on top. Fitting the MDF proved to be impossible at first, and upon measuring we realized that it was an inch too long. Trevor and I carried it down to the sub-basement machine shop for it to be trimmed with a circular saw. In spite of this, the MDF was still barely too long. Some rough filing and dremeling took place, and then the MDF finally fit into the table. With the MDF in place, we confirmed that the play surface sits at the correct height.
 
 #### Next Steps
 
