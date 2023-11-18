@@ -3,9 +3,45 @@ layout: ../../layouts/MDLayout.astro
 title: Alan Chung Ma Progress Report
 ---
 
-# Progress Report for Alan\
+# Progress Report for Alan
 
-## Weel 12
+## Week 13
+
+**Date:** 2023-11-17 \
+**Week Hours:** 13 \
+**Total Hours:** 153
+
+### Description of Project Design Efforts
+
+This week I was mostly working on the mechanical things with the rest of the team. I am not so big with taking pictures but I will attach those that I have taken.
+
+#### Cutting the MDF to fit and add a hole
+
+Me and Ben made sure to get the MDF to fit in the table properly.
+
+#### Machining the Acrylic
+
+I made a cam and machined the acrylic at BIDC. Ben and Trevor helped too! Below is a video of the CAM.
+
+<video controls muted>
+  <source src="/477grp5/team/alan/week13/video1.mp4" type="video/mp4">
+</video>
+
+This is the acrylic on the table.
+
+![picture 1](/477grp5/team/alan/week13/figure1.jpg)
+
+#### Getting Airflow
+
+There was an effort by me and Ben to get airflow on the table working. We got the acrylic to shape.
+
+### Next Steps
+
+- Gear up for submission next week
+- Building top panels for goal edges
+- Finishing all software rough edges
+
+## Week 12
 
 **Date:** 2023-11-10 \
 **Week Hours:** 7 \
