@@ -9,7 +9,7 @@ title: Alan Chung Ma Progress Report
 
 **Date:** 2023-11-17 \
 **Week Hours:** 13 \
-**Total Hours:** 143
+**Total Hours:** 153
 
 ### Description of Project Design Efforts
 
