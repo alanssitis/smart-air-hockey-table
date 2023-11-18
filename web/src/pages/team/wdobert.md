@@ -41,7 +41,7 @@ _Figure 4: Underside of table with added supports visible_
 
 #### Next Steps
 
-In the next couple of days, I plan to design a test-fit jig for the goal chute. This will allow me to test the fitment of the chute without needing to print the entire piece. The table's construction will continue at an urgent pace.
+In the next couple of days, I plan to design a test-fit jig for the goal chute. This will allow me to test the fitment of the chute without needing to print the entire piece. I will be completing our project's user manual very soon. Finally, the table's construction will continue at an urgent pace.
 
 ---
 
