@@ -8,8 +8,8 @@ title: Trevor Moorman Progress Report
 ## Week 13
 
 **Date:** 11/17/2023 \
-**Project Hours Since Last Report:** TODO \
-**Cumulative Semester Project Hours:** TODO
+**Project Hours Since Last Report:** 14 \
+**Cumulative Semester Project Hours:** 168
 
 ### Description of Individual Project Work Efforts:
 
@@ -43,7 +43,7 @@ _Figure 3: The added width-wise supports and the remounted length-wise support (
 
 - I went shopping at Menards for materials that would be needed as the team continued to construct the Smart Air Hockey Table. I bought six #12x4" wood screws, a 6"x18" felt blanket, white duct tape, and GE gaps & cracks foam. The screws will be used to better mount the length-wise support boards to the soft table legs, which will hopefully prevent more warping. The felt will be used for the bottoms of the 3D printed pushers. The white duct tape and GE gaps & cracks foam will be used to help make the Smart Air Hockey Table airtight for better air pressure out of the game surface. While dropping the materials off at lab, I took some pictures of the 3D printed goal for Will's progress report.
 
-<img src="/477grp5/team/trevor/Trevor_Week13_Shopping.jpg" width="25%">
+<img src="/477grp5/team/trevor/Trevor_Week13_Shopping.jpg" width="50%">
 
 _Figure 4: The full purchase._
 	
