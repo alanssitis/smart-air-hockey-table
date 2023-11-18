@@ -5,13 +5,75 @@ title: Ben Owen Progress Report
 
 # Progress Report for Ben
 
+## Week 13
+
+**Date:** 2023-11-17 \
+**Project Hours Since Last Report:** 14 \
+**Total Hours:** 162
+
+### Description of Project Design Efforts
+
+Lots of progress mechanically.
+
+**Blower mounting**
+
+Trevor and I mounted the main blower fan and the outlet relay so we can control it with our master PCB.  We marked the exact middle and cut out a hole for the blower using the jigsaw.  We then screwed the blower in place and mounted the relay to power the fan.
+
+A picture of the mounted blower can be seen in Figure 1.
+
+<img src="/477grp5/team/ben/week13-blower.jpg" width="80%">
+
+_Figure 1: Blower_
+
+**Table support beams**
+
+We noticed that the bottom plywood panel was delaminating in places due to the small glue contact area and the increased weight it was supporting.  To remedy this, Trevor and I took some scrap boards from BIDC and cut them to length, which we mounted to the main table legs.  This increases table rigidity and supports the plywood from the bottom.  When we mount other items in the table, these will easily be able to support additional weight.
+
+A picture of the support beams can be seen in Figure 2.
+
+<img src="/477grp5/team/ben/week13-support-beams.jpg" width="80%">
+
+_Figure 2: Support beams_
+
+**Acrylic cutting**
+
+This was the largest chunk of time this week.  Alan worked on designing the CAM model to cut our acrylic sheet on the gantry, and I went and helped him for the manufacturing.  This invovled any changes to the file, preparing the gantry surface, supervising the machine in the event of any malfunctions, and cleanup and transportation of the acrylic after completing.  This took many hours, but the acrylic came out very clean.  We left the protective sticker on the acrylic to avoid scratches.
+
+A video of the gantry in action can be seen in Figure 3.
+
+<video controls muted>
+  <source src="/477grp5/team/ben/week13-gantry.mov">
+</video>
+
+_Figure 3: Gantry cutting acrylic_
+
+**Test fitting for final mechanical assembly**
+
+The last thing we did this week was testing all of the mechanical pieces together.  We put supports on the bottom plywood to support the MDF, cut a hole in the MDF for airflow, and added spacers and the acrylic sheet on top.  After turning the air on, we were greeted with so much air pressure that the acrylic sheet was bulging.  This ended up being so much air that it wasn't coming out of the holes very quickly.  We have two solutions which should help greatly.  First, we are going to cut more holes in the MDF to allow more even airflow.  This will help with the bulging.  Second, we will likely drill larger air holes in the acrylic.  This should promote airflow (since our blower is so powerful), and will allow more air to escape, also helping with the bulging issue.
+
+A picture of everything in place (testing) can be seen in Figure 4.
+
+<img src="/477grp5/team/ben/week13-acrylic.jpg" width="80%">
+
+_Figure 4: Final testing before mounting_
+
+### Next steps
+
+- Blower testing for final airflow and assembly
+- Bus bar/PCB mounting/wiring
+  - Mount power supplies
+- Assemble puck goals and connect external components
+- Mount master PCB
+
+---
+
 ## Week 12
 
-**Date:** 2023-11-03 \
+**Date:** 2023-11-10 \
 **Project Hours Since Last Report:** 16 \
 **Total Hours:** 148
 
-### Description of Project Design Effors
+### Description of Project Design Efforts
 
 With Alan out of town for a conference, we focused most of our time on mechanical progress.
 
@@ -71,7 +133,7 @@ _Figure 4: Table (upside down)_
 **Project Hours Since Last Report:** 10 \
 **Total Hours:** 132
 
-### Description of Project Design Effors
+### Description of Project Design Efforts
 
 This week was exam week, so major progress wasn't made.
 
@@ -139,7 +201,7 @@ We will finish assembling our master PCB and hopefully check off our remaining P
 **Project Hours Since Last Report:** 8 \
 **Total Hours:** 122
 
-### Description of Project Design Effors
+### Description of Project Design Efforts
 
 **Table Construction**
 
@@ -196,7 +258,7 @@ PCBs should be arriving this week with components, so I will be assembling and t
 **Project Hours Since Last Report:** 20 \
 **Total Hours:** 114
 
-### Description of Project Design Effors
+### Description of Project Design Efforts
 
 **Midterm Design Presentation**
 
@@ -348,7 +410,7 @@ It is unlikely to happen this week, but if the PCBs arrive this week, we will as
 **Project Hours Since Last Report:** 20 \
 **Total Hours:** 94
 
-### Description of Project Design Effors
+### Description of Project Design Efforts
 
 Lots of PCB design work, soldering, and testing.
 
@@ -406,7 +468,7 @@ We need to verify all of the components combined on our master PCB. This involve
 **Project Hours Since Last Report:** 10 \
 **Total Hours:** 74
 
-### Description of Project Design Effors
+### Description of Project Design Efforts
 
 This was exam week, but luckily we were in a position to order components, mainly our PCBs.
 
