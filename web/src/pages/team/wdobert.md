@@ -7,6 +7,44 @@ title: Will Dobert Progress Report
 
 ---
 
+## Week 13
+
+**Date:** 11/17/2023 \
+**Project Hours Since Last Report:** 11 \
+**Cumulative Semester Project Hours:** 139
+
+### Description of Project Design Efforts
+
+#### Goal Chute Revisions
+
+A few revisions were made to the goal chute design over the course of this week. I extended the puck entry slot out into the goal to meet flush with the acrylic. After considering several ideas, I decided on a couple points to put mounting tabs that will secure the chute to the table. I took inspiration from the very first iteration of the goal chute and made the exit of the chute less inviting for hands to be inserted into. Lastly, I implemented feedback from Trevor by making the retrieval area deeper to securely hold the puck.
+
+![Goal v11](/477grp5/team/will/Goal_v11.png)
+_Figure 1: Latest revision of the goal chute design, featuring all previously mentioned improvements_
+
+![Printed Chute Test](/477grp5/team/will/IMG_1072.jpg)
+_Figure 2: 3D printed portion of the goal chute for testing_
+
+#### Table Construction Continues
+
+Over the weekend, I paid a visit to Menards to pick up some adjustable feet for the table. Keeping the table level no matter what surface it's placed on is key to the quality of gameplay, otherwise the puck will continually drift towards one side. After drilling 4 holes and hammering the T-nuts into the bottom of the legs, I screwed the feet in and attached felt pads to them.
+
+![Table Leg Foot](/477grp5/team/will/20231113_115513.jpg)
+_Figure 3: Adjustable foot attached to a table leg_
+
+In this week's lab session, I worked with the team to test-fit the MDF into the table by placing the support planks in and laying it on top. Fitting the MDF proved to be impossible at first, and upon measuring we realized that it was an inch too long. Trevor and I carried it down to the sub-basement machine shop for it to be trimmed with a circular saw. In spite of this, the MDF was still barely too long. Some rough filing and dremeling took place, and then the MDF finally fit into the table. With the MDF in place, we confirmed that the play surface sits at the correct height.
+
+Later in the week, some of the team oversaw our acrylic sheet being cut and drilled at BIDC. Once it was brought back to the lab, it also did not fit into the table as intended. I, with Trevor's help, used a plastic-cutting dremel bit to trim an eighth inch off one end of the acrylic. After a lengthy session of adding additional support beams to the table's underside to compensate for a warped board, the acrylic was properly fitted. I worked briefly with Ben and Alan to test the airflow properties of the table by taping up air leaks and sliding the puck around. Initial results were mixed, as we are still fighting against pressure leakage in a few areas. The acrylic flexed upward in the middle when air was turned on, and airflow reduced noticeably when the flex was corrected. As a result of this, we plan to increase the gap between the MDF and acrylic to allow for better airflow.
+
+![Table Leg Foot](/477grp5/team/will/IMG_1060.jpg)
+_Figure 4: Underside of table with added supports visible_
+
+#### Next Steps
+
+In the next couple of days, I plan to design a test-fit jig for the goal chute. This will allow me to test the fitment of the chute without needing to print the entire piece. I will be completing our project's user manual very soon. Finally, the table's construction will continue at an urgent pace.
+
+---
+
 ## Week 12
 
 **Date:** 11/10/2023 \
