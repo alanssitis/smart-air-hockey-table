@@ -5,6 +5,62 @@ title: Trevor Moorman Progress Report
 
 # Progress Report for Trevor
 
+## Week 13
+
+**Date:** 11/17/2023 \
+**Project Hours Since Last Report:** 14 \
+**Cumulative Semester Project Hours:** 168
+
+### Description of Individual Project Work Efforts:
+
+**A11 - Ethical and Environmental Analysis**
+
+- I completed and submitted the professional analysis.
+
+**Table Construction**
+
+- Ben and I cut a hole for the output of the centrifugal blower, then mounted the blower and power relay.
+
+<img src="/477grp5/team/trevor/Trevor_Week13_MountedElectronics.jpg" width="25%">
+
+_Figure 1: The mounted blower and power relay._
+
+- During ManLab, the team learned the MDF that holds the sensor PCBs was an inch longer than the table's cavity. Therefore, we carried the board to the basement of EE to get the edges cut, then sanded the edges till it fit.
+- During ManLab, I reviewed Will's second goal design and recommended that he drop the bottom of the output chute and increase the lip to match the table. This advice will hopefully make the puck easier to retrieve and less likely to tumble out of the table.
+- Joined Alan and Ben after they had started cutting the acrylic using the CNC gantry. While the acrylic was being cut, I cut two 2.5"x6.5" MDF supports with a vertical band saw for the air chamber connecting the centrifugal blower's output to the MDF that holds the sensor PCBs. After that I waited for the acrylic to be cut beside Ben, then helped him carry the cut acrylic and MDF supports back to lab.
+
+<video controls muted width="25%">
+  <source src="/477grp5/team/trevor/Trevor_Week13_AcrylicGantry.MOV" type="video/mp4">
+</video>
+
+_Figure 2: A short video showing the acrylic being cut on the CNC gantry._
+
+- One of the mounted length-wise support boards under the table ended up twisting, which pulled out the majority of one of the screws. To remedy this, I removed and remounted the twisted support while also adding two width-wise support boards (which Alan cut to length from the spare wood Ben and I had claimed) under the table to help prevent the support from re-warping.
+
+<img src="/477grp5/team/trevor/Trevor_Week13_Supports.jpg" width="25%">
+
+_Figure 3: The added width-wise supports and the remounted length-wise support (on the right)._
+
+- I went shopping at Menards for materials that would be needed as the team continued to construct the Smart Air Hockey Table. I bought six #12x4" wood screws, a 6"x18" felt blanket, white duct tape, and GE gaps & cracks foam. The screws will be used to better mount the length-wise support boards to the soft table legs, which will hopefully prevent more warping. The felt will be used for the bottoms of the 3D printed pushers. The white duct tape and GE gaps & cracks foam will be used to help make the Smart Air Hockey Table airtight for better air pressure out of the game surface. While dropping the materials off at lab, I took some pictures of the 3D printed goal for Will's progress report.
+
+<img src="/477grp5/team/trevor/Trevor_Week13_Shopping.jpg" width="50%">
+
+_Figure 4: The full purchase._
+	
+### Next Steps:
+
+**Table Construction**
+
+- Most immediately, the team needs to assemble the playing surface, which includes permanently mounting the MDF supports, the MDF which holds the sensor PCBs, the acrylic supports, and the acrylic playing surface. As of the end of this week, the prerequisite parts have been produced, so this is just a matter of assembly.
+- The table still needs a goal feeder mechanism which can house the white LED and LDR pair.
+- The table still needs covers above the goal mechanism with OLEDs embedded to house the wiring and other components underneath. The team has been discussing potentially making the cover removable to provide serviceability to those components.
+- As table construction continues, the team will soon be able to install various components, such as the power supply, the power relay, the master PCB, etc.
+
+**External EEPROM Driver**
+
+- There has been no progress on the external EEPROM driver as the team has been completely focused on constructing the Smart Air Hockey Table. Ben and I plan on resuming work once the table has been sufficiently constructed or over Thanksgiving break, whichever comes first.
+- For details on what needs to be done, see the "Next Steps" section of my week 12 progress report.
+
 ## Week 12
 
 **Date:** 11/10/2023 \
