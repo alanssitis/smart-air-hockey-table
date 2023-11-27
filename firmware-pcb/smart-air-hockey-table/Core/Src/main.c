@@ -584,7 +584,7 @@ static void MX_TIM6_Init(void)
   /* USER CODE BEGIN TIM6_Init 1 */
 
   /* USER CODE END TIM6_Init 1 */
-  TIM_InitStruct.Prescaler = 15999;
+  TIM_InitStruct.Prescaler = 63999;
   TIM_InitStruct.CounterMode = LL_TIM_COUNTERMODE_UP;
   TIM_InitStruct.Autoreload = 9;
   LL_TIM_Init(TIM6, &TIM_InitStruct);
@@ -621,7 +621,7 @@ static void MX_TIM7_Init(void)
   /* USER CODE BEGIN TIM7_Init 1 */
 
   /* USER CODE END TIM7_Init 1 */
-  TIM_InitStruct.Prescaler = 15999;
+  TIM_InitStruct.Prescaler = 63999;
   TIM_InitStruct.CounterMode = LL_TIM_COUNTERMODE_UP;
   TIM_InitStruct.Autoreload = 9;
   LL_TIM_Init(TIM7, &TIM_InitStruct);
