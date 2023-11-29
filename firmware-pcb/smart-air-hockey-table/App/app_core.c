@@ -51,6 +51,23 @@ void TIM7_Handler()
 //	}
 
 	App_StateMachine_GameTick();
+	Driver_HallEffect_PollInputs();
+	for (uint_fast8_t col = 0; col < LED_MATRIX_COL_NUM; col++)
+	{
+		for (uint_fast8_t row = 0; row < LED_MATRIX_ROW_NUM; row++)
+		{
+			if ((halleffect_rows & 1 << row) && (halleffect_cols & 1 << col)) {
+				Driver_LED_SetColor(col, row, (Color) { 0xff, 0, 0 });
+			} else if ((halleffect_rows & 1 << row)) {
+				Driver_LED_SetColor(col, row, (Color) { 0, 0xff, 0 });
+			} else if ((halleffect_cols & 1 << col)) {
+				Driver_LED_SetColor(col, row, (Color) { 0, 0, 0xff });
+			} else {
+				Driver_LED_SetColor(col, row, (Color) { 0, 0, 0 });
+			}
+		}
+	}
+
 
 	Driver_LED_Tick();
 
