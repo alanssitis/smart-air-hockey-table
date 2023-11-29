@@ -11,9 +11,9 @@
 #define LED_CHANNEL_LENGTH (LED_CHANNEL_DATA_LENGTH + LED_CHANNEL_RESET_LENGTH)
 #define COLOR_COMPARE_OFF 3
 
-#define COLOR_WHITE {0x70, 0x70, 0x70}
-#define COLOR_RED {0x80, 0, 0}
-#define COLOR_BLUE {0, 0x30, 0x80}
+#define COLOR_WHITE {0x1f, 0x1f, 0x1f}
+#define COLOR_RED {0xff, 0, 0}
+#define COLOR_BLUE {0, 0x30, 0xff}
 
 static uint8_t led_buffer[LED_CHANNELS][LED_CHANNEL_LENGTH] = {0};
 static bool is_transfer_requested;
@@ -79,9 +79,9 @@ void Driver_LED_SetColor(uint_fast8_t col, uint_fast8_t row, Color color)
 	if (row >= LED_MATRIX_ROW_NUM || col >= LED_MATRIX_COL_NUM) return;
 
 	if (!(color.red || color.green || color.blue)) {
-		color.red = background[col][row].red;
-		color.green = background[col][row].green;
-		color.blue = background[col][row].blue;
+		color.red = 0x2f;
+		color.green = 0x2f;
+		color.blue = 0x2f;
 	}
 
 	// Adjust for snaking pattern by reversing every other row
