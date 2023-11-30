@@ -15,6 +15,9 @@
 #define COLOR_RED {0xff, 0, 0}
 #define COLOR_BLUE {0, 0x30, 0xff}
 
+volatile int brightness_idx = 4;
+uint_fast16_t brightness[13] = {0, 0x14, 0x1f, 0x2f, 0x3f, 0x54, 0x6a, 0x7f, 0x94, 0xac, 0xbf, 0xdf, 0xff};
+
 static uint8_t led_buffer[LED_CHANNELS][LED_CHANNEL_LENGTH] = {0};
 static bool is_transfer_requested;
 static uint_fast8_t active_transfers_mask; // non-volatile: GPDMA1_Channel0123_Handler has lower priority
@@ -74,15 +77,13 @@ void Driver_LED_Init()
 	LL_TIM_EnableCounter(TIM2);
 }
 
+static inline uint8_t apply_brightness(uint8_t color) {
+	return (color * brightness[brightness_idx]) / 0xff;
+}
+
 void Driver_LED_SetColor(uint_fast8_t col, uint_fast8_t row, Color color)
 {
-	if (row >= LED_MATRIX_ROW_NUM || col >= LED_MATRIX_COL_NUM) return;
-
-	if (!(color.red || color.green || color.blue)) {
-		color.red = 0x2f;
-		color.green = 0x2f;
-		color.blue = 0x2f;
-	}
+	if (row >= LED_MATRIX_ROW_NUM || col >= LED_MATRIX_COL_NUM || active_transfers_mask) return;
 
 	// Adjust for snaking pattern by reversing every other row
 	if (row & 1) col = (LED_MATRIX_COL_NUM - 1) - col;
@@ -100,15 +101,16 @@ void Driver_LED_SetColor(uint_fast8_t col, uint_fast8_t row, Color color)
 	uint64_t *color_base = (uint64_t *) &(led_buffer[channel][pixel_index * LED_COLOR_DATA_SIZE]);
 
 	// Assign values
-	*(color_base++) = color_data_field[color.green];
-	*(color_base++) = color_data_field[color.red];
-	*(color_base) = color_data_field[color.blue];
+	*(color_base++) = color_data_field[apply_brightness(color.green)];
+	*(color_base++) = color_data_field[apply_brightness(color.red)];
+	*(color_base) = color_data_field[apply_brightness(color.blue)];
 
 	is_transfer_requested = true;
 }
 
 void Driver_LED_Clear()
 {
+	if (active_transfers_mask) return;
 	for (uint_fast32_t channel = 0; channel < LED_CHANNELS; channel++)
 	{
 		for (uint_fast32_t i = 0; i < LED_CHANNEL_DATA_LENGTH; i++)
