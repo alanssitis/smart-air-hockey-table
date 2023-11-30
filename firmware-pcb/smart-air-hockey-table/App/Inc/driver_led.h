@@ -7,6 +7,7 @@
 #define LED_MATRIX_ROW_NUM 16
 #define LED_MATRIX_PIXEL_COUNT (LED_MATRIX_ROW_NUM * LED_MATRIX_COL_NUM)
 #define LED_COLOR_DATA_SIZE 24
+#define LED_BRIGHTNESS_LEVELS 13
 
 typedef struct {
 	uint8_t red;

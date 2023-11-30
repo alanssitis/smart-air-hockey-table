@@ -1,6 +1,9 @@
 #include "app_statemachine.h"
 
+#include <stdlib.h>
+#include <stdbool.h>
 #include <inttypes.h>
+
 #include "driver_led.h"
 #include "driver_display.h"
 #include "driver_encoder.h"
@@ -13,40 +16,23 @@ static struct
 {
 	GameState currGameState;
 	uint_fast32_t ticksInState; // Ticks in a given state
-	uint_fast8_t winScore; // Number of points required for a player to win
+	int_fast8_t winScore; // Number of points required for a player to win
+	int_fast8_t brightness; // User-configurable brightness
 	uint_fast8_t playerScoreA; // Current number of points Player A has scored
 	uint_fast8_t playerScoreB; // Current number of points Player B has scored
 	uint_fast8_t currFrame; // current animation frame
-	uint_fast8_t miscData; // for random data within a given state
+	uint_fast8_t miscData; // for random data within a given
 } GameInfo;
-
-static char bars[13][24] = {
-		"    |\t\t            |",
-		"    |\t \t           |",
-		"    |\t  \t          |",
-		"    |\t   \t         |",
-		"    |\t    \t        |",
-		"    |\t     \t       |",
-		"    |\t      \t      |",
-		"    |\t       \t     |",
-		"    |\t        \t    |",
-		"    |\t         \t   |",
-		"    |\t          \t  |",
-		"    |\t           \t |",
-		"    |\t            \t|",
-};
 
 void App_StateMachine_Init()
 {
 	GameInfo.currGameState = INITIAL_GAMESTATE;
-	// TODO: Make winScore modifiable by the player through the OLED menu, for now it is hard-coded to 7
-	GameInfo.winScore = 2; // TODO change back
-	GameInfo.playerScoreA = 0;
-	GameInfo.playerScoreB = 0;
+	GameInfo.winScore = 7;
+	GameInfo.brightness = LED_BRIGHTNESS_LEVELS - 1;
 	GameInfo.miscData = 0;
 }
 
-// Super-loop that is called every TIM7 tick (1ms)
+// Super-loop that is called every TIM7 tick
 void App_StateMachine_GameTick()
 {
 	GameInfo.ticksInState++; // Add 1 tick to counter
@@ -59,64 +45,96 @@ void App_StateMachine_GameTick()
 	{
 		case (GAMESTATE_IDLE):
 		{
-			// TODO: Implement state handling function
-			// TODO add menu functionality
-			// TODO clear OLED
-			Driver_Relay_TurnOff();
-			Driver_Display_Clear(DISPLAY_ALL);
-			GameInfo.playerScoreA = 0;
-			GameInfo.playerScoreB = 0;
+			if (GameInfo.ticksInState == 1) // Runs on first tick only
+			{
+				Driver_Encoder_SetActive(true);
 
-			// Background
-			for (int col = 0; col < LED_MATRIX_COL_NUM; col++) {
-				for (int row = 0; row < LED_MATRIX_ROW_NUM; row++) {
-					Driver_LED_SetColor(col, row, (Color) {0x2f, 0x2f, 0x2f});
-				}
+				Driver_Display_Print(DISPLAY_0, 0, 0, "\tSmart Air Hockey Menu");
+				Driver_Display_Print(DISPLAY_0, 2, 0, "> Score Limit: %2"PRIuFAST8, GameInfo.winScore);
+				Driver_Display_Print(DISPLAY_0, 3, 2, "Brightness: %3"PRIuFAST8, GameInfo.brightness);
+				Driver_Display_Print(DISPLAY_0, 4, 2, "Start Game");
 			}
 
-			brightness_idx += Driver_Encoder_PollRotation();
-			if (brightness_idx < 0) {
-				brightness_idx = 0;
-			} else if (brightness_idx > 12) {
-				brightness_idx = 12;
-			}
-
-			for (int i = 2; i < 6; i++) {
-				Driver_Display_Print(DISPLAY_0, i, 0, bars[brightness_idx]);
-			}
-
-			int col_pos = 0, row_pos = 0;
-			int num_col_on = __builtin_popcount(halleffect_cols);
-			int num_row_on = __builtin_popcount(halleffect_rows);
-
-			if (num_col_on > 0 && num_row_on > 0) {
-				for (int i = 0; i < LED_MATRIX_COL_NUM; i++) {
-					if (halleffect_cols & 1 << i) {
-						col_pos += i;
-					}
-					if (i < LED_MATRIX_ROW_NUM && halleffect_rows & 1 << i) {
-						row_pos += i;
-					}
-
-				}
-				col_pos /= num_col_on;
-				row_pos /= num_row_on;
-			} else {
-				col_pos = -1;
-				row_pos = -1;
-			}
-
-			if (col_pos != -1 && row_pos != -1) {
-				for (int i = 0; i < highlighted_area_size[col_pos][row_pos]; i++) {
-					Driver_LED_SetColor(highlighted_area[col_pos][row_pos][i].col, highlighted_area[col_pos][row_pos][i].row, (Color) { 0xff, 0, 0 });
-				}
-			}
+			static bool modifying = false;
+			static int_fast8_t selection = 0;
 
 			if (Driver_Encoder_PollButton())
 			{
-				srand(GameInfo.ticksInState);
-				App_StateMachine_SetState(GAMESTATE_START);
+				if (selection == 2)
+				{
+					Driver_Display_Clear(DISPLAY_0);
+					Driver_Encoder_SetActive(false);
+					brightness_idx = GameInfo.brightness; // Tells the LED driver the chosen brightness
+					srand(GameInfo.ticksInState);
+					App_StateMachine_SetState(GAMESTATE_START);
+					break;
+				}
+				else
+				{
+					modifying = !modifying;
+					if (!modifying)
+					{
+						Driver_Display_Print(DISPLAY_0, 2 + selection, 0, "> ");
+					}
+				}
 			}
+
+			int_fast8_t rotation = Driver_Encoder_PollRotation();
+			if (rotation != 0)
+			{
+				if (modifying) // Modify selected value
+				{
+					if (selection == 0)
+					{
+						GameInfo.winScore += rotation;
+						if (GameInfo.winScore < 1) GameInfo.winScore = 1;
+						else if (GameInfo.winScore > 99) GameInfo.winScore = 99;
+						Driver_Display_Print(DISPLAY_0, 2, 15, "%2"PRIuFAST8, GameInfo.winScore);
+					}
+					else if (selection == 1)
+					{
+						GameInfo.brightness += rotation;
+						if (GameInfo.brightness < 0) GameInfo.brightness = 0;
+						else if (GameInfo.brightness > LED_BRIGHTNESS_LEVELS - 1) GameInfo.brightness = LED_BRIGHTNESS_LEVELS - 1;
+						Driver_Display_Print(DISPLAY_0, 3, 14, "%3"PRIuFAST8, GameInfo.brightness);
+					}
+				}
+				else // Change selection
+				{
+					int_fast8_t prevSelection = selection;
+					selection += rotation;
+					if (selection < 0) selection = 0;
+					else if (selection > 2) selection = 2;
+
+					if (selection != prevSelection)
+					{
+						Driver_Display_Print(DISPLAY_0, 2 + prevSelection, 0, "  ");
+						Driver_Display_Print(DISPLAY_0, 2 + selection, 0, "> ");
+					}
+				}
+			}
+
+			if (modifying)
+			{
+				if (GameInfo.ticksInState % 32 == 0) {
+					if (GameInfo.ticksInState % 64 == 0)
+					{
+						Driver_Display_Print(DISPLAY_0, 2 + selection, 0, "  ");
+					}
+					else if (GameInfo.ticksInState % 64 == 32)
+					{
+						Driver_Display_Print(DISPLAY_0, 2 + selection, 0, "> ");
+					}
+				}
+			}
+
+			// TODO: Rainbow LED matrix
+
+			/*if (Driver_Encoder_PollButton())
+			{
+
+			}*/
+
 			// TODO sleep state
 //			if (GameInfo.ticksInState > IDLE_SLEEP_TICKS)
 //			{
