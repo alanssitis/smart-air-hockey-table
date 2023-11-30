@@ -6,6 +6,7 @@
 #include "driver_encoder.h"
 #include "driver_relay.h"
 #include "driver_halleffect.h"
+#include "driver_goal.h"
 #include "precomputed_highlightpos.h"
 
 static struct
@@ -15,6 +16,7 @@ static struct
 	uint_fast8_t winScore; // Number of points required for a player to win
 	uint_fast8_t playerScoreA; // Current number of points Player A has scored
 	uint_fast8_t playerScoreB; // Current number of points Player B has scored
+	uint_fast8_t miscData; // for random data within a given state
 } GameInfo;
 
 static char bars[13][24] = {
@@ -40,6 +42,7 @@ void App_StateMachine_Init()
 	GameInfo.winScore = 7;
 	GameInfo.playerScoreA = 0;
 	GameInfo.playerScoreB = 0;
+	GameInfo.miscData = 0;
 }
 
 // Super-loop that is called every TIM7 tick (1ms)
@@ -48,6 +51,7 @@ void App_StateMachine_GameTick()
 	GameInfo.ticksInState++; // Add 1 tick to counter
 	Driver_HallEffect_PollInputs();
 	Driver_LED_Tick();
+	Driver_Goal_Poll();
 
 	//  Coordinating switch statement, each case calls a function which will handle currGameInfo
 	switch (GameInfo.currGameState)
@@ -55,7 +59,11 @@ void App_StateMachine_GameTick()
 		case (GAMESTATE_IDLE):
 		{
 			// TODO: Implement state handling function
-			// TODO switch states on encoder button flag
+			// TODO add menu functionality
+			// TODO clear OLED
+			Driver_Relay_TurnOff();
+			GameInfo.playerScoreA = 0;
+			GameInfo.playerScoreB = 0;
 
 			// Background
 			for (int col = 0; col < LED_MATRIX_COL_NUM; col++) {
@@ -102,16 +110,22 @@ void App_StateMachine_GameTick()
 				}
 			}
 
-			if (GameInfo.ticksInState > IDLE_SLEEP_TICKS)
+			if (Driver_Encoder_PollButton())
 			{
-				App_StateMachine_SetState(GAMESTATE_SLEEP);
+				srand(GameInfo.ticksInState);
+				App_StateMachine_SetState(GAMESTATE_START);
 			}
+			// TODO sleep state
+//			if (GameInfo.ticksInState > IDLE_SLEEP_TICKS)
+//			{
+//				App_StateMachine_SetState(GAMESTATE_SLEEP);
+//			}
 			break;
 		}
 
 		case (GAMESTATE_SLEEP):
 		{
-			// TODO: Implement state handling function
+			// TODO: Get tf out of here
 			Driver_LED_Clear();
 			Driver_Display_Clear(DISPLAY_ALL);
 			break;
@@ -119,60 +133,157 @@ void App_StateMachine_GameTick()
 
 		case (GAMESTATE_START):
 		{
-			// TODO: Implement state handling function
+			// TODO animation
+			if (rand() & 0x1)
+			{
+				// A gets puck
+				App_StateMachine_SetState(GAMESTATE_WAIT_A);
+			}
+			else
+			{
+				// B gets puck
+				App_StateMachine_SetState(GAMESTATE_WAIT_B);
+			}
 			break;
 		}
 
 		case (GAMESTATE_WAIT_A):
 		{
-			// TODO: Implement state handling function
-
-			if (1) // TODO only do this once the puck is in correct location
+			// TODO animation
+			// toggle miscData every 127 ticks (about 2 Hz)
+			if (GameInfo.ticksInState & 0x7F)
 			{
-				Driver_Relay_TurnOn();
+				GameInfo.miscData = ~GameInfo.miscData;
+			}
+
+			// check if we should leave state
+			if (halleffect_cols & 0x0000FFFF)
+			{
+				App_StateMachine_SetState(GAMESTATE_RUN);
+			}
+
+			if (GameInfo.miscData)
+			{
+				Driver_LED_SetColor(0, 0, (Color) {0xff, 0x00, 0x00});
+			}
+			else
+			{
+				Driver_LED_SetColor(0, 0, (Color) {0x00, 0x00, 0x00});
 			}
 			break;
 		}
 
 		case (GAMESTATE_WAIT_B):
 		{
-			// TODO: Implement state handling function
-
-			if (1) // TODO only do this once the puck is in correct location
+			// TODO animation
+			// toggle miscData every 127 ticks (about 2 Hz)
+			if (GameInfo.ticksInState & 0x7F)
 			{
-				Driver_Relay_TurnOn();
+				GameInfo.miscData = ~GameInfo.miscData;
+			}
+
+			// check if we should leave state
+			if (halleffect_cols & 0xFFFF0000)
+			{
+				App_StateMachine_SetState(GAMESTATE_RUN);
+			}
+
+			if (GameInfo.miscData)
+			{
+				Driver_LED_SetColor(0, 0, (Color) {0x00, 0x00, 0xff});
+			}
+			else
+			{
+				Driver_LED_SetColor(0, 0, (Color) {0x00, 0x00, 0x00});
 			}
 			break;
 		}
 
 		case (GAMESTATE_RUN):
 		{
+			Driver_LED_SetColor(0, 0, (Color) {0x00, 0xff, 0x00});
+			Driver_Relay_TurnOn();
+
+			// TODO fix logic here, done for testing
+			if (!(ldr1_goal || ldr2_goal))
+			{
+				GameInfo.playerScoreA++;
+				App_StateMachine_SetState(GAMESTATE_SCORE_A);
+			}
+			if (!(ldr3_goal || ldr4_goal))
+			{
+				GameInfo.playerScoreB++;
+				App_StateMachine_SetState(GAMESTATE_SCORE_B);
+			}
+
 			break;
 		}
 
 		case (GAMESTATE_SCORE_A):
 		{
-			// TODO: Implement state handling function
+			// TODO animation and OLED
+			Driver_LED_SetColor(0, 0, (Color) {0xff, 0xff, 0x00});
+
+			if (GameInfo.playerScoreA >= GameInfo.winScore)
+			{
+				App_StateMachine_SetState(GAMESTATE_WIN_A);
+			}
+			else
+			{
+				// check if we should leave state
+				if (GameInfo.ticksInState > 1000)
+				{
+					App_StateMachine_SetState(GAMESTATE_WAIT_B);
+				}
+
+				Driver_LED_SetColor(0, 0, (Color) {0xff, 0x00, 0x00});
+			}
 			break;
 		}
 
 		case (GAMESTATE_SCORE_B):
 		{
-			// TODO: Implement state handling function
+			// TODO animation and OLED
+			Driver_LED_SetColor(0, 0, (Color) {0xff, 0x00, 0xff});
+
+			if (GameInfo.playerScoreB >= GameInfo.winScore)
+			{
+				App_StateMachine_SetState(GAMESTATE_WIN_B);
+			}
+			else
+			{
+				// check if we should leave state
+				if (GameInfo.ticksInState > 1000)
+				{
+					App_StateMachine_SetState(GAMESTATE_WAIT_A);
+				}
+
+				Driver_LED_SetColor(0, 0, (Color) {0x00, 0x00, 0xff});
+			}
 			break;
 		}
 
 		case (GAMESTATE_WIN_A):
 		{
-			// TODO: Implement state handling function
-			Driver_Relay_TurnOff();
+			// TODO animation
+			Driver_LED_SetColor(0, 0, (Color) {0x00, 0xff, 0xff});
+
+			if (GameInfo.ticksInState > 2000)
+			{
+				App_StateMachine_SetState(GAMESTATE_IDLE);
+			}
 			break;
 		}
 
 		case (GAMESTATE_WIN_B):
 		{
-			// TODO: Implement state handling function
-			Driver_Relay_TurnOff();
+			// TODO animation
+			Driver_LED_SetColor(0, 0, (Color) {0x00, 0xff, 0xff});
+
+			if (GameInfo.ticksInState > 2000)
+			{
+				App_StateMachine_SetState(GAMESTATE_IDLE);
+			}
 			break;
 		}
 
@@ -190,6 +301,7 @@ void App_StateMachine_SetState(GameState new_state)
 {
 	// Clear globals
 	GameInfo.ticksInState = 0;
+	GameInfo.miscData = 0;
 
 	// Switch states
 	GameInfo.currGameState = new_state;
