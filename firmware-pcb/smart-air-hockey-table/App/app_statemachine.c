@@ -16,6 +16,7 @@ static struct
 	uint_fast8_t winScore; // Number of points required for a player to win
 	uint_fast8_t playerScoreA; // Current number of points Player A has scored
 	uint_fast8_t playerScoreB; // Current number of points Player B has scored
+	uint_fast8_t currFrame; // current animation frame
 	uint_fast8_t miscData; // for random data within a given state
 } GameInfo;
 
@@ -39,7 +40,7 @@ void App_StateMachine_Init()
 {
 	GameInfo.currGameState = INITIAL_GAMESTATE;
 	// TODO: Make winScore modifiable by the player through the OLED menu, for now it is hard-coded to 7
-	GameInfo.winScore = 7;
+	GameInfo.winScore = 2; // TODO change back
 	GameInfo.playerScoreA = 0;
 	GameInfo.playerScoreB = 0;
 	GameInfo.miscData = 0;
@@ -62,6 +63,7 @@ void App_StateMachine_GameTick()
 			// TODO add menu functionality
 			// TODO clear OLED
 			Driver_Relay_TurnOff();
+			Driver_Display_Clear(DISPLAY_ALL);
 			GameInfo.playerScoreA = 0;
 			GameInfo.playerScoreB = 0;
 
@@ -134,6 +136,9 @@ void App_StateMachine_GameTick()
 		case (GAMESTATE_START):
 		{
 			// TODO animation
+			Driver_Display_Clear(DISPLAY_ALL);
+			Driver_Display_ShowScore(DISPLAY_ALL, GameInfo.playerScoreA, GameInfo.playerScoreB);
+
 			if (rand() & 0x1)
 			{
 				// A gets puck
@@ -164,11 +169,19 @@ void App_StateMachine_GameTick()
 
 			if (GameInfo.miscData)
 			{
-				Driver_LED_SetColor(0, 0, (Color) {0xff, 0x00, 0x00});
+				for (int col = 0; col < LED_MATRIX_COL_NUM / 2; col++) {
+					for (int row = 0; row < LED_MATRIX_ROW_NUM; row++) {
+						Driver_LED_SetColor(col, row, (Color) {0xff, 0x00, 0x00});
+					}
+				}
 			}
 			else
 			{
-				Driver_LED_SetColor(0, 0, (Color) {0x00, 0x00, 0x00});
+				for (int col = 0; col < LED_MATRIX_COL_NUM / 2; col++) {
+					for (int row = 0; row < LED_MATRIX_ROW_NUM; row++) {
+						Driver_LED_SetColor(col, row, (Color) {0x00, 0x00, 0x00});
+					}
+				}
 			}
 			break;
 		}
@@ -190,11 +203,19 @@ void App_StateMachine_GameTick()
 
 			if (GameInfo.miscData)
 			{
-				Driver_LED_SetColor(0, 0, (Color) {0x00, 0x00, 0xff});
+				for (int col = LED_MATRIX_COL_NUM / 2; col < LED_MATRIX_COL_NUM; col++) {
+					for (int row = 0; row < LED_MATRIX_ROW_NUM; row++) {
+						Driver_LED_SetColor(col, row, (Color) {0x00, 0x00, 0xff});
+					}
+				}
 			}
 			else
 			{
-				Driver_LED_SetColor(0, 0, (Color) {0x00, 0x00, 0x00});
+				for (int col = LED_MATRIX_COL_NUM / 2; col < LED_MATRIX_COL_NUM; col++) {
+					for (int row = 0; row < LED_MATRIX_ROW_NUM; row++) {
+						Driver_LED_SetColor(col, row, (Color) {0x00, 0x00, 0x00});
+					}
+				}
 			}
 			break;
 		}
@@ -205,16 +226,58 @@ void App_StateMachine_GameTick()
 			Driver_Relay_TurnOn();
 
 			// TODO fix logic here, done for testing
-			if (!(ldr1_goal || ldr2_goal))
-			{
-				GameInfo.playerScoreA++;
-				App_StateMachine_SetState(GAMESTATE_SCORE_A);
-			}
-			if (!(ldr3_goal || ldr4_goal))
+//			if (!(ldr1_goal || ldr2_goal))
+//			{
+//				GameInfo.playerScoreA++;
+//				App_StateMachine_SetState(GAMESTATE_SCORE_A);
+//			}
+//			if (!(ldr3_goal || ldr4_goal))
+//			{
+//				GameInfo.playerScoreB++;
+//				App_StateMachine_SetState(GAMESTATE_SCORE_B);
+//			}
+			if (Driver_Encoder_PollButton())
 			{
 				GameInfo.playerScoreB++;
+				Driver_Display_Clear(DISPLAY_ALL);
+				Driver_Display_ShowScore(DISPLAY_ALL, GameInfo.playerScoreA, GameInfo.playerScoreB);
 				App_StateMachine_SetState(GAMESTATE_SCORE_B);
 			}
+//			if (ldr1_goal)
+//			{
+//				Driver_LED_SetColor(0, 0, (Color) {0xff, 0xff, 0x00});
+//			}
+//			else
+//			{
+//				Driver_LED_SetColor(0, 0, (Color) {0x00, 0x00, 0x00});
+//			}
+//
+//			if (ldr2_goal)
+//			{
+//				Driver_LED_SetColor(0, 1, (Color) {0xff, 0xff, 0x00});
+//			}
+//			else
+//			{
+//				Driver_LED_SetColor(0, 1, (Color) {0x00, 0x00, 0x00});
+//			}
+//
+//			if (ldr3_goal)
+//			{
+//				Driver_LED_SetColor(0, 2, (Color) {0xff, 0xff, 0x00});
+//			}
+//			else
+//			{
+//				Driver_LED_SetColor(0, 2, (Color) {0x00, 0x00, 0x00});
+//			}
+//
+//			if (ldr4_goal)
+//			{
+//				Driver_LED_SetColor(0, 3, (Color) {0xff, 0xff, 0x00});
+//			}
+//			else
+//			{
+//				Driver_LED_SetColor(0, 3, (Color) {0x00, 0x00, 0x00});
+//			}
 
 			break;
 		}
@@ -222,8 +285,6 @@ void App_StateMachine_GameTick()
 		case (GAMESTATE_SCORE_A):
 		{
 			// TODO animation and OLED
-			Driver_LED_SetColor(0, 0, (Color) {0xff, 0xff, 0x00});
-
 			if (GameInfo.playerScoreA >= GameInfo.winScore)
 			{
 				App_StateMachine_SetState(GAMESTATE_WIN_A);
@@ -236,7 +297,11 @@ void App_StateMachine_GameTick()
 					App_StateMachine_SetState(GAMESTATE_WAIT_B);
 				}
 
-				Driver_LED_SetColor(0, 0, (Color) {0xff, 0x00, 0x00});
+				for (int col = 0; col < LED_MATRIX_COL_NUM; col++) {
+					for (int row = 0; row < LED_MATRIX_ROW_NUM; row++) {
+						Driver_LED_SetColor(col, row, (Color) {0xff, 0x00, 0x00});
+					}
+				}
 			}
 			break;
 		}
@@ -244,8 +309,6 @@ void App_StateMachine_GameTick()
 		case (GAMESTATE_SCORE_B):
 		{
 			// TODO animation and OLED
-			Driver_LED_SetColor(0, 0, (Color) {0xff, 0x00, 0xff});
-
 			if (GameInfo.playerScoreB >= GameInfo.winScore)
 			{
 				App_StateMachine_SetState(GAMESTATE_WIN_B);
@@ -258,7 +321,11 @@ void App_StateMachine_GameTick()
 					App_StateMachine_SetState(GAMESTATE_WAIT_A);
 				}
 
-				Driver_LED_SetColor(0, 0, (Color) {0x00, 0x00, 0xff});
+				for (int col = 0; col < LED_MATRIX_COL_NUM; col++) {
+					for (int row = 0; row < LED_MATRIX_ROW_NUM; row++) {
+						Driver_LED_SetColor(col, row, (Color) {0x00, 0x00, 0xff});
+					}
+				}
 			}
 			break;
 		}
@@ -266,7 +333,16 @@ void App_StateMachine_GameTick()
 		case (GAMESTATE_WIN_A):
 		{
 			// TODO animation
-			Driver_LED_SetColor(0, 0, (Color) {0x00, 0xff, 0xff});
+
+			if (GameInfo.ticksInState & 0xF)
+			{
+				GameInfo.currFrame++;
+			}
+
+			for (int row = 0; row < LED_MATRIX_ROW_NUM; row++)
+			{
+				Driver_LED_SetColor(GameInfo.currFrame, row, (Color) {0xff, 0x00, 0x00});
+			}
 
 			if (GameInfo.ticksInState > 2000)
 			{
@@ -278,7 +354,15 @@ void App_StateMachine_GameTick()
 		case (GAMESTATE_WIN_B):
 		{
 			// TODO animation
-			Driver_LED_SetColor(0, 0, (Color) {0x00, 0xff, 0xff});
+			if (GameInfo.ticksInState & 0xF)
+			{
+				GameInfo.currFrame++;
+			}
+
+			for (int row = 0; row < LED_MATRIX_ROW_NUM; row++)
+			{
+				Driver_LED_SetColor(LED_MATRIX_ROW_NUM - GameInfo.currFrame, row, (Color) {0x00, 0x00, 0xff});
+			}
 
 			if (GameInfo.ticksInState > 2000)
 			{
@@ -301,6 +385,7 @@ void App_StateMachine_SetState(GameState new_state)
 {
 	// Clear globals
 	GameInfo.ticksInState = 0;
+	GameInfo.currFrame = 0;
 	GameInfo.miscData = 0;
 
 	// Switch states
