@@ -30,7 +30,7 @@ void App_Init()
 	App_StateMachine_Init();
 
 //	uint32_t testwrite[2] = {7652, 10287344};
-//	Driver_Eeprom_Write_Page(0x2000, testwrite, 2);
+//	Driver_Eeprom_Write_Page(0x8000, rainbow, 574);
 //	uint32_t testread[2] = {0, 0};
 //	Driver_Eeprom_Read_Data(0x4000, testread, 2);
 //	asm("nop");
