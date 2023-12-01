@@ -4,6 +4,7 @@
 #include <inttypes.h>
 
 #include "app_core.h"
+#include "driver_led.h"
 
 uint8_t highlighted_area_size[LED_MATRIX_COL_NUM][LED_MATRIX_ROW_NUM] =
     {

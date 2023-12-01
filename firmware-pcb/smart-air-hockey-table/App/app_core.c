@@ -16,10 +16,6 @@
 //static uint_fast32_t ticks_completed = 0;
 //static uint_fast32_t ticks_missed;
 
-int abs(int val) {
-	return (val > 0) * val + (val <= 0) * -val;
-}
-
 void App_Init()
 {
 	// Configure SysTick to have 1 ms time based on 160 MHz, used by LL_mDelay

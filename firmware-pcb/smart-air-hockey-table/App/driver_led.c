@@ -20,7 +20,7 @@ uint_fast16_t brightness[LED_BRIGHTNESS_LEVELS] = {0, 0x14, 0x1f, 0x2f, 0x3f, 0x
 
 static uint8_t led_buffer[LED_CHANNELS][LED_CHANNEL_LENGTH] = {0};
 static bool is_transfer_requested;
-static volatile uint_fast8_t active_transfers_mask; // non-volatile: GPDMA1_Channel0123_Handler has lower priority
+static uint_fast8_t active_transfers_mask; // non-volatile: GPDMA1_Channel0123_Handler has lower priority
 
 void Driver_LED_Init()
 {
