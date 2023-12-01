@@ -25,6 +25,62 @@ static struct
 	uint_fast8_t miscData; // for random data within a given
 } GameInfo;
 
+static char bars[13][24] = {
+		"    |\t\t            |",
+		"    |\t \t           |",
+		"    |\t  \t          |",
+		"    |\t   \t         |",
+		"    |\t    \t        |",
+		"    |\t     \t       |",
+		"    |\t      \t      |",
+		"    |\t       \t     |",
+		"    |\t        \t    |",
+		"    |\t         \t   |",
+		"    |\t          \t  |",
+		"    |\t           \t |",
+		"    |\t            \t|",
+};
+
+static Color trail_color[32] = {
+    {0xff, 0x00, 0x00},
+    {0xff, 0x00, 0x00},
+    {0xff, 0x00, 0x00},
+    {0xff, 0x00, 0x00},
+    {0xff, 0x00, 0x00},
+    {0xff, 0x00, 0x00},
+    {0xff, 0x00, 0x00},
+    {0xff, 0x00, 0x00},
+    {0xff, 0x00, 0x1e},
+    {0xff, 0x00, 0x3c},
+    {0xff, 0x00, 0x5a},
+    {0xff, 0x00, 0x78},
+    {0xff, 0x00, 0x96},
+    {0xff, 0x00, 0xb4},
+    {0xff, 0x00, 0xd2},
+    {0xff, 0x00, 0xf0},
+    {0xf0, 0x00, 0xff},
+    {0xd2, 0x00, 0xff},
+    {0xb4, 0x00, 0xff},
+    {0x96, 0x00, 0xff},
+    {0x78, 0x00, 0xff},
+    {0x5a, 0x00, 0xff},
+    {0x3c, 0x00, 0xff},
+    {0x1e, 0x00, 0xff},
+    {0x00, 0x00, 0xff},
+    {0x00, 0x00, 0xff},
+    {0x00, 0x00, 0xff},
+    {0x00, 0x00, 0xff},
+    {0x00, 0x00, 0xff},
+    {0x00, 0x00, 0xff},
+    {0x00, 0x00, 0xff},
+    {0x00, 0x00, 0xff},
+};
+
+static Coordinate trail[128] = {0};
+static int32_t trail_start = 0;
+static int32_t trail_end = 0;
+static int32_t trail_size = 0;
+
 void App_StateMachine_Init()
 {
 	GameInfo.currGameState = INITIAL_GAMESTATE;
@@ -278,10 +334,25 @@ void App_StateMachine_GameTick()
 			}
 
 			if (col_pos != -1 && row_pos != -1) {
-				for (int i = 0; i < highlighted_area_size[col_pos][row_pos]; i++) {
-					Driver_LED_SetColor(highlighted_area[col_pos][row_pos][i].col, highlighted_area[col_pos][row_pos][i].row, (Color) { 0xff, 0xff, 0 });
-				}
+                trail[trail_end].col = col_pos;
+                trail[trail_end++].row = row_pos;
+                trail_end %= 128;
+
+                if (trail_size <= 128) {
+                    trail_size++;
+                } else {
+                	trail_start = (trail_size + 1) % 128;
+                }
 			}
+
+            for (int i = 0; i < trail_size; i++) {
+            	uint8_t col = trail[(trail_start + i) % 128].col;
+            	uint8_t row = trail[(trail_start + i) % 128].row;
+
+				for (int j = 0; j < highlighted_area_size[col][row]; j++) {
+					Driver_LED_SetColor(highlighted_area[col][row][j].col, highlighted_area[col][row][j].row, trail_color[col]);
+				}
+            }
 
 			if (ldr1_goal || ldr2_goal)
 			{
