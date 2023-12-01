@@ -59,6 +59,9 @@ static inline void transmit_stop()
 	LL_SPI_SuspendMasterTransfer(SPI2);
 	LL_SPI_ClearFlag_SUSP(SPI2);
 	LL_SPI_Disable(SPI2);
+	LL_SPI_SetDataWidth(SPI2, LL_SPI_DATAWIDTH_8BIT);
+	LL_SPI_Enable(SPI2);
+	LL_SPI_StartMasterTransfer(SPI2);
 }
 
 void Driver_Eeprom_Init()

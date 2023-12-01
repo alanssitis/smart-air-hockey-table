@@ -10,6 +10,7 @@
 #include "driver_relay.h"
 #include "driver_halleffect.h"
 #include "driver_goal.h"
+#include "driver_eeprom.h"
 #include "precomputed_highlightpos.h"
 #include "precomputed_rainbow.h"
 
@@ -28,8 +29,12 @@ static struct
 void App_StateMachine_Init()
 {
 	GameInfo.currGameState = INITIAL_GAMESTATE;
-	GameInfo.winScore = 7;
-	GameInfo.brightness = LED_BRIGHTNESS_LEVELS / 2;
+//	GameInfo.winScore = 7;
+//	GameInfo.brightness = LED_BRIGHTNESS_LEVELS / 2;
+	uint32_t load_data[2] = { 0, 0 };
+	Driver_Eeprom_Read_Data(0x4000, load_data, 2);
+	GameInfo.winScore = (uint8_t) load_data[0];
+	GameInfo.brightness = (uint8_t) load_data[1];
 	GameInfo.miscData = 0;
 }
 
@@ -46,8 +51,12 @@ void App_StateMachine_GameTick()
 	{
 		case (GAMESTATE_IDLE):
 		{
+			static int_fast8_t selection;
+			static bool modifying = false;
+
 			if (GameInfo.ticksInState == 1) // Runs on first tick only
 			{
+				selection = 0;
 				Driver_Encoder_SetActive(true);
 
 				Driver_Display_Print(DISPLAY_0, 0, 0, "\tSmart Air Hockey Menu");
@@ -56,9 +65,6 @@ void App_StateMachine_GameTick()
 				Driver_Display_Print(DISPLAY_0, 4, 2, "Start Game");
 			}
 
-			static bool modifying = false;
-			static int_fast8_t selection = 0;
-
 			if (Driver_Encoder_PollButton())
 			{
 				if (selection == 2)
@@ -66,6 +72,8 @@ void App_StateMachine_GameTick()
 					Driver_Display_Clear(DISPLAY_0);
 					Driver_Encoder_SetActive(false);
 					srand(GameInfo.ticksInState);
+					uint32_t save_data[2] = { (uint32_t) GameInfo.winScore, (uint32_t) GameInfo.brightness };
+					Driver_Eeprom_Write_Page(0x4000, save_data, 2);
 					App_StateMachine_SetState(GAMESTATE_START);
 					break;
 				}
@@ -365,6 +373,8 @@ void App_StateMachine_GameTick()
 
 			if (GameInfo.ticksInState > 2000)
 			{
+				GameInfo.playerScoreA = 0;
+				GameInfo.playerScoreB = 0;
 				App_StateMachine_SetState(GAMESTATE_IDLE);
 				break;
 			}
@@ -386,6 +396,8 @@ void App_StateMachine_GameTick()
 
 			if (GameInfo.ticksInState > 2000)
 			{
+				GameInfo.playerScoreA = 0;
+				GameInfo.playerScoreB = 0;
 				App_StateMachine_SetState(GAMESTATE_IDLE);
 				break;
 			}
