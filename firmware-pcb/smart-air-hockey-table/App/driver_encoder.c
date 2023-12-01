@@ -41,6 +41,10 @@ void Driver_Encoder_SetActive(bool active)
 	{
 		NVIC_DisableIRQ(EXTI5_IRQn);
 		LL_TIM_DisableCounter(TIM3);
+
+		// Poll to clear before deactivating
+		Driver_Encoder_PollButton();
+		Driver_Encoder_PollRotation();
 	}
 }
 
