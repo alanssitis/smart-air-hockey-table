@@ -10,6 +10,7 @@
 #include "driver_goal.h"
 #include "driver_relay.h"
 #include "driver_halleffect.h"
+#include "driver_eeprom.h"
 
 //static volatile uint_fast32_t ticks_elapsed; // volatile: TIM6_Handler has higher priority
 //static uint_fast32_t ticks_completed = 0;
@@ -27,9 +28,16 @@ void App_Init()
 	Driver_LED_Init();
 	Driver_Display_Init();
 	Driver_Encoder_Init();
+	Driver_Eeprom_Init();
 
 	// Last step: set initial state
 	App_StateMachine_Init();
+
+//	uint32_t testwrite[2] = {7652, 10287344};
+//	Driver_Eeprom_Write_Page(0x2000, testwrite, 2);
+//	uint32_t testread[2] = {0, 0};
+//	Driver_Eeprom_Read_Data(0x4000, testread, 2);
+//	asm("nop");
 
 	// Start 1000 Hz "superloop"
 //	LL_TIM_SetUpdateSource(TIM6, LL_TIM_UPDATESOURCE_COUNTER);

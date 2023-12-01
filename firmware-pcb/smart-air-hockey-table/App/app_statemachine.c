@@ -283,57 +283,16 @@ void App_StateMachine_GameTick()
 				}
 			}
 
-			// TODO fix logic here, done for testing
-//			if (!(ldr1_goal || ldr2_goal))
-//			{
-//				GameInfo.playerScoreA++;
-//				App_StateMachine_SetState(GAMESTATE_SCORE_A);
-//			}
-//			if (!(ldr3_goal || ldr4_goal))
-//			{
-//				GameInfo.playerScoreB++;
-//				App_StateMachine_SetState(GAMESTATE_SCORE_B);
-//			}
-			if (Driver_Encoder_PollButton())
+			if (ldr1_goal || ldr2_goal)
 			{
 				GameInfo.playerScoreA++;
 				App_StateMachine_SetState(GAMESTATE_SCORE_A);
 			}
-//			if (ldr1_goal)
-//			{
-//				Driver_LED_SetColor(0, 0, (Color) {0xff, 0xff, 0x00});
-//			}
-//			else
-//			{
-//				Driver_LED_SetColor(0, 0, (Color) {0x00, 0x00, 0x00});
-//			}
-//
-//			if (ldr2_goal)
-//			{
-//				Driver_LED_SetColor(0, 1, (Color) {0xff, 0xff, 0x00});
-//			}
-//			else
-//			{
-//				Driver_LED_SetColor(0, 1, (Color) {0x00, 0x00, 0x00});
-//			}
-//
-//			if (ldr3_goal)
-//			{
-//				Driver_LED_SetColor(0, 2, (Color) {0xff, 0xff, 0x00});
-//			}
-//			else
-//			{
-//				Driver_LED_SetColor(0, 2, (Color) {0x00, 0x00, 0x00});
-//			}
-//
-//			if (ldr4_goal)
-//			{
-//				Driver_LED_SetColor(0, 3, (Color) {0xff, 0xff, 0x00});
-//			}
-//			else
-//			{
-//				Driver_LED_SetColor(0, 3, (Color) {0x00, 0x00, 0x00});
-//			}
+			if (ldr3_goal || ldr4_goal)
+			{
+				GameInfo.playerScoreB++;
+				App_StateMachine_SetState(GAMESTATE_SCORE_B);
+			}
 
 			break;
 		}
