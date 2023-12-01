@@ -11,6 +11,7 @@
 #include "driver_halleffect.h"
 #include "driver_goal.h"
 #include "precomputed_highlightpos.h"
+#include "precomputed_rainbow.h"
 
 static struct
 {
@@ -28,7 +29,7 @@ void App_StateMachine_Init()
 {
 	GameInfo.currGameState = INITIAL_GAMESTATE;
 	GameInfo.winScore = 7;
-	GameInfo.brightness = LED_BRIGHTNESS_LEVELS - 1;
+	GameInfo.brightness = LED_BRIGHTNESS_LEVELS / 2;
 	GameInfo.miscData = 0;
 }
 
@@ -64,7 +65,6 @@ void App_StateMachine_GameTick()
 				{
 					Driver_Display_Clear(DISPLAY_0);
 					Driver_Encoder_SetActive(false);
-					brightness_idx = GameInfo.brightness; // Tells the LED driver the chosen brightness
 					srand(GameInfo.ticksInState);
 					App_StateMachine_SetState(GAMESTATE_START);
 					break;
@@ -96,6 +96,7 @@ void App_StateMachine_GameTick()
 						GameInfo.brightness += rotation;
 						if (GameInfo.brightness < 0) GameInfo.brightness = 0;
 						else if (GameInfo.brightness > LED_BRIGHTNESS_LEVELS - 1) GameInfo.brightness = LED_BRIGHTNESS_LEVELS - 1;
+						brightness_idx = GameInfo.brightness; // Mirror the brightness to the LED driver
 						Driver_Display_Print(DISPLAY_0, 3, 14, "%3"PRIuFAST8, GameInfo.brightness);
 					}
 				}
@@ -128,12 +129,14 @@ void App_StateMachine_GameTick()
 				}
 			}
 
-			// TODO: Rainbow LED matrix
-
-			/*if (Driver_Encoder_PollButton())
+			for (uint_fast8_t col = 0; col < LED_MATRIX_COL_NUM; col++)
 			{
-
-			}*/
+				for (uint_fast8_t row = 0; row < LED_MATRIX_ROW_NUM; row++)
+				{
+					uint_fast32_t i = (GameInfo.ticksInState + (col + row) * 16) % (sizeof(rainbow) / sizeof(Color));
+					Driver_LED_SetColor(col, row, rainbow[i]);
+				}
+			}
 
 			// TODO sleep state
 //			if (GameInfo.ticksInState > IDLE_SLEEP_TICKS)

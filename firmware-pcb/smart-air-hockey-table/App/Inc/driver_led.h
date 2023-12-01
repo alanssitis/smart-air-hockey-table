@@ -21,6 +21,6 @@ void Driver_LED_Clear();
 void Driver_LED_Tick();
 void GPDMA1_Channel0123_Handler(uint_fast8_t channel);
 
-extern volatile int brightness_idx;
+extern uint_fast8_t brightness_idx;
 
 #endif /* INC_DRIVER_LED_H_ */
