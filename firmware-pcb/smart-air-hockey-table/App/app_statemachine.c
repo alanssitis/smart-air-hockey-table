@@ -103,7 +103,6 @@ void App_StateMachine_GameTick()
 				Driver_Display_Print(DISPLAY_0, 2, 0, "> Score Limit: %2"PRIuFAST8, GameInfo.winScore);
 				Driver_Display_Print(DISPLAY_0, 3, 2, "Brightness: %3"PRIuFAST8, GameInfo.brightness);
 				Driver_Display_Print(DISPLAY_0, 4, 2, "Start Game");
-				Driver_Display_Print(DISPLAY_0, 7, 0, "%5"PRIuFAST32, sizeof(rainbow));
 			}
 
 			if (Driver_Encoder_PollButton())
