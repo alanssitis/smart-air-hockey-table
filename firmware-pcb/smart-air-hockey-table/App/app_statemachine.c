@@ -25,22 +25,6 @@ static struct
 	uint_fast8_t miscData; // for random data within a given
 } GameInfo;
 
-static char bars[13][24] = {
-		"    |\t\t            |",
-		"    |\t \t           |",
-		"    |\t  \t          |",
-		"    |\t   \t         |",
-		"    |\t    \t        |",
-		"    |\t     \t       |",
-		"    |\t      \t      |",
-		"    |\t       \t     |",
-		"    |\t        \t    |",
-		"    |\t         \t   |",
-		"    |\t          \t  |",
-		"    |\t           \t |",
-		"    |\t            \t|",
-};
-
 static Color trail_color[32] = {
     {0xff, 0x00, 0x00},
     {0xff, 0x00, 0x00},
