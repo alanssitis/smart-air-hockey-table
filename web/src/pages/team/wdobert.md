@@ -7,6 +7,54 @@ title: Will Dobert Progress Report
 
 ---
 
+## Week 14 & 15
+
+**Date:** 12/1/2023 \
+**Project Hours Since Last Report:** 50 \
+**Cumulative Semester Project Hours:** 189
+
+### Description of Project Design Efforts
+
+#### Everything Table Construction
+
+In the first few days of week 14, the team spent considerable time working in the lab to attempt to finish constructing the table. Although there was too much done to succinctly cover in this report, I remember plenty of drilling, screwing, sawing, dremeling, filing, cutting wires, stripping wires, soldering wires, heatshrinking wires, cable managing, and incremental testing. We spent a couple of very late hours in the lab tracking down a tricky bug with our LED matrix, only for it to somehow be solved by giving up and moving on with assembling the matrix. There were some instances of questionable carpentry decisions being made, but it all turned out fine in the end. Although soldering pin headers to the sensor PCBs and screwing them into the table were time consuming in their own right, plugging in the wires and taping them down proved to be even worse. I am thankful that, due to our efforts, the end result looks fairly impressive.
+
+![Assembly Commences](/477grp5/team/will/20231119_155932.jpg)
+_Figure 1: Early stages of assembling the LED matrix_
+
+#### Goal Chutes Are Difficult
+
+As the table took form, I was finally able to slot in the test jig I mentioned in the previous report. After making a couple small adjustments to the dimensions, I was finally satisfied with the design. Due to the nature of 3D printing, the mounting tabs I mentioned previously were deleted to reduce the amount of support material and time required to print the chutes. Hot glue became our mounting hardware of choice after making this change. Although the design performed fine in tests, a problem was revealed once placed into the goal slot of the table. In some rare cases, the puck can become stuck in the goal chute; this requires the user to hit the top of the goal to dislodge it. The goal chute design was made more spacious to eliminate the possibility of the puck getting stuck. Since 3D printing is time consuming, the fixed design and the lower portion of the chute were not printed in time for our final demo, and there seems to be little chance of the team addressing this issue.
+
+#### Designing Various Plastic Parts
+
+To nicely mount the PCB and the power supply to the underside of the table, I quickly designed a couple of mounting brackets. The night before our final demo, I also designed a pusher for the players to strike the puck with.
+
+![PCB Mount](/477grp5/team/will/pcb_bracket.png)
+_Figure 2: PCB mounting bracket_
+
+![PSU Mount](/477grp5/team/will/psu_bracket.png)
+_Figure 3: Power supply mounting bracket_
+
+![Pusher](/477grp5/team/will/pusher.png)
+_Figure 4: Simple pusher_
+
+#### Firming Up Firmware
+
+My only big task with firmware this week was to implement the idle state that our table enters upon powering on or finishing a game. The two components to this are the menu system and the idle animation. I've prototyped the menu system in the past, but I started from scratch this time to make sure it was written with our current firmware in mind. It includes configurable options for maximum score and LED brightness. The idle animation is an eye-catching rainbow gradient flowing across the table.
+
+<video controls muted>
+  <source src="/477grp5/team/will/20231130_182435.mp4" type="video/mp4">
+</video>
+
+_Figure 5: Idle animation_
+
+#### Next Steps
+
+The Spark Challenge is next week, so polishing up the overall experience of our project in preparation for that would be ideal. I will attempt to assemble a 2nd OLED display, and install it if assembly goes fine.
+
+---
+
 ## Week 13
 
 **Date:** 11/17/2023 \
