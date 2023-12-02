@@ -5,6 +5,46 @@ title: Alan Chung Ma Progress Report
 
 # Progress Report for Alan
 
+## Week 14 & 15
+
+**Date:** 2023-12-01 \
+**Week Hours:** 50 \
+**Total Hours:** 203
+
+### Description of Project Design Efforts
+
+This was the last push for the demo, everything was finished in time for the final demo.
+
+#### Finishing the Table
+
+Basically installing everything on the table such as the wires and sensor boards. Once we got it all connected together, Will got a rainbow backlight going.
+
+| Before | After |
+| --- | --- |
+| ![picture 1](/477grp5/team/alan/week15/figure1.jpg) | ![picture 1](/477grp5/team/alan/week15/figure2.jpg) |
+
+#### Setting up a Background
+
+I played around with setting up a static background, below is the ice hockey design we tried but it did not look good. We ended up going with a solid background since that looked best.
+ 
+![picture 1](/477grp5/team/alan/week15/figure3.jpg)
+
+#### Integrating separate components
+
+I helped integrate the background with the encoder and OLED. It was rather simple but we discovered a few bugs and added some logic for the encoder to control the brightness.
+
+#### Trail Animations
+
+I worked on the logic that created the trail. It was a simple circular buffer. More work will need to be done so that it behaves as expected but it looks pretty good.
+
+<video controls muted>
+  <source src="/477grp5/team/alan/week15/video1.mp4" type="video/mp4">
+</video>
+
+### Next Steps
+
+We have finished the demo. The remaining effort will be to clean up the resulting table for Spark challenge and all the deliverables left for the course.
+
 ## Week 13
 
 **Date:** 2023-11-17 \
