@@ -5,6 +5,113 @@ title: Trevor Moorman Progress Report
 
 # Progress Report for Trevor
 
+## Week 14 & 15
+
+**Date:** 12/1/2023 \
+**Project Hours Since Last Report:** 51 \
+**Cumulative Semester Project Hours:** 219
+
+### Description of Individual Project Work Efforts:
+
+**A13a - Draft of ABET Senior Design Report**
+
+- Uploaded the template document to the team's shared drive.
+- Filled in my section.
+- Assisted in filling out the team section.
+
+**Firmware**
+
+External EEPROM Driver (App/driver_eeprom.c):
+
+- Reduced EEPROM instructions available from the driver in comparison to the basis created in week 12 given new knowledge on the team's required use of the external EEPROM.
+- Debugged both individually and with Ben by using the oscilloscope to both manually view the SPI's output and perform automatic serial decoding on the SPI's output.
+
+<img src="/477grp5/team/trevor/Trevor_Week14-15_EepromDebugging.jpg" width="50%">
+
+_Figure 1: Oscilloscope output while debugging the external EEPROM driver (D_1 == MISO, D_2 == CS, D_3 == MOSI, D_4 = CLK)._
+
+- Implemented the driver into the overall project with the team.
+
+State Machine (App/app_statemachine.c):
+
+- Worked with Ben to implement each state (except for the "idle" state which was reserved for Alan and Will). A brief description of each state is below. For specifics on the state machine as a whole, see [A8](</477grp5/documents/A8 - Software Formalization.docx>). The following will briefly describe how Ben and I implemented each state.
+- Start: Clear menu from OLED displays, show score ("0-0") on both OLED displays, randomly choose which player starts with the puck.
+- Wait A/B: Play waiting animation, wait for the puck to be placed on that side.
+- Run: Turn on centrifugal blower, display background on LEDs, display trail of puck on LEDs, check if either player scored.
+- Score A/B: Immediately switch to "Win A/B" if the player has met the score requirement, otherwise play score animation before returning to "Run".
+- Win A/B: Play win animation before returning to "Idle"
+- Worked with Ben to implement actions performed when switching between states. Besides re-initializing variables relating to the current state, switching between states automatically updates the table's background LEDs, OLEDs' display, and relay's state when appropriate based on the previous state.
+
+Animations:
+
+- After filling in the state machine as described above, Ben and I created all animations required besides the idle animation. Note that each animation has an A and B variant, so each player can have a unique animation for each.
+- Wait Animation: The side of the player starting with the puck blinks their color.
+- Score Animation: Immediately completely color the table's LEDs with the color of the player that scored.
+- Win Animation: Slowly fill the table with the winning player's color column-by-column starting at the winning player's side.
+
+**Table Construction**
+
+- Added a #12x4" wood screw purchased from Menards where the length-wise support attached to each table leg. Hopefully, this will prevent the supports from warping and pulling out from the table's leg.
+- Created and installed four bus bars. The four bus bars will provide two sources of ground and two sources of 5V to the sensor PCBs, which reduces voltage drop off along the chain.
+
+<img src="/477grp5/team/trevor/Trevor_Week14-15_BusBar" width="50%">
+| <img src="/477grp5/team/trevor/Trevor_Week14-15_AssembledLeft.jpg" width="50%"> | <img src="/477grp5/team/trevor/Trevor_Week14-15_AssembledRight.jpg" width="50%"> |
+| :------------------------------------------------------------------------------ | :---------------------------------------------------------------- |
+
+_Figure 2: On the top, an example of an installed bus bar. On the bottom-left, both installed bus bars on player B's side of the table. On the bottom-right, both installed bus bars on Player A's side of the table._
+
+- The team worked together to painstakingly screw each sensor PCB into the MDF. Next, the sensor PCBs were wired together into rows and columns and connected to the bus bars. These wires were then twisted and taped down with white duct tape to prevent them from pushing on the acrylic or obscuring the sensor PCBs' LEDs. Then, the compressed hall effect outputs were wired from the output edges of the sensor PCBs to the master PCB (this required creating long female-to-female DuPont wires by soldering a female DuPont wire head to both ends of a long strand of 24-gauge braided wire).
+
+| <img src="/477grp5/team/trevor/Trevor_Week14-15_AssemblingVertical.jpg" width="50%"> |
+| :----------------------------------------------------------------- |
+| <img src="/477grp5/team/trevor/Trevor_Week14-15_AssemblingHorizontal" width="50%"> |
+| <img src="/477grp5/team/trevor/Trevor_Week14-15_AssembledFull" width="50%"> |
+
+_Figure 3: Snapshots of the table's progress going chronologically from top to bottom._
+
+- Ben and I finished constructing both ends of the table. This involved using a hot glue gun to attach two pairs of LDRs and white LEDs to each goal, using a hot glue gun to mount the goal, covering the top of the end with duct-taped cardboard, and shaping a piece of cardboard as the "puck catcher" from the goal. Note that Will cut the cardboard for us, and Alan drilled the holes into the goal for the LDR and white LED pair.
+
+<img src="/477grp5/team/trevor/Trevor_Week14-15_TODO" width="50%">
+
+_Figure 4: Table with the completed ends._
+
+**Final Project Demo**
+
+- Demonstrated the final project's capabilities alongside the rest of the team.
+
+**Project Housekeeping**
+
+- Throughout the past two weeks, I created and loosely maintained a "Final Demo To Do List" on the team's whiteboard.
+- After the final demo, I assisted in cleaning the first level of the team's workstation. Most lab-owned equipment has been returned and trash removed from the station. The team still needs to determine how leftover parts will be handled.
+
+**Project Media**
+- Throughout the past two weeks, I have been taking pictures and videos of the team's progress. Some of these images and videos were used in our progress reports and some will appear on the team's media page later.
+
+### Next Steps:
+
+**A13b - Final Revision of ABET Senior Design Report**
+
+- Once feedback is received, then I will revise my section and work with the team to revise the team's section.
+
+**Final Presentation**
+
+- The team will need to create the final presentation slideshow.
+- The team will need to create the demonstration video that will be used for the Spark Challenge as well.
+
+**Spark Challenge**
+
+- The team will need to create a poster for the project's display.
+- The team will need to transport the project to MSEE with the building deputy director's assistance.
+- The team will need to prepare to present the project to the Spark Challenge judges.
+- The team will need to create a demonstration video that will be used for the final presentation as well.
+
+**Project Housekeeping**
+
+- Project Workstation: The team's workstation will need to be completely cleaned before the end of the semester. This includes determining which leftover parts the team is interested in keeping and which can be donated to future senior design projects.
+- Project [Website](https://engineering.purdue.edu/477grp5/): The team needs to update the team's website. This includes adding all new project documents and uploading new media.
+- Project [Source](https://github.com/alanssitis/smart-air-hockey-table/): The team needs to tag the firmware used for the demonstration as a release. Then, the team can continue to add features before the Spark Challenge or clean up the repository.
+- Project Future: The team needs to determine what change, if any, will be made to the project before Spark Challenge. The team also needs to determine what happens to the table after Spark Challenge.
+
 ## Week 13
 
 **Date:** 11/17/2023 \
