@@ -5,6 +5,86 @@ title: Ben Owen Progress Report
 
 # Progress Report for Ben
 
+## Weeks 14-15
+
+**Date:** 2023-11-17 \
+**Project Hours Since Last Report:** 50 \
+**Total Hours:** 212
+
+### Description of Project Design Efforts
+
+We out here.  Gonna keep it shorter for the TA since I know you have probably quite a few of these to grade.
+
+**Foam**
+
+We mounted MDF supports on the inside of our table's air chamber and used spray foam to help seal any edges.
+
+<img src="/477grp5/team/ben/week14-foam.jpg" width="80%">
+
+_Figure 1: Foam_
+
+**PCB soldering, mounting, and wiring**
+
+We soldered the remaining sets of pin headers to the PCBs.  Afterwards, we mounted them to the MDF with small screws and began the tedious process of wiring the boards together.  A picture of this process can be seen in Figure 2.
+
+<img src="/477grp5/team/ben/week14-pcbs.jpg" width="80%">
+
+_Figure 2: PCBs_
+
+**Bus bars**
+
+Trevor and I cut and soldered the bus bars, providing 16 sets of power to the PCBs on the table.  These are connected to our 5V power supply and dispurses the power to all PCB rows.  This is necessary to avoid voltage drop and power loss (heat) for a maximum of around 100W of power when the LEDs are all on full brightness.  A picture of one of the bus bars can be seen in Figure 3.
+
+<img src="/477grp5/team/ben/week14-bus-bars.jpg" width="80%">
+
+_Figure 3: Bus bars_
+
+**PCB external wiring**
+
+Once the PCBs were mounted and wired together, we had to wire the LED signal connections and hall effect sensor connections to the master PCB.  Afterwards, we tested these connections before mounting acrylic.
+
+<img src="/477grp5/team/ben/week14-pcb-testing.jpg" width="80%">
+
+_Figure 4: Testing sensor PCBs_
+
+**Mounting acrylic**
+
+I designed and 3D printed the spacers to hold the acrylic sheet.  This allowed us to mount the acrylic in its final position and test the hall effect sensitivity.  A picture of this testing can be seen in Figure 5.
+
+<img src="/477grp5/team/ben/week14-hall-effect.jpg" width="80%">
+
+_Figure 5: Hall effect testing_
+
+**EEPROM testing**
+
+Trevor and I worked on the EEPROM to meet our bonus PSDR.  For this, we probed onto the EEPROM with our Revision A master PCB and used the scope to look at the SPI signals.  We figured out multiple issues and added a driver to read and write to the EEPROM, which is how we store/load game information and load some animation data for the PSDR.
+
+<img src="/477grp5/team/ben/week14-eeprom.jpg" width="80%">
+
+_Figure 6: EEPROM probing_
+
+**Goal detection and mounting**
+
+We printed and mounted the puck goals into their final position, gluing the LDR and LED pairs for goal detection.  The following sections have no images due to the time during the day when they were completed :)
+
+**Top cover manufacturing**
+
+We assembled a top cover for the goal areas using thick cardboard from our acrylic shipping box and duct tape.  This provides a smooth surface and a nice surface finish.
+
+**State machine**
+
+With final hardware, we finished the game logic state machine to handle a menu system, lighting effects, puck trail, goal detection, scoring and winning animations, and everything else involved in the game.
+
+**Project demo**
+
+We also had our project demo, and met all 5 PSDRs and both bonus PSDRs.
+
+### Next steps
+
+- Finishing touches for SPARK challenge
+
+---
+
 ## Week 13
 
 **Date:** 2023-11-17 \
