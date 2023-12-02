@@ -54,8 +54,9 @@ Animations:
 - Added a #12x4" wood screw purchased from Menards where the length-wise support attached to each table leg. Hopefully, this will prevent the supports from warping and pulling out from the table's leg.
 - Created and installed four bus bars. The four bus bars will provide two sources of ground and two sources of 5V to the sensor PCBs, which reduces voltage drop off along the chain.
 
-<img src="/477grp5/team/trevor/Trevor_Week14-15_BusBar" width="50%">
-| <img src="/477grp5/team/trevor/Trevor_Week14-15_AssembledLeft.jpg" width="50%"> | <img src="/477grp5/team/trevor/Trevor_Week14-15_AssembledRight.jpg" width="50%"> |
+<img src="/477grp5/team/trevor/Trevor_Week14-15_BusBar.jpg" width="50%">
+
+| <img src="/477grp5/team/trevor/Trevor_Week14-15_AssembledLeft.jpg" width="80%"> | <img src="/477grp5/team/trevor/Trevor_Week14-15_AssembledRight.jpg" width="80%"> |
 | :------------------------------------------------------------------------------ | :---------------------------------------------------------------- |
 
 _Figure 2: On the top, an example of an installed bus bar. On the bottom-left, both installed bus bars on player B's side of the table. On the bottom-right, both installed bus bars on Player A's side of the table._
@@ -64,14 +65,14 @@ _Figure 2: On the top, an example of an installed bus bar. On the bottom-left, b
 
 | <img src="/477grp5/team/trevor/Trevor_Week14-15_AssemblingVertical.jpg" width="50%"> |
 | :----------------------------------------------------------------- |
-| <img src="/477grp5/team/trevor/Trevor_Week14-15_AssemblingHorizontal" width="50%"> |
-| <img src="/477grp5/team/trevor/Trevor_Week14-15_AssembledFull" width="50%"> |
+| <img src="/477grp5/team/trevor/Trevor_Week14-15_AssemblingHorizontal.jpg" width="50%"> |
+| <img src="/477grp5/team/trevor/Trevor_Week14-15_AssembledFull.jpg" width="50%"> |
 
 _Figure 3: Snapshots of the table's progress going chronologically from top to bottom._
 
 - Ben and I finished constructing both ends of the table. This involved using a hot glue gun to attach two pairs of LDRs and white LEDs to each goal, using a hot glue gun to mount the goal, covering the top of the end with duct-taped cardboard, and shaping a piece of cardboard as the "puck catcher" from the goal. Note that Will cut the cardboard for us, and Alan drilled the holes into the goal for the LDR and white LED pair.
 
-<img src="/477grp5/team/trevor/Trevor_Week14-15_TODO" width="50%">
+<img src="/477grp5/team/trevor/Trevor_Week14-15_CompletedEnd.jpg" width="50%">
 
 _Figure 4: Table with the completed ends._
 
