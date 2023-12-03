@@ -10,9 +10,10 @@
 #include "driver_goal.h"
 #include "driver_relay.h"
 #include "driver_halleffect.h"
+#include "driver_eeprom.h"
 
 //static volatile uint_fast32_t ticks_elapsed; // volatile: TIM6_Handler has higher priority
-static uint_fast32_t ticks_completed;
+//static uint_fast32_t ticks_completed = 0;
 //static uint_fast32_t ticks_missed;
 
 void App_Init()
@@ -23,9 +24,16 @@ void App_Init()
 	Driver_LED_Init();
 	Driver_Display_Init();
 	Driver_Encoder_Init();
+	Driver_Eeprom_Init();
 
 	// Last step: set initial state
 	App_StateMachine_Init();
+
+//	uint32_t testwrite[2] = {7652, 10287344};
+//	Driver_Eeprom_Write_Page(0x8000, rainbow, 574);
+//	uint32_t testread[2] = {0, 0};
+//	Driver_Eeprom_Read_Data(0x4000, testread, 2);
+//	asm("nop");
 
 	// Start 1000 Hz "superloop"
 //	LL_TIM_SetUpdateSource(TIM6, LL_TIM_UPDATESOURCE_COUNTER);
@@ -34,12 +42,16 @@ void App_Init()
 	LL_TIM_EnableIT_UPDATE(TIM7);
 //	LL_TIM_EnableCounter(TIM6);
 	LL_TIM_EnableCounter(TIM7);
+
+	Driver_LED_Clear();
 }
 
 void TIM6_Handler()
 {
 //	ticks_elapsed++;
 }
+
+
 
 void TIM7_Handler()
 {
@@ -49,10 +61,5 @@ void TIM7_Handler()
 //		ticks_missed += ticks_difference;
 //		// Doesn't do much yet, but we can detect when ticks are missed
 //	}
-
 	App_StateMachine_GameTick();
-
-	Driver_LED_Tick();
-
-	ticks_completed++;
 }

@@ -8,6 +8,11 @@
     ((__TYPE__) (-((__ONE_COUNT__) != 0))) \
     & (((__TYPE__) -1) >> ((sizeof(__TYPE__) * CHAR_BIT) - (__ONE_COUNT__)))
 
+typedef struct {
+	uint8_t col;
+	uint8_t row;
+} Coordinate;
+
 void App_Init();
 void TIM6_Handler();
 void TIM7_Handler();
