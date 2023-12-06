@@ -2,7 +2,7 @@
 #define INC_APP_STATEMACHINE_H_
 
 #define INITIAL_GAMESTATE	GAMESTATE_IDLE
-#define IDLE_SLEEP_TICKS	60000
+#define IDLE_SLEEP_TICKS	15000
 
 typedef enum
 {
@@ -18,6 +18,13 @@ typedef enum
 	GAMESTATE_WIN_B,	// Player B won the game (winning shot)
 	GAMESTATE_ERROR		// Error state
 } GameState;
+
+typedef enum
+{
+	GAMEMODE_NORMAL = 1,	// normal (no trail)
+	GAMEMODE_TRAIL = 2,		// normal (trail)
+	GAMEMODE_KOTH = 3		// king of the hill
+} GameMode;
 
 void App_StateMachine_Init();
 void App_StateMachine_GameTick();

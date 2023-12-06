@@ -17,6 +17,7 @@
 static struct
 {
 	GameState currGameState;
+	GameMode currGameMode;
 	uint_fast32_t ticksInState; // Ticks in a given state
 	int_fast8_t winScore; // Number of points required for a player to win
 	int_fast8_t brightness; // User-configurable brightness
@@ -76,6 +77,11 @@ void App_StateMachine_Init()
 	GameInfo.winScore = (uint8_t) load_data[0];
 	GameInfo.brightness = (uint8_t) load_data[1];
 	GameInfo.miscData = 0;
+	GameInfo.currGameMode = 1;
+	Driver_LED_Clear();
+	Driver_LED_Clear();
+	Driver_LED_Clear();
+	Driver_LED_Clear();
 }
 
 // Super-loop that is called every TIM7 tick
@@ -91,23 +97,42 @@ void App_StateMachine_GameTick()
 	{
 		case (GAMESTATE_IDLE):
 		{
+			GameInfo.miscData++;
 			static int_fast8_t selection;
 			static bool modifying = false;
 
 			if (GameInfo.ticksInState == 1) // Runs on first tick only
 			{
 				selection = 0;
+				Driver_Encoder_PollButton();
 				Driver_Encoder_SetActive(true);
 
 				Driver_Display_Print(DISPLAY_0, 0, 0, "\tSmart Air Hockey Menu");
 				Driver_Display_Print(DISPLAY_0, 2, 0, "> Score Limit: %2"PRIuFAST8, GameInfo.winScore);
 				Driver_Display_Print(DISPLAY_0, 3, 2, "Brightness: %3"PRIuFAST8, GameInfo.brightness);
-				Driver_Display_Print(DISPLAY_0, 4, 2, "Start Game");
+				Driver_Display_Print(DISPLAY_0, 4, 2, "Gamemode: ");
+				if (GameInfo.currGameMode == GAMEMODE_NORMAL)
+				{
+					Driver_Display_Print(DISPLAY_0, 4, 12, "Normal  ");
+				}
+				else if (GameInfo.currGameMode == GAMEMODE_TRAIL)
+				{
+					Driver_Display_Print(DISPLAY_0, 4, 12, "Trail   ");
+				}
+				else if (GameInfo.currGameMode == GAMEMODE_KOTH)
+				{
+					Driver_Display_Print(DISPLAY_0, 4, 12, "Keepaway");
+				}
+				Driver_Display_Print(DISPLAY_0, 5, 2, "Start Game");
+
+//				Driver_LED_Clear();
+				brightness_idx = GameInfo.brightness;
 			}
 
 			if (Driver_Encoder_PollButton())
 			{
-				if (selection == 2)
+				GameInfo.miscData = 0;
+				if (selection == 3)
 				{
 					Driver_Display_Clear(DISPLAY_0);
 					Driver_Encoder_SetActive(false);
@@ -130,6 +155,7 @@ void App_StateMachine_GameTick()
 			int_fast8_t rotation = Driver_Encoder_PollRotation();
 			if (rotation != 0)
 			{
+				GameInfo.miscData = 0;
 				if (modifying) // Modify selected value
 				{
 					if (selection == 0)
@@ -147,13 +173,32 @@ void App_StateMachine_GameTick()
 						brightness_idx = GameInfo.brightness; // Mirror the brightness to the LED driver
 						Driver_Display_Print(DISPLAY_0, 3, 14, "%3"PRIuFAST8, GameInfo.brightness);
 					}
+					else if (selection == 2)
+					{
+						GameInfo.currGameMode += rotation;
+						if (GameInfo.currGameMode > 3) GameInfo.currGameMode = 1;
+						if (GameInfo.currGameMode < 1) GameInfo.currGameMode = 3;
+
+						if (GameInfo.currGameMode == GAMEMODE_NORMAL)
+						{
+							Driver_Display_Print(DISPLAY_0, 4, 12, "Normal  ");
+						}
+						else if (GameInfo.currGameMode == GAMEMODE_TRAIL)
+						{
+							Driver_Display_Print(DISPLAY_0, 4, 12, "Trail   ");
+						}
+						else if (GameInfo.currGameMode == GAMEMODE_KOTH)
+						{
+							Driver_Display_Print(DISPLAY_0, 4, 12, "Keepaway");
+						}
+					}
 				}
 				else // Change selection
 				{
 					int_fast8_t prevSelection = selection;
 					selection += rotation;
 					if (selection < 0) selection = 0;
-					else if (selection > 2) selection = 2;
+					else if (selection > 3) selection = 3;
 
 					if (selection != prevSelection)
 					{
@@ -165,6 +210,7 @@ void App_StateMachine_GameTick()
 
 			if (modifying)
 			{
+				GameInfo.miscData = 0;
 				if (GameInfo.ticksInState % 32 == 0) {
 					if (GameInfo.ticksInState % 64 == 0)
 					{
@@ -187,18 +233,26 @@ void App_StateMachine_GameTick()
 			}
 
 			// TODO sleep state
-//			if (GameInfo.ticksInState > IDLE_SLEEP_TICKS)
-//			{
-//				App_StateMachine_SetState(GAMESTATE_SLEEP);
-//			}
+			if (GameInfo.miscData > IDLE_SLEEP_TICKS)
+			{
+				Driver_LED_Clear();
+				Driver_LED_Clear();
+				App_StateMachine_SetState(GAMESTATE_SLEEP);
+			}
 			break;
 		}
 
 		case (GAMESTATE_SLEEP):
 		{
 			// TODO: Get tf out of here
-			Driver_LED_Clear();
-			Driver_Display_Clear(DISPLAY_ALL);
+//			Driver_LED_Clear();
+//			Driver_Display_Clear(DISPLAY_ALL);
+
+			if (Driver_Encoder_PollButton())
+			{
+				// exit sleep state
+				App_StateMachine_SetState(GAMESTATE_IDLE);
+			}
 			break;
 		}
 
@@ -231,8 +285,16 @@ void App_StateMachine_GameTick()
 			}
 
 			// check if we should leave state
-			if (halleffect_cols & 0x0000FFFF)
+			if ((halleffect_cols & 0x0000FFFF) &&
+				((GameInfo.currGameMode == GAMEMODE_TRAIL) || (GameInfo.currGameMode == GAMEMODE_KOTH)))
 			{
+				// magnet mode, wait for magnet in position
+				App_StateMachine_SetState(GAMESTATE_RUN);
+				break;
+			}
+			else if (GameInfo.ticksInState > 750)
+			{
+				// non-magnet mode, wait for timeout
 				App_StateMachine_SetState(GAMESTATE_RUN);
 				break;
 			}
@@ -379,7 +441,7 @@ void App_StateMachine_GameTick()
 				// check if we should leave state
 				if (GameInfo.ticksInState > 1000)
 				{
-					App_StateMachine_SetState(GAMESTATE_WAIT_B);
+					App_StateMachine_SetState(GAMESTATE_RUN);
 					break;
 				}
 			}
@@ -405,7 +467,7 @@ void App_StateMachine_GameTick()
 				// check if we should leave state
 				if (GameInfo.ticksInState > 1000)
 				{
-					App_StateMachine_SetState(GAMESTATE_WAIT_A);
+					App_StateMachine_SetState(GAMESTATE_RUN);
 					break;
 				}
 			}
@@ -471,7 +533,7 @@ void App_StateMachine_GameTick()
 // Set desired state
 void App_StateMachine_SetState(GameState new_state)
 {
-	if (new_state == GAMESTATE_IDLE)
+	if (new_state == GAMESTATE_IDLE || new_state == GAMESTATE_SLEEP)
 	{
 		Driver_Display_Clear(DISPLAY_ALL);
 		Driver_Relay_TurnOff();
