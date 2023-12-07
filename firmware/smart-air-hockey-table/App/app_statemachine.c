@@ -113,13 +113,9 @@ void App_StateMachine_GameTick()
 				{
 					Driver_Display_Print(DISPLAY_0, 4, 12, "Normal  ");
 				}
-				else if (GameInfo.currGameMode == GAMEMODE_TRAIL)
-				{
-					Driver_Display_Print(DISPLAY_0, 4, 12, "Trail   ");
-				}
 				else if (GameInfo.currGameMode == GAMEMODE_KOTH)
 				{
-					Driver_Display_Print(DISPLAY_0, 4, 12, "Keepaway");
+					Driver_Display_Print(DISPLAY_0, 4, 12, "K.O.T.H.");
 				}
 				Driver_Display_Print(DISPLAY_0, 5, 2, "Start Game");
 
@@ -175,20 +171,16 @@ void App_StateMachine_GameTick()
 					else if (selection == 2)
 					{
 						GameInfo.currGameMode += rotation;
-						if (GameInfo.currGameMode > 3) GameInfo.currGameMode = 1;
-						if (GameInfo.currGameMode < 1) GameInfo.currGameMode = 3;
+						if (GameInfo.currGameMode > 2) GameInfo.currGameMode = 1;
+						if (GameInfo.currGameMode < 1) GameInfo.currGameMode = 2;
 
 						if (GameInfo.currGameMode == GAMEMODE_NORMAL)
 						{
 							Driver_Display_Print(DISPLAY_0, 4, 12, "Normal  ");
 						}
-						else if (GameInfo.currGameMode == GAMEMODE_TRAIL)
-						{
-							Driver_Display_Print(DISPLAY_0, 4, 12, "Trail   ");
-						}
 						else if (GameInfo.currGameMode == GAMEMODE_KOTH)
 						{
-							Driver_Display_Print(DISPLAY_0, 4, 12, "Keepaway");
+							Driver_Display_Print(DISPLAY_0, 4, 12, "K.O.T.H.");
 						}
 					}
 				}

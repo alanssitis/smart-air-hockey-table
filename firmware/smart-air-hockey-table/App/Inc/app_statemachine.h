@@ -23,8 +23,7 @@ typedef enum
 typedef enum
 {
 	GAMEMODE_NORMAL = 1,	// normal (no trail)
-	GAMEMODE_TRAIL = 2,		// normal (trail)
-	GAMEMODE_KOTH = 3		// king of the hill
+	GAMEMODE_KOTH = 2		// king of the hill
 } GameMode;
 
 void App_StateMachine_Init();
