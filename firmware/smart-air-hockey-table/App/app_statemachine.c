@@ -674,6 +674,9 @@ void App_StateMachine_SetState(GameState new_state)
 	GameInfo.ticksInState = 0;
 	GameInfo.currFrame = 0;
 	GameInfo.miscData = 0;
+	for (int i = 0; i < TRAIL_SIZE; i++) {
+		trail_on[i] = false;
+	}
 
 	Driver_LED_Clear();
 	for (int col = 0; col < LED_MATRIX_COL_NUM; col++) {
