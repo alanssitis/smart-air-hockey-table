@@ -62,10 +62,10 @@ static Color trail_color[32] = {
     {0x00, 0x00, 0xff},
 };
 
-static Coordinate trail[128] = {0};
+#define TRAIL_SIZE 128
+static Coordinate trail[TRAIL_SIZE] = {0};
+static bool trail_on[TRAIL_SIZE] = {false};
 static int32_t trail_start = 0;
-static int32_t trail_end = 0;
-static int32_t trail_size = 0;
 
 void App_StateMachine_Init()
 {
@@ -407,25 +407,35 @@ void App_StateMachine_GameTick()
 			}
 
 			if (col_pos != -1 && row_pos != -1) {
-                trail[trail_end].col = col_pos;
-                trail[trail_end++].row = row_pos;
-                trail_end %= 128;
-
-                if (trail_size <= 128) {
-                    trail_size++;
-                } else {
-                	trail_start = (trail_size + 1) % 128;
-                }
+                trail[(trail_start - 1) % TRAIL_SIZE].col = col_pos;
+                trail[(trail_start - 1) % TRAIL_SIZE].row = row_pos;
+                trail_on[(trail_start - 1) % TRAIL_SIZE] = true;
+			} else {
+                trail_on[(trail_start - 1) % TRAIL_SIZE] = false;
 			}
 
-            for (int i = 0; i < trail_size; i++) {
-            	uint8_t col = trail[(trail_start + i) % 128].col;
-            	uint8_t row = trail[(trail_start + i) % 128].row;
+            for (int i = 0; i < TRAIL_SIZE; i++) {
+            	int idx = (trail_start + i) % TRAIL_SIZE;
+            	if (!trail_on[idx]) {
+            		continue;
+            	}
+
+            	uint8_t col = trail[idx].col;
+            	uint8_t row = trail[idx].row;
 
 				for (int j = 0; j < highlighted_area_size[col][row]; j++) {
-					Driver_LED_SetColor(highlighted_area[col][row][j].col, highlighted_area[col][row][j].row, trail_color[col]);
+					Color color = trail_color[col];
+					Driver_LED_SetColor(
+						highlighted_area[col][row][j].col,
+						highlighted_area[col][row][j].row,
+						(Color) {
+							0x2f + i * (color.red - 0x2f) / (TRAIL_SIZE - 1),
+							0x2f + i * (color.green - 0x2f) / (TRAIL_SIZE - 1),
+							0x2f + i * (color.blue - 0x2f) / (TRAIL_SIZE - 1),
+						});
 				}
             }
+            trail_start = (trail_start + 1) % TRAIL_SIZE;
 
 			if (ldr1_goal || ldr2_goal)
 			{
