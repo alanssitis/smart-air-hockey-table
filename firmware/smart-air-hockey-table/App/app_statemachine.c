@@ -63,7 +63,7 @@ static Color trail_color[32] = {
     {0x00, 0x00, 0xff},
 };
 
-#define TRAIL_SIZE 128
+#define TRAIL_SIZE 192
 static Coordinate trail[TRAIL_SIZE] = {0};
 static bool trail_on[TRAIL_SIZE] = {false};
 static int32_t trail_start = 0;
@@ -242,11 +242,38 @@ void App_StateMachine_GameTick()
 				col_pos = -1;
 				row_pos = -1;
 			}
+
 			if (col_pos != -1 && row_pos != -1) {
-				for (int j = 0; j < highlighted_area_size[col_pos][row_pos]; j++) {
-					Driver_LED_SetColor(highlighted_area[col_pos][row_pos][j].col, highlighted_area[col_pos][row_pos][j].row, (Color) {0xff, 0xff, 0xff});
-				}
+                trail[(trail_start - 1) % TRAIL_SIZE].col = col_pos;
+                trail[(trail_start - 1) % TRAIL_SIZE].row = row_pos;
+                trail_on[(trail_start - 1) % TRAIL_SIZE] = true;
+			} else {
+                trail_on[(trail_start - 1) % TRAIL_SIZE] = false;
 			}
+
+            for (int i = 0; i < TRAIL_SIZE; i++) {
+            	int idx = (trail_start + i) % TRAIL_SIZE;
+            	if (!trail_on[idx]) {
+            		continue;
+            	}
+
+            	uint8_t col = trail[idx].col;
+            	uint8_t row = trail[idx].row;
+
+				for (int j = 0; j < highlighted_area_size[col][row]; j++) {
+					uint_fast32_t k = (GameInfo.ticksInState + (highlighted_area[col][row][j].col + highlighted_area[col][row][j].row) * 16) % (sizeof(rainbow) / sizeof(Color));
+					Color color = rainbow[k];
+					Driver_LED_SetColor(
+						highlighted_area[col][row][j].col,
+						highlighted_area[col][row][j].row,
+						(Color) {
+							color.red + i * (0xff - color.red) / (TRAIL_SIZE - 1),
+							color.green + i * (0xff - color.green) / (TRAIL_SIZE - 1),
+							color.blue + i * (0xff - color.blue) / (TRAIL_SIZE - 1),
+						});
+				}
+            }
+            trail_start = (trail_start + 1) % TRAIL_SIZE;
 
 			if (GameInfo.miscData > IDLE_SLEEP_TICKS)
 			{
