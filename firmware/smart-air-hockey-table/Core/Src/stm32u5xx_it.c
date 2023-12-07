@@ -305,7 +305,9 @@ void TIM7_IRQHandler(void)
   if (LL_TIM_IsActiveFlag_UPDATE(TIM7))
   {
     LL_TIM_ClearFlag_UPDATE(TIM7);
+    LL_TIM_DisableIT_UPDATE(TIM7);
     TIM7_Handler();
+    LL_TIM_EnableIT_UPDATE(TIM7);
   }
   /* USER CODE END TIM7_IRQn 0 */
   /* USER CODE BEGIN TIM7_IRQn 1 */

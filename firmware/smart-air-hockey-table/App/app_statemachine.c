@@ -25,6 +25,7 @@ static struct
 	uint_fast8_t playerScoreB; // Current number of points Player B has scored
 	uint_fast8_t currFrame; // current animation frame
 	uint_fast8_t miscData; // for random data within a given
+	uint_fast32_t miscData2; // for random data within a given
 } GameInfo;
 
 static Color trail_color[32] = {
@@ -78,6 +79,7 @@ void App_StateMachine_Init()
 	GameInfo.brightness = (uint8_t) load_data[1];
 	GameInfo.miscData = 0;
 	GameInfo.currGameMode = 1;
+	Driver_LED_Clear();
 }
 
 // Super-loop that is called every TIM7 tick
@@ -304,17 +306,16 @@ void App_StateMachine_GameTick()
 			}
 
 			// check if we should leave state
-			if ((halleffect_cols & 0x0000FFFF) &&
-				((GameInfo.currGameMode == GAMEMODE_TRAIL) || (GameInfo.currGameMode == GAMEMODE_KOTH)))
+			if (GameInfo.ticksInState > 750)
 			{
-				// magnet mode, wait for magnet in position
-				App_StateMachine_SetState(GAMESTATE_RUN);
-				break;
-			}
-			else if (GameInfo.ticksInState > 750)
-			{
-				// non-magnet mode, wait for timeout
-				App_StateMachine_SetState(GAMESTATE_RUN);
+				if (GameInfo.currGameMode == GAMEMODE_NORMAL)
+				{
+					App_StateMachine_SetState(GAMESTATE_RUN_NORMAL);
+				}
+				else
+				{
+					App_StateMachine_SetState(GAMESTATE_RUN_KOTH);
+				}
 				break;
 			}
 
@@ -346,6 +347,20 @@ void App_StateMachine_GameTick()
 				GameInfo.miscData = ~GameInfo.miscData;
 			}
 
+			// check if we should leave state
+			if (GameInfo.ticksInState > 750)
+			{
+				if (GameInfo.currGameMode == GAMEMODE_NORMAL)
+				{
+					App_StateMachine_SetState(GAMESTATE_RUN_NORMAL);
+				}
+				else
+				{
+					App_StateMachine_SetState(GAMESTATE_RUN_KOTH);
+				}
+				break;
+			}
+
 
 			if (GameInfo.miscData)
 			{
@@ -363,17 +378,10 @@ void App_StateMachine_GameTick()
 					}
 				}
 			}
-
-			// check if we should leave state
-			if (halleffect_cols & 0xFFFF0000)
-			{
-				App_StateMachine_SetState(GAMESTATE_RUN);
-				break;
-			}
 			break;
 		}
 
-		case (GAMESTATE_RUN):
+		case (GAMESTATE_RUN_NORMAL):
 		{
 //			Driver_LED_SetColor(0, 0, (Color) {0x00, 0xff, 0x00});
 			Driver_Relay_TurnOn();
@@ -441,6 +449,92 @@ void App_StateMachine_GameTick()
 			break;
 		}
 
+		case (GAMESTATE_RUN_KOTH):
+		{
+			Driver_Relay_TurnOn();
+
+			if (GameInfo.ticksInState == 1)
+			{
+				GameInfo.playerScoreA = 256;
+				GameInfo.miscData2 = 0x33;
+			}
+
+			if (halleffect_cols & 0xFFFF0000)
+			{
+				// on red side
+				GameInfo.miscData = 1;
+			}
+			else if (halleffect_cols & 0x0000FFFF)
+			{
+				// on blue side
+				GameInfo.miscData = 2;
+			}
+
+			if ((GameInfo.ticksInState % 250) == 0)
+			{
+				if (GameInfo.miscData2 > 1) GameInfo.miscData2 -= 1;
+			}
+
+			if ((GameInfo.ticksInState % GameInfo.miscData2) == 0)
+			{
+				// update score
+				if (GameInfo.miscData == 1)
+				{
+					GameInfo.playerScoreA += 1;
+				}
+				else if (GameInfo.miscData == 2)
+				{
+					GameInfo.playerScoreA -= 1;
+				}
+			}
+
+			// update table display
+			uint8_t num_cols_red = GameInfo.playerScoreA >> 4;
+			uint8_t num_rows_red = GameInfo.playerScoreA & 15;
+//			uint8_t num_cols_blue = GameInfo.playerScoreB >> 4;
+//			uint8_t num_rows_blue = GameInfo.playerScoreB & 15;
+
+//			if ((GameInfo.ticksInState & 0x7F) == 0x7F)
+//			{
+//				// update blinking LED
+//				GameInfo.miscData = ~GameInfo.miscData;
+//			}
+
+			for (int col = 0; col < num_cols_red; col++) {
+				for (int row = 0; row < LED_MATRIX_ROW_NUM; row++) {
+					Driver_LED_SetColor(col, row, (Color) {0xff, 0x00, 0x00});
+				}
+			}
+
+			for (int row = 0; row < LED_MATRIX_ROW_NUM; row++) {
+				if (row < num_rows_red)
+				{
+					Driver_LED_SetColor(num_cols_red, row, (Color) {0xff, 0x00, 0x00});
+				}
+				else
+				{
+					Driver_LED_SetColor(num_cols_red, row, (Color) {0x00, 0x00, 0xff});
+				}
+			}
+
+			for (int col = num_cols_red + 1; col < LED_MATRIX_COL_NUM; col++) {
+				for (int row = 0; row < LED_MATRIX_ROW_NUM; row++) {
+					Driver_LED_SetColor(col, row, (Color) {0x00, 0x00, 0xff});
+				}
+			}
+
+			if (GameInfo.playerScoreA == 512)
+			{
+				App_StateMachine_SetState(GAMESTATE_WIN_A);
+			}
+			else if (GameInfo.playerScoreA == 0)
+			{
+				App_StateMachine_SetState(GAMESTATE_WIN_B);
+			}
+
+			break;
+		}
+
 		case (GAMESTATE_SCORE_A):
 		{
 			// TODO animation and OLED
@@ -460,7 +554,7 @@ void App_StateMachine_GameTick()
 				// check if we should leave state
 				if (GameInfo.ticksInState > 1000)
 				{
-					App_StateMachine_SetState(GAMESTATE_RUN);
+					App_StateMachine_SetState(GAMESTATE_RUN_NORMAL);
 					break;
 				}
 			}
@@ -486,7 +580,7 @@ void App_StateMachine_GameTick()
 				// check if we should leave state
 				if (GameInfo.ticksInState > 1000)
 				{
-					App_StateMachine_SetState(GAMESTATE_RUN);
+					App_StateMachine_SetState(GAMESTATE_RUN_NORMAL);
 					break;
 				}
 			}
@@ -572,6 +666,11 @@ void App_StateMachine_SetState(GameState new_state)
 	GameInfo.miscData = 0;
 
 	Driver_LED_Clear();
+	for (int col = 0; col < LED_MATRIX_COL_NUM; col++) {
+		for (int row = 0; row < LED_MATRIX_ROW_NUM; row++) {
+			Driver_LED_SetColor(col, row, (Color) {0x00, 0x00, 0x00});
+		}
+	}
 
 //	for (int col = 0; col < LED_MATRIX_COL_NUM; col++) {
 //		for (int row = 0; row < LED_MATRIX_ROW_NUM; row++) {
