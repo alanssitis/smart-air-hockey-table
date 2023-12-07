@@ -78,10 +78,6 @@ void App_StateMachine_Init()
 	GameInfo.brightness = (uint8_t) load_data[1];
 	GameInfo.miscData = 0;
 	GameInfo.currGameMode = 1;
-	Driver_LED_Clear();
-	Driver_LED_Clear();
-	Driver_LED_Clear();
-	Driver_LED_Clear();
 }
 
 // Super-loop that is called every TIM7 tick
@@ -89,7 +85,7 @@ void App_StateMachine_GameTick()
 {
 	GameInfo.ticksInState++; // Add 1 tick to counter
 	Driver_HallEffect_PollInputs();
-	Driver_LED_Tick();
+	if (GameInfo.ticksInState & 1) Driver_LED_Tick();
 	Driver_Goal_Poll();
 
 	//  Coordinating switch statement, each case calls a function which will handle currGameInfo
@@ -235,7 +231,6 @@ void App_StateMachine_GameTick()
 			// TODO sleep state
 			if (GameInfo.miscData > IDLE_SLEEP_TICKS)
 			{
-				Driver_LED_Clear();
 				Driver_LED_Clear();
 				App_StateMachine_SetState(GAMESTATE_SLEEP);
 			}
