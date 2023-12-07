@@ -256,7 +256,6 @@ void App_StateMachine_GameTick()
 			// TODO animation
 			Driver_Display_Clear(DISPLAY_ALL);
 			Driver_Display_ShowScore(DISPLAY_ALL, GameInfo.playerScoreA, GameInfo.playerScoreB);
-			Driver_Display_Print(DISPLAY_ALL, 0, 0, "\t     Game Score       ");
 
 			if (rand() & 0x1)
 			{
@@ -537,6 +536,7 @@ void App_StateMachine_SetState(GameState new_state)
 	else if (new_state == GAMESTATE_WAIT_A || new_state == GAMESTATE_WAIT_B)
 	{
 		Driver_Display_Clear(DISPLAY_ALL);
+		Driver_Display_Print(DISPLAY_ALL, 0, 0, "\t     Game Score       ");
 		Driver_Display_ShowScore(DISPLAY_ALL, GameInfo.playerScoreA, GameInfo.playerScoreB);
 	}
 	else
