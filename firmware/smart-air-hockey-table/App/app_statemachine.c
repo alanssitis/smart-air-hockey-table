@@ -131,6 +131,7 @@ void App_StateMachine_GameTick()
 				if (selection == 3)
 				{
 					Driver_Display_Clear(DISPLAY_0);
+					Driver_Display_Print(DISPLAY_ALL, 0, 0, "\t      Game Score      ");
 					Driver_Encoder_SetActive(false);
 					srand(GameInfo.ticksInState);
 					uint32_t save_data[2] = { (uint32_t) GameInfo.winScore, (uint32_t) GameInfo.brightness };
@@ -254,7 +255,6 @@ void App_StateMachine_GameTick()
 		case (GAMESTATE_START):
 		{
 			// TODO animation
-			Driver_Display_Clear(DISPLAY_ALL);
 			Driver_Display_ShowScore(DISPLAY_ALL, GameInfo.playerScoreA, GameInfo.playerScoreB);
 
 			if (rand() & 0x1)
@@ -535,8 +535,6 @@ void App_StateMachine_SetState(GameState new_state)
 	}
 	else if (new_state == GAMESTATE_WAIT_A || new_state == GAMESTATE_WAIT_B)
 	{
-		Driver_Display_Clear(DISPLAY_ALL);
-		Driver_Display_Print(DISPLAY_ALL, 0, 0, "\t     Game Score       ");
 		Driver_Display_ShowScore(DISPLAY_ALL, GameInfo.playerScoreA, GameInfo.playerScoreB);
 	}
 	else
