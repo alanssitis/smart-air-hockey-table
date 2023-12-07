@@ -227,8 +227,32 @@ void App_StateMachine_GameTick()
 					Driver_LED_SetColor(col, row, rainbow[i]);
 				}
 			}
+			int col_pos = 0, row_pos = 0;
+			int num_col_on = __builtin_popcount(halleffect_cols);
+			int num_row_on = __builtin_popcount(halleffect_rows);
 
-			// TODO sleep state
+			if (num_col_on > 0 && num_row_on > 0) {
+				for (int i = 0; i < LED_MATRIX_COL_NUM; i++) {
+					if (halleffect_cols & 1 << i) {
+						col_pos += i;
+					}
+					if (i < LED_MATRIX_ROW_NUM && halleffect_rows & 1 << i) {
+						row_pos += i;
+					}
+
+				}
+				col_pos /= num_col_on;
+				row_pos /= num_row_on;
+			} else {
+				col_pos = -1;
+				row_pos = -1;
+			}
+			if (col_pos != -1 && row_pos != -1) {
+				for (int j = 0; j < highlighted_area_size[col_pos][row_pos]; j++) {
+					Driver_LED_SetColor(highlighted_area[col_pos][row_pos][j].col, highlighted_area[col_pos][row_pos][j].row, (Color) {0xff, 0xff, 0xff});
+				}
+			}
+
 			if (GameInfo.miscData > IDLE_SLEEP_TICKS)
 			{
 				Driver_LED_Clear();
