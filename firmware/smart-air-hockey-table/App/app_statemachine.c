@@ -593,14 +593,18 @@ void App_StateMachine_GameTick()
 		{
 			// TODO animation
 
-			if ((GameInfo.ticksInState & 0xF) == 0xF)
-			{
-				GameInfo.currFrame++;
-			}
+			uint_fast32_t sparkleIndex = rand();
+			for (uint_fast8_t i = 0; i < 4; i++) {
+				sparkleIndex += LED_MATRIX_PIXEL_COUNT / 3;
+				sparkleIndex %= LED_MATRIX_PIXEL_COUNT;
+				Color color;
 
-			for (int row = 0; row < LED_MATRIX_ROW_NUM; row++)
-			{
-				Driver_LED_SetColor(GameInfo.currFrame, row, (Color) {0xff, 0x00, 0x00});
+				uint_fast8_t colorIndex = rand() % 4;
+				if (colorIndex == 0) color = (Color) {0x3F, 0x00, 0x00};
+				else if (colorIndex == 1 || colorIndex == 2) color = (Color) {0xFF, 0x00, 0x00};
+				else color = (Color) {0x00, 0x00, 0x00};
+
+				Driver_LED_SetColor(sparkleIndex % LED_MATRIX_COL_NUM, sparkleIndex / LED_MATRIX_COL_NUM, color);
 			}
 
 			if (GameInfo.ticksInState > 2000)
@@ -615,15 +619,18 @@ void App_StateMachine_GameTick()
 
 		case (GAMESTATE_WIN_B):
 		{
-			// TODO animation
-			if ((GameInfo.ticksInState & 0xF) == 0xF)
-			{
-				GameInfo.currFrame++;
-			}
+			uint_fast32_t sparkleIndex = rand();
+			for (uint_fast8_t i = 0; i < 4; i++) {
+				sparkleIndex += LED_MATRIX_PIXEL_COUNT / 3;
+				sparkleIndex %= LED_MATRIX_PIXEL_COUNT;
+				Color color;
 
-			for (int row = 0; row < LED_MATRIX_ROW_NUM; row++)
-			{
-				Driver_LED_SetColor(LED_MATRIX_COL_NUM - GameInfo.currFrame, row, (Color) {0x00, 0x00, 0xff});
+				uint_fast8_t colorIndex = rand() % 4;
+				if (colorIndex == 0) color = (Color) {0x00, 0x00, 0x3F};
+				else if (colorIndex == 1 || colorIndex == 2) color = (Color) {0x00, 0x00, 0xFF};
+				else color = (Color) {0x00, 0x00, 0x00};
+
+				Driver_LED_SetColor(sparkleIndex % LED_MATRIX_COL_NUM, sparkleIndex / LED_MATRIX_COL_NUM, color);
 			}
 
 			if (GameInfo.ticksInState > 2000)
