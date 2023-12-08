@@ -122,7 +122,7 @@ void App_StateMachine_GameTick()
 				Driver_Display_Print(DISPLAY_0, 4, 2, "Gamemode: ");
 				if (GameInfo.currGameMode == GAMEMODE_NORMAL)
 				{
-					Driver_Display_Print(DISPLAY_0, 4, 12, "Normal  ");
+					Driver_Display_Print(DISPLAY_0, 4, 12, "Classic ");
 				}
 				else if (GameInfo.currGameMode == GAMEMODE_KOTH)
 				{
@@ -191,7 +191,7 @@ void App_StateMachine_GameTick()
 
 						if (GameInfo.currGameMode == GAMEMODE_NORMAL)
 						{
-							Driver_Display_Print(DISPLAY_0, 4, 12, "Normal  ");
+							Driver_Display_Print(DISPLAY_0, 4, 12, "Classic ");
 						}
 						else if (GameInfo.currGameMode == GAMEMODE_KOTH)
 						{
