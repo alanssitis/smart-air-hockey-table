@@ -641,7 +641,6 @@ static void MX_TIM7_Init(void)
   */
 static void MX_GPIO_Init(void)
 {
-  LL_EXTI_InitTypeDef EXTI_InitStruct = {0};
   LL_GPIO_InitTypeDef GPIO_InitStruct = {0};
 /* USER CODE BEGIN MX_GPIO_Init_1 */
 /* USER CODE END MX_GPIO_Init_1 */
@@ -673,10 +672,10 @@ static void MX_GPIO_Init(void)
   LL_GPIO_Init(GPIOE, &GPIO_InitStruct);
 
   /**/
-  GPIO_InitStruct.Pin = LDR1IN_Pin;
+  GPIO_InitStruct.Pin = ENCODER_SW_Pin|LDR1IN_Pin;
   GPIO_InitStruct.Mode = LL_GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = LL_GPIO_PULL_UP;
-  LL_GPIO_Init(LDR1IN_GPIO_Port, &GPIO_InitStruct);
+  LL_GPIO_Init(GPIOE, &GPIO_InitStruct);
 
   /**/
   GPIO_InitStruct.Pin = LDR2IN_Pin|LDR3IN_Pin|LDR4IN_Pin;
@@ -739,26 +738,6 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Mode = LL_GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = LL_GPIO_PULL_NO;
   LL_GPIO_Init(GPIOD, &GPIO_InitStruct);
-
-  /**/
-  LL_EXTI_SetEXTISource(LL_EXTI_EXTI_PORTE, LL_EXTI_EXTI_LINE5);
-
-  /**/
-  EXTI_InitStruct.Line_0_31 = LL_EXTI_LINE_5;
-  EXTI_InitStruct.LineCommand = ENABLE;
-  EXTI_InitStruct.Mode = LL_EXTI_MODE_IT;
-  EXTI_InitStruct.Trigger = LL_EXTI_TRIGGER_FALLING;
-  LL_EXTI_Init(&EXTI_InitStruct);
-
-  /**/
-  LL_GPIO_SetPinPull(ENCODER_SW_GPIO_Port, ENCODER_SW_Pin, LL_GPIO_PULL_UP);
-
-  /**/
-  LL_GPIO_SetPinMode(ENCODER_SW_GPIO_Port, ENCODER_SW_Pin, LL_GPIO_MODE_INPUT);
-
-  /* EXTI interrupt init*/
-  NVIC_SetPriority(EXTI5_IRQn, NVIC_EncodePriority(NVIC_GetPriorityGrouping(),3, 0));
-  NVIC_EnableIRQ(EXTI5_IRQn);
 
 /* USER CODE BEGIN MX_GPIO_Init_2 */
 /* USER CODE END MX_GPIO_Init_2 */
