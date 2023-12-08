@@ -13,6 +13,7 @@ typedef enum
 	GAMESTATE_WAIT_B,		// Playing start animation for player B
 	GAMESTATE_RUN_NORMAL,	// Game is in progress
 	GAMESTATE_RUN_KOTH,		// Game is in progress
+	GAMESTATE_RUN_PAINT,	// Game is in progress
 	GAMESTATE_SCORE_A,		// Player A scored (not the winning shot)
 	GAMESTATE_SCORE_B,		// Player B scored (not the winning shot)
 	GAMESTATE_WIN_A,		// Player A won the game (winning shot)
@@ -23,7 +24,8 @@ typedef enum
 typedef enum
 {
 	GAMEMODE_NORMAL = 1,	// normal (no trail)
-	GAMEMODE_KOTH = 2		// king of the hill
+	GAMEMODE_KOTH = 2,		// king of the hill
+	GAMEMODE_PAINT = 3		// king of the hill
 } GameMode;
 
 void App_StateMachine_Init();

@@ -95,11 +95,11 @@ void Driver_LED_Tick()
 
 		// Configure GPDMA Channel to initiate transfer
 		LL_DMA_ConfigAddresses(GPDMA1, LL_DMA_CHANNEL_0, (uint32_t) led_buffer[0], (uint32_t) &(TIM2->CCR1));
-		LL_DMA_ConfigAddresses(GPDMA1, LL_DMA_CHANNEL_1, (uint32_t) led_buffer[1], (uint32_t) &(TIM2->CCR2));
+		LL_DMA_ConfigAddresses(GPDMA1, LL_DMA_CHANNEL_1, (uint32_t) led_buffer[0], (uint32_t) &(TIM2->CCR2));
 		LL_DMA_ConfigAddresses(GPDMA1, LL_DMA_CHANNEL_2, (uint32_t) led_buffer[2], (uint32_t) &(TIM2->CCR3));
 		LL_DMA_ConfigAddresses(GPDMA1, LL_DMA_CHANNEL_3, (uint32_t) led_buffer[3], (uint32_t) &(TIM2->CCR4));
-		LL_DMA_SetBlkDataLength(GPDMA1, LL_DMA_CHANNEL_0, LED_CHANNEL_LENGTH);
-		LL_DMA_SetBlkDataLength(GPDMA1, LL_DMA_CHANNEL_1, LED_CHANNEL_LENGTH);
+		LL_DMA_SetBlkDataLength(GPDMA1, LL_DMA_CHANNEL_0, LED_CHANNEL_LENGTH * 2);
+		LL_DMA_SetBlkDataLength(GPDMA1, LL_DMA_CHANNEL_1, LED_CHANNEL_LENGTH * 2);
 		LL_DMA_SetBlkDataLength(GPDMA1, LL_DMA_CHANNEL_2, LED_CHANNEL_LENGTH);
 		LL_DMA_SetBlkDataLength(GPDMA1, LL_DMA_CHANNEL_3, LED_CHANNEL_LENGTH);
 		LL_DMA_EnableChannel(GPDMA1, LL_DMA_CHANNEL_0);
