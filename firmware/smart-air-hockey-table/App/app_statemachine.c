@@ -787,14 +787,35 @@ void App_StateMachine_GameTick()
 			}
 			else
 			{
-				for (int col = 0; col < LED_MATRIX_COL_NUM; col++) {
-					for (int row = 0; row < LED_MATRIX_ROW_NUM; row++) {
-						Driver_LED_SetColor(col, row, (Color) {0xff, 0x00, 0x00});
+				static uint_fast8_t waveCol;
+				static uint_fast8_t glow[LED_MATRIX_COL_NUM + LED_MATRIX_ROW_NUM];
+				if (GameInfo.ticksInState == 1)
+				{
+					waveCol = 0;
+					for (uint_fast8_t col = 0; col < LED_MATRIX_COL_NUM + LED_MATRIX_ROW_NUM; col++) glow[col] = 0;
+				}
+
+				if ((GameInfo.ticksInState % 12) == 0)
+				{
+					glow[waveCol] = 0xFF;
+					waveCol++;
+				}
+
+				for (uint_fast8_t col = 0; col < LED_MATRIX_COL_NUM + LED_MATRIX_ROW_NUM; col++) {
+					for (uint_fast8_t row = 0; row < LED_MATRIX_ROW_NUM; row++) {
+						int_fast8_t actualCol = col;
+						if (row < 7) actualCol -= 7 - row;
+						else if (row > 8) actualCol -= row - 8;
+						if (actualCol < 0 || actualCol >= LED_MATRIX_COL_NUM) continue;
+
+						Driver_LED_SetColor(actualCol, row, (Color) {glow[col], 0x00, 0x00});
 					}
+
+					if (glow[col] > 0) glow[col]--;
 				}
 
 				// check if we should leave state
-				if (GameInfo.ticksInState > 1000)
+				if (GameInfo.ticksInState > 800)
 				{
 					App_StateMachine_SetState(GAMESTATE_RUN_NORMAL);
 					break;
@@ -813,14 +834,35 @@ void App_StateMachine_GameTick()
 			}
 			else
 			{
-				for (int col = 0; col < LED_MATRIX_COL_NUM; col++) {
-					for (int row = 0; row < LED_MATRIX_ROW_NUM; row++) {
-						Driver_LED_SetColor(col, row, (Color) {0x00, 0x00, 0xff});
+				static uint_fast8_t waveCol;
+				static uint_fast8_t glow[LED_MATRIX_COL_NUM + LED_MATRIX_ROW_NUM];
+				if (GameInfo.ticksInState == 1)
+				{
+					waveCol = 0;
+					for (uint_fast8_t col = 0; col < LED_MATRIX_COL_NUM + LED_MATRIX_ROW_NUM; col++) glow[col] = 0;
+				}
+
+				if ((GameInfo.ticksInState % 12) == 0)
+				{
+					glow[waveCol] = 0xFF;
+					waveCol++;
+				}
+
+				for (uint_fast8_t col = 0; col < LED_MATRIX_COL_NUM + LED_MATRIX_ROW_NUM; col++) {
+					for (uint_fast8_t row = 0; row < LED_MATRIX_ROW_NUM; row++) {
+						int_fast8_t actualCol = col;
+						if (row < 7) actualCol -= 7 - row;
+						else if (row > 8) actualCol -= row - 8;
+						if (actualCol < 0 || actualCol >= LED_MATRIX_COL_NUM) continue;
+
+						Driver_LED_SetColor(LED_MATRIX_COL_NUM - actualCol - 1, row, (Color) {0x00, 0x00, glow[col]});
 					}
+
+					if (glow[col] > 0) glow[col]--;
 				}
 
 				// check if we should leave state
-				if (GameInfo.ticksInState > 1000)
+				if (GameInfo.ticksInState > 800)
 				{
 					App_StateMachine_SetState(GAMESTATE_RUN_NORMAL);
 					break;
