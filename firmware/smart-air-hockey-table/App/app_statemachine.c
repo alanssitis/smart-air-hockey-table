@@ -542,46 +542,74 @@ void App_StateMachine_GameTick()
 				}
 			}
 
-			// update table display
-			uint8_t num_cols_red = GameInfo.playerScoreA >> 4;
-			uint8_t num_rows_red = GameInfo.playerScoreA & 15;
-//			uint8_t num_cols_blue = GameInfo.playerScoreB >> 4;
-//			uint8_t num_rows_blue = GameInfo.playerScoreB & 15;
+			for (int n = 0; n < LED_MATRIX_ROW_NUM * LED_MATRIX_COL_NUM; n++) {
+				int row = n % LED_MATRIX_ROW_NUM;
+				int col = n / LED_MATRIX_ROW_NUM;
 
-//			if ((GameInfo.ticksInState & 0x7F) == 0x7F)
-//			{
-//				// update blinking LED
-//				GameInfo.miscData = ~GameInfo.miscData;
-//			}
-
-			for (int col = 0; col < num_cols_red; col++) {
-				for (int row = 0; row < LED_MATRIX_ROW_NUM; row++) {
+				if (n < GameInfo.playerScoreA) {
 					Driver_LED_SetColor(col, row, (Color) {0xff, 0x00, 0x00});
-				}
-			}
-
-			for (int row = 0; row < LED_MATRIX_ROW_NUM; row++) {
-				if (row < num_rows_red)
-				{
-					Driver_LED_SetColor(num_cols_red, row, (Color) {0xff, 0x00, 0x00});
-				}
-				else
-				{
-					Driver_LED_SetColor(num_cols_red, row, (Color) {0x00, 0x00, 0xff});
-				}
-			}
-
-			for (int col = num_cols_red + 1; col < LED_MATRIX_COL_NUM; col++) {
-				for (int row = 0; row < LED_MATRIX_ROW_NUM; row++) {
+				} else {
 					Driver_LED_SetColor(col, row, (Color) {0x00, 0x00, 0xff});
 				}
 			}
+
+			int col_pos = 0, row_pos = 0;
+			int num_col_on = __builtin_popcount(halleffect_cols);
+			int num_row_on = __builtin_popcount(halleffect_rows);
+
+			if (num_col_on > 0 && num_row_on > 0) {
+				for (int i = 0; i < LED_MATRIX_COL_NUM; i++) {
+					if (halleffect_cols & 1 << i) {
+						col_pos += i;
+					}
+					if (i < LED_MATRIX_ROW_NUM && halleffect_rows & 1 << i) {
+						row_pos += i;
+					}
+
+				}
+				col_pos /= num_col_on;
+				row_pos /= num_row_on;
+			} else {
+				col_pos = -1;
+				row_pos = -1;
+			}
+
+			if (col_pos != -1 && row_pos != -1) {
+                trail[(trail_start - 1) % TRAIL_SIZE].col = col_pos;
+                trail[(trail_start - 1) % TRAIL_SIZE].row = row_pos;
+                trail_on[(trail_start - 1) % TRAIL_SIZE] = true;
+			} else {
+                trail_on[(trail_start - 1) % TRAIL_SIZE] = false;
+			}
+
+            for (int i = 0; i < TRAIL_SIZE; i++) {
+            	int idx = (trail_start + i) % TRAIL_SIZE;
+            	if (!trail_on[idx]) {
+            		continue;
+            	}
+
+            	uint8_t col = trail[idx].col;
+            	uint8_t row = trail[idx].row;
+
+				for (int j = 0; j < highlighted_area_size[col][row]; j++) {
+					int is_red = highlighted_area[col][row][j].col * LED_MATRIX_ROW_NUM + highlighted_area[col][row][j].row < GameInfo.playerScoreA;
+					Driver_LED_SetColor(
+						highlighted_area[col][row][j].col,
+						highlighted_area[col][row][j].row,
+						(Color) {
+							0xff * is_red + (0xff * i / (TRAIL_SIZE - 1)) * !is_red,
+							0xff * i / (TRAIL_SIZE - 1),
+							0xff * (!is_red) + (0xff * i / (TRAIL_SIZE - 1)) * is_red,
+						});
+				}
+            }
+            trail_start = (trail_start + 1) % TRAIL_SIZE;
 
 			if (GameInfo.playerScoreA == 512)
 			{
 				App_StateMachine_SetState(GAMESTATE_WIN_A);
 			}
-			else if (GameInfo.playerScoreA == 0)
+			else if (GameInfo.playerScoreA == 1)
 			{
 				App_StateMachine_SetState(GAMESTATE_WIN_B);
 			}
