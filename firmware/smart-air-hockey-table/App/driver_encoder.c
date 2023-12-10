@@ -1,22 +1,25 @@
 #include "driver_encoder.h"
 
+#include "stm32u5xx_ll_gpio.h"
 #include "stm32u5xx_ll_tim.h"
 
 #define ENCODER_SCALING_SHIFT 2
 
 static bool is_button_pressed; // non-volatile: EXTI5_Handler has lower priority
 static uint_fast32_t rotation_basis;
+uint8_t button_status;
 
 void Driver_Encoder_Init()
 {
 	LL_TIM_EnableCounter(TIM3);
-	is_button_pressed = false; // Clear the flag since it is triggered at startup
+	is_button_pressed = false; // Clear the flag since it is triggered at startus
 }
 
 bool Driver_Encoder_PollButton()
 {
-	bool result = is_button_pressed;
-	is_button_pressed = false;
+	button_status = (button_status << 1) | LL_GPIO_IsInputPinSet(GPIOE, LL_GPIO_PIN_5);
+	bool result = (button_status == 0b11110000);
+//	is_button_pressed = false;
 	return result;
 }
 
@@ -50,5 +53,5 @@ void Driver_Encoder_SetActive(bool active)
 
 void EXTI5_Handler()
 {
-	is_button_pressed = true;
+//	is_button_pressed = true;
 }

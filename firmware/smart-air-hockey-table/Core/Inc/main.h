@@ -79,7 +79,6 @@ void Error_Handler(void);
 #define ENCODER_B_GPIO_Port GPIOE
 #define ENCODER_SW_Pin LL_GPIO_PIN_5
 #define ENCODER_SW_GPIO_Port GPIOE
-#define ENCODER_SW_EXTI_IRQn EXTI5_IRQn
 #define LDR1IN_Pin LL_GPIO_PIN_6
 #define LDR1IN_GPIO_Port GPIOE
 #define LDR2IN_Pin LL_GPIO_PIN_13

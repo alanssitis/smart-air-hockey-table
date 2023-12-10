@@ -188,26 +188,6 @@ void PendSV_Handler(void)
 /******************************************************************************/
 
 /**
-  * @brief This function handles EXTI Line5 interrupt.
-  */
-void EXTI5_IRQHandler(void)
-{
-  /* USER CODE BEGIN EXTI5_IRQn 0 */
-
-  /* USER CODE END EXTI5_IRQn 0 */
-  if (LL_EXTI_IsActiveFallingFlag_0_31(LL_EXTI_LINE_5) != RESET)
-  {
-    LL_EXTI_ClearFallingFlag_0_31(LL_EXTI_LINE_5);
-    /* USER CODE BEGIN LL_EXTI_LINE_5_FALLING */
-    EXTI5_Handler();
-    /* USER CODE END LL_EXTI_LINE_5_FALLING */
-  }
-  /* USER CODE BEGIN EXTI5_IRQn 1 */
-
-  /* USER CODE END EXTI5_IRQn 1 */
-}
-
-/**
   * @brief This function handles GPDMA1 Channel 0 global interrupt.
   */
 void GPDMA1_Channel0_IRQHandler(void)
@@ -305,7 +285,9 @@ void TIM7_IRQHandler(void)
   if (LL_TIM_IsActiveFlag_UPDATE(TIM7))
   {
     LL_TIM_ClearFlag_UPDATE(TIM7);
+    LL_TIM_DisableIT_UPDATE(TIM7);
     TIM7_Handler();
+    LL_TIM_EnableIT_UPDATE(TIM7);
   }
   /* USER CODE END TIM7_IRQn 0 */
   /* USER CODE BEGIN TIM7_IRQn 1 */
