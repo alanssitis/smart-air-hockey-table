@@ -26,7 +26,7 @@ External EEPROM Driver (App/driver_eeprom.c):
 - Reduced EEPROM instructions available from the driver in comparison to the basis created in week 12 given new knowledge on the team's required use of the external EEPROM.
 - Debugged both individually and with Ben by using the oscilloscope to both manually view the SPI's output and perform automatic serial decoding on the SPI's output.
 
-<img src="/477grp5/team/trevor/Trevor_Week14-15_EepromDebugging.jpg" width="50%">
+<img src="/team/trevor/Trevor_Week14-15_EepromDebugging.jpg" width="50%">
 
 _Figure 1: Oscilloscope output while debugging the external EEPROM driver (D_1 == MISO, D_2 == CS, D_3 == MOSI, D_4 = CLK)._
 
@@ -34,7 +34,7 @@ _Figure 1: Oscilloscope output while debugging the external EEPROM driver (D_1 =
 
 State Machine (App/app_statemachine.c):
 
-- Worked with Ben to implement each state (except for the "idle" state which was reserved for Alan and Will). A brief description of each state is below. For specifics on the state machine as a whole, see [A8](</477grp5/documents/A8 - Software Formalization.docx>). The following will briefly describe how Ben and I implemented each state.
+- Worked with Ben to implement each state (except for the "idle" state which was reserved for Alan and Will). A brief description of each state is below. For specifics on the state machine as a whole, see [A8](</documents/A8 - Software Formalization.docx>). The following will briefly describe how Ben and I implemented each state.
 - Start: Clear menu from OLED displays, show score ("0-0") on both OLED displays, randomly choose which player starts with the puck.
 - Wait A/B: Play waiting animation, wait for the puck to be placed on that side.
 - Run: Turn on centrifugal blower, display background on LEDs, display trail of puck on LEDs, check if either player scored.
@@ -54,25 +54,25 @@ Animations:
 - Added a #12x4" wood screw purchased from Menards where the length-wise support attached to each table leg. Hopefully, this will prevent the supports from warping and pulling out from the table's leg.
 - Created and installed four bus bars. The four bus bars will provide two sources of ground and two sources of 5V to the sensor PCBs, which reduces voltage drop off along the chain.
 
-<img src="/477grp5/team/trevor/Trevor_Week14-15_BusBar.jpg" width="50%">
+<img src="/team/trevor/Trevor_Week14-15_BusBar.jpg" width="50%">
 
-| <img src="/477grp5/team/trevor/Trevor_Week14-15_AssembledLeft.jpg" width="80%"> | <img src="/477grp5/team/trevor/Trevor_Week14-15_AssembledRight.jpg" width="80%"> |
-| :------------------------------------------------------------------------------ | :---------------------------------------------------------------- |
+| <img src="/team/trevor/Trevor_Week14-15_AssembledLeft.jpg" width="80%"> | <img src="/team/trevor/Trevor_Week14-15_AssembledRight.jpg" width="80%"> |
+| :---------------------------------------------------------------------- | :----------------------------------------------------------------------- |
 
 _Figure 2: On the top, an example of an installed bus bar. On the bottom-left, both installed bus bars on player B's side of the table. On the bottom-right, both installed bus bars on Player A's side of the table._
 
 - The team worked together to painstakingly screw each sensor PCB into the MDF. Next, the sensor PCBs were wired together into rows and columns and connected to the bus bars. These wires were then twisted and taped down with white duct tape to prevent them from pushing on the acrylic or obscuring the sensor PCBs' LEDs. Then, the compressed hall effect outputs were wired from the output edges of the sensor PCBs to the master PCB (this required creating long female-to-female DuPont wires by soldering a female DuPont wire head to both ends of a long strand of 24-gauge braided wire).
 
-| <img src="/477grp5/team/trevor/Trevor_Week14-15_AssemblingVertical.jpg" width="50%"> |
-| :----------------------------------------------------------------- |
-| <img src="/477grp5/team/trevor/Trevor_Week14-15_AssemblingHorizontal.jpg" width="50%"> |
-| <img src="/477grp5/team/trevor/Trevor_Week14-15_AssembledFull.jpg" width="50%"> |
+| <img src="/team/trevor/Trevor_Week14-15_AssemblingVertical.jpg" width="50%">   |
+| :----------------------------------------------------------------------------- |
+| <img src="/team/trevor/Trevor_Week14-15_AssemblingHorizontal.jpg" width="50%"> |
+| <img src="/team/trevor/Trevor_Week14-15_AssembledFull.jpg" width="50%">        |
 
 _Figure 3: Snapshots of the table's progress going chronologically from top to bottom._
 
 - Ben and I finished constructing both ends of the table. This involved using a hot glue gun to attach two pairs of LDRs and white LEDs to each goal, using a hot glue gun to mount the goal, covering the top of the end with duct-taped cardboard, and shaping a piece of cardboard as the "puck catcher" from the goal. Note that Will cut the cardboard for us, and Alan drilled the holes into the goal for the LDR and white LED pair.
 
-<img src="/477grp5/team/trevor/Trevor_Week14-15_CompletedEnd.jpg" width="50%">
+<img src="/team/trevor/Trevor_Week14-15_CompletedEnd.jpg" width="50%">
 
 _Figure 4: Table with the completed ends._
 
@@ -86,6 +86,7 @@ _Figure 4: Table with the completed ends._
 - After the final demo, I assisted in cleaning the first level of the team's workstation. Most lab-owned equipment has been returned and trash removed from the station. The team still needs to determine how leftover parts will be handled.
 
 **Project Media**
+
 - Throughout the past two weeks, I have been taking pictures and videos of the team's progress. Some of these images and videos were used in our progress reports and some will appear on the team's media page later.
 
 ### Next Steps:
@@ -109,7 +110,7 @@ _Figure 4: Table with the completed ends._
 **Project Housekeeping**
 
 - Project Workstation: The team's workstation will need to be completely cleaned before the end of the semester. This includes determining which leftover parts the team is interested in keeping and which can be donated to future senior design projects.
-- Project [Website](https://engineering.purdue.edu/477grp5/): The team needs to update the team's website. This includes adding all new project documents and uploading new media.
+- Project [Website](https://engineering.purdue.edu/): The team needs to update the team's website. This includes adding all new project documents and uploading new media.
 - Project [Source](https://github.com/alanssitis/smart-air-hockey-table/): The team needs to tag the firmware used for the demonstration as a release. Then, the team can continue to add features before the Spark Challenge or clean up the repository.
 - Project Future: The team needs to determine what change, if any, will be made to the project before Spark Challenge. The team also needs to determine what happens to the table after Spark Challenge.
 
@@ -129,7 +130,7 @@ _Figure 4: Table with the completed ends._
 
 - Ben and I cut a hole for the output of the centrifugal blower, then mounted the blower and power relay.
 
-<img src="/477grp5/team/trevor/Trevor_Week13_MountedElectronics.jpg" width="25%">
+<img src="/team/trevor/Trevor_Week13_MountedElectronics.jpg" width="25%">
 
 _Figure 1: The mounted blower and power relay._
 
@@ -138,23 +139,23 @@ _Figure 1: The mounted blower and power relay._
 - Joined Alan and Ben after they had started cutting the acrylic using the CNC gantry. While the acrylic was being cut, I cut two 2.5"x6.5" MDF supports with a vertical band saw for the air chamber connecting the centrifugal blower's output to the MDF that holds the sensor PCBs. After that I waited for the acrylic to be cut beside Ben, then helped him carry the cut acrylic and MDF supports back to lab.
 
 <video controls muted width="25%">
-  <source src="/477grp5/team/trevor/Trevor_Week13_AcrylicGantry.MOV" type="video/mp4">
+  <source src="/team/trevor/Trevor_Week13_AcrylicGantry.MOV" type="video/mp4">
 </video>
 
 _Figure 2: A short video showing the acrylic being cut on the CNC gantry._
 
 - One of the mounted length-wise support boards under the table ended up twisting, which pulled out the majority of one of the screws. To remedy this, I removed and remounted the twisted support while also adding two width-wise support boards (which Alan cut to length from the spare wood Ben and I had claimed) under the table to help prevent the support from re-warping.
 
-<img src="/477grp5/team/trevor/Trevor_Week13_Supports.jpg" width="25%">
+<img src="/team/trevor/Trevor_Week13_Supports.jpg" width="25%">
 
 _Figure 3: The added width-wise supports and the remounted length-wise support (on the right)._
 
 - I went shopping at Menards for materials that would be needed as the team continued to construct the Smart Air Hockey Table. I bought six #12x4" wood screws, a 6"x18" felt blanket, white duct tape, and GE gaps & cracks foam. The screws will be used to better mount the length-wise support boards to the soft table legs, which will hopefully prevent more warping. The felt will be used for the bottoms of the 3D printed pushers. The white duct tape and GE gaps & cracks foam will be used to help make the Smart Air Hockey Table airtight for better air pressure out of the game surface. While dropping the materials off at lab, I took some pictures of the 3D printed goal for Will's progress report.
 
-<img src="/477grp5/team/trevor/Trevor_Week13_Shopping.jpg" width="50%">
+<img src="/team/trevor/Trevor_Week13_Shopping.jpg" width="50%">
 
 _Figure 4: The full purchase._
-	
+
 ### Next Steps:
 
 **Table Construction**
@@ -186,7 +187,7 @@ _Figure 4: The full purchase._
 - I created a test for the encoder switch and rotation. Pressing the encoder's switch toggled a debug LED. The "selected" debug LED could be changed by rotating the encoder while the debug LED is on. (Associated with one of the stretch PSDRs)
 
 <video controls muted width="25%">
-  <source src="/477grp5/team/trevor/Trevor_Week12_EncoderDemo.MOV" type="video/mp4">
+  <source src="/team/trevor/Trevor_Week12_EncoderDemo.MOV" type="video/mp4">
 </video>
 
 _Figure 1: A short example of the encoder test showing the "selected" debug LED changing as the encoder is rotated._
@@ -196,7 +197,7 @@ _Figure 1: A short example of the encoder test showing the "selected" debug LED 
 - During testing the LDR inputs, we discovered an issue within the goal detection driver. The pins used as inputs for LDRs were different between the nucleo used for prototyping and the master PCB since the nucleo used a larger chip package. The fix for this was extremely simple since Ben and I designed the driver to use the pins defined at the top of the file, which allows for it to be easily reconfigured.
 - On 11/7, Ben and I were able to demonstrate four of the PSDRs for their preliminary checkoffs. Thus, all five of the project's PSDRs have received their preliminary checkoffs.
 
-<img src="/477grp5/team/trevor/Trevor_Week12_PreliminaryCheckoffs.jpg" width="25%">
+<img src="/team/trevor/Trevor_Week12_PreliminaryCheckoffs.jpg" width="25%">
 
 _Figure 2: The team's PSDR checkoff sheet with all preliminary PSDR checkoffs being completed._
 
@@ -207,28 +208,28 @@ _Figure 2: The team's PSDR checkoff sheet with all preliminary PSDR checkoffs be
 - I reserved a time slot at BIDC for cutting the table's legs out of the scrap wood and cutting supports to place under the MDF using leftover MDF. The MDF supports will also create the central air chamber transferring the airflow from the air blower attached to the bottom of the table to the MDF.
 - Ben, Will, and I worked together to cut the legs and MDF supports at BIDC under TA supervision. The legs were cut using a vertical band saw and the MDF supports were cut using a table saw.
 
-<img src="/477grp5/team/trevor/Trevor_Week12_LegBandSaw.jpg" width="25%">
+<img src="/team/trevor/Trevor_Week12_LegBandSaw.jpg" width="25%">
 
 _Figure 3: One of the legs being cut using the vertical band saw._
 
-<img src="/477grp5/team/trevor/Trevor_Week12_MdfSupports.jpg" width="25%">
+<img src="/team/trevor/Trevor_Week12_MdfSupports.jpg" width="25%">
 
 _Figure 4: The MDF supports stacked in lab after being cut to size at BIDC._
 
 - Ben, Will, and I attached the legs to the table.
 
-| <img src="/477grp5/team/trevor/Trevor_Week12_TableLegsTop.jpg" width="75%"> | <img src="/477grp5/team/trevor/Trevor_Week12_TableLegsBottom.jpg" width="75%"> |
-| :-------------------------------------------------------------------------: | :----------------------------------------------------------------------------: |
+| <img src="/team/trevor/Trevor_Week12_TableLegsTop.jpg" width="75%"> | <img src="/team/trevor/Trevor_Week12_TableLegsBottom.jpg" width="75%"> |
+| :-----------------------------------------------------------------: | :--------------------------------------------------------------------: |
 
 _Figure 5: On the left, the table with legs from a top, isometric view. On the right, the table with legs from a bottom, isometric view._
 
 - Ben and I claimed scrap wood from BIDC for bracing under the table. The planks going length-wise across the table was split in half width-wise using a table saw then trimmed length wise using a hand saw. Ben and I have installed the length-wise braces, but the width-wise braces will wait until after we have determined where to install the components under the table. This namely includes the blower, power relay, and master PCB.
 
-<img src="/477grp5/team/trevor/Trevor_Week12_BottomBraces.jpg" width="25%">
+<img src="/team/trevor/Trevor_Week12_BottomBraces.jpg" width="25%">
 
 _Figure 6: The planks that will be used for the length-wise and width-wise braces under the table._
 
-<img src="/477grp5/team/trevor/Trevor_Week12_TableBraces.jpg" width="50%">
+<img src="/team/trevor/Trevor_Week12_TableBraces.jpg" width="50%">
 
 _Figure 7: The table (upside down) with the length-wise braces installed._
 
@@ -236,10 +237,10 @@ _Figure 7: The table (upside down) with the length-wise braces installed._
 
 - I created a basis for the external EEPROM driver, which Ben and I can test and work off of. The basis includes creating basic helper functions, an initialization function, and functions calling individual EEPROM instructions.
 
-[In-Progress Header File](/477grp5/team/trevor/Trevor_Week12_driver_eeprom.h) & [In-Progress Source File](/477grp5/team/trevor/Trevor_Week12_driver_encoder.c)
+[In-Progress Header File](/team/trevor/Trevor_Week12_driver_eeprom.h) & [In-Progress Source File](/team/trevor/Trevor_Week12_driver_encoder.c)
 
 **A11 - Ethical and Environmental Analysis**
-  
+
 - I am responsible for performing the ethical and environmental analysis of the Smart Air Hockey Table for the team.
 - I have created a rough draft of the document organizing topics to discuss for the ethical and environmental analysis.
 - The environmental analysis is almost completed.
@@ -264,7 +265,7 @@ _Figure 7: The table (upside down) with the length-wise braces installed._
 - As mentioned previously, Ben and I will need to test the basis that I have created. After testing the basis of the driver, Ben and I can focus on developing the specific EEPROM functionality required by the project to meet our stretch PSDR. Most notably, the project will need to be able to save and load persistent user data and load animation frames. In addition, the driver should provide a way for programming the EEPROM with the animation frames, although this functionality will only be used in a companion program for initially programming the EEPROM.
 
 **A11 - Ethical and Environmental Analysis**
-  
+
 - I need to complete the environmental analysis then begin and complete the ethical analysis.
 
 ## Week 11
@@ -279,17 +280,17 @@ _Figure 7: The table (upside down) with the length-wise braces installed._
 
 - On 10/31/2023, the team's JLCPCB order, placed by Ben, was received.
 
-<img src="/477grp5/team/trevor/Trevor_Week11_SensorStack.jpg" width="25%">
+<img src="/team/trevor/Trevor_Week11_SensorStack.jpg" width="25%">
 
 _Figure 1: The stack of sensor PCB as received from JLCPCB._
 
-<img src="/477grp5/team/trevor/Trevor_Week11_SensorComparison.jpg" width="50%">
+<img src="/team/trevor/Trevor_Week11_SensorComparison.jpg" width="50%">
 
 _Figure 2: On the left, a bare sensor PCB. On the right, a JLCPCB assembled sensor PCB (without the THT components, AKA the pin headers)._
 
 - Ben and I snapped the v-scores off the assembled sensor PCBs and placed them on the MDF. The top row and leftmost column have the solder jump pads configured properly for their position.
 
-<img src="/477grp5/team/trevor/Trevor_Week11_FilledMdf.jpg" width="50%">
+<img src="/team/trevor/Trevor_Week11_FilledMdf.jpg" width="50%">
 
 _Figure 3: The MDF filled with JLCPCB assembled sensor PCBs. Note that the sensor PCBs are not installed._
 
@@ -304,23 +305,23 @@ _Figure 3: The MDF filled with JLCPCB assembled sensor PCBs. Note that the senso
 
 **Table Construction**
 
-- Worked alongside Alan to glue the main body of the air hockey table together. 
+- Worked alongside Alan to glue the main body of the air hockey table together.
 - The individual pieces were previously fabricated by Alan and Will. However, some pieces required additional shaping so they would fit together properly.
 
 <video controls muted width="75%">
-  <source src="/477grp5/team/trevor/Trevor_Week11_GlueTimelapse.mp4" type="video/mp4">
+  <source src="/team/trevor/Trevor_Week11_GlueTimelapse.mp4" type="video/mp4">
 </video>
 
 _Figure 4: A timelapse of Alan and I gluing the air hockey table's main body together._
 
-| <img src="/477grp5/team/trevor/Trevor_Week11_TableIso.jpg" width="100%"> | <img src="/477grp5/team/trevor/Trevor_Week11_TableWidth.jpg" width="100%"> | <img src="/477grp5/team/trevor/Trevor_Week11_TableLength.jpg" width="100%"> |
-| :---: | :---: | :---: |
+| <img src="/team/trevor/Trevor_Week11_TableIso.jpg" width="100%"> | <img src="/team/trevor/Trevor_Week11_TableWidth.jpg" width="100%"> | <img src="/team/trevor/Trevor_Week11_TableLength.jpg" width="100%"> |
+| :--------------------------------------------------------------: | :----------------------------------------------------------------: | :-----------------------------------------------------------------: |
 
 _Figure 5: Various views of the air hockey table's main body drying._
 
 - After leaving the table in the bay to dry (with BIDC staff's permission), Will and I transported the main body of the air hockey table to the lab as further work will only require small tools. Furthermore, the lab provides better access as the team will not need to reserve time slots at BIDC.
 
-<img src="/477grp5/team/trevor/Trevor_Week11_LabTable.jpg" width="50%">
+<img src="/team/trevor/Trevor_Week11_LabTable.jpg" width="50%">
 
 _Figure 6: The air hockey table's main body in the ECE477 lab._
 
@@ -359,9 +360,9 @@ External EEPROM Driver:
 
 - In preparation for receiving the sensor PCBs and rev B master PCBs, I began creating a DigiKey order for the components required.
 - 128 of the 150 sensor PCBs will be assembled at JLCPCB, thus no electronic components were required.
-- Some of the parts previously purchased for the rev A master PCB could be used for the rev B master PCB, therefore only a portion of the components required to assemble the rev B master PCB needed to be ordered. 
+- Some of the parts previously purchased for the rev A master PCB could be used for the rev B master PCB, therefore only a portion of the components required to assemble the rev B master PCB needed to be ordered.
 
-<img src="/477grp5/team/trevor/Trevor_Week10_DigiKeyPurchase.PNG" width="100%">
+<img src="/team/trevor/Trevor_Week10_DigiKeyPurchase.PNG" width="100%">
 
 _Figure 1: The final DigiKey order (Note that, despite using the "Senior Design Purchase Request Form", this order was purchased by me)._
 
@@ -374,20 +375,20 @@ _Figure 1: The final DigiKey order (Note that, despite using the "Senior Design 
 - Ben and I then carried the processed MDF board from BIDC to the lab.
 
 <video controls muted width="50%">
-  <source src="/477grp5/team/trevor/Trevor_Week10_CncOp1.MOV" type="video/mp4">
+  <source src="/team/trevor/Trevor_Week10_CncOp1.MOV" type="video/mp4">
 </video>
 
 _Figure 2: A short video of the CNC router in the middle of performing the first operation._
 
-| <img src="/477grp5/team/trevor/Trevor_Week10_MdfFull.jpg" width="50%"> |
-|-------------------------------------------------------------------------|
-| <img src="/477grp5/team/trevor/Trevor_Week10_MdfZoom.jpg" width="25%"> |
+| <img src="/team/trevor/Trevor_Week10_MdfFull.jpg" width="50%"> |
+| -------------------------------------------------------------- |
+| <img src="/team/trevor/Trevor_Week10_MdfZoom.jpg" width="25%"> |
 
 _Figure 3: On the top, a full view of the processed MDF with two of the sensor PCB slots filled. On the bottom, a zoomed view of one of the sensor PCB slots._
 
 **EEPROM Driver**
 
-- Before this Thursday's lecture, Ben and I began discussing how we should implement a driver for communicating with the [external EEPROM](/477grp5/references/M95P32-I_EEPROM_Datasheet.pdf), which will store persistent user data and animations, using SPI.
+- Before this Thursday's lecture, Ben and I began discussing how we should implement a driver for communicating with the [external EEPROM](/references/M95P32-I_EEPROM_Datasheet.pdf), which will store persistent user data and animations, using SPI.
 - After this Thursday's lecture, the entire team discussed how loading and playing the animations should work. Which informed Ben and I on how we want to construct the driver.
 - Ben and I currently plan to create a generic function for selecting and communicating with the external EEPROM using SPI, functions which implement the individual instructions available on the external EEPROM, and functions coordinating these instruction calls in a way that fits our intended use case. More details will follow in next week's progress report as more planning and development is completed.
 
@@ -417,7 +418,7 @@ Slideshow:
 
 - Created the slides covering the electrical schematic, PCB layout, and PCB verification of the sensor PCBs. Each slide is accompanied by a list of talking points to hit during the presentation.
 
-<img src="/477grp5/team/trevor/Trevor_Week9_SlideExample.PNG" width="60%">
+<img src="/team/trevor/Trevor_Week9_SlideExample.PNG" width="60%">
 
 _Figure 1: A sample of a slide created by me for the midterm design review presentation._
 
@@ -449,8 +450,8 @@ Goal Driver:
 
 - Currently finished and awaiting review from the other team members.
 
-| <img src="/477grp5/team/trevor/Trevor_Week9_OldGoalDriver.PNG" width="100%"> | <img src="/477grp5/team/trevor/Trevor_Week9_NewGoalDriver.PNG" width="100%"> |
-| :--------------------------------------------------------------------------: | :--------------------------------------------------------------------------: |
+| <img src="/team/trevor/Trevor_Week9_OldGoalDriver.PNG" width="100%"> | <img src="/team/trevor/Trevor_Week9_NewGoalDriver.PNG" width="100%"> |
+| :------------------------------------------------------------------: | :------------------------------------------------------------------: |
 
 _Figure 2: On the left, the old external interrupt-based goal driver. On the right, the new polling-based goal driver._
 
@@ -473,7 +474,7 @@ Master PCB Rev A:
 
 - Edge rails were required for the sensor PCB to be assembled by JLCPCB. The team was concerned with how these edge rails would affect the sensor PCBs' shape and size, given that the shape of the sensor PCBs affects our overall table design. I discussed how these edge rails are typically handled with Joe. He informed me that the edge rails are typically scored, either with a v-score or mouse bites, although he was unsure how JLCPCB handles edge rails. I relayed this conversation with Ben, who oversaw ordering the PCBs. Afterwards, Ben and I got into contact with a representative of JLCPCB who informed us that the edge rails are v-scored with the optional fee being to have JLCPCB break the boards before shipping. The team opted to forgo this optional fee and will break off the edge rails from the PCBs ourselves.
 
-<img src="/477grp5/team/trevor/Trevor_Week9_EdgeRailScoring.PNG" width="50%">
+<img src="/team/trevor/Trevor_Week9_EdgeRailScoring.PNG" width="50%">
 
 _Figure 3: An example of the scoring performed by JLCPCB on the edge rails, courtesy of the JLCPCB representative._
 
@@ -509,17 +510,17 @@ _Figure 3: An example of the scoring performed by JLCPCB on the edge rails, cour
 
 - Tested the new LDR circuit designed by Ben which iterated on my previous design. Ben's new design switches the potentiometer to the positive input of the comparator, which allows for a modifiable voltage divider that is then compared to the LDR's negative input. This allows for greater control over the comparator's threshold and removes a resistor.
 
-<img src="/477grp5/team/trevor/Trevor_Week7_LdrSchematics.PNG" width="60%">
+<img src="/team/trevor/Trevor_Week7_LdrSchematics.PNG" width="60%">
 
 _Figure 1: On the left, the Ben's new LDR circuit. On the right, the old LDR circuit._
 
-<img src="/477grp5/team/trevor/Trevor_Week7_LdrTest.jpg" width="40%">
+<img src="/team/trevor/Trevor_Week7_LdrTest.jpg" width="40%">
 
 _Figure 2: Test of the new LDR circuit._
 
 - Assisted Ben and Alan in soldering Sensor PCBs. This primarily consisted of getting the required passives and breaking apart the 1x8 angled pin headers into 1x2 angled pin headers.
 
-<img src="/477grp5/team/trevor/Trevor_Week7_SensorSoldered.jpg" width="60%">
+<img src="/team/trevor/Trevor_Week7_SensorSoldered.jpg" width="60%">
 
 _Figure 3: A soldered Sensor PCB._
 
@@ -527,7 +528,7 @@ _Figure 3: A soldered Sensor PCB._
 
 - Alongside the rest of the team, tested a 2x2 and 2x3 group of connected Sensor PCBs.
 
-<img src="/477grp5/team/trevor/Trevor_Week7_Sensor2x2.jpg" width="60%">
+<img src="/team/trevor/Trevor_Week7_Sensor2x2.jpg" width="60%">
 
 _Figure 4: A 2x2 group of connected Sensor PCBs._
 
@@ -543,11 +544,11 @@ _Figure 4: A 2x2 group of connected Sensor PCBs._
 
 - Minor improvements made based on feedback from Ben. (See figures 5 and 6 below for a comparison)
 
-<img src="/477grp5/team/trevor/Trevor_Week6_SensorSchematicNew.PNG" width="80%">
+<img src="/team/trevor/Trevor_Week6_SensorSchematicNew.PNG" width="80%">
 
 _Figure 5: Sensor schematic before Ben's feedback._
 
-<img src="/477grp5/team/trevor/Trevor_Week7_SensorSchematicNew.PNG" width="80%">
+<img src="/team/trevor/Trevor_Week7_SensorSchematicNew.PNG" width="80%">
 
 _Figure 6: Sensor sechematic after Ben's feedback._
 
@@ -559,7 +560,7 @@ _Figure 6: Sensor sechematic after Ben's feedback._
 
 - Took pictures to illustrate the blower set-up.
 
-<img src="/477grp5/team/trevor/Trevor_Week7_BlowerSetup.jpg" width="60%">
+<img src="/team/trevor/Trevor_Week7_BlowerSetup.jpg" width="60%">
 
 _Figure 7: Blower setup._
 
@@ -611,11 +612,11 @@ _Figure 7: Blower setup._
 
 - Updated the sensor board's schematic to improve readability, while being electrically equivalent.
 
-<img src="/477grp5/team/trevor/Trevor_Week6_SensorSchematicOld.PNG" width="80%">
+<img src="/team/trevor/Trevor_Week6_SensorSchematicOld.PNG" width="80%">
 
 _Figure 1: Previous Sensor Schematic_
 
-<img src="/477grp5/team/trevor/Trevor_Week6_SensorSchematicNew.PNG" width="80%">
+<img src="/team/trevor/Trevor_Week6_SensorSchematicNew.PNG" width="80%">
 
 _Figure 2: New Sensor Schematic_
 
@@ -631,13 +632,13 @@ Super-loop & State Machine:
 
 - Created an enumeration with all states of state machine.
 
-<img src="/477grp5/team/trevor/Trevor_Week6_StateMachineCode.PNG" width="50%">
+<img src="/team/trevor/Trevor_Week6_StateMachineCode.PNG" width="50%">
 
 _Figure 3: State Machine Enumeration Code_
 
 - Created the framework for the super-loop that is invoked every SysTick (1 ms) and coordinates function calls based on the current state.
 
-<img src="/477grp5/team/trevor/Trevor_Week6_SuperLoopCode.PNG" width="80%">
+<img src="/team/trevor/Trevor_Week6_SuperLoopCode.PNG" width="80%">
 
 _Figure 4: Super-Loop Framework Code_
 
@@ -649,7 +650,7 @@ Goal Detection:
 
 - Added variables to store the data required by these functions, such as each players' score and the number of points to win. As well as "getter" and "setter" functions to access these variables.
 
-<img src="/477grp5/team/trevor/Trevor_Week6_GoalDetectionCode.PNG" width="60%">
+<img src="/team/trevor/Trevor_Week6_GoalDetectionCode.PNG" width="60%">
 
 _Figure 5: Goal Detection Enabling/Disabling & Handling Functions_
 
@@ -683,7 +684,7 @@ _Figure 5: Goal Detection Enabling/Disabling & Handling Functions_
 
 - Once we decided on pin assignments, we wired the microcontroller accordingly in the Master PCB schematic Ben had previously created.
 
-<img src="/477grp5/team/trevor/Trevor_Week4_MasterSchematic.PNG" width="80%">
+<img src="/team/trevor/Trevor_Week4_MasterSchematic.PNG" width="80%">
 
 _Figure 1: Current Master PCB Schematic_
 
@@ -691,21 +692,21 @@ _Figure 1: Current Master PCB Schematic_
 
 - I assisted Ben in routing a portion of the Master PCB.
 
-| <img src="/477grp5/team/trevor/Trevor_Week4_MasterPcbDesign.PNG" width="70%"> | <img src="/477grp5/team/trevor/Trevor_Week4_MasterPcbRender.PNG" width="100%"> |
-| :---------------------------------------------------------------------------: | :----------------------------------------------------------------------------: |
+| <img src="/team/trevor/Trevor_Week4_MasterPcbDesign.PNG" width="70%"> | <img src="/team/trevor/Trevor_Week4_MasterPcbRender.PNG" width="100%"> |
+| :-------------------------------------------------------------------: | :--------------------------------------------------------------------: |
 
 _Figure 2: Current Master PCB_
 
 - I lead designing the Sensor PCB schematic.
 
-<img src="/477grp5/team/trevor/Trevor_Week4_SensorSchematic.PNG" width="80%">
+<img src="/team/trevor/Trevor_Week4_SensorSchematic.PNG" width="80%">
 
 _Figure 3: Current Sensor PCB Schematic_
 
 - I lead assigning component footprints, laying out components, and routing in KiCad.
 
-| <img src="/477grp5/team/trevor/Trevor_Week4_SensorPcbDesign.PNG" width="70%"> | <img src="/477grp5/team/trevor/Trevor_Week4_SensorPcbRender.PNG" height="100%"> |
-| :---------------------------------------------------------------------------: | :-----------------------------------------------------------------------------: |
+| <img src="/team/trevor/Trevor_Week4_SensorPcbDesign.PNG" width="70%"> | <img src="/team/trevor/Trevor_Week4_SensorPcbRender.PNG" height="100%"> |
+| :-------------------------------------------------------------------: | :---------------------------------------------------------------------: |
 
 _Figure 4: Current Sensor PCB_
 
@@ -715,7 +716,7 @@ _Figure 4: Current Sensor PCB_
 
 - Ben pointed out to the team that the sampling rate of the [TMAG5231](https://www.ti.com/product/TMAG5231), the digital hall effect sensor we planned to use, was too low for our requirements. This prompted Ben, Will, and I to research and discuss alternatives.
 
-<img src="/477grp5/team/trevor/Trevor_Week4_HallEffectSamplingRate.PNG" width="40%">
+<img src="/team/trevor/Trevor_Week4_HallEffectSamplingRate.PNG" width="40%">
 
 _Figure 5: TMAG5231 Sampling Rate Table_
 
@@ -819,14 +820,14 @@ The development of puck tracking has continued in two ways.
 
 - Firstly, the team has discussed which magnet would be best to use in the puck. While all team members have contributed to this conversation, Ben and I have discussed the topic the most and jointly took charge in making the final decision. Ben and I's discussions centered around whether the puck's magnet should try to maximize "pull force" or "surface magnetic field." After some research and informal testing, we determined that "pull force" was a better rough indicator, but we would also need to note the shape of the magnet's magnetic field. The shape of the magnet's magnetic field is almost entirely dependent on the shape of the magnet itself, as can be seen in the figure below. Ben and I looked at the field of several different shapes of magnets, and disk (with an "axial" magnetic direction) had the best shaped magnetic field for our application. However, we were unable to determine if we could create a configuration of multiple magnets which would be better. Hence, we ordered some smaller disk magnets and small cylinder magnets along with the large disk magnet we currently plan to use.
 
-| <img src="/477grp5/team/trevor/Trevor_Week3_CylinderField.PNG" width="80%"> | <img src="/477grp5/team/trevor/Trevor_Week3_DiskField.PNG" width="80%"> |
-| :-------------------------------------------------------------------------: | :---------------------------------------------------------------------: |
+| <img src="/team/trevor/Trevor_Week3_CylinderField.PNG" width="80%"> | <img src="/team/trevor/Trevor_Week3_DiskField.PNG" width="80%"> |
+| :-----------------------------------------------------------------: | :-------------------------------------------------------------: |
 
 _Figure 1: Example magnetic fields of a cylinder magnet (left) and disk magnet (right) provided by K&J Magnetics, Inc._
 
 - Secondly, the team has had several discussions about ways to reduce the time it takes to read the hall effect sensors. A discussion between Ben and I have dramatically changed our planned approach to reading the hall effect sensors. Previously, we had planned to use "row master" microcontrollers which would be responsible for reading, processing, and reporting the hall effect sensor data to the main microcontroller. However, if we convert the hall effect sensor to a digital signal, then we can use logic gates to compress the hall effect sensors into a digital signal on if the puck is in that row or column. This method is similar to a suggestion made during our Initial Project Proposal, where it was suggested to create a lattice of IR sensors across the play field. The IR sensor method wouldn't work as anything on the play field could trip the sensors, but only the puck's magnet will trigger the hall effect sensors.
 
-<img src="/477grp5/team/trevor/Trevor_Week3_HallGridDraft.png" width="40%">
+<img src="/team/trevor/Trevor_Week3_HallGridDraft.png" width="40%">
 
 _Figure 2: Partial diagram showing the proposed OR gate solution_
 
@@ -834,8 +835,8 @@ _Figure 2: Partial diagram showing the proposed OR gate solution_
 
 - A quick, proof-of-concept circuit was constructed during this week's mandatory lab to showcase how a photoresistor could be used for goal detection. However, this circuit used an op-amp when a comparator would work better. Thus, the next day I went to the ECE shop, grabbed some comparators, and built a similar circuit, a picture and diagram of which can be seen below.
 
-| <img src="/477grp5/team/trevor/Trevor_Week3_LDRCircuitSchematic.png" width="80%"> | <img src="/477grp5/team/trevor/Trevor_Week3_LDRCircuitPic.jpg" width="80%"> |
-| :-------------------------------------------------------------------------------: | :-------------------------------------------------------------------------: |
+| <img src="/team/trevor/Trevor_Week3_LDRCircuitSchematic.png" width="80%"> | <img src="/team/trevor/Trevor_Week3_LDRCircuitPic.jpg" width="80%"> |
+| :-----------------------------------------------------------------------: | :-----------------------------------------------------------------: |
 
 _Figure 3: Schematic of photoresistor circuit (left) and picture of built photoresistor circuit (right)_
 
@@ -889,7 +890,7 @@ Team Organization
 
 - Scheduling the meeting turned out to be a challenging task given the team members' busy and rigid schedules. It often took team members a long time to respond to questions about their schedule and this led us to rescheduling our meeting a few times. I worried that this could be a recurring issue throughout the semester, so I first suggested that the team should schedule one or two regular meeting times outside of the mandatory lab. Unfortunately, the other team members did not like this approach as none of them felt they would be able to consistently keep a block of time free. As an alternative solution, I suggested that we should use [When2Meet](https://www.when2meet.com/) to schedule our meetings. When2Meet made scheduling the final project proposal meeting much easier, and the team has agreed to use this tool in the future.
 
-<img src="/477grp5/team/trevor/Trevor_Week1_Figure1.PNG" width="25%">
+<img src="/team/trevor/Trevor_Week1_Figure1.PNG" width="25%">
 
 _Figure 1: Example When2Meet from week 1_
 
@@ -902,9 +903,9 @@ Hardware
 - EE Shop: At the beginning of the week, I visited the EE shop on behalf of the team to look for hall sensors that the team could use for feasibility testing. I was able to get two Hall effect sensors which were the exact model the team had been looking at previously. I also looked for any other components that may be useful for prototyping, but did not find anything else.
 - Design Discussion: During the mandatory lab on 8/30/2023, Alan, Ben, and I discussed the design of the daughter PCBs. Our discussion primarily focused on how the Hall effect sensors and LEDs should be laid out and how data will flow between the microcontrollers. My main contribution to the discussion was suggesting one level of the microcontrollers should convert the hall effect sensor readings to a digital signal based on a threshold. The location of the magnet could then be determined by averaging the position of all Hall effect sensors that have been "triggered", rather than more complex computations based on the Hall effect sensor's magnitude readings. This would decrease the amount of data that would need to be transferred between the microcontrollers. Alan and Ben are both interested in exploring this method further, with Ben proposing that we include multiple thresholds to increase the resolution while still compressing the data. Feasibility testing with the Hall effect sensors will give us a better idea on whether this method of data compression will work.
 
-| <img src="/477grp5/team/trevor/Trevor_Week1_Figure2a.PNG" width="40%"> | <img src="/477grp5/team/trevor/Trevor_Week1_Figure2b.PNG" width="40%"> |
-| :--------------------------------------------------------------------: | :--------------------------------------------------------------------: |
-| <img src="/477grp5/team/trevor/Trevor_Week1_Figure2c.PNG" width="40%"> | <img src="/477grp5/team/trevor/Trevor_Week1_Figure2d.PNG" width="40%"> |
+| <img src="/team/trevor/Trevor_Week1_Figure2a.PNG" width="40%"> | <img src="/team/trevor/Trevor_Week1_Figure2b.PNG" width="40%"> |
+| :------------------------------------------------------------: | :------------------------------------------------------------: |
+| <img src="/team/trevor/Trevor_Week1_Figure2c.PNG" width="40%"> | <img src="/team/trevor/Trevor_Week1_Figure2d.PNG" width="40%"> |
 
 _Figure 2: Puck detection examples using the threshold method_
 

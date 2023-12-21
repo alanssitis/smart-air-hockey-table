@@ -4,7 +4,6 @@ import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://engineering.purdue.edu',
-  base: '/477grp5',
+  site: 'https://www.puck-it.com',
   integrations: [tailwind()]
 });

@@ -19,7 +19,7 @@ title: Will Dobert Progress Report
 
 In the first few days of week 14, the team spent considerable time working in the lab to attempt to finish constructing the table. Although there was too much done to succinctly cover in this report, I remember plenty of drilling, screwing, sawing, dremeling, filing, cutting wires, stripping wires, soldering wires, heatshrinking wires, cable managing, and incremental testing. We spent a couple of very late hours in the lab tracking down a tricky bug with our LED matrix, only for it to somehow be solved by giving up and moving on with assembling the matrix. There were some instances of questionable carpentry decisions being made, but it all turned out fine in the end. Although soldering pin headers to the sensor PCBs and screwing them into the table were time consuming in their own right, plugging in the wires and taping them down proved to be even worse. I am thankful that, due to our efforts, the end result looks fairly impressive.
 
-![Assembly Commences](/477grp5/team/will/20231119_155932.jpg)
+![Assembly Commences](/team/will/20231119_155932.jpg)
 _Figure 1: Early stages of assembling the LED matrix_
 
 #### Goal Chutes Are Difficult
@@ -30,13 +30,13 @@ As the table took form, I was finally able to slot in the test jig I mentioned i
 
 To nicely mount the PCB and the power supply to the underside of the table, I quickly designed a couple of mounting brackets. The night before our final demo, I also designed a pusher for the players to strike the puck with.
 
-![PCB Mount](/477grp5/team/will/pcb_bracket.png)
+![PCB Mount](/team/will/pcb_bracket.png)
 _Figure 2: PCB mounting bracket_
 
-![PSU Mount](/477grp5/team/will/psu_bracket.png)
+![PSU Mount](/team/will/psu_bracket.png)
 _Figure 3: Power supply mounting bracket_
 
-![Pusher](/477grp5/team/will/pusher.png)
+![Pusher](/team/will/pusher.png)
 _Figure 4: Simple pusher_
 
 #### Firming Up Firmware
@@ -44,7 +44,7 @@ _Figure 4: Simple pusher_
 My only big task with firmware this week was to implement the idle state that our table enters upon powering on or finishing a game. The two components to this are the menu system and the idle animation. I've prototyped the menu system in the past, but I started from scratch this time to make sure it was written with our current firmware in mind. It includes configurable options for maximum score and LED brightness. The idle animation is an eye-catching rainbow gradient flowing across the table.
 
 <video controls muted>
-  <source src="/477grp5/team/will/20231130_182435.mp4" type="video/mp4">
+  <source src="/team/will/20231130_182435.mp4" type="video/mp4">
 </video>
 
 _Figure 5: Idle animation_
@@ -67,24 +67,24 @@ The Spark Challenge is next week, so polishing up the overall experience of our 
 
 A few revisions were made to the goal chute design over the course of this week. I extended the puck entry slot out into the goal to meet flush with the acrylic. After considering several ideas, I decided on a couple points to put mounting tabs that will secure the chute to the table. I took inspiration from the very first iteration of the goal chute and made the exit of the chute less inviting for hands to be inserted into. Lastly, I implemented feedback from Trevor by making the retrieval area deeper to securely hold the puck.
 
-![Goal v11](/477grp5/team/will/Goal_v11.png)
+![Goal v11](/team/will/Goal_v11.png)
 _Figure 1: Latest revision of the goal chute design, featuring all previously mentioned improvements_
 
-![Printed Chute Test](/477grp5/team/will/IMG_1072.jpg)
+![Printed Chute Test](/team/will/IMG_1072.jpg)
 _Figure 2: 3D printed portion of the goal chute for testing_
 
 #### Table Construction Continues
 
 Over the weekend, I paid a visit to Menards to pick up some adjustable feet for the table. Keeping the table level no matter what surface it's placed on is key to the quality of gameplay, otherwise the puck will continually drift towards one side. After drilling 4 holes and hammering the T-nuts into the bottom of the legs, I screwed the feet in and attached felt pads to them.
 
-![Table Leg Foot](/477grp5/team/will/20231113_115513.jpg)
+![Table Leg Foot](/team/will/20231113_115513.jpg)
 _Figure 3: Adjustable foot attached to a table leg_
 
 In this week's lab session, I worked with the team to test-fit the MDF into the table by placing the support planks in and laying it on top. Fitting the MDF proved to be impossible at first, and upon measuring we realized that it was an inch too long. Trevor and I carried it down to the sub-basement machine shop for it to be trimmed with a circular saw. In spite of this, the MDF was still barely too long. Some rough filing and dremeling took place, and then the MDF finally fit into the table. With the MDF in place, we confirmed that the play surface sits at the correct height.
 
 Later in the week, some of the team oversaw our acrylic sheet being cut and drilled at BIDC. Once it was brought back to the lab, it also did not fit into the table as intended. I, with Trevor's help, used a plastic-cutting dremel bit to trim an eighth inch off one end of the acrylic. After a lengthy session of adding additional support beams to the table's underside to compensate for a warped board, the acrylic was properly fitted. I worked briefly with Ben and Alan to test the airflow properties of the table by taping up air leaks and sliding the puck around. Initial results were mixed, as we are still fighting against pressure leakage in a few areas. The acrylic flexed upward in the middle when air was turned on, and airflow reduced noticeably when the flex was corrected. As a result of this, we plan to increase the gap between the MDF and acrylic to allow for better airflow.
 
-![Table Leg Foot](/477grp5/team/will/IMG_1060.jpg)
+![Table Leg Foot](/team/will/IMG_1060.jpg)
 _Figure 4: Underside of table with added supports visible_
 
 #### Next Steps
@@ -109,22 +109,22 @@ With all of our hardware finally in hand, this week's important task was to fini
 
 With the point that our firmware and electronic hardware reached in the first half of the week, our primary avenue of progress then became table construction. We decided that creating supports for the MDF and putting legs on the table would be straightforward objectives to achieve. We started by cutting our leftover panel of MDF into 4 properly sized pieces; they will hold up the large MDF panel and form the walls of the internal air chamber. We also cut 2 smaller pieces that allow us to adjust the overall size of the air chamber independently from the supports. The table legs were formed from a large block of wood that Trevor and Ben identified earlier in the week. It was challenging to heave the immense block onto a cart and wheel it up to the bandsaw for cutting. Once there, it took 4 sets of hands to lift the block and feed it through the bandsaw. The first cut was just to bring the block down to a manageable size, as we only needed less than half of its total length. From there, we cut off several 30"×4"×3.5" posts to serve as table legs. Afterwards, I helped carry our various pieces of wood back to the lab where the rest of our table now resides. We came back later that day to attach the legs and finally get the table standing on its own. Through the use of a drill, jigsaw, hammer, and chisel, we cut holes up through the table's corners, slid the legs through, and drilled screws in from the outside to attach them. Miraculously, the table stands sturdily with no wobbling at all despite eyeballing the leg attachment positions.
 
-![Inverted Table](/477grp5/team/will/20231110_204910.jpg)
+![Inverted Table](/team/will/20231110_204910.jpg)
 _Figure 1: Table legs attached to our upside down table_
 
 #### Designing a Goal Chute
 
 Although the bulk of our mechanical design effort is carpentry-related, there is an element of the table that requires some special attention. The chute that takes the puck from the goal, through the LDR circuit, and out the exit must be basically infallible. Getting a puck trapped in the mechanism would severely harm the user experience, so I designed the goal chute with this in mind. The three major elements are the rotator, funnel, and exit slot.
 
-![Chute Side Profile](/477grp5/team/will/Screenshot-2023-11-10-222508.png)
+![Chute Side Profile](/team/will/Screenshot-2023-11-10-222508.png)
 _Figure 2: CAD sketch of the goal chute's side profile_
 
 The curved upper portion is the rotator; it turns the puck vertical and confines it to minimize the chance of the puck wobbling and becoming stuck. The central portion is the funnel; it brings the puck inward to a channel slightly wider than the puck itself. This is where the LDR goal detection circuit will be mounted to. The bottom portion is the exit slot; the user will simply retrieve the puck from here after a goal is scored. The figure shown above depicts the second major revision of the goal chute. The first iteration was largely the same, except the funnel wasn't tilted and the exit slot was shaped differently. The second iteration was also made to be modified easier by making use of constraints instead of "hard coding" dimensions into the design.
 
-![Second Chute Iteration](/477grp5/team/will/ezgif-5-f5adb224f3.gif)
+![Second Chute Iteration](/team/will/ezgif-5-f5adb224f3.gif)
 _Figure 3: 3D CAD rendering of goal chute in Fusion 360_
 
-![3D Printed Chute](/477grp5/team/will/20231110_220208.jpg)
+![3D Printed Chute](/team/will/20231110_220208.jpg)
 _Figure 4: 3D printed upper portions of the first design iteration, courtesy of Ben_
 
 #### Next Steps
@@ -152,7 +152,7 @@ Last week, when making our final Digikey order, we discovered that the microcont
 Over the course of this week, Alan has submitted several small changes to our firmware for review. These have mostly been focused on renaming certain variables and constants, but also preparing for upcoming changes as well. As I reviewed these changes, there were several instances where I provided feedback or suggested modifications. The most impactful part of these overall adjustments has been to remove the LED matrix interleaving that I implemented last week. Keeping the data interleaved makes it harder to process and modify in an optimized way, but upcoming changes will require it. Ultimately, we do not solve any performance bottlenecks by interleaving the data, so it isn't a huge loss to remove for the sake of making larger gains elsewhere. Several scattered changes have been made to the code since interleaving was introduced, so removing it wasn't as simple as reverting a commit. Manually removing it gave me the opportunity to clean up some portions of the LED matrix driver at the same time. To test these changes prior to submitting them, I wrote a piece of test code to show a rainbow gradient on the LED matrix. Since we haven't finished assembling all of our sensor PCBs, I tested with two half-rows of boards that were already set up.
 
 <video controls muted>
-  <source src="/477grp5/team/will/20231103_130755.mp4" type="video/mp4">
+  <source src="/team/will/20231103_130755.mp4" type="video/mp4">
 </video>
 
 _Figure 1: Test gradient applied to LED matrix to validate functionality_
@@ -161,7 +161,7 @@ _Figure 1: Test gradient applied to LED matrix to validate functionality_
 
 Late in the week, Trevor and I wheeled an empty cart to the Bechtel Center to fetch our table and bring it back to the lab. We also removed the various clamps that had been attached to it and cleaned up the area it had been sitting. The most intensive portions of construction have been completed, so we feel confident in continuing to work on it at our lab station. The added benefit to this arrangement is that we can work on it whenever we want, instead of making timed reservations for equipment at the Bechtel Center. The half-mile journey back to BHEE was slow due to our cart not being well-suited for the rugged streets of the Purdue campus.
 
-![Table in Lab](/477grp5/team/will/20231103_154017.jpg)
+![Table in Lab](/team/will/20231103_154017.jpg)
 _Figure 2: Two pieces of the table reunited after relocation to the lab_
 
 #### Next Steps
@@ -186,7 +186,7 @@ Since Trevor finished developing the goal detection driver earlier this week, I 
 
 Around the middle of the week, Ben brought up an idea for further improving our LED matrix driver, on top of what I implemented last week. Instead of keeping the data for each channel separated and driven by separate DMA transfers, we could carefully interleave the data into a single stream that one DMA transfer can handle. The benefit to this approach is that it slightly reduces the CPU overhead for updating the LED matrix, as we are only configuring and initiating one DMA transfer every time instead of four. Uncovering a way to accomplish this was challenging at first, as there were no readily available ways to configure the DMA transfer to handle interleaved data in this manner. Back when I was transitioning our firmware to the new microcontroller, I noticed a confusingly named DMA "burst" feature for the microcontroller's timer peripherals. As it turns out, this was the key to unlocking the exact functionality I needed. This feature enables DMA to write to any number of contiguous timer control registers on a single transfer request, including those that control our LED matrix data transmission. All that I needed to do from here was retool the LED matrix driver to organize the outgoing data in the correct order. These changes can be viewed on our [public repository](https://github.com/alanssitis/smart-air-hockey-table/pull/104/commits/f01de850adb1d114250f8c7e3fa196bd6b5319a5#diff-c6acd8edab8b6c7ab734c9b871fa2884e209a1568adb239602c67e0c68d44ce2).
 
-![Interleaved DMA Data](/477grp5/team/will/week10.png)
+![Interleaved DMA Data](/team/will/week10.png)
 _Figure 1: Graphical representation of old and new methods for transmitting LED data on multiple channels_
 
 #### Firmware Cleanup
@@ -211,7 +211,7 @@ As of the time of writing, our shipment of PCBs is due to arrive very early next
 
 As mentioned in the last update, I began working on moving our existing firmware project to the _STM32U5_ family that we'll be using for the remainder of the project. My initial steps towards this goal went by fairly quickly, as I only needed to set up peripheral configurations equivalent to our old project. Timers, SPI, and interrupts all function identically on the new hardware, but STM's implementation of DMA has changed drastically. It seems to be almost entirely linked-list-based now, the available configuration and control registers are unfamiliar, and it has been renamed to **GPDMA**. DMA is vital to the operation of our LED matrix driver, so I knew I'd need to climb the learning curve for this sooner or later. Over the course of several days, I spent hours and hours fruitlessly attempting to coax the GPDMA system into working. Since this system is so new and currently has relatively little adoption, resources on how to use it are few and far between. STM has a series of guides, but they are rather surface level and make heavy use of their HAL. Since we aren't interested in programming with the HAL, these guides were of questionable value in solving the issue. I eventually resorted to watching device register values with a runtime debugger, and managed to learn more details about GPDMA. Despite a few close calls where I nearly had things working the way I wanted, there was never an instance of all the pieces clicking into place at once and just working. I raised my concerns to the team on how our choice of microcontroller may not have been as ideal as imagined, since the newness of it was becoming an issue. Ben and I decided a new course of action would be best, given what we knew about the GPDMA system. The LED matrix driver will no longer continually transmit data in a loop, but instead it will be triggered whenever the state of the matrix changes. This simplified our interface with GPDMA, and allowed us to get the driver working again. Although this new approach uses more RAM, it will greatly reduce the active CPU load imposed by the driver. Rewriting the display driver was much simpler, but some small adjustments were still needed along the way. All of the aforementioned firmware development has thus far utilized the STM32U575 Nucleo board, as our Revision B PCB has not arrived yet.
 
-![STM32U575 IOC](/477grp5/team/will/Screenshot-2023-10-20-223649.png)
+![STM32U575 IOC](/team/will/Screenshot-2023-10-20-223649.png)
 _Figure 1: STM32U575 (Nucleo) IOC file showing a small subset of pins assigned_
 
 #### Rotary Encoder Driver
@@ -219,7 +219,7 @@ _Figure 1: STM32U575 (Nucleo) IOC file showing a small subset of pins assigned_
 After successfully demonstrating a proof-of-concept for connecting a rotary encoder to our microcontroller, I decided to go ahead with developing a firmware driver for it. To take advantage of the "superloop" approach to our application's central state machine, I designed this driver with a polling-based interface. The driver acts as a sort of latch, where it will accumulate inputs from the rotary encoder, and clear them once the state machine has polled the device. This behavior could lead to cases where the encoder is not being polled for a while, and when the state machine finally polls it, it will get very out-of-date information. I included a function to deactivate the driver for times when input is not needed. I created a [snippet of code](https://github.com/alanssitis/smart-air-hockey-table/commit/42dbfd727366a09a193b0d9b09efd30fc20a0cb2) that shows a simple menu on the display, and reacts to the rotary encoder input accordingly. It was useful for testing the driver's functionality, and may also be useful in the future when we implement a settings menu for the project.
 
 <video controls muted>
-  <source src="/477grp5/team/will/20231023_150601_2.mp4" type="video/mp4">
+  <source src="/team/will/20231023_150601_2.mp4" type="video/mp4">
 </video>
 
 _Figure 2: Prototype menu selection showcasing rotary encoder functionality_
@@ -229,7 +229,7 @@ _Figure 2: Prototype menu selection showcasing rotary encoder functionality_
 Near the end of this week, I refactored the LED matrix driver to support multi-channel output. This is made possible by employing 4 DMA channels to synchronously control 4 timer PWM output channels. Both revisions of our main PCB were designed with this in mind, so no additional effort is needed in terms of hardware. Driving the LED matrix on multiple channels allows us to update it much more frequently, since the total refresh cycle will now take a quarter of the time. Updating the LED matrix could end up being a bottleneck in the future, as it could potentially happen hundreds of times per tick when drawing animations to the matrix. I made sure to discuss with the team on how to approach this rewrite with performance in mind. Much of the computation related to the driver is faster to execute due to several of the numbers involved being powers of two.
 
 <video controls muted>
-  <source src="/477grp5/team/will/20231023_152716_2.mp4" type="video/mp4">
+  <source src="/team/will/20231023_152716_2.mp4" type="video/mp4">
 </video>
 
 _Figure 3: Two LED matrix segments being driven on separate channels_
@@ -260,17 +260,17 @@ As I understand it, table construction is closing in on completion, so I may ass
 
 As the week began, our last batch of ordered components arrived at the lab. The first hardware I began prototyping with was our OLED displays. The initial work I did on this front, mentioned in Week 5, gave me a great head start. I did my best at the time to wrap my head around how writing data to the display works, but I knew it would be a process of trial and error once the hardware arrived. At first, I imagined this driver would behave similarly to the LED matrix, where it holds a buffer of the device state and writes it to the device repeatedly. Implementing this idea might've been possible, but due to the way updating pixels on the display works, I came to realize that it would be wildly inefficent and over-engineered no matter what. Updating the entire display takes at least 1 millisecond, which is longer than we'd like our application's inner loop to take. Conversely, only updating portions of the display that have been changed would also introduce more overhead, to the point that pursuing this route is no longer worth it.
 
-![Early Text Test](/477grp5/team/will/rn_image_picker_lib_temp_02b4a850-5c2c-4cc6-97d1-cc98f8fe98cc.jpg)
+![Early Text Test](/team/will/rn_image_picker_lib_temp_02b4a850-5c2c-4cc6-97d1-cc98f8fe98cc.jpg)
 _Figure 1: Early test of writing text strings to the display_
 
 Instead of writing the driver to be unnecessarily flexible and general purpose, I decided to focus on directly implementing the functionality we would actually need from the display. After discussing with Ben what we needed the display to accomplish, I decided to implement two different functions for drawing to the display: text strings and score tracking. Shown above is an early test of using the display to show multiple lines of text. To accomplish this, I developed a quick-and-dirty C# script that loads a PNG file containing the "font" and translates it to a byte array to be pasted into a header file in our firmware. From there, portions of this byte array can be sent directly to the display to render characters.
 
-![Main Menu Concept](/477grp5/team/will/20231003_215302.jpg)
+![Main Menu Concept](/team/will/20231003_215302.jpg)
 _Figure 2: Prototype of the main menu display_
 
 The text strings functionality of the driver will be used to implement a main menu, which I mocked up a prototype of in Figure 2 above. Ben provided me with this smaller font to use, which looks quite sharp and allows us to fit 8 lines of 21 characters on the display. Showing text on the display will also be extremely useful for debugging in the future, as we won't have to rely on extraneous devices being attached to the microcontroller.
 
-![Score Tracking Display](/477grp5/team/will/20231003_224101.jpg)
+![Score Tracking Display](/team/will/20231003_224101.jpg)
 _Figure 3: Prototype of the score tracking display_
 
 Displaying the larger characters required for the score tracking functionality meant that I needed to create another "font". This time around, I created an image in _Paint.NET_ and typed out each numeric character (and a hypen) in a monospaced font. The script I developed originally became useful once again to translate this image into a display-compatible format. The display driver supports drawing both separately and simultaneously to multiple displays, which will be required for both of the game's players to see their score.
@@ -279,7 +279,7 @@ Displaying the larger characters required for the score tracking functionality m
 
 Even though we just finished assembling Revision A of our microcontroller PCB and flashing a test program to it, we are already wrapping up design for Revision B. Ben finalized the latest changes recently, and I assisted in verifying them by filling up a pinout in _STM32CubeIDE_. This process allows us to be sure that the microcontroller pins we've assigned to certain functions are actually capable of providing that functionality.
 
-![STM32U585 Pinout Verification](/477grp5/team/will/image.png)
+![STM32U585 Pinout Verification](/team/will/image.png)
 _Figure 4: STM32CubeIDE IOC file showing a fully assigned microcontroller pinout_
 
 Visible in the screenshot above are all 100 pins of the STM32U585 microcontroller that we are using for the Smart Air Hockey Table. I gave a custom name to each pin as they appear in our PCB schematic. This also makes it easier to identify what external peripherals the pins are connected to at a glance.
@@ -310,12 +310,12 @@ Since we will be the first team to present our Midterm Design Review Presentatio
 
 In last week's report, I showed off an incomplete CAD model of our project. This week, I restarted the design from scratch, armed with new knowledge about our plans for the design. As I moved through filling in each component, I encountered a few important details that the team had not yet discussed in depth. Relaying these questions to the team proved to be very valuable, as we discussed our approach and weighed the best options for each issue. Although constructing this design was primarily a solo venture, I appreciated having the ongoing discussion with the team as I made progress. I call this design _provisional_ because we are not actually using it as a point-by-point reference for physical construction. I created this design at the beginning of the week, and as the start to construction neared, Alan put together a design more closely based on the materials he had ascertained would be available.
 
-![Final Revision](/477grp5/team/will/Table_v13.png)
+![Final Revision](/team/will/Table_v13.png)
 _Figure 1: Final revision of provisional design for table construction_
 
 Pictured above is the state of the final revision I made to the provisional design. It includes all of our intended features, except for the goal assembly and score tracking displays. In total, I saved 13 unique revisions to this model over the past week. As I understand it, this design is still a useful point of reference for many unique details, but it no longer matches completely with our construction plans. I may bring the model up-to-date at some point prior to the conclusion of the project, but for now I will be leaving it as it is.
 
-![Animated Construction GIF](/477grp5/team/will/table_construction.gif)
+![Animated Construction GIF](/team/will/table_construction.gif)
 _Figure 2: Intended order of assembly for provisional design_
 
 As I neared the final revisions to the design, I created the animation shown above to illustrate the intended order of assembly to the team. Walking through this step-by-step process also gave me the confidence that the design could be physically constructed if we had the materials available. I enjoyed the opportunity to apply my prior experience with CAD software to learning Fusion 360, and I may find more uses for it in the future as well.
@@ -328,14 +328,14 @@ This week, it was my turn to complete an individual assignment on behalf of the 
 
 Near the beginning of the week, I was looking over our proposed design for the sensor PCB and I noticed an issue with the peripheral connector layout. The connectors responsible for carrying LED matrix data across the system will be daisy-chained one by one, but there are a couple ways to achieve this. Shown in Figure 3 below are two alternatives; the upper section shows the revised plan whereas the lower section shows the connection pathway we originally had. Each PCB has two "in" connectors for LEDs, and two "out". Arranging these in a snaking pattern saves us a lot of extra wire routing over the length of the entire matrix. We hadn't ordered our first round of PCBs yet, so this issue was fixed before we sent off our design.
 
-![Pathway Diagram](/477grp5/team/will/pcb_route.png)
+![Pathway Diagram](/team/will/pcb_route.png)
 _Figure 3: Diagram of alternatives for LED data pathway_
 
 #### Construction Progress
 
 Later in the week, Alan and I reserved time at the Bechtel Center to make progress with constructing the table. By using the combination of a jointer, planer, and table saw, we gradually trimmed three poplar boards down to identical thickness and width. The wood we are using has a good-looking natural finish to it, which we were not anticipating. There is still plenty of work to be done until we have a full table, but this is an encouraging start.
 
-![Nearly Finished Boards](/477grp5/team/will/20230929_111641.jpg)
+![Nearly Finished Boards](/team/will/20230929_111641.jpg)
 _Figure 4: Nearly finished poplar boards to be used as sides of the table_
 
 #### Next Steps
@@ -356,12 +356,12 @@ Within the next week, I will continue to assist with constructing the table. As 
 
 Despite high hopes for this week, I have not yet completed a designed model of our table. As I began drawing out even the simplest parts of the design, I began to realize just how many unknowns I was encountering. How much clearance do the PCBs need, what kind of spacers will we use, how thick will the acrylic be, on and on. Even still, I managed to create a mockup of the very top portion of the table. This was possible since it required no knowledge of the wooden component dimensions we'll be using.
 
-![CAD Model](/477grp5/team/will/Screenshot-2023-09-21-214008.png)
+![CAD Model](/team/will/Screenshot-2023-09-21-214008.png)
 _Figure 1: Current state of CAD model in Fusion 360_
 
 No matter how minimal or stripped down this design is from what it will eventually become, I still appreciated seeing it for the first time. I had the realization of just how many PCBs we'll be assembling and connecting together, and it has further fueled my excitement for this project's goals to come to fruition. Due to the number of unknowns that I was estimating rough values for, I elected to parameterize nearly every dimensioned value I possibly could, so they can be adjusted as we nail down real values. This had the added benefit of removing any _magic numbers_ from the CAD model, which fits well with the programming mindset I'm used to.
 
-![User Parameters](/477grp5/team/will/Screenshot-2023-09-21-214440.png)
+![User Parameters](/team/will/Screenshot-2023-09-21-214440.png)
 _Figure 2: Configurable parameters that describe various dimensions of the design_
 
 #### Initial Efforts on OLED Display Driver
@@ -372,7 +372,7 @@ As the week moved on and I concluded that the time had not yet arrived to put my
 
 Now that we've arrived at the end of week 5, the push to start purchasing hardware is stronger than ever. With Ben and Trevor making incredible progress on designing our two PCBs, we're nearly at the point where ordering components is the next logical step. Over the course of the past few days, I've collaborated with the team on putting together our official procurement documents for submission as soon as possible. At this stage, we will be making orders from three separate vendors: Digikey, Amazon, and JLCPCB. Our process for appending components to the procurement form has largely consisted of sharing URLs back and forth and giving our thoughts on each option. I also held primary responsibity for transforming each decision into a properly formatted entry in the procurement spreadsheet. An exciting result of this process was the inclusion of an _STM32U575_ Nucleo evaluation board on our order form, which will allow us to prototype features for our microcontroller simultaneously while assembling our master PCB. Late in the week, I made an attempt submit our documentation for purchasing PCBs, but the recommended office (BHEE 140) is unreachable or no longer exists due to ongoing renovations. Instead, I will deliver this documentation to an alternate location in the very near future. Fortunately for us, we decided to work on the procurement document during the same week that the Bill of Materials assignment is due for submission. This overlap should make it trivial to fill in the required information for each of our components.
 
-![Procurement Spreadsheet](/477grp5/team/will/Screenshot-2023-09-21-225322.png)
+![Procurement Spreadsheet](/team/will/Screenshot-2023-09-21-225322.png)
 _Figure 3: Current list of components to be ordered from Digikey, with part number and pricing info_
 
 #### Next Steps
@@ -398,7 +398,7 @@ My initial approach to this problem was to store a large array containing every 
 Upon further [research](https://ralimtek.com/posts/2021/ws2812/), I decided that storing a significantly smaller buffer would suffice, when given the proper design consideration. In its current iteration, the LED driver transfers PWM timing configuration from a buffer containing just two 16 bit values. In order to correctly set the values in this buffer, I make use of the _DMA half transfer_ and _DMA transfer complete_ interrupts to update the half of the buffer that is not actively being copied to the configuration register. Although this approach introduced new CPU overhead (in the form of the DMA interrupts), it reduced CPU overhead in a different area. In the prior implementation, calling the LED driver to update a color value required immediately translating it into the proper sequence of PWM configuration values. Now this process is taken care of by the introduction of the aforementioned DMA interrupts. An additional benefit to the new driver implementation is that the LED matrix state can easily be queried by the application, as it is now stored in raw RGB values instead of PWM timing data. The RAM savings for this approach are significant, now taking only **1.5 kilobytes (a 93.75% reduction)**. If a further reduction is needed in the future, this approach allows us to easily reduce the bit depth of the RGB color data without significant code modifications. The full driver code can be viewed in our open source [repository](https://github.com/alanssitis/smart-air-hockey-table/).
 
 <video controls muted>
-  <source src="/477grp5/team/will/20230915_204133.mp4" type="video/mp4">
+  <source src="/team/will/20230915_204133.mp4" type="video/mp4">
 </video>
 
 _Figure 1: Test pattern applied to our LED prototyping hardware by the latest driver implementation_
@@ -407,7 +407,7 @@ _Figure 1: Test pattern applied to our LED prototyping hardware by the latest dr
 
 While developing the LED driver, I was simultaneously organzing the structure of our firmware application. Although I made important steps toward this goal last week, there was still some smoothing of rough edges to do. The entrypoint for our main application is now in `app_core.c`, and my intention is that any additional files that support our application in a central manner be named with `app_` prefix. A primary example of this is the debugging module I created (`app_debug.c`). At the moment, this module contains a function to print timestamped log messages to the integrated serial interface, but it will be expanded in the future to contain firmware debugging functions as needed. Obtaining an accurate timestamp for log messages necessitated enabling a hardware timer and writing a basic interrupt handler for it. As with `driver_led.c`, my goal is for all driver source files to be prefixed with `driver_` as they are created for new hardware (such as small panel displays).
 
-![Debug Logging](/477grp5/team/will/Screenshot-2023-09-15-210306.png)
+![Debug Logging](/team/will/Screenshot-2023-09-15-210306.png)
 _Figure 2: Demonstration of debug logging output from the microcontroller_
 
 In this week's Component Analysis assignment, I was primarily responsible for analyzing our component choice for the LED matrix and the score tracking display.
@@ -432,18 +432,18 @@ As the week began, I was eager to start working with our LED hardware. The most 
 
 The first of these designs is the simplest, as it only requires a 5V supply and features very straightforward connections. [Source](https://www.penguintutor.com/electronics/mosfet-levelshift)
 
-![Schematic 1](/477grp5/team/will/mosfet-voltageshift.png)
+![Schematic 1](/team/will/mosfet-voltageshift.png)
 _Figure 1: Circuit schematic of 1st MOSFET-based level shifter_
-![Scope Output](/477grp5/team/will/pwm_800mhz_pen.png)
+![Scope Output](/team/will/pwm_800mhz_pen.png)
 _Figure 2: Oscilloscope output of the above schematic_
 
 From Figure 2 above, it can be observed that the rise time of the square wave is fairly significant compared to the wave's period. This is undesirable as the timing requirements for the LED specification are fairly strict (less than a microsecond). The 800 kHz frequency of the depicted wave is important, as this is the data rate the LED specification requires, so testing at this frequency closely simulates the conditions the level shifter will be subject to.
 
 The second design I constructed is also quite simple, but it requires a 3.3V supply as well as 5V. The design shown below was constructed once again with a 2N7000 MOSFET, as well as two 1 kΩ resistors.
 
-![Schematic 2](/477grp5/team/will/logic-level-shifting-basics-img2.jpg)
+![Schematic 2](/team/will/logic-level-shifting-basics-img2.jpg)
 _Figure 3: Circuit schematic of 2nd MOSFET-based level shifter_
-![Scope Output](/477grp5/team/will/pwm_800mhz_1000ohm_digi.png)
+![Scope Output](/team/will/pwm_800mhz_1000ohm_digi.png)
 _Figure 4: Oscilloscope output of the above schematic_
 
 The level-shifter design demonstrated in the figures above features a much improved rise time as compared to the prior design. I had initially constructed this design with 10 kΩ resistors, but the response characteristic had not improved significantly. Transitioning to a lower resistance proved to provide the performance I was hoping to see in the first place. I continued to utilize this design throughout the rest of the week as I moved forward to controlling the LED strip.
@@ -456,13 +456,13 @@ I switched over our project, so now the IDE was generating "low layer"-based cod
 
 From this point, I researched how to set up a basic hardware timer and programmed it to output PWM on a GPIO pin. This was the first real step towards the eventual goal of implementing a LED driver in our firmware. The timing specification for our LED lighting hardware is functionally a PWM wave with a carefully controlled pulse width.
 
-![WS2812 Timing](/477grp5/team/will/ws2812_timing.png)
+![WS2812 Timing](/team/will/ws2812_timing.png)
 _Figure 5: WS2812 specification timing diagram for sending 0 bit, 1 bit, and reset codes_
 
 In the following handheld video recording, I showcase my current progress on interfacing our microcontroller to the LED hardware we are prototyping with. The LEDs are toggled on and off at 2 Hz, and the associated PWM control signal can be observed on the oscilloscope display.
 
 <video controls muted>
-  <source src="/477grp5/team/will/20230907_230330_1.mp4" type="video/mp4">
+  <source src="/team/will/20230907_230330_1.mp4" type="video/mp4">
 </video>
 
 #### Next Steps
@@ -489,7 +489,7 @@ I felt these steps were important to complete as soon as possible, so we can foc
 
 Within the first week, I collaborated with my team on our Final Project Proposal. Beyond filling in my info and delegated roles, I contributed by revising the drafted PSDRs to fit the proper phrasing ("An ability to..."), as well as reorganizing them for clarity and conciseness. During our meeting to collaborate on the Functional Specification document, I authored a Peripheral Hierarchy flowchart to visualize and clarify our intended design approach. It is my intention that this diagram be revised and expanded over time as our project has more details finalized.
 
-![Peripheral Hierarchy](/477grp5/team/will/PeripheralHierarchy.png)
+![Peripheral Hierarchy](/team/will/PeripheralHierarchy.png)
 _Figure 1: Provisional draft of project's Peripheral Hierarchy_
 
 In regards to the aforementioned Functional Specification, I am currently documenting our project's known computational and thermal/power constraints.

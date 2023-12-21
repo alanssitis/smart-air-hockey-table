@@ -19,15 +19,15 @@ This was the last push for the demo, everything was finished in time for the fin
 
 Basically installing everything on the table such as the wires and sensor boards. Once we got it all connected together, Will got a rainbow backlight going.
 
-| Before | After |
-| --- | --- |
-| ![picture 1](/477grp5/team/alan/week15/figure1.jpg) | ![picture 1](/477grp5/team/alan/week15/figure2.jpg) |
+| Before                                      | After                                       |
+| ------------------------------------------- | ------------------------------------------- |
+| ![picture 1](/team/alan/week15/figure1.jpg) | ![picture 1](/team/alan/week15/figure2.jpg) |
 
 #### Setting up a Background
 
 I played around with setting up a static background, below is the ice hockey design we tried but it did not look good. We ended up going with a solid background since that looked best.
- 
-![picture 1](/477grp5/team/alan/week15/figure3.jpg)
+
+![picture 1](/team/alan/week15/figure3.jpg)
 
 #### Integrating separate components
 
@@ -38,7 +38,7 @@ I helped integrate the background with the encoder and OLED. It was rather simpl
 I worked on the logic that created the trail. It was a simple circular buffer. More work will need to be done so that it behaves as expected but it looks pretty good.
 
 <video controls muted>
-  <source src="/477grp5/team/alan/week15/video1.mp4" type="video/mp4">
+  <source src="/team/alan/week15/video1.mp4" type="video/mp4">
 </video>
 
 ### Next Steps
@@ -64,12 +64,12 @@ Me and Ben made sure to get the MDF to fit in the table properly.
 I made a cam and machined the acrylic at BIDC. Ben and Trevor helped too! Below is a video of the CAM.
 
 <video controls muted>
-  <source src="/477grp5/team/alan/week13/video1.mp4" type="video/mp4">
+  <source src="/team/alan/week13/video1.mp4" type="video/mp4">
 </video>
 
 This is the acrylic on the table.
 
-![picture 1](/477grp5/team/alan/week13/figure1.jpg)
+![picture 1](/team/alan/week13/figure1.jpg)
 
 #### Getting Airflow
 
@@ -93,12 +93,12 @@ Due to my attendance at [KubeCon NA 2023](https://events.linuxfoundation.org/kub
 
 I do not usually take pictures, but below are some of the pictures I took over the weekend.
 
-![picture 1](/477grp5/team/alan/week12/figure1.jpg)
-![picture 2](/477grp5/team/alan/week12/figure2.jpg)
+![picture 1](/team/alan/week12/figure1.jpg)
+![picture 2](/team/alan/week12/figure2.jpg)
 
 I was mostly involved in manning the project booth for [in-toto](https://in-toto.io) and participating in meetings throughout the rest of the day. I was in Chicago from Sunday through Friday, below is a screenshot of the airbnb I stayed at (Exact address masked to avoid any issues with the platform).
 
-![picture 3](/477grp5/team/alan/week12/figure3.png)
+![picture 3](/team/alan/week12/figure3.png)
 
 ### Next Steps
 
@@ -118,31 +118,32 @@ This week consisted of prepping the boards for the table and gluing it together,
 
 I was finally able to finish a bulk of the work, and finished the holes, goal slits, and added cable holes in the table. I used the spindle sander, the router table, the hand router, and the drill press. Below are pictures of the finished boards.
 
-| Smoothened holes | Dados and cable holes |
-| --- | --- |
-|![picture 1](/477grp5/team/alan/week11/figure1.jpg) | ![picture 2](/477grp5/team/alan/week11/figure2.jpg)|
+| Smoothened holes                            | Dados and cable holes                       |
+| ------------------------------------------- | ------------------------------------------- |
+| ![picture 1](/team/alan/week11/figure1.jpg) | ![picture 2](/team/alan/week11/figure2.jpg) |
 
 #### Gluing the Table
 
-Me and Trevor glued together the Table together with the boards, below are pictures of the finished products and a video of the process is available in Trevor's [report](/477grp5/team/tmoorma).
+Me and Trevor glued together the Table together with the boards, below are pictures of the finished products and a video of the process is available in Trevor's [report](/team/tmoorma).
 
-|![picture 3](/477grp5/team/alan/week11/figure3.jpg) | ![picture 4](/477grp5/team/alan/week11/figure4.jpg)|
-| --- | --- |
-|![picture 5](/477grp5/team/alan/week11/figure5.jpg) | ![picture 6](/477grp5/team/alan/week11/figure6.jpg)|
+| ![picture 3](/team/alan/week11/figure3.jpg) | ![picture 4](/team/alan/week11/figure4.jpg) |
+| ------------------------------------------- | ------------------------------------------- |
+| ![picture 5](/team/alan/week11/figure5.jpg) | ![picture 6](/team/alan/week11/figure6.jpg) |
 
 #### Soldering Sensor Boards and Doing initial Functionality Tests
 
 I soldered about a third of the pin headers of the sensor boards. Surprisingly enough, it takes longer than expected. Below is a picture of some of the finished boards and them being hooked up to the oscilloscope's wave gen.
 
-| Before Fix | After Fix |
-| --- | --- |
-|![picture 7](/477grp5/team/alan/week11/figure7.jpg) | ![picture 8](/477grp5/team/alan/week11/figure8.jpg)|
+| Before Fix                                  | After Fix                                   |
+| ------------------------------------------- | ------------------------------------------- |
+| ![picture 7](/team/alan/week11/figure7.jpg) | ![picture 8](/team/alan/week11/figure8.jpg) |
 
 As you can faintly tell from the pictures above, the tail end of the boards to the left are warmer and not as bright. After hooking up both `GND` and `5V` to the tail end, the whole line was of the same color. This was because there was a significant voltage drop across a single row. This means that we will need to run wires to both sides of the table to properly power all the LEDs.
 
 #### Changes to Code
 
 I made various changes to the codebase, below is a list of the PRs:
+
 - [Reverting LED Matrix Interleaving](https://github.com/alanssitis/smart-air-hockey-table/pull/128)
 - [Improving Readability](https://github.com/alanssitis/smart-air-hockey-table/pull/127)
 
@@ -158,21 +159,21 @@ Since next week I will be at a conference in Chicago, my progress will be limite
 
 ### Description of Project Design Efforts
 
-This week consisted of creating a new CAM for the gantry to run to get the MDF and running it. The secondary efforts surrounded the minor software and firmware optimizations. I also worked on the Legal Analysis (A9) this week, it should be up in [Documents](/477grp5/documents).
+This week consisted of creating a new CAM for the gantry to run to get the MDF and running it. The secondary efforts surrounded the minor software and firmware optimizations. I also worked on the Legal Analysis (A9) this week, it should be up in [Documents](/documents).
 
 #### New MDF CAM and Running the gantry
 
 I noticed that the model I had originally had wrong dimensions and I needed to add tolerances to the outside of the PCB since the gantry cannot make exact 90 degree cuts. Therefore, I made a new model and CAM for it. We decided to cut the MDF down to correct shape first and then just having it be vacuumed onto the table. A TA also changed some parameters and the whole job took much less than one hour, which was more than half than the original job that I was going to run last week. Below is a video of it running in Fusion 360 and below it are pictures of the finished piece.
 
 <video controls muted>
-  <source src="/477grp5/team/alan/week10/video1.mp4" type="video/mp4">
+  <source src="/team/alan/week10/video1.mp4" type="video/mp4">
 </video>
 
-![Figure of finished MDF in the lab](/477grp5/team/alan/week10/figure1.jpg)
+![Figure of finished MDF in the lab](/team/alan/week10/figure1.jpg)
 
 #### Minor software updates
 
-I also participated in some software changes, and also have a PR for small optimizations. Here is a link to the PRs: [#116](https://github.com/alanssitis/smart-air-hockey-table/pull/116), [#88](https://github.com/alanssitis/smart-air-hockey-table/pull/88). 
+I also participated in some software changes, and also have a PR for small optimizations. Here is a link to the PRs: [#116](https://github.com/alanssitis/smart-air-hockey-table/pull/116), [#88](https://github.com/alanssitis/smart-air-hockey-table/pull/88).
 
 ### Next Steps
 
@@ -190,7 +191,7 @@ My work for week 8 was mostly finishing the slides for the presentation and upda
 
 #### Presentation Prep
 
-In [Documents](/477grp5/documents), you can view the presentation slides the whole team worked on. I also updated A2 and A3.
+In [Documents](/documents), you can view the presentation slides the whole team worked on. I also updated A2 and A3.
 
 #### Working on the Encoder driver
 
@@ -204,21 +205,21 @@ I spent a good amount of time fixing and cleaning up a few of the branches in th
 
 For the presentation, I made a whole model from scratch since a lot of the measurements have changed. Below is a picture of it.
 
-![Figure of built-to-size CAD model](/477grp5/team/alan/week09/figure1.png)
+![Figure of built-to-size CAD model](/team/alan/week09/figure1.png)
 
 After, I made a CAM for the MDF so our PCBs can properly fit on them. However, we had to push running the gantry back since we weren't sure whether or not having the PCBs assembled will change the dimensions of the final PCB. Below is a video of the simulation of the CAM.
 
 <video controls muted>
-  <source src="/477grp5/team/alan/week09/video1.mp4" type="video/mp4">
+  <source src="/team/alan/week09/video1.mp4" type="video/mp4">
 </video>
 
 Since I couldn't run the gantry, I used the [panel saw](https://www.purdue.edu/bidc/wp-content/uploads/2022/07/Panel-Saw.pdf) and table saw to cut the plywood to the final dimension of `71.25" x 32.5` and also cut down the MDF to a smaller size of `70" x 40"` to make carrying it much, much easier.
 
 Later, I also cut up the holes to grab the puck using the [drill press](https://www.purdue.edu/bidc/wp-content/uploads/2022/07/Drill-Press_manual-2.pdf) and a cordless jigsaw. This was followed by adding [rabbets](https://en.wikipedia.org/wiki/Rabbet) joints to the outside edges. Below are pictures of the result.
 
-| Almost finished short edges | Almost finished long edges |
-| --  | -- |
-| ![Figure of almost finished short edges](/477grp5/team/alan/week09/figure3.jpg) |  ![Figure of almost finished long edges](/477grp5/team/alan/week09/figure4.jpg) |
+| Almost finished short edges                                             | Almost finished long edges                                             |
+| ----------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| ![Figure of almost finished short edges](/team/alan/week09/figure3.jpg) | ![Figure of almost finished long edges](/team/alan/week09/figure4.jpg) |
 
 ### Next Steps
 
@@ -242,7 +243,7 @@ Me and will finished the sides of the table, finalizing the overall dimensions
 of the sides of the table.
 
 Below is a picture of some of the finished sides.
-![Some finished sides](/477grp5/team/alan/week07/figure1.jpg)
+![Some finished sides](/team/alan/week07/figure1.jpg)
 
 For the two outer edges, we added 45 degree miter cuts and below are the
 dimensions of each edge:
@@ -283,18 +284,18 @@ Since the parts from Digikey have finally arrived, I soldered a few sensor
 boards so that we can do some preliminary testing.
 
 Below is a picture of a finished soldered board:
-![single soldered sensor board](/477grp5/team/alan/week07/figure4.jpg)
+![single soldered sensor board](/team/alan/week07/figure4.jpg)
 
 And below is a picture of a bunch of them connected together with Will's code:
-![a bunch of sensor boards connected together](/477grp5/team/alan/week07/figure3.jpg)
+![a bunch of sensor boards connected together](/team/alan/week07/figure3.jpg)
 
 We also got the following connectors to connect the blower with a three-prong
 AC wire for power instead of the somewhat sketch method we had previously:
-![connectors for blowers](/477grp5/team/alan/week07/figure2.jpg)
+![connectors for blowers](/team/alan/week07/figure2.jpg)
 
 After Ben soldered the STM32 U585 on the first revision of our master PCB, I was
 able to detect the chip and get its register values with `STMCubeProgrammer`.
-![connecting stm32 with cube programmer](/477grp5/team/alan/week07/figure5.jpg)
+![connecting stm32 with cube programmer](/team/alan/week07/figure5.jpg)
 
 #### Testing the soldered boards
 
@@ -310,7 +311,7 @@ We began [updating and fixing some of the documents](https://github.com/alanssit
 so that we can put it all up on the website before the midterm review presentation.
 
 I set up the slides and we began working on them. The slide deck will be up in
-[Documents](/477grp5/documents/) by Wednesday.
+[Documents](/documents/) by Wednesday.
 
 ### Next Steps
 
@@ -359,9 +360,9 @@ the key activities and developments related to this:
 
 Below are some images from the progress:
 
-| ![Glued sides](/477grp5/team/alan/week06/figure1.jpg) | ![MDF board](/477grp5/team/alan/week06/figure2.jpg)                  |
-| ----------------------------------------------------- | -------------------------------------------------------------------- |
-| ![Plywood](/477grp5/team/alan/week06/figure3.jpg)     | ![Week 5 progress from sides](/477grp5/team/alan/week06/figure4.jpg) |
+| ![Glued sides](/team/alan/week06/figure1.jpg) | ![MDF board](/team/alan/week06/figure2.jpg)                  |
+| --------------------------------------------- | ------------------------------------------------------------ |
+| ![Plywood](/team/alan/week06/figure3.jpg)     | ![Week 5 progress from sides](/team/alan/week06/figure4.jpg) |
 
 #### Testing of Large Electrical Components
 
@@ -379,7 +380,7 @@ of this testing phase include:
   overall project.
 
 <video controls muted>
-  <source src="/477grp5/team/alan/week06/video1.mp4" type="video/mp4">
+  <source src="/team/alan/week06/video1.mp4" type="video/mp4">
 </video>
 
 ### Next Steps
@@ -417,19 +418,19 @@ of the materials we will be using, as well as the overall design of the project.
 
 Below are the notes I had from my initial meeting.
 
-![Notes from first BIDC meeting](/477grp5/team/alan/week05/figure4.jpg)
+![Notes from first BIDC meeting](/team/alan/week05/figure4.jpg)
 _Caption: Notes from the first BIDC Meeting._
 
 Below are the sketches I created after the initial meeting and a second
 consultation with the TAs.
 
-![Table sketch top view](/477grp5/team/alan/week05/figure1.jpg)
+![Table sketch top view](/team/alan/week05/figure1.jpg)
 _Caption: Sketch of the top view of the table._
 
-![Table sketch side view](/477grp5/team/alan/week05/figure2.jpg)
+![Table sketch side view](/team/alan/week05/figure2.jpg)
 _Caption: Sketch of the sid view of the table._
 
-![Table sketch front view](/477grp5/team/alan/week05/figure3.jpg)
+![Table sketch front view](/team/alan/week05/figure3.jpg)
 _Caption: Sketch of the front view of the table._
 
 A few of the considerations have been made:
@@ -458,7 +459,7 @@ teaching staff during ManLab. A link to the corresponding PR is [here](https://g
 
 I helped update some of the items in the Bill of Materials as the team was
 working on filling out the purchase request. It is still rudamentary but it
-should be up in [Documents](/477grp5/documents/) by end of Saturday.
+should be up in [Documents](/documents/) by end of Saturday.
 
 #### Getting STM32 VSCode Extension Working
 
@@ -508,24 +509,24 @@ feature and linked our [repository](https://github.com/alanssitis/smart-air-hock
 to a new project. You can access the GitHub project [here](https://github.com/users/alanssitis/projects/2).
 Additionally, I've provided a screenshot of the board below for a quick overview.
 
-![Screenshot of the kanban board](/477grp5/team/alan/week04/figure1.png)
+![Screenshot of the kanban board](/team/alan/week04/figure1.png)
 _Caption: Screenshot of the GitHub project page_
 
 #### Finalizing the System Flowchart
 
 I worked with the rest of the team to make the project's flowchart. Below is a
 cleaned up diagram of it. It was adapted from the diagram drawn from the
-[Software Overview](</477grp5/documents/A3 - Software Overview.docx>). One of
+[Software Overview](</documents/A3 - Software Overview.docx>). One of
 the major changes that whoever got scored on will have the puck, instead of
 needing to place the puck in the middle of the playing field.
 
-![Flow chart of the system](/477grp5/team/alan/week04/figure2.png)
+![Flow chart of the system](/team/alan/week04/figure2.png)
 _Caption: Flowchart of the system_
 
 #### Work on A5 - Component Analysis
 
 I worked on the overview of the Component Analysis and the analysis of Puck
-Tracking Sensors. The document can be found [here](</477grp5/documents/A5 - Component Analysis.docx>).
+Tracking Sensors. The document can be found [here](</documents/A5 - Component Analysis.docx>).
 Below is a table I made for my section.
 
 | Method                      | Advantages                                                                                                           | Disadvantages                                                                                                                |
@@ -562,10 +563,10 @@ I was able to install and run all of the required tooling and the extension
 itself. Below are screenshots of STM32CubeMX running and our current project under
 firmware opened on the side.
 
-![STM32CubeMX Running on PopOS!](/477grp5/team/alan/week04/figure3.png)
+![STM32CubeMX Running on PopOS!](/team/alan/week04/figure3.png)
 _Caption: STM32CubeMX Running on PopOS!_
 
-![STM32 VS Code Extension running Team 5's Project](/477grp5/team/alan/week04/figure4.png)
+![STM32 VS Code Extension running Team 5's Project](/team/alan/week04/figure4.png)
 _Caption: `/firmware` opened as an STM32 project in VSCode_
 
 However, there were some issues with building projects and the such.
@@ -592,8 +593,8 @@ able to take advantage of the newer programmer tooling available out there.
 ### Description of Project Design Efforts
 
 Over the past week, I was in charge of designing and building a
-[new website](https://engineering.purdue.edu/477grp5/) for the team, the
-[A3 - Software Overview](</477grp5/documents/A3 - Software Overview.docx>)
+[new website](https://engineering.purdue.edu/) for the team, the
+[A3 - Software Overview](</documents/A3 - Software Overview.docx>)
 report for the team, and continued prototyping with neopixel lights. I also
 contributed to some hardware prototyping and design discussions with the team.
 
@@ -632,7 +633,7 @@ The source code of the website itself is available in the [project repo](https:/
 #### Software Overview Project Report
 
 I was tasked with writing the software overview for the team. This document can
-be accessed in the [Documents](/477grp5/documents/) page. Since the team has
+be accessed in the [Documents](/documents/) page. Since the team has
 mostly been working on chosing and deciding on the hardware we will be working
 on, a lot of work was done in designing solutions and create a good software
 overview that covered as much ground as possible. Only a few things in the
@@ -640,12 +641,12 @@ report have been discussed in passing, therefore, it took a good amount
 of time to get the whole document working. The main concern was the state
 diagram for the project, which can be viewed below.
 
-![overall system state diagram](/477grp5/team/alan/week03/figure1.png)
+![overall system state diagram](/team/alan/week03/figure1.png)
 _Caption: State diagram of the main microcontroller_
 
 I also created a flowchart that represents the game flow.
 
-![game flow chart](/477grp5/team/alan/week03/figure2.png)
+![game flow chart](/team/alan/week03/figure2.png)
 _Caption: Flow chart for a typical game_
 
 #### Hardware Prototyping and Design Decisions
@@ -724,7 +725,7 @@ magnetic object on the table, it now works.
 
 Below is an image Ben drew up showing this method of detecting the puck.
 
-![Ben's brainstorm of solution](/477grp5/team/alan/week03/figure3.jpg)
+![Ben's brainstorm of solution](/team/alan/week03/figure3.jpg)
 _Caption: "Battleship" puck detection system_
 
 ## Week 1 & 2

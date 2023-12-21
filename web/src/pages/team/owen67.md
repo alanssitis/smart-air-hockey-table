@@ -13,63 +13,63 @@ title: Ben Owen Progress Report
 
 ### Description of Project Design Efforts
 
-We out here.  Gonna keep it shorter for the TA since I know you have probably quite a few of these to grade.
+We out here. Gonna keep it shorter for the TA since I know you have probably quite a few of these to grade.
 
 **Foam**
 
 We mounted MDF supports on the inside of our table's air chamber and used spray foam to help seal any edges.
 
-<img src="/477grp5/team/ben/week14-foam.jpg" width="80%">
+<img src="/team/ben/week14-foam.jpg" width="80%">
 
 _Figure 1: Foam_
 
 **PCB soldering, mounting, and wiring**
 
-We soldered the remaining sets of pin headers to the PCBs.  Afterwards, we mounted them to the MDF with small screws and began the tedious process of wiring the boards together.  A picture of this process can be seen in Figure 2.
+We soldered the remaining sets of pin headers to the PCBs. Afterwards, we mounted them to the MDF with small screws and began the tedious process of wiring the boards together. A picture of this process can be seen in Figure 2.
 
-<img src="/477grp5/team/ben/week14-pcbs.jpg" width="80%">
+<img src="/team/ben/week14-pcbs.jpg" width="80%">
 
 _Figure 2: PCBs_
 
 **Bus bars**
 
-Trevor and I cut and soldered the bus bars, providing 16 sets of power to the PCBs on the table.  These are connected to our 5V power supply and dispurses the power to all PCB rows.  This is necessary to avoid voltage drop and power loss (heat) for a maximum of around 100W of power when the LEDs are all on full brightness.  A picture of one of the bus bars can be seen in Figure 3.
+Trevor and I cut and soldered the bus bars, providing 16 sets of power to the PCBs on the table. These are connected to our 5V power supply and dispurses the power to all PCB rows. This is necessary to avoid voltage drop and power loss (heat) for a maximum of around 100W of power when the LEDs are all on full brightness. A picture of one of the bus bars can be seen in Figure 3.
 
-<img src="/477grp5/team/ben/week14-bus-bars.jpg" width="80%">
+<img src="/team/ben/week14-bus-bars.jpg" width="80%">
 
 _Figure 3: Bus bars_
 
 **PCB external wiring**
 
-Once the PCBs were mounted and wired together, we had to wire the LED signal connections and hall effect sensor connections to the master PCB.  Afterwards, we tested these connections before mounting acrylic.
+Once the PCBs were mounted and wired together, we had to wire the LED signal connections and hall effect sensor connections to the master PCB. Afterwards, we tested these connections before mounting acrylic.
 
-<img src="/477grp5/team/ben/week14-pcb-testing.jpg" width="80%">
+<img src="/team/ben/week14-pcb-testing.jpg" width="80%">
 
 _Figure 4: Testing sensor PCBs_
 
 **Mounting acrylic**
 
-I designed and 3D printed the spacers to hold the acrylic sheet.  This allowed us to mount the acrylic in its final position and test the hall effect sensitivity.  A picture of this testing can be seen in Figure 5.
+I designed and 3D printed the spacers to hold the acrylic sheet. This allowed us to mount the acrylic in its final position and test the hall effect sensitivity. A picture of this testing can be seen in Figure 5.
 
-<img src="/477grp5/team/ben/week14-hall-effect.jpg" width="80%">
+<img src="/team/ben/week14-hall-effect.jpg" width="80%">
 
 _Figure 5: Hall effect testing_
 
 **EEPROM testing**
 
-Trevor and I worked on the EEPROM to meet our bonus PSDR.  For this, we probed onto the EEPROM with our Revision A master PCB and used the scope to look at the SPI signals.  We figured out multiple issues and added a driver to read and write to the EEPROM, which is how we store/load game information and load some animation data for the PSDR.
+Trevor and I worked on the EEPROM to meet our bonus PSDR. For this, we probed onto the EEPROM with our Revision A master PCB and used the scope to look at the SPI signals. We figured out multiple issues and added a driver to read and write to the EEPROM, which is how we store/load game information and load some animation data for the PSDR.
 
-<img src="/477grp5/team/ben/week14-eeprom.jpg" width="80%">
+<img src="/team/ben/week14-eeprom.jpg" width="80%">
 
 _Figure 6: EEPROM probing_
 
 **Goal detection and mounting**
 
-We printed and mounted the puck goals into their final position, gluing the LDR and LED pairs for goal detection.  The following sections have no images due to the time during the day when they were completed :)
+We printed and mounted the puck goals into their final position, gluing the LDR and LED pairs for goal detection. The following sections have no images due to the time during the day when they were completed :)
 
 **Top cover manufacturing**
 
-We assembled a top cover for the goal areas using thick cardboard from our acrylic shipping box and duct tape.  This provides a smooth surface and a nice surface finish.
+We assembled a top cover for the goal areas using thick cardboard from our acrylic shipping box and duct tape. This provides a smooth surface and a nice surface finish.
 
 **State machine**
 
@@ -97,43 +97,43 @@ Lots of progress mechanically.
 
 **Blower mounting**
 
-Trevor and I mounted the main blower fan and the outlet relay so we can control it with our master PCB.  We marked the exact middle and cut out a hole for the blower using the jigsaw.  We then screwed the blower in place and mounted the relay to power the fan.
+Trevor and I mounted the main blower fan and the outlet relay so we can control it with our master PCB. We marked the exact middle and cut out a hole for the blower using the jigsaw. We then screwed the blower in place and mounted the relay to power the fan.
 
 A picture of the mounted blower can be seen in Figure 1.
 
-<img src="/477grp5/team/ben/week13-blower.jpg" width="80%">
+<img src="/team/ben/week13-blower.jpg" width="80%">
 
 _Figure 1: Blower_
 
 **Table support beams**
 
-We noticed that the bottom plywood panel was delaminating in places due to the small glue contact area and the increased weight it was supporting.  To remedy this, Trevor and I took some scrap boards from BIDC and cut them to length, which we mounted to the main table legs.  This increases table rigidity and supports the plywood from the bottom.  When we mount other items in the table, these will easily be able to support additional weight.
+We noticed that the bottom plywood panel was delaminating in places due to the small glue contact area and the increased weight it was supporting. To remedy this, Trevor and I took some scrap boards from BIDC and cut them to length, which we mounted to the main table legs. This increases table rigidity and supports the plywood from the bottom. When we mount other items in the table, these will easily be able to support additional weight.
 
 A picture of the support beams can be seen in Figure 2.
 
-<img src="/477grp5/team/ben/week13-support-beams.jpg" width="80%">
+<img src="/team/ben/week13-support-beams.jpg" width="80%">
 
 _Figure 2: Support beams_
 
 **Acrylic cutting**
 
-This was the largest chunk of time this week.  Alan worked on designing the CAM model to cut our acrylic sheet on the gantry, and I went and helped him for the manufacturing.  This invovled any changes to the file, preparing the gantry surface, supervising the machine in the event of any malfunctions, and cleanup and transportation of the acrylic after completing.  This took many hours, but the acrylic came out very clean.  We left the protective sticker on the acrylic to avoid scratches.
+This was the largest chunk of time this week. Alan worked on designing the CAM model to cut our acrylic sheet on the gantry, and I went and helped him for the manufacturing. This invovled any changes to the file, preparing the gantry surface, supervising the machine in the event of any malfunctions, and cleanup and transportation of the acrylic after completing. This took many hours, but the acrylic came out very clean. We left the protective sticker on the acrylic to avoid scratches.
 
 A video of the gantry in action can be seen in Figure 3.
 
 <video controls muted>
-  <source src="/477grp5/team/ben/week13-gantry.mov">
+  <source src="/team/ben/week13-gantry.mov">
 </video>
 
 _Figure 3: Gantry cutting acrylic_
 
 **Test fitting for final mechanical assembly**
 
-The last thing we did this week was testing all of the mechanical pieces together.  We put supports on the bottom plywood to support the MDF, cut a hole in the MDF for airflow, and added spacers and the acrylic sheet on top.  After turning the air on, we were greeted with so much air pressure that the acrylic sheet was bulging.  This ended up being so much air that it wasn't coming out of the holes very quickly.  We have two solutions which should help greatly.  First, we are going to cut more holes in the MDF to allow more even airflow.  This will help with the bulging.  Second, we will likely drill larger air holes in the acrylic.  This should promote airflow (since our blower is so powerful), and will allow more air to escape, also helping with the bulging issue.
+The last thing we did this week was testing all of the mechanical pieces together. We put supports on the bottom plywood to support the MDF, cut a hole in the MDF for airflow, and added spacers and the acrylic sheet on top. After turning the air on, we were greeted with so much air pressure that the acrylic sheet was bulging. This ended up being so much air that it wasn't coming out of the holes very quickly. We have two solutions which should help greatly. First, we are going to cut more holes in the MDF to allow more even airflow. This will help with the bulging. Second, we will likely drill larger air holes in the acrylic. This should promote airflow (since our blower is so powerful), and will allow more air to escape, also helping with the bulging issue.
 
 A picture of everything in place (testing) can be seen in Figure 4.
 
-<img src="/477grp5/team/ben/week13-acrylic.jpg" width="80%">
+<img src="/team/ben/week13-acrylic.jpg" width="80%">
 
 _Figure 4: Final testing before mounting_
 
@@ -159,39 +159,39 @@ With Alan out of town for a conference, we focused most of our time on mechanica
 
 **Master PCB assembly/testing**
 
-I finished soldering the master PCB and testing each of the components.  We were able to get all of our PSDRs checked off (preliminary) and verified that everything on our board works as expected.
+I finished soldering the master PCB and testing each of the components. We were able to get all of our PSDRs checked off (preliminary) and verified that everything on our board works as expected.
 
 A picture of the master PCB can be seen in Figure 1.
 
-<img src="/477grp5/team/ben/week12-master-pcb.jpg" width="80%">
+<img src="/team/ben/week12-master-pcb.jpg" width="80%">
 
 _Figure 1: Master PCB_
 
 One of the other things we tested was our motor encoder, which is demonstrated in Figure 2.
 
 <video controls muted>
-  <source src="/477grp5/team/ben/week12-encoder-demo.mov">
+  <source src="/team/ben/week12-encoder-demo.mov">
 </video>
 
 _Figure 2: Encoder demo_
 
 **External connections**
 
-For the master PCB, there are a number of components that are far away from the PCB.  These include the OLED displays, menu encoder, and LDR/LED pairs.  I spent a lot of time crimping connectors for these components and putting them inside of wire looms for durability.  Currently, I have completed all 4 LEDs, all 4 LDRs, 1 OLED display, and the motor encoder.  The remaining connectors are the other OLED display and the relay connector for turning our blower motor on/off.
+For the master PCB, there are a number of components that are far away from the PCB. These include the OLED displays, menu encoder, and LDR/LED pairs. I spent a lot of time crimping connectors for these components and putting them inside of wire looms for durability. Currently, I have completed all 4 LEDs, all 4 LDRs, 1 OLED display, and the motor encoder. The remaining connectors are the other OLED display and the relay connector for turning our blower motor on/off.
 
 A picture of these can be seen in Figure 3.
 
-<img src="/477grp5/team/ben/week12-connectors.jpg" width="80%">
+<img src="/team/ben/week12-connectors.jpg" width="80%">
 
 _Figure 3: External components_
 
 **Mechanical progress**
 
-Since Alan was out of town, we focused on making progress on the mechanical aspects of the table.  Mainly, we need to begin mounting the blower and other electrical components, since we have verified our PCBs functionality.  Therefore, we spent a number of hours finding wood for table legs and getting it cut to the correct size at BIDC.  We then cut out holes in the bottom plywood to inset the legs up unto the table for strength.  Four screws hold in each of the legs to the table.  Then, we added support beams along the long edge of the table connected to the table legs.  This ensures that 
+Since Alan was out of town, we focused on making progress on the mechanical aspects of the table. Mainly, we need to begin mounting the blower and other electrical components, since we have verified our PCBs functionality. Therefore, we spent a number of hours finding wood for table legs and getting it cut to the correct size at BIDC. We then cut out holes in the bottom plywood to inset the legs up unto the table for strength. Four screws hold in each of the legs to the table. Then, we added support beams along the long edge of the table connected to the table legs. This ensures that
 
 An image of the current table can be seen in Figure 4.
 
-<img src="/477grp5/team/ben/week12-table.jpg" width="80%">
+<img src="/team/ben/week12-table.jpg" width="80%">
 
 _Figure 4: Table (upside down)_
 
@@ -219,47 +219,47 @@ This week was exam week, so major progress wasn't made.
 
 **Acrylic Spacers CAD**
 
-I worked on designing some spacers to go between the MDF and top acrylic layers.  This was designed in FreeCAD, and allows for easy manipulation of parameters such as height, screw diameter, overall diameter, etc.  I will be 3D printing some of these this upcoming week to test them out and see if we want to make any changes to them, but the plan is to use these to support the acrylic.
+I worked on designing some spacers to go between the MDF and top acrylic layers. This was designed in FreeCAD, and allows for easy manipulation of parameters such as height, screw diameter, overall diameter, etc. I will be 3D printing some of these this upcoming week to test them out and see if we want to make any changes to them, but the plan is to use these to support the acrylic.
 
 A picture of the CAD render can be seen in Figure 1.
 
-<img src="/477grp5/team/ben/week11-spacer-cad.png" width="80%">
+<img src="/team/ben/week11-spacer-cad.png" width="80%">
 
 _Figure 1: Acrylic spacers CAD model_
 
 **Sensor PCB Testing**
 
-Trevor and I spent a lot of time unpacking the assembled sensor PCBs and getting them prepared for testing.  They arrived with V-scores along the edges, so we snapped all 4 edges off for each of the assembled boards.  After laying them out on the MDF, we were then able to solder the position jumpers (for the first row/column PCBs) and pin headers.  This allowed us to finally test our design over a full 16-PCB length.  Luckily, our circuit works as expected, and we were able to propagate hall effect data and LED data along the entire string of PCBs.  However, we don't want to do stress tests at this time, as our power delivery is starting to become less safe (pulling 2 amps continuous through a small breadboard jumper is not the best idea).
+Trevor and I spent a lot of time unpacking the assembled sensor PCBs and getting them prepared for testing. They arrived with V-scores along the edges, so we snapped all 4 edges off for each of the assembled boards. After laying them out on the MDF, we were then able to solder the position jumpers (for the first row/column PCBs) and pin headers. This allowed us to finally test our design over a full 16-PCB length. Luckily, our circuit works as expected, and we were able to propagate hall effect data and LED data along the entire string of PCBs. However, we don't want to do stress tests at this time, as our power delivery is starting to become less safe (pulling 2 amps continuous through a small breadboard jumper is not the best idea).
 
 A picture of the delivered sensor PCBs (unassembled and assembled) and our MDF with the PCBs on top can be seen in Figures 2 and 3.
 
-<img src="/477grp5/team/ben/week11-sensor-pcbs.jpg" width="80%">
+<img src="/team/ben/week11-sensor-pcbs.jpg" width="80%">
 
 _Figure 2: Sensor PCBs_
 
-<img src="/477grp5/team/ben/week11-mdf.jpg" width="80%">
+<img src="/team/ben/week11-mdf.jpg" width="80%">
 
 _Figure 3: PCBs on MDF_
 
 **Master PCB assembly**
 
-The Digi-Key items arrived later than expected, so we weren't able to fully solder our master PCB this week.  However, we were able to test our microcontroller connection and our buck converter, which are the two most critical components of our board.
+The Digi-Key items arrived later than expected, so we weren't able to fully solder our master PCB this week. However, we were able to test our microcontroller connection and our buck converter, which are the two most critical components of our board.
 
-To start, Digi-Key didn't ship our inductors with the rest of our order, so we had to improvise to test this buck converter.  To do this, Trevor and I went to the EE shop and found a through-hole inductor with a suitable current rating.  We then bent the THT leads to allow the inductor to sit flat on the PCB, with the pins sitting on top of the SMD pads.  We were then able to solder the component to the board and verify correct operation of our circuit.
+To start, Digi-Key didn't ship our inductors with the rest of our order, so we had to improvise to test this buck converter. To do this, Trevor and I went to the EE shop and found a through-hole inductor with a suitable current rating. We then bent the THT leads to allow the inductor to sit flat on the PCB, with the pins sitting on top of the SMD pads. We were then able to solder the component to the board and verify correct operation of our circuit.
 
-Since the inductor should be rated for the low power we will be using, we plan to not replace this inductor when the parts eventually arrive.  However, for our second master PCB (for backup use or other testing), we will wait to assemble that buck converter circuit until the correct inductors arrive.  If we have issues with the buck converter circuit, we may switch the first PCB inductor.
+Since the inductor should be rated for the low power we will be using, we plan to not replace this inductor when the parts eventually arrive. However, for our second master PCB (for backup use or other testing), we will wait to assemble that buck converter circuit until the correct inductors arrive. If we have issues with the buck converter circuit, we may switch the first PCB inductor.
 
 An image of the jank inductor setup can be seen in Figure 4.
 
-<img src="/477grp5/team/ben/week11-inductor.jpg" width="80%">
+<img src="/team/ben/week11-inductor.jpg" width="80%">
 
 _Figure 4: Wack inductor_
 
-After this was assembled, we had time to test our STM32 connection to our computer while being externally powered.  To do this, I soldered the STM32 along with the minimum supporting components (BOOT0 jumper, reset passives, and programming header), and after verifying no shorts across power planes, connected the programming header to my computer while powering the STM32 through the buck converter.  We were able to successfully connect to the microcontroller, which tells us that our STM32 is working normally at this point.  This was also enough to check off one of our PSDRs relating to the buck converter powering the STM32.
+After this was assembled, we had time to test our STM32 connection to our computer while being externally powered. To do this, I soldered the STM32 along with the minimum supporting components (BOOT0 jumper, reset passives, and programming header), and after verifying no shorts across power planes, connected the programming header to my computer while powering the STM32 through the buck converter. We were able to successfully connect to the microcontroller, which tells us that our STM32 is working normally at this point. This was also enough to check off one of our PSDRs relating to the buck converter powering the STM32.
 
 An image of the minimum-assembled PCB can be seen in Figure 5.
 
-<img src="/477grp5/team/ben/week11-master-pcb.jpg" width="80%">
+<img src="/team/ben/week11-master-pcb.jpg" width="80%">
 
 _Figure 5: Partially-assembled master PCB_
 
@@ -267,7 +267,7 @@ _Figure 5: Partially-assembled master PCB_
 
 **EEPROM driver**
 
-Trevor and I both had multiple exams this week, so no times really lined up to work on this.  However, our schedules are a lot emptier this upcoming week, so we plan on finishing it next week.
+Trevor and I both had multiple exams this week, so no times really lined up to work on this. However, our schedules are a lot emptier this upcoming week, so we plan on finishing it next week.
 
 **PCB assembly**
 
@@ -285,15 +285,15 @@ We will finish assembling our master PCB and hopefully check off our remaining P
 
 **Table Construction**
 
-Alan worked a lot on the gantry files for the MDF mounting plate for our sensor PCBs, but he needed some help transporting the board and physically running the equipment.  I went with Alan and Trevor to BIDC this week and spent a few hours getting the board cut successfully.  We then relocated the table to our lab in EE.  An image of this MDF with some PCBs on it can be seen in Figure 1.
+Alan worked a lot on the gantry files for the MDF mounting plate for our sensor PCBs, but he needed some help transporting the board and physically running the equipment. I went with Alan and Trevor to BIDC this week and spent a few hours getting the board cut successfully. We then relocated the table to our lab in EE. An image of this MDF with some PCBs on it can be seen in Figure 1.
 
-<img src="/477grp5/team/ben/week10-mdf.jpg" width="80%">
+<img src="/team/ben/week10-mdf.jpg" width="80%">
 
 _Figure 1: Sensor PCB testing_
 
 **EEPROM driver considerations**
 
-Trevor and I are working on the EEPROM driver which is present on our master PCB.  We spent a lot of time making calculations and discussing which instructions we need for our driver.  Our current list of instructions are shown in Figure 2.
+Trevor and I are working on the EEPROM driver which is present on our master PCB. We spent a lot of time making calculations and discussing which instructions we need for our driver. Our current list of instructions are shown in Figure 2.
 
 ```
 // Necessary instructions
@@ -314,17 +314,17 @@ RDPD: deep power-down release
 
 _Figure 2: EEPROM instructions_
 
-A big calculation we performed was best-case time to load an entire table frame.  To calculate this, we take the amount of data for an entire table (512 LEDs * 3 bytes per LED * 8 bits per byte) and add it with the instruction to send to EEPROM (8 bits per instruction + 24 bits per address + 8 "dummy" bits for faster reads).  This is a total amount of data of 12,328 bits, or 12,328 SPI clock cycles.  At 80 MHz clock (the fastest the EEPROM supports for these instructions), this takes around 150 uS.  Since our game tick is currently set to 1 ms, we are optimistic that we would be able to read an entire animation frame in a single game loop.  If proven, this would allow us not need to coordinate partial animation frame loads.  We hopefully will be able to test this next week.
+A big calculation we performed was best-case time to load an entire table frame. To calculate this, we take the amount of data for an entire table (512 LEDs _ 3 bytes per LED _ 8 bits per byte) and add it with the instruction to send to EEPROM (8 bits per instruction + 24 bits per address + 8 "dummy" bits for faster reads). This is a total amount of data of 12,328 bits, or 12,328 SPI clock cycles. At 80 MHz clock (the fastest the EEPROM supports for these instructions), this takes around 150 uS. Since our game tick is currently set to 1 ms, we are optimistic that we would be able to read an entire animation frame in a single game loop. If proven, this would allow us not need to coordinate partial animation frame loads. We hopefully will be able to test this next week.
 
 ### Next steps
 
 **Sensor PCB testing**
 
-When our assembled sensor PCBs arrive, we need to test each of them for correct operation.  We will then line them up on our now finished MDF backing plate and connect them together.  This will allow us to do large-scale testing in the coming weeks on final hardware.
+When our assembled sensor PCBs arrive, we need to test each of them for correct operation. We will then line them up on our now finished MDF backing plate and connect them together. This will allow us to do large-scale testing in the coming weeks on final hardware.
 
 **EEPROM driver**
 
-For bonus PSDRs and ease of use, we need a driver to interact with our EEPROM.  To do this, we will implement the instructions mentioned in this week's progress report (as well as some others such as write protection).
+For bonus PSDRs and ease of use, we need a driver to interact with our EEPROM. To do this, we will implement the instructions mentioned in this week's progress report (as well as some others such as write protection).
 
 **PCB assembly**
 
@@ -342,39 +342,39 @@ PCBs should be arriving this week with components, so I will be assembling and t
 
 **Midterm Design Presentation**
 
-We spend a lot of time putting together and practicing our midterm design presentation.  We were the first group presenting.  A link to our final presentation can be seen on the Documents page of our website.
+We spend a lot of time putting together and practicing our midterm design presentation. We were the first group presenting. A link to our final presentation can be seen on the Documents page of our website.
 
 **Sensor PCB Soldering/Testing**
 
-We wanted to be able to test a longer strip of PCBs in order to confirm our hall effect and individually-addressable LED configuration for the final run of boards.  I spent a lot of time soldering new sensor boards, and fixing some that weren't soldered correctly.  We were able to confirm that our hall effect AND gate logic works perfectly, and scales well across longer and longer PCB runs.  We also confirmed that there were no apparent issues with the LEDs, as signal could be transmitted along and back the entire 9-board configuration.
+We wanted to be able to test a longer strip of PCBs in order to confirm our hall effect and individually-addressable LED configuration for the final run of boards. I spent a lot of time soldering new sensor boards, and fixing some that weren't soldered correctly. We were able to confirm that our hall effect AND gate logic works perfectly, and scales well across longer and longer PCB runs. We also confirmed that there were no apparent issues with the LEDs, as signal could be transmitted along and back the entire 9-board configuration.
 
 A picture of this long sensor PCB testing can be seen in Figure 1.
 
-<img src="/477grp5/team/ben/week9-sensor-pcb-testing.jpg" width="80%">
+<img src="/team/ben/week9-sensor-pcb-testing.jpg" width="80%">
 
 _Figure 1: Sensor PCB testing_
 
 **Master PCB external power test**
 
-We finally got a chance to test our onboard buck converter on the master PCB while powering the STM32.  We prepared a simple program to flash to our STM32, and while powering with an external 5V source, we were able to program and read flash data from the microcontroller.  A screenshot from this testing can be seen in Figure 2.
+We finally got a chance to test our onboard buck converter on the master PCB while powering the STM32. We prepared a simple program to flash to our STM32, and while powering with an external 5V source, we were able to program and read flash data from the microcontroller. A screenshot from this testing can be seen in Figure 2.
 
-<img src="/477grp5/team/ben/week9-stm32-connected.jpg" width="80%">
+<img src="/team/ben/week9-stm32-connected.jpg" width="80%">
 
 _Figure 2: STM32 externally powered and connected_
 
 **PCB reviews and ordering**
 
-For our master PCB, we already had Revision B finished and ready to order.  However, upon preparing to order the second round of sensor PCBs, we decided to price out other suppliers for our components.  After much discussion, we learned that JLCPCB's assembly service was actually cheaper than us hand-soldering these boards, and it was more likely that the soldering quality would be higher.  We then spend a long time preparing production files for JLCPCB assembly, sourcing part numbers and ensuring the pick and place files were correct.
+For our master PCB, we already had Revision B finished and ready to order. However, upon preparing to order the second round of sensor PCBs, we decided to price out other suppliers for our components. After much discussion, we learned that JLCPCB's assembly service was actually cheaper than us hand-soldering these boards, and it was more likely that the soldering quality would be higher. We then spend a long time preparing production files for JLCPCB assembly, sourcing part numbers and ensuring the pick and place files were correct.
 
 A render from JLCPCB's pick and place confirmation tool can be seen in Figure 3
 
-<img src="/477grp5/team/ben/week9-sensor-pcb-pickandplace.png" width="80%">
+<img src="/team/ben/week9-sensor-pcb-pickandplace.png" width="80%">
 
 _Figure 3: JLCPCB sensor PCB pick and place render_
 
 **Drivers and state machine firmware**
 
-Since the PCBs are finished, I had a chance to work on firmware and prepare for implementing the entire sensor PCB array in a few weeks.  This week, I helped write a driver to turn our outlet relay on/off.  I also worked on a driver to read in our hall effect sensor row/column data and insert it into an easy-to-use variable.  This involved a lot of planning and preparation to correctly shift each input data bit to the correct location.  Code snippets for this driver can be seen in Figure 4.  Full driver code and implementation are on our Github repository.
+Since the PCBs are finished, I had a chance to work on firmware and prepare for implementing the entire sensor PCB array in a few weeks. This week, I helped write a driver to turn our outlet relay on/off. I also worked on a driver to read in our hall effect sensor row/column data and insert it into an easy-to-use variable. This involved a lot of planning and preparation to correctly shift each input data bit to the correct location. Code snippets for this driver can be seen in Figure 4. Full driver code and implementation are on our Github repository.
 
 ```
 void Driver_HallEffect_PollInputs()
@@ -448,7 +448,7 @@ void Driver_HallEffect_PollInputs()
 
 _Figure 4: Hall effect input data driver_
 
-Other miscellaneous testing was done in the state machine, but big changes include defining the current list of states we are handling.  This enum is defined in Figure 5.
+Other miscellaneous testing was done in the state machine, but big changes include defining the current list of states we are handling. This enum is defined in Figure 5.
 
 ```
 typedef enum {
@@ -472,15 +472,15 @@ _Figure 5: GameState enum definition_
 
 **State machine firmware**
 
-As we prepare for the large-scale sensor PCB testing, we are continuing to add state machine code to ensure we handle the game states correctly.  This testing will involve simulating the full table inputs on our Nucleo/master PCB.
+As we prepare for the large-scale sensor PCB testing, we are continuing to add state machine code to ensure we handle the game states correctly. This testing will involve simulating the full table inputs on our Nucleo/master PCB.
 
 **Goal detection driver**
 
-The last major driver we need to complete is the one handling the LDR/LED goal detection inputs on the STM32.  This will require state machine testing, as we may use software filtering to ensure we avoid incorrectly detecting goals during gameplay.
+The last major driver we need to complete is the one handling the LDR/LED goal detection inputs on the STM32. This will require state machine testing, as we may use software filtering to ensure we avoid incorrectly detecting goals during gameplay.
 
 **PCB assembly (if possible)**
 
-It is unlikely to happen this week, but if the PCBs arrive this week, we will assembly the master PCB and begin testing all of the sensor PCBs to ensure correct operation.  This will be a time consuming process.
+It is unlikely to happen this week, but if the PCBs arrive this week, we will assembly the master PCB and begin testing all of the sensor PCBs to ensure correct operation. This will be a time consuming process.
 
 ---
 
@@ -498,11 +498,11 @@ Lots of PCB design work, soldering, and testing.
 
 Although we haven't found any issues with our master PCB, we decided to make some revisions for convenience for future testing. This mainly consisted of expanding the PCB size to 100x100mm and placing components more conservatively, giving us much more room on the board. The only additional components include ESD protection ICs on some of the external signals, and an optional external oscillator.
 
-<img src="/477grp5/team/ben/week7-master-pcb-layout.png" width="80%">
+<img src="/team/ben/week7-master-pcb-layout.png" width="80%">
 
 _Figure 1: Master PCB Rev. B layout_
 
-<img src="/477grp5/team/ben/week7-master-pcb-render.png" width="80%">
+<img src="/team/ben/week7-master-pcb-render.png" width="80%">
 
 _Figure 2: Master PCB Rev. B render_
 
@@ -510,11 +510,11 @@ _Figure 2: Master PCB Rev. B render_
 
 Our Rev. A board still needed components placed. I spent a lot of time putting everything on the board, and we were able to test connecting and flashing to the STM32 before the team left for break. A picture of the PCB can be seen in Figure 3 and an image of us connected to the STM is shown in Figure 4.
 
-<img src="/477grp5/team/ben/week7-master-pcb-soldered.jpg" width="80%">
+<img src="/team/ben/week7-master-pcb-soldered.jpg" width="80%">
 
 _Figure 3: Master PCB Rev. A_
 
-<img src="/477grp5/team/ben/week7-stm-connected.jpg" width="80%">
+<img src="/team/ben/week7-stm-connected.jpg" width="80%">
 
 _Figure 4: Connected to STM32_
 
@@ -522,7 +522,7 @@ _Figure 4: Connected to STM32_
 
 We put together 8 of our sensor PCBs, and tested the interconnection feature of the boards. We were able to send LED data across multiple boards. We were also able to see hall effect sensor data, also across multiple PCBs. An image of the connected boards can be seen in Figure 5.
 
-<img src="/477grp5/team/ben/week7-sensor-pcbs.png" width="80%">
+<img src="/team/ben/week7-sensor-pcbs.png" width="80%">
 
 _Figure 5: Sensor PCBs_
 
@@ -558,7 +558,7 @@ _Buck converter_
 
 Before ordering PCBs last week, we made some final changes. The biggest change involved the buck converter. We ended up using copper pours to more closely match the datasheet. A screenshot showing our newer copper pour layout can be seen in Figure 1.
 
-<img src="/477grp5/team/ben/week6-buck-converter.png" width="80%">
+<img src="/team/ben/week6-buck-converter.png" width="80%">
 
 _Figure 1: Buck converter PCB layout_
 
@@ -566,22 +566,22 @@ _5V power trace_
 
 We also added a thicker 5V power trace to power our LEDs, LDRs, comparators, and other miscellaneous 5V components on the board. We already had a 3V3 and GND pour, but the 5V line was a thin trace spanning multiple components. To give ourselves more room for higher current draw, we expanded our board and added a thick 1mm trace to carry the 5V power line to many components. This new power trace can be seen in Figure 2.
 
-<img src="/477grp5/team/ben/week6-power-trace.png" width="80%">
+<img src="/team/ben/week6-power-trace.png" width="80%">
 
 _Figure 2: 5V power trace_
 
 Some images of our PCBs can be seen in Figures 3 and 4.
 
-| <img src="/477grp5/team/ben/week6-master-pcb.jpg" width="80%"> | <img src="/477grp5/team/ben/week6-sensor-pcb.jpg" width="80%"> |
-| :------------------------------------------------------------: | :------------------------------------------------------------: |
-|                     _Figure 3: Master PCB_                     |                     _Figure 4: Sensor PCB_                     |
+| <img src="/team/ben/week6-master-pcb.jpg" width="80%"> | <img src="/team/ben/week6-sensor-pcb.jpg" width="80%"> |
+| :----------------------------------------------------: | :----------------------------------------------------: |
+|                 _Figure 3: Master PCB_                 |                 _Figure 4: Sensor PCB_                 |
 
 **Testing of new components**
 
 Many components came in, including our air blower, OLED displays, connectors, power supply, and outlet relay. Although there wasn't much time to test due to our team's exam schedule, we were able to test our power supply and outlet relay. To do this, we cut a PC power cable and connected the hot, neutral, and ground wires to the correct screw terminals on our power supply. We then connected this power supply to the outlet relay, which can be controlled with a low-voltage DC signal. We connected this to our power supply, and tested the functionality with both 3V3 and 5V. A video showing this testing can be seen in Figure 5.
 
 <video controls muted>
-  <source src="/477grp5/team/ben/week6-outlet-relay-test.mp4" type="video/mp4">
+  <source src="/team/ben/week6-outlet-relay-test.mp4" type="video/mp4">
 </video>
 
 _Figure 5: Outlet relay testing and proof of operation_
@@ -622,65 +622,65 @@ _Master PCB_
 
 The primary schematic contains all external connectors and signals that are going off-board. We used KiCad's hierarchical schematic function to keep everything clean. You can see the main STM32 block in the center, connected to our EEPROM, OLED connectors, LEDs, LDR inputs, and row/column hall effect sensors.
 
-<img src="/477grp5/team/ben/week5-schematic-toplevel.png" width="80%">
+<img src="/team/ben/week5-schematic-toplevel.png" width="80%">
 
 _Figure 1: Top level schematic_
 
 The STM32U585 is the microcontroller we decided on, and the schematic with the STM32 on it simply defines all of the pin connections, reset button, decoupling capacitors, and BOOT0 jumper. We verified the pins' position and function using the STM32CubeIDE IOC program to make sure we were using correct pins (peripheral assignment, 5V tolerance, etc.)
 
-<img src="/477grp5/team/ben/week5-schematic-stm32.png" width="80%">
+<img src="/team/ben/week5-schematic-stm32.png" width="80%">
 
 _Figure 2: STM32 schematic_
 
 To satisfy one of our PSDRs, we are implementing a buck converter to power our STM32. We chose the TLV62568 due to its simplicity, small size, low price, and high enough output current at 1 amp. The schematic for this regulator can be seen in Figure 3.
 
-<img src="/477grp5/team/ben/week5-schematic-buck.png" width="80%">
+<img src="/team/ben/week5-schematic-buck.png" width="80%">
 
 _Figure 3: Buck converter schematic_
 
 Goal detection is achieved by using an LED/LDR pair. This analog value is then compared against a reference voltage (created with a voltage divider) in a comparator circuit to convert this analog value to a digital value. This digital signal is then connected to the STM32 to determine if a goal has been scored. The schematic for our goal detection comparator circuit can be seen in Figure 4.
 
-<img src="/477grp5/team/ben/week5-schematic-goal-detection.png" width="80%">
+<img src="/team/ben/week5-schematic-goal-detection.png" width="80%">
 
 _Figure 4: Goal detection schematic_
 
 One of our stretch goals is to have a menu system displayed on an OLED to allow users to change brightness, goals required to win, and other settings. To allow the user to interact with the microcontroller, we are attempting to implement a rotary encoder with an integrated button. The schematic representing this circuit can be seen in Figure 5.
 
-<img src="/477grp5/team/ben/week5-schematic-encoder.png" width="80%">
+<img src="/team/ben/week5-schematic-encoder.png" width="80%">
 
 _Figure 5: Encoder schematic_
 
 The LEDs are interfaced from the STM32 through level shifters. The WS2812B LEDs we are using run at 5V logic, and our STM32 can only provide 3.3V. We implement the level shifter that Will had been testing with to support up to four independent channels for the LED control. The schematic for these level shifters can be seen in Figure 6.
 
-<img src="/477grp5/team/ben/week5-schematic-level-shifter.png" width="80%">
+<img src="/team/ben/week5-schematic-level-shifter.png" width="80%">
 
 _Figure 6: LED level shifter schematic_
 
 One of our other stretch goals is using an EEPROM to store table configuration and animation frames. This is interfaced with our microcontroller over SPI. The schematic representing this chip and its supporting hardware can be seen in Figure 7.
 
-<img src="/477grp5/team/ben/week5-schematic-eeprom.png" width="80%">
+<img src="/team/ben/week5-schematic-eeprom.png" width="80%">
 
 _Figure 7: EEPROM schematic_
 
 After the schematic was put together, we routed the first revision of our PCB. We want to get these ordered as soon as possible to allow for debugging and ordering of a second round before week 8. Many considerations, such as power requirements, decoupling capacitors, and communication protocols were considered when laying out components. A side-by-side view of the layout and 3D renders can be seen in Figures 9 and 10.
 
-| <img src="/477grp5/team/ben/week5-master-layout.png" width="80%"> | <img src="/477grp5/team/ben/week5-master-render.png" width="80%"> |
-| :---------------------------------------------------------------: | :---------------------------------------------------------------: |
-|                   _Figure 9: Master PCB layout_                   |                 _Figure 10: Master PCB 3D render_                 |
+| <img src="/team/ben/week5-master-layout.png" width="80%"> | <img src="/team/ben/week5-master-render.png" width="80%"> |
+| :-------------------------------------------------------: | :-------------------------------------------------------: |
+|               _Figure 9: Master PCB layout_               |             _Figure 10: Master PCB 3D render_             |
 
 _Sensor PCB_
 
 In addition to the master PCB, I worked a lot with Trevor doing the same process for our hall effect sensor PCB. This was a simpler design. We have 4 hall effect sensors per PCB, using AND logic gates to convert these values to rows/columns. The data can be daisy-chained between PCBs, allowing the microcontroller to only need 48 GPIO inputs to determine the position of the puck. In addition to the sensors, the schematic contains the LEDs and LED data signals, power passthrough for components on the boards, and solder jumpers to ensure non-floating inputs on our logic gates for PCBs with only two inputs (the first PCB in each row/column only has 2 inputs since there is no data being passed into it from another board). The current schematic for this design can be seen in Figure 11.
 
-<img src="/477grp5/team/ben/week5-schematic-sensor.png" width="80%">
+<img src="/team/ben/week5-schematic-sensor.png" width="80%">
 
 _Figure 11: Sensor PCB schematic_
 
 Figures 12 and 13 show the routing and 3D render for this PCB. The main considerations were the edge connectors allowing for PCB-to-PCB connections, as well as a fixed 50mm distance between the hall effect sensors. The large hole in the center is to assist in airflow for the PCBs mounted directly over the blower on the table.
 
-| <img src="/477grp5/team/ben/week5-sensor-layout.png" width="80%"> | <img src="/477grp5/team/ben/week5-sensor-render.png" width="80%"> |
-| :---------------------------------------------------------------: | :---------------------------------------------------------------: |
-|                  _Figure 12: Sensor PCB layout_                   |                 _Figure 13: Sensor PCB 3D render_                 |
+| <img src="/team/ben/week5-sensor-layout.png" width="80%"> | <img src="/team/ben/week5-sensor-render.png" width="80%"> |
+| :-------------------------------------------------------: | :-------------------------------------------------------: |
+|              _Figure 12: Sensor PCB layout_               |             _Figure 13: Sensor PCB 3D render_             |
 
 ### Next steps
 
@@ -719,11 +719,11 @@ My work on the driver included the initial setup of the timer at the correct bau
 
 An example of the work I put into the driver can be seen in Figures 1 and 2.
 
-<img src="/477grp5/team/ben/week4-led-dma-brainstorming.jpg" width="40%">
+<img src="/team/ben/week4-led-dma-brainstorming.jpg" width="40%">
 
 _Figure 1: LED driver with DMA brainstorming_
 
-<img src="/477grp5/team/ben/week4-led-driver-demo.jpg" width="40%">
+<img src="/team/ben/week4-led-driver-demo.jpg" width="40%">
 
 _Figure 2: LED driver demonstration (cycles between RGB spectrum)_
 
@@ -737,7 +737,7 @@ This microcontroller comes in a LQFP100 package, which will be relatively easy t
 
 After deciding on a microcontroller, I spent some time creating a document where we can start to assign pins on the microcontroller to peripherals in our project. This is going to be a time-consuming process, and this is after the hours we already spend transposing the information from the datasheet to a spreadsheet for our own use. So far, I spent time going through each pins' alternate functions and additional functionality and marked anything of interest, such as timer channels, SPI channels, oscillator inputs/outputs, etc. I also marked pins that we will leave open, such as the BOOT0 pins to force bootloader booting, the SWD debugging pins, and the reset button pin. An image from this document can be seen in Figure 3.
 
-<img src="/477grp5/team/ben/uc-pin-descriptions-week4.png" width="40%">
+<img src="/team/ben/uc-pin-descriptions-week4.png" width="40%">
 
 _Figure 3: Some of the microcontroller pin descriptions_
 
@@ -778,7 +778,7 @@ After drawing out a grid of hall effect sensors, we realized that by simply ORin
 
 An example of this design can be seen in Figure 1:
 
-<img src="/477grp5/team/ben/battleship-hall-positioning.jpg" width="40%">
+<img src="/team/ben/battleship-hall-positioning.jpg" width="40%">
 
 _Figure 1: "Battleship" hall effect position demonstration_
 
@@ -792,7 +792,7 @@ We continued to do research, and eventually found [this page discussing how the 
 
 Figures 2 and 3 contain a comparison of the cylinder and disc magnetic fields:
 
-|            <img src="/477grp5/team/ben/cylinder-magnet-field.png" width="80%">            |            <img src="/477grp5/team/ben/disc-magnet-field.png" width="80%">            |
+|                <img src="/team/ben/cylinder-magnet-field.png" width="80%">                |                <img src="/team/ben/disc-magnet-field.png" width="80%">                |
 | :---------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------: |
 | _Figure 2: Magnetic field drawings for a cylinder magnet provided by K&J Magnetics, Inc._ | _Figure 3: Magnetic field drawings for a disc magnet provided by K&J Magnetics, Inc._ |
 
@@ -804,13 +804,13 @@ I eventually made a comparator circuit using a reference voltage (created with a
 
 A picture of the breadboard containing this circuit can be seen in Figure 3:
 
-<img src="/477grp5/team/ben/ldr-goal-detection-breadboard.jpg" width="40%">
+<img src="/team/ben/ldr-goal-detection-breadboard.jpg" width="40%">
 
 _Figure 4: Image of breadboard LDR goal detection circuit_
 
 A schematic representation of the circuit can be seen in Figure 4:
 
-<img src="/477grp5/team/ben/ldr-goal-detection-schematic.png" width="40%">
+<img src="/team/ben/ldr-goal-detection-schematic.png" width="40%">
 
 _Figure 5: "Battleship" hall effect position demonstration_
 
@@ -882,4 +882,4 @@ The first two weeks had both the revised initial project proposal, final project
 
 #### Brainstorming PDF
 
-Notes from my brainstorming and diagrams about my communication brainstorming can be found at this link: [Brainstorming PDF](/477grp5/team/ben/ben-brainstorming-20230901.pdf).
+Notes from my brainstorming and diagrams about my communication brainstorming can be found at this link: [Brainstorming PDF](/team/ben/ben-brainstorming-20230901.pdf).
